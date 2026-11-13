@@ -1,0 +1,597 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "67ef9458cc725cb4fba2",
+  "position": {
+    "x": 36.591928251121075,
+    "y": 0,
+    "z": 0,
+    "height": 1080.5381165919282,
+    "width": 1629.4170403587443
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic student Calc group"
+                    }
+                  },
+                  "Property": "Demographic Name"
+                }
+              },
+              "queryRef": "Dynamic student Calc group.Demographic Name",
+              "nativeQueryRef": "Demographic Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Students on Roll"
+                }
+              },
+              "queryRef": "Measures Folder.Students on Roll",
+              "nativeQueryRef": "Students on Roll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Attendance Percentage"
+                }
+              },
+              "queryRef": "Measures Folder.Attendance Percentage",
+              "nativeQueryRef": "Attendance Percentage"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 GDS% - CRWM TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 GDS% - CRWM TA",
+              "nativeQueryRef": "KS1 GDS% - CRWM TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 AS+/EXS+% - CRWM"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 AS+/EXS+% - CRWM",
+              "nativeQueryRef": "KS2 AS+/EXS+% - CRWM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Basics 5+%"
+                }
+              },
+              "queryRef": "Measures Folder.Basics 5+%",
+              "nativeQueryRef": "Basics 5+%"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Subject Grade 5+"
+                }
+              },
+              "queryRef": "Measures Folder.Subject Grade 5+",
+              "nativeQueryRef": "Subject Grade 5+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Percentage Suspension -1 Years"
+                }
+              },
+              "queryRef": "Measures Folder.Percentage Suspension -1 Years",
+              "nativeQueryRef": "Percentage Suspension -1 Years"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Incidents -1 Years"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Incidents -1 Years",
+              "nativeQueryRef": "Suspension Incidents -1 Years"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Percentage Suspension -2 Years"
+                }
+              },
+              "queryRef": "Measures Folder.Percentage Suspension -2 Years",
+              "nativeQueryRef": "Percentage Suspension -2 Years"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Incidents -2 Years"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Incidents -2 Years",
+              "nativeQueryRef": "Suspension Incidents -2 Years"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Dynamic student Calc group.Demographic Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5635d16a5ad31666745a",
+        "ordinal": 0,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Students YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "2965a69df320e76c5ffc",
+        "ordinal": 1,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Percentage Suspension YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "d51b017e2459baac1878",
+        "ordinal": 2,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Incidents YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "79cc73709b5604865273",
+        "ordinal": 3,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Sessions YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "eff32d280fc6be451756",
+        "ordinal": 4,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Permanently Excluded YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "4d329e873f50a9487ddd",
+        "ordinal": 5,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Days YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "6dd9140904bf7fe92850",
+        "ordinal": 6,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Internal Exclusions YTD"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "67611ed482548d91b395",
+        "ordinal": 7,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Rate CY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "18019cba01a07071c56c",
+        "ordinal": 8,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dynamic student Calc group"
+              }
+            },
+            "Property": "Demographic Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c2e524a210e4a7b5f9d1",
+        "ordinal": 9,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Students YTD SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "642f9cf1672e484abffa",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "School Year"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "b58e1b5afbe09a919412",
+        "ordinal": 11,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Percentage Suspension YTD SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "2b10df4255e13ed8ab0a",
+        "ordinal": 12,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Incidents YTD SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "b7e7a71051a7c00b34c3",
+        "ordinal": 13,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Sessions SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "0767db270be154b468df",
+        "ordinal": 14,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Permanently Excluded YTD SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "30da20079b92760fc108",
+        "ordinal": 15,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Days YTD SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "dc13e58d2f16db524b7a",
+        "ordinal": 16,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Internal Exclusions SPLY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "90dae935a3326cbd6212",
+        "ordinal": 17,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Suspension Rate PY"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "be224c67af1c4552dfa2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Students on Roll"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a8cf409580a0ef277208",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Attendance Percentage"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "26042503827c6fec2e8a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "KS1 GDS% - CRWM TA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8e8b7b30f7c2d606e8cd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "KS2 AS+/EXS+% - CRWM"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f38855fe0b3018f40889",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Basics 5+%"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9a872516f4f357255c81",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Subject Grade 5+"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

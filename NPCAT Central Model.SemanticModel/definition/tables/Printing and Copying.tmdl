@@ -1,0 +1,297 @@
+table 'Printing and Copying'
+	lineageTag: 6c2ac9d5-1fa5-4179-8ccd-5d83c95b4b81
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 840a5b9d-07d5-4ad5-98ef-9b9f6153c947
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Username
+		dataType: string
+		lineageTag: d8cfcf15-ee70-4fb3-98a3-595ffd72daf0
+		summarizeBy: none
+		sourceColumn: Username
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: 4e980a75-fa3e-4555-93d2-afa31a4465ac
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Printer Name'
+		dataType: string
+		lineageTag: 4bca93cf-49bc-4927-8fd2-390f99f8a84a
+		summarizeBy: none
+		sourceColumn: Printer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Printer Type/Model'
+		dataType: string
+		lineageTag: ce65c877-386a-4e0a-aa63-4bf5554ba8db
+		summarizeBy: none
+		sourceColumn: Printer Type/Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Use Type'
+		dataType: string
+		lineageTag: f0687134-baa4-4e31-9844-aec35f4f40da
+		summarizeBy: none
+		sourceColumn: Use Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pages Per Job'
+		dataType: int64
+		formatString: 0
+		lineageTag: d71e9f13-cf7d-490f-8593-7b64e680befb
+		summarizeBy: sum
+		sourceColumn: Pages Per Job
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Colour Pages'
+		dataType: int64
+		formatString: 0
+		lineageTag: 119cae81-e856-41e2-9d86-a0bd9fd5cb7a
+		summarizeBy: sum
+		sourceColumn: Total Colour Pages
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paper Size'
+		dataType: string
+		lineageTag: 7a0b0625-89f7-4305-96bb-1a5e140ed608
+		summarizeBy: none
+		sourceColumn: Paper Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paper Width (m)'
+		dataType: double
+		lineageTag: 74676ae9-13a1-4525-8d4c-cb2d74e9eaca
+		summarizeBy: sum
+		sourceColumn: Paper Width (m)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paper Height (m)'
+		dataType: double
+		lineageTag: 67968c5f-b6f9-4238-906f-35f9a032429e
+		summarizeBy: sum
+		sourceColumn: Paper Height (m)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Duplex
+		dataType: string
+		lineageTag: 2bb03859-a7bb-4fa1-a20b-988ecf6c6259
+		summarizeBy: none
+		sourceColumn: Duplex
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Size (KB)'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd50777f-9a06-4306-a4d5-8d706f6dc6f5
+		summarizeBy: sum
+		sourceColumn: Size (KB)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Grayscale Pages'
+		dataType: int64
+		formatString: 0
+		lineageTag: 00729e3a-9970-427c-9ac5-52411c975349
+		summarizeBy: sum
+		sourceColumn: Total Grayscale Pages
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paper Cost Lookup'
+		dataType: string
+		lineageTag: e810543b-9e88-40c5-b609-3126c16bbbc5
+		summarizeBy: none
+		sourceColumn: Paper Cost Lookup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grayscale Cost'
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: cefeddb9-751b-496c-8d4a-57bf23dc9464
+		summarizeBy: sum
+		sourceColumn: Grayscale Cost
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column 'Colour Cost'
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: 5696a2d7-fd52-445d-bd69-bc169330c6ef
+		summarizeBy: sum
+		sourceColumn: Colour Cost
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column 'Total Cost'
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: 8bb1e58b-dd27-402a-b526-1d36acce6a81
+		summarizeBy: sum
+		sourceColumn: Total Cost
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column 'Duration Printing (Minutes)'
+		dataType: double
+		lineageTag: 9cf78bb6-8ddb-47c7-bb9c-cc9502d48a8d
+		summarizeBy: sum
+		sourceColumn: Duration Printing (Minutes)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paper Size (Bucket)'
+		dataType: string
+		lineageTag: 4ddc4886-9b42-4529-bee8-53f107dff129
+		summarizeBy: none
+		sourceColumn: Paper Size (Bucket)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sheets
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e9bb569-5223-41bd-87df-eee8e5535084
+		summarizeBy: sum
+		sourceColumn: Sheets
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Power (kJ)'
+		dataType: double
+		lineageTag: 82e32fbf-0a31-4ed2-9e52-405f2ab618aa
+		summarizeBy: sum
+		sourceColumn: Power (kJ)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Volume
+		dataType: double
+		lineageTag: 7a50a70c-1e05-42ba-b6b1-90bfdc2c3f76
+		summarizeBy: sum
+		sourceColumn: Volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Manufacturers
+		dataType: string
+		lineageTag: 69edc1bf-fa87-4585-843f-83d08eb766b0
+		summarizeBy: none
+		sourceColumn: Manufacturers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name new'
+		dataType: string
+		lineageTag: 2476b35d-09db-4a19-bd8d-a3d5e1ee2da5
+		summarizeBy: none
+		sourceColumn: Full Name new
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Page Size (A4/A3)'
+		dataType: string
+		lineageTag: 95c55363-a8b0-4d87-ac1c-5606f52759f1
+		summarizeBy: none
+		sourceColumn: Page Size (A4/A3)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paper Cost'
+		dataType: double
+		lineageTag: c162b6f2-d3de-442c-8187-19b7a4dac714
+		summarizeBy: sum
+		sourceColumn: Paper Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'School Nominal Code'
+		dataType: string
+		lineageTag: 342df218-d146-4cb0-a187-069d0231b44c
+		summarizeBy: none
+		sourceColumn: School Nominal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Old School Nominal Code'
+		dataType: string
+		lineageTag: 33b4e92e-8d5e-46c9-89e0-92eb4d3883ed
+		summarizeBy: none
+		sourceColumn: Old School Nominal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lookup Site IP'
+		dataType: string
+		lineageTag: 1369734c-a5ec-494f-aebe-00ccc9692855
+		summarizeBy: none
+		sourceColumn: Lookup Site IP
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Printing and Copying-4245b57b-b4e8-4ada-80b5-e642f3315165' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"186393c6-7e8f-4791-b385-5ce643b35c11" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="186393c6-7e8f-4791-b385-5ce643b35c11"]}[Data],
+				    #"Printing and Copying1" = #"186393c6-7e8f-4791-b385-5ce643b35c11"{[entity="Printing and Copying"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Printing and Copying1",{{"Paper Cost", type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Total Printed Pages", "Pages Per Job"}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"Grayscale"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

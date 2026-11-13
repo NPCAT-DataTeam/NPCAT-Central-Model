@@ -1,0 +1,55 @@
+table 'zP KS4 Buckets'
+	lineageTag: 232df6c2-aef8-42cf-90ff-5ab00a402c94
+
+	column 'zP KS4 Grades'
+		lineageTag: 59bb89fb-5847-409c-b7c2-e24cfb8d4ef3
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS4 Grades Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS4 Grades (Fields)'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Grades (Fields)'
+		isHidden
+		lineageTag: b9b335a1-ce01-4053-b7d0-016302e44906
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS4 Grades Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Grades Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0c359cbf-d7b0-4799-93b4-6d27b4165b84
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS4 Buckets-06401d19-debf-4716-82ab-3b9aa3778464' = calculated
+		mode: import
+		source =
+				{
+				    ("Subject", NAMEOF('Measures Folder'[Selected KS4 Subject Name]), 0),
+				    ("Class", NAMEOF('Measures Folder'[Selected KS4 Class - Staff Initials]), 1),
+				    ("Target", NAMEOF('Measures Folder'[Selected Target]), 2),
+				    ("Grade", NAMEOF('Measures Folder'[Selected KS4 Grade]), 3),
+				    ("Diff", NAMEOF('Measures Folder'[Selected Grade KPI]), 4),
+				    ("P8/SPI", NAMEOF('Measures Folder'[Subject Progress 8 (SPI)]), 5),
+				    ("Residual", NAMEOF('Measures Folder'[Student Residual Grade]), 6),
+				    ("ABCD", NAMEOF('Measures Folder'[Selected ABCD]), 7),
+				    ("Effort", NAMEOF('Measures Folder'[Selected Effort]), 8)
+				}
+
+	annotation PBI_Id = 7b2f6b4aab82444e800ece8274bcdb81
+

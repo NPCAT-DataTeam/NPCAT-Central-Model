@@ -1,0 +1,98 @@
+table 'KS4 Period Selector'
+	lineageTag: 0a1eedbe-0bcc-475d-9448-9c220ed8c57a
+
+	column 'Grade Type'
+		dataType: string
+		lineageTag: f77fae07-6724-4e0b-bdf7-959702255454
+		summarizeBy: none
+		sourceColumn: Grade Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERIOD_NAME
+		dataType: string
+		lineageTag: 4b2250c3-68ec-4c9a-a8be-3b78464755d6
+		summarizeBy: none
+		sourceColumn: PERIOD_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 2e26f8d7-8fc1-499e-8b33-2d1e20079ba6
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: ea740dec-ae9b-42ca-9a20-4bd75f4e895c
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Period Selector ID'
+		dataType: string
+		lineageTag: 822f1cd5-5177-489d-9aea-e6926a5ae1c7
+		summarizeBy: none
+		sourceColumn: KS4 Period Selector ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP-Grade Type'
+		dataType: string
+		lineageTag: 20307122-14e2-41ae-b0df-df6c72e7a0ec
+		summarizeBy: none
+		sourceColumn: AP-Grade Type
+		sortByColumn: 'AP - Grade Type Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP - Grade Type Sort'
+		dataType: string
+		lineageTag: 6f952508-a45e-437a-9df9-b58dbad85cc2
+		summarizeBy: none
+		sourceColumn: AP - Grade Type Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year Offset' =
+			
+			LOOKUPVALUE( 'Calendar'[Current School Year Offset],'Calendar'[School Year], [School Year] )
+		formatString: 0
+		lineageTag: 71154c32-7090-4405-93fc-dfcb769b8dcc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage' =
+			
+			IF ( [Year Group] in {"Year 7","Year 8","Year 9"},"KS3","KS4")
+		lineageTag: c8afa27a-f489-4cac-8f93-46e00ea9162b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS4 Period Selector' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"143ad5e4-dfd6-4a99-8036-980f3f1ede08" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="143ad5e4-dfd6-4a99-8036-980f3f1ede08"]}[Data],
+				    #"KS4 Period Selector_" = #"143ad5e4-dfd6-4a99-8036-980f3f1ede08"{[entity="KS4 Period Selector",version=""]}[Data]
+				in
+				    #"KS4 Period Selector_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

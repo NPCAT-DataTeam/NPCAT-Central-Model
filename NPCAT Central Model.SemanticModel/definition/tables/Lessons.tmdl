@@ -1,0 +1,89 @@
+table Lessons
+	lineageTag: 3d8c8ae1-dcb7-4293-9505-1f7f3cb0b9fc
+
+	column LESSON_UNIQUE_ID
+		dataType: string
+		lineageTag: 3d735ef4-4dad-432e-a710-8c3649718ede
+		summarizeBy: none
+		sourceColumn: LESSON_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: 2d46e13f-2377-473e-ad23-09f0168003bc
+		summarizeBy: none
+		sourceColumn: COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 35da55d3-0360-4011-aa60-c2af67afff26
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Period Name'
+		dataType: string
+		lineageTag: 4f4bda32-aa38-4ba0-819c-7d53a576c28a
+		summarizeBy: none
+		sourceColumn: Period Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class Name'
+		dataType: string
+		lineageTag: 8359bf7a-9580-4d66-8748-94902d343d62
+		summarizeBy: none
+		sourceColumn: Class Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Code'
+		dataType: string
+		lineageTag: 20e94986-7ba3-4857-a5ad-ff7d3db1c6ee
+		summarizeBy: none
+		sourceColumn: Subject Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Name'
+		dataType: string
+		lineageTag: 19aa7e84-01e1-4e9a-96dd-354a2fbdc5b8
+		summarizeBy: none
+		sourceColumn: Subject Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 07e6c256-55a9-4d48-b81a-89f6bb0acfe3
+		summarizeBy: none
+		sourceColumn: Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition Lessons = m
+		mode: import
+		queryGroup: Attendance
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"266a4959-748d-4b5a-ab5a-d8014ae5811b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="266a4959-748d-4b5a-ab5a-d8014ae5811b"]}[Data],
+				    Lessons1 = #"266a4959-748d-4b5a-ab5a-d8014ae5811b"{[entity="Lessons"]}[Data]
+				in
+				    Lessons1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

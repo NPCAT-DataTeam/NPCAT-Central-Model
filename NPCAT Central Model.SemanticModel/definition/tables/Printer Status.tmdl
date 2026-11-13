@@ -1,0 +1,78 @@
+table 'Printer Status'
+	lineageTag: 00aeb5a7-7462-44c6-b027-035f38d3db4a
+
+	column 'Printer Name'
+		dataType: string
+		lineageTag: 6140adb4-3a44-41aa-a800-07ffe8a41ad1
+		summarizeBy: none
+		sourceColumn: Printer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Physical Printer Identifier'
+		dataType: string
+		lineageTag: b4fe94e9-b4d1-41d6-bf73-12a582bf3e68
+		summarizeBy: none
+		sourceColumn: Physical Printer Identifier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Printer Type/Model'
+		dataType: string
+		lineageTag: e23f5aaa-b506-43f7-bee9-1ddbfcc819f7
+		summarizeBy: none
+		sourceColumn: Printer Type/Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Printer Serial Number'
+		dataType: string
+		lineageTag: 210661ee-c48c-489e-a1d2-1647433be140
+		summarizeBy: none
+		sourceColumn: Printer Serial Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Used'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 88168e78-ebc4-4081-89e9-84de2e3e3a42
+		summarizeBy: none
+		sourceColumn: Last Used
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Printer Index'
+		dataType: string
+		lineageTag: ecfe0ed7-7598-4e14-af39-5ea530bc4b0e
+		summarizeBy: none
+		sourceColumn: Printer Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Printer Status'
+		dataType: string
+		lineageTag: 47a94dfd-0e73-41dc-96d3-c42b26b31153
+		summarizeBy: none
+		sourceColumn: Printer Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Printer Status-e88c60a9-18c0-4d99-ad7d-347afc4c6fb7' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"186393c6-7e8f-4791-b385-5ce643b35c11" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="186393c6-7e8f-4791-b385-5ce643b35c11"]}[Data],
+				    #"Printer Status1" = #"186393c6-7e8f-4791-b385-5ce643b35c11"{[entity="Printer Status"]}[Data]
+				in
+				    #"Printer Status1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

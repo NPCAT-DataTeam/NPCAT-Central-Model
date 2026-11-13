@@ -1,0 +1,94 @@
+table Inspections
+	lineageTag: 6a6e6aa7-e616-40cc-8bb3-c588d0a8df36
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: ddb3ed58-6857-4ceb-9a80-41e69147e7c2
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Arbor ID'
+		dataType: string
+		lineageTag: de0c2ba8-e59d-4970-9232-8c7a41f48f63
+		summarizeBy: none
+		sourceColumn: Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column URN/UID
+		dataType: string
+		lineageTag: d18b4bcd-54e9-4ed5-8abc-10b8207349fe
+		summarizeBy: none
+		sourceColumn: URN/UID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Short Name'
+		dataType: string
+		lineageTag: e117c793-b115-4c50-84b9-0182541cb899
+		summarizeBy: none
+		sourceColumn: School Short Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inspection Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e54b6622-4a9c-4d2e-97a9-f8a154ad73fa
+		summarizeBy: none
+		sourceColumn: Inspection Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Inspection Type'
+		dataType: string
+		lineageTag: 31743182-2965-4de3-b9ff-58907d9d8a7a
+		summarizeBy: none
+		sourceColumn: Inspection Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inspection Element'
+		dataType: string
+		lineageTag: 9438a7a8-c20f-4528-9f4c-f6126df38eb4
+		summarizeBy: none
+		sourceColumn: Inspection Element
+
+		annotation SummarizationSetBy = Automatic
+
+	column Outcome
+		dataType: string
+		lineageTag: af15f51d-31de-4fae-a02b-67efc9c721d8
+		summarizeBy: none
+		sourceColumn: Outcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inspection Offset'
+		dataType: string
+		lineageTag: b54ab3b9-6209-466a-9e41-8f859f1a037f
+		summarizeBy: none
+		sourceColumn: Inspection Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Inspections = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    Inspections1 = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="Inspections"]}[Data]
+				in
+				    Inspections1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

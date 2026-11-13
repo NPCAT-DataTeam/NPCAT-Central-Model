@@ -1,0 +1,475 @@
+table Employees
+	lineageTag: d60c1817-833b-4f35-a015-a37c44e55fe8
+
+	column 'Every School ID'
+		dataType: string
+		isHidden
+		lineageTag: f00e71df-0c0d-4cd2-943b-e1cb3fd30408
+		summarizeBy: none
+		sourceColumn: Every School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Every ID'
+		dataType: double
+		lineageTag: 05c7dc46-87b2-4086-b62c-674123e21e7b
+		summarizeBy: count
+		sourceColumn: Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Employee ID'
+		dataType: string
+		lineageTag: b9b7d224-5034-44a1-a874-9c035155a850
+		summarizeBy: none
+		sourceColumn: Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NPCAT Employee ID'
+		dataType: string
+		lineageTag: 17c48c9a-38b8-489b-a0a1-008e0937ef8d
+		summarizeBy: none
+		sourceColumn: NPCAT Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NI Number'
+		dataType: string
+		lineageTag: e6d4d010-3ebd-4a97-8eb4-b0d021e26991
+		summarizeBy: none
+		sourceColumn: NI Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: 6282b46b-ca05-4108-a01e-d870b5f2050e
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forename
+		dataType: string
+		lineageTag: 40bee9d1-27eb-4c72-bed4-584eb4bc87d6
+		summarizeBy: none
+		sourceColumn: Forename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Middle Names'
+		dataType: string
+		lineageTag: 3e3e0b6a-1c63-4744-b572-a353d72eeb30
+		summarizeBy: none
+		sourceColumn: Middle Names
+
+		annotation SummarizationSetBy = Automatic
+
+	column Surname
+		dataType: string
+		lineageTag: 77b19c36-ba6b-4591-8199-f28f8cedde69
+		summarizeBy: none
+		sourceColumn: Surname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Preferred Name'
+		dataType: string
+		lineageTag: 93c9ed45-7d3a-4aae-b031-e4dfbcfade51
+		summarizeBy: none
+		sourceColumn: Preferred Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Birth'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1c2c87d4-9762-4a4d-be6c-32aeb0b285c5
+		summarizeBy: none
+		sourceColumn: Date of Birth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Gender
+		dataType: string
+		lineageTag: 3ce78785-2493-4ef8-b486-cd8baf1b63bd
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ethnicity
+		dataType: string
+		lineageTag: eb3051f3-3e6f-4ff1-9770-335fefac280d
+		summarizeBy: none
+		sourceColumn: Ethnicity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Religion
+		dataType: string
+		lineageTag: 9f45a4f9-6576-4ef9-b0ac-7c0c73cf0d74
+		summarizeBy: none
+		sourceColumn: Religion
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Marital Status'
+		dataType: string
+		lineageTag: 82dbeb61-7b10-4c1e-97d9-d22a4dbfdcce
+		summarizeBy: none
+		sourceColumn: Marital Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: 79067c81-e774-4a60-8e1c-cc57a883c79c
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disability
+		dataType: string
+		lineageTag: 026b7e37-9081-4bdf-91e0-7d8837c4537e
+		summarizeBy: none
+		sourceColumn: Disability
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address 1'
+		dataType: string
+		lineageTag: b60fc4fe-2dd4-4b90-923c-2facb78c2a2c
+		summarizeBy: none
+		sourceColumn: Address 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address 2'
+		dataType: string
+		lineageTag: 3f032606-526b-42b5-addc-c5f18c3d48e9
+		summarizeBy: none
+		sourceColumn: Address 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address 3'
+		dataType: string
+		lineageTag: 1ad36532-7193-4132-910f-ee76796fc291
+		summarizeBy: none
+		sourceColumn: Address 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address 4'
+		dataType: string
+		lineageTag: dd026cbf-9485-429c-80fe-9b13cdd157f8
+		summarizeBy: none
+		sourceColumn: Address 4
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address 5'
+		dataType: string
+		lineageTag: c9e73ea2-d3e1-4226-986c-06b6269bfa34
+		summarizeBy: none
+		sourceColumn: Address 5
+
+		annotation SummarizationSetBy = Automatic
+
+	column Postcode
+		dataType: string
+		lineageTag: 95031b6e-a528-4277-be5d-a8e7cab5fd64
+		summarizeBy: none
+		sourceColumn: Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Personal Phone'
+		dataType: string
+		lineageTag: 759b8e61-7569-477b-9360-08e9a7846476
+		summarizeBy: none
+		sourceColumn: Personal Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Phone'
+		dataType: string
+		lineageTag: 7ade5af0-a0e0-4298-838d-7d4c9fb79493
+		summarizeBy: none
+		sourceColumn: Work Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Personal Email'
+		dataType: string
+		lineageTag: dacf2e04-72eb-44b1-aad5-b7a09d2fbdf4
+		summarizeBy: none
+		sourceColumn: Personal Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Email'
+		dataType: string
+		lineageTag: 9547e95d-f224-4672-aa9b-5b4e01969c29
+		summarizeBy: none
+		sourceColumn: Work Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (1) Full Name'
+		dataType: string
+		lineageTag: b0b94bca-e566-47e0-b451-cffb0468bae3
+		summarizeBy: none
+		sourceColumn: Next Of Kin (1) Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (1) Mobile'
+		dataType: string
+		lineageTag: af415beb-b1e6-466d-bc7f-6ae56a4028f7
+		summarizeBy: none
+		sourceColumn: Next Of Kin (1) Mobile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (1) Phone'
+		dataType: string
+		lineageTag: edf96a13-492d-407e-949c-2f402dfe6690
+		summarizeBy: none
+		sourceColumn: Next Of Kin (1) Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (1) Relationship'
+		dataType: string
+		lineageTag: a80c6e1e-2521-49a5-8bc4-413e5f4837ac
+		summarizeBy: none
+		sourceColumn: Next Of Kin (1) Relationship
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (2) Full Name'
+		dataType: string
+		lineageTag: 2c1a7eae-7a1d-4e57-910a-629023796692
+		summarizeBy: none
+		sourceColumn: Next Of Kin (2) Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (2) Mobile'
+		dataType: string
+		lineageTag: eb8787cb-a844-4299-a46d-8b9abf609ce7
+		summarizeBy: none
+		sourceColumn: Next Of Kin (2) Mobile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (2) Phone'
+		dataType: string
+		lineageTag: 419c96bb-36ed-4e45-b94d-7c9363205efe
+		summarizeBy: none
+		sourceColumn: Next Of Kin (2) Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Of Kin (2) Relationship'
+		dataType: string
+		lineageTag: 2cc11297-a6c4-44c9-8aa0-e46f12c18171
+		summarizeBy: none
+		sourceColumn: Next Of Kin (2) Relationship
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: db27d161-b42d-471a-8a32-af7c32c1d20e
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Bracket'
+		dataType: string
+		lineageTag: e609c2b0-4dd2-4bcc-9563-43e406142f0b
+		summarizeBy: none
+		sourceColumn: Age Bracket
+		sortByColumn: 'Age Bracket Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Bracket Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: b63ebf9d-118a-4879-b8db-374f7f64aca5
+		summarizeBy: sum
+		sourceColumn: Age Bracket Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Key'
+		dataType: string
+		lineageTag: 6971df9c-6b40-4692-9c2e-f8b7ed39c8be
+		summarizeBy: none
+		sourceColumn: Employee Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Teacher ID'
+		dataType: string
+		lineageTag: 2a0b68f0-bbbf-40c2-9285-f79a75c8dfda
+		summarizeBy: none
+		sourceColumn: Teacher ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Deleted On'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0be3742e-07cd-446d-bb2e-f68b180b7e02
+		summarizeBy: none
+		sourceColumn: Job Deleted On
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Employee Deleted On'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 08e622ee-ed93-4590-a5f6-f186a9f54e0d
+		summarizeBy: none
+		sourceColumn: Employee Deleted On
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'NI Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: c56e5c00-18f8-41a9-9366-fd7d3090cdd2
+		summarizeBy: sum
+		sourceColumn: NI Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NPCAT ID Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0109be57-708f-4605-8a98-7814d123874c
+		summarizeBy: sum
+		sourceColumn: NPCAT ID Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Email Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b4cdd4a-c0e7-4f86-a75c-0434047286f5
+		summarizeBy: sum
+		sourceColumn: Work Email Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DOB Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 686a66a4-8077-4e1e-bd41-eb2b7ddbe566
+		summarizeBy: sum
+		sourceColumn: DOB Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gender Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: c6fcb09e-066d-4fd5-9c70-0d43c776f0c0
+		summarizeBy: sum
+		sourceColumn: Gender Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Religion Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bc03cd1-24fa-40c5-b017-b1427506f4ee
+		summarizeBy: sum
+		sourceColumn: Religion Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next of Kin Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: cd13fb2a-8e23-4a39-85a9-343d0ba4a38d
+		summarizeBy: sum
+		sourceColumn: Next of Kin Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ethnicity Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: c523d859-9bba-4294-80b3-c4440d531d67
+		summarizeBy: sum
+		sourceColumn: Ethnicity Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Short Name' =
+			
+			RELATED('School Database'[School Short Name])
+		lineageTag: 2f8110bd-3e5c-4fdb-97d6-7a653e68d7a4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Main Role' = ```
+			
+			VAR _Employee = 'Employees'[Employee Key]
+			VAR _PostSort =  CALCULATE(
+			MIN('Employee Job Roles'[Post Type (Inc Leadership) Sort]),
+			'Employee Job Roles'[Employee Key] = _Employee)
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _PostSort = 1,"Leadership",
+			    _PostSort = 2,"Teacher",
+			    _PostSort = 3,"Teaching Assistant",
+			    _PostSort = 4,"Support Staff",
+			    ISBLANK(_PostSort),"Missing Post Type"
+			    )
+			
+			```
+		lineageTag: aed6702c-6149-495d-a14d-7868ce02a94a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Employees-76879b65-da7b-4998-9799-e926d0939f48 = m
+		mode: import
+		queryGroup: HR
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    Employees1 = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Employees"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Employees1,{{"Employee Deleted On", type date}, {"Job Deleted On", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

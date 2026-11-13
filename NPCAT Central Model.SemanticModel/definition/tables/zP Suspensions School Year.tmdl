@@ -1,0 +1,148 @@
+table 'zP Suspensions School Year'
+	lineageTag: 3c4a9b71-7da5-4fa4-b287-d989d5446028
+
+	column 'Zp Suspension School Year'
+		lineageTag: 190ccb5f-7ac1-493b-a158-ec6bbafbb183
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Zp Suspension School Year Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Zp Suspension School Year Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zp Suspension School Year Fields'
+		isHidden
+		lineageTag: 2f2070ae-b519-46bb-bf65-eb6668dfd5e3
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Zp Suspension School Year Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zp Suspension School Year Order'
+		isHidden
+		formatString: 0
+		lineageTag: a7d45fe8-a1fe-48ed-b198-be9b8f09f61f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Type' =
+			
+			SWITCH (TRUE(),
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Percentage"
+			    ), "Percentage",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Students"),
+			        "# Students",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Incidents"),
+			        "# Incidents",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Sessions"),
+			        "# Sessions",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Permanently Excluded"),
+			        "# PEX",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Days"),
+			        "# Days",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Internal Exclusions"),
+			        "# Internal",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "Rate"),
+			        "Rate"
+			)
+		lineageTag: e0a2d98e-7e70-42af-a532-5632c9a5baf1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column YTD =
+			
+			SWITCH (TRUE(),
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "SPLY"
+			    ), "SPLY",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "YTD"
+			    ), "YTD",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "CY"
+			    ), "YTD",
+			    CONTAINSSTRING (
+			        [Zp Suspension School Year Fields],
+			        "PY"
+			    ), "SPLY"
+			)
+		lineageTag: eb5e7d25-329c-42e1-811f-bea1ae540858
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Exclusion School Year-71ef1192-e074-437d-99ac-e419019b1cfd' = calculated
+		mode: import
+		source =
+				
+				
+				{
+				    ("This Year", NAMEOF([Suspension Students YTD]), 0),
+				    ("SPLY", NAMEOF([Suspension Students YTD SPLY]), 1),
+				    ("-1 Year", NAMEOF([Suspension Students -1 Years]), 2),
+				    ("-2 Years", NAMEOF([Suspension Students -2 Years]), 3),
+				    ("CY", NAMEOF([Percentage Suspension YTD]), 4),
+				    ("SPLY", NAMEOF([Percentage Suspension YTD SPLY]), 5),
+				    ("-1 Year", NAMEOF([Percentage Suspension -1 Years]), 6),
+				    ("-2 Years", NAMEOF([Percentage Suspension -2 Years]), 7),
+				    ("CY", NAMEOF([Suspension Incidents YTD]), 8),
+				    ("SPLY", NAMEOF([Suspension Incidents YTD SPLY]), 9),
+				    ("-1 Year", NAMEOF([Suspension Incidents -1 Years]), 10),
+				    ("-2 Years", NAMEOF([Suspension Incidents -2 Years]), 11),
+				    ("CY", NAMEOF([Suspension Sessions YTD]), 12),
+				    ("SPLY", NAMEOF([Suspension Sessions SPLY]), 13),
+				    ("-1 Year", NAMEOF([Suspension Sessions -1 Years]), 14),
+				    ("-2 Years", NAMEOF([Suspension Sessions -2 Years]), 15),
+				    ("CY", NAMEOF([Suspension Rate YTD]), 16),
+				    ("SPLY", NAMEOF([Suspension Rate SPLY]), 17),
+				    ("-1 Year", NAMEOF([Suspension Rate -1 Year]), 18),
+				    ("-2 Years", NAMEOF([Suspension Rate -2 Year]), 19),
+				    ("CY", NAMEOF([Permanently Excluded YTD]), 20),
+				    ("SPLY", NAMEOF([Permanently Excluded YTD SPLY]), 21),
+				    ("-1 Year", NAMEOF([Permanently Excluded -1 Year]), 22),
+				    ("-2 Years", NAMEOF([Permanently Excluded -2 Year]), 23),
+				    ("CY", NAMEOF([Suspension Days YTD]), 24),
+				    ("SPLY", NAMEOF([Suspension Days YTD SPLY]), 25),
+				    ("-1 Year", NAMEOF([Suspension Days -1 Year]), 26),
+				    ("-2 Years", NAMEOF([Suspension Days -2 Year]), 27),
+				    ("CY", NAMEOF([Internal Exclusions YTD]), 28),
+				    ("SPLY", NAMEOF([Internal Exclusions SPLY]), 29),
+				    ("-1 Year", NAMEOF([Internal Exclusions -1 Year]), 30),
+				    ("-2 Years", NAMEOF([Internal Exclusions -2 Year]), 31)
+				}
+
+	annotation PBI_Id = 8423d71a02754bcea41bea958da7e8cf
+
+	annotation TE3_TableRenamedFrom = zP Exclusion School Year
+

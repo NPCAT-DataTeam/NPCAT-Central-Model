@@ -1,0 +1,202 @@
+table 'zP KS4 Comparator'
+	lineageTag: 73c679b0-345b-4723-be0b-7a0dc9e31c0a
+
+	column 'zP KS4 Comparator'
+		lineageTag: 23183cf6-c2a2-493e-9e32-6cb20b5dd3a2
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS4 Comparator Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS4 Comparator Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Comparator Fields'
+		isHidden
+		lineageTag: ea31771a-644c-4702-bb69-3e179174d568
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS4 Comparator Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Comparator Order'
+		isHidden
+		formatString: 0
+		lineageTag: 4c75cbf4-37f3-4f93-b081-a65f54a501e7
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Headline Type' =
+			
+			SWITCH(
+			    TRUE(),
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"P8"),"P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"A8"),"A8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Basics"),"Attainment +",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"English"),"Attainment +",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Maths"),"Attainment +",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"+"),"Subject Grade Distribution",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"SPI"),"SPI",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"KS2"),"KS2",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average Points"),"Average Points",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Total Students"),"Students",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Grades"),"Students",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Slots"),"Slots"
+			)
+		lineageTag: 752df549-4798-444a-b261-e2dd9b0714cf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Measure Type' =
+			
+			Switch(TRUE(),
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Total Students"),"Total Students",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Number of Grades"),"Number of Grades",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Maths P8"),"Headline Maths P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average KS2 FG"), "Average KS2 FG",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average KS2"), "Average KS2",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average Points"),"Average Points",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Overall P8"),"Headline Overall P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline English P8"),"Headline English P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Maths P8"), "Headline Maths P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Ebacc P8"), "Headline Ebacc P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Open P8"), "Headline Open P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Overall P8"), "Headline Overall P8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Basics 4+%"), "Basics 4+%",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Basics 5+%"), "Basics 5+%",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"English 4+%"), "English 4+%",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"English 5+%"), "English 5+%",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Maths 4+%"), "Maths 4+%",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Maths 5+%"), "Maths 5+%",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Overall A8"), "Headline Overall A8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline English A8"), "Headline English A8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Maths A8"), "Headline Maths A8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Ebacc A8"), "Headline Ebacc A8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Open A8"), "Headline Open A8",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 1+"), "Subject Grade 1+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 2+"), "Subject Grade 2+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 3+"), "Subject Grade 3+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 4+"), "Subject Grade 4+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 5+"), "Subject Grade 5+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 6+"), "Subject Grade 6+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 7+"), "Subject Grade 7+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 8+"), "Subject Grade 8+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 9+"), "Subject Grade 9+",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Progress 8 (SPI)"), "Subject Progress 8 (SPI)",
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Total Slots Filled"), "Total Slots Filled"
+			    )
+		lineageTag: 7ad50690-4f11-47ad-98eb-02c28bb150a5
+		summarizeBy: none
+		sortByColumn: 'KS4 Measure Type Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Measure Type Order' =
+			
+			Switch(TRUE(),
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Total Students"),0,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Number of Grades"),1,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average KS2 FG"), 2,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average KS2"),3,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Average Points"),4,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Overall P8"),5,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline English P8"),6,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Maths P8"), 7,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Ebacc P8"), 8,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Open P8"), 9,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Overall P8"), 10,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Basics 4+%"), 11,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Basics 5+%"), 12,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"English 4+%"), 13,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"English 5+%"), 14,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Maths 4+%"), 15,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Maths 5+%"), 16,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Overall A8"), 17,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline English A8"), 18,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Maths A8"), 19,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Ebacc A8"), 20,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Headline Open A8"), 21,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 1+"), 22,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 2+"), 23,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 3+"), 24,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 4+"), 25,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 5+"), 26,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 6+"), 27,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 7+"), 28,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 8+"), 29,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Grade 9+"), 30,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Subject Progress 8 (SPI)"), 31,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Total Slots Filled"), 32
+			    )
+		formatString: 0
+		lineageTag: 31023a39-2ffc-4b3c-b6e2-ed4f2be3f844
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Comparator Type Sort' =
+			
+			Switch(TRUE(),
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Selected Period"),1,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Compared Period"),2,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Variance"),3,
+			    CONTAINSSTRING('zP KS4 Comparator'[zP KS4 Comparator Fields],"Comparison KPI"), 4)
+		formatString: 0
+		lineageTag: 3a2a8e97-4907-4f35-8f29-ac05fddde7b3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS4 Comparator' = calculated
+		mode: import
+		source = ```
+				{
+				("No. Students",NAMEOF('Measures Folder'[Total Students]), 0),
+				("No. Grades",NAMEOF('Measures Folder'[Number of Grades]), 1),
+				("Avg KS2",NAMEOF('Measures Folder'[Average KS2 FG]), 2),
+				("Avg KS2",NAMEOF('Measures Folder'[Average KS2 (Subject Level)]), 3),
+				("Avg Points",NAMEOF('Measures Folder'[Average Points]), 4),
+				("Overall P8",NAMEOF('Measures Folder'[Headline Overall P8]), 5),
+				("English P8",NAMEOF('Measures Folder'[Headline English P8]), 6),
+				("Maths P8",NAMEOF('Measures Folder'[Headline Maths P8]), 7),
+				("Ebacc P8",NAMEOF('Measures Folder'[Headline Ebacc P8]), 8),
+				("Open P8",NAMEOF('Measures Folder'[Headline Open P8]), 9),
+				("Basics 4+%",NAMEOF('Measures Folder'[Basics 4+%]), 10),
+				("Basics 5+%",NAMEOF('Measures Folder'[Basics 5+%]), 11),
+				("English 4+%",NAMEOF('Measures Folder'[English 4+%]), 11),
+				("English 5+%",NAMEOF('Measures Folder'[English 5+%]), 13),
+				("Maths 4+%",NAMEOF('Measures Folder'[Maths 4+%]), 14),
+				("Maths 5+%",NAMEOF('Measures Folder'[Maths 5+%]), 15),
+				("Overall A8",NAMEOF('Measures Folder'[Headline Overall A8]), 16),
+				("English A8",NAMEOF('Measures Folder'[Headline English A8]), 17),
+				("Maths A8",NAMEOF('Measures Folder'[Headline Maths A8]), 18),
+				("Ebacc A8",NAMEOF('Measures Folder'[Headline Ebacc A8]), 19),
+				("Open A8",NAMEOF('Measures Folder'[Headline Open A8]), 20),
+				("SPI",NAMEOF('Measures Folder'[Subject Progress 8 (SPI)]), 21),
+				("9+",NAMEOF('Measures Folder'[Subject Grade 9+]), 22),
+				("8+",NAMEOF('Measures Folder'[Subject Grade 8+]), 23),
+				("7+",NAMEOF('Measures Folder'[Subject Grade 7+]), 24),
+				("6+",NAMEOF('Measures Folder'[Subject Grade 6+]), 25),
+				("5+",NAMEOF('Measures Folder'[Subject Grade 5+]), 26),
+				("4+",NAMEOF('Measures Folder'[Subject Grade 4+]), 27),
+				("3+",NAMEOF('Measures Folder'[Subject Grade 3+]), 28),
+				("2+",NAMEOF('Measures Folder'[Subject Grade 2+]), 29),
+				("1+",NAMEOF('Measures Folder'[Subject Grade 1+]), 30),
+				("No. Slots Filled",NAMEOF('Measures Folder'[Total Slots Filled]), 31)
+				}
+				
+				```
+
+	annotation PBI_Id = 2b9b0b3c96234c52a4a9e1c496f13031
+

@@ -1,0 +1,224 @@
+table 'Boxphish Courses'
+	lineageTag: 7b7ba76a-0b70-4139-9c58-40b5081f8156
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: cf2da201-f77a-46ce-91bf-ae097dd0a302
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: 60468982-8b01-4bec-8258-770bbd4f06a3
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Course Name'
+		dataType: string
+		lineageTag: cffdc84d-55e0-40e0-b806-3a1569ac91c4
+		summarizeBy: none
+		sourceColumn: Course Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Sent'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5adbbc23-2c68-4cde-989d-c5e80b1e85dc
+		summarizeBy: none
+		sourceColumn: Date Sent
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Completed'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a67236f4-7f47-4d85-be95-a267a5ca2aeb
+		summarizeBy: none
+		sourceColumn: Date Completed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c089346-2cb6-4186-bc41-d99ef6e67f0a
+		summarizeBy: sum
+		sourceColumn: Score
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Course Outcome'
+		dataType: string
+		lineageTag: 6c249897-ff17-4b4c-b068-e3badcf0954e
+		summarizeBy: none
+		sourceColumn: Course Outcome
+		sortByColumn: 'Course Outcome Sort'
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Course Outcome Sort'
+		dataType: string
+		lineageTag: f5d0b08c-e0e3-4071-816d-7f9ddd0ca2cf
+		summarizeBy: none
+		sourceColumn: Course Outcome Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Taken to Complete' =
+			
+			VAR _Complete = [Date Completed]
+			RETURN
+			IF( ISBLANK([Date Completed]),
+			BLANK(),
+			DATEDIFF([Date Sent],_Complete,DAY))
+		formatString: 0
+		lineageTag: cc2b67fd-faa2-4546-84ac-4e141213f5b7
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour Completed on'
+		dataType: string
+		lineageTag: 01078a57-3b1c-4ed2-b9bd-534009656154
+		summarizeBy: none
+		sourceColumn: Hour Completed on
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cbeba65-f39a-49c9-b3be-1749c8b77f36
+		summarizeBy: sum
+		sourceColumn: Hour Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAGB Rating' =
+			
+			IF(ISBLANK([Date Completed]),"Incomplete",
+			IF (
+			    [Days Taken to Complete] >= 0 && [Days Taken to Complete] <= 14, "0-14 Days",
+			    IF (
+			        [Days Taken to Complete] >= 15 && [Days Taken to Complete] <= 29, "15-29 Days",
+			        IF (
+			            [Days Taken to Complete] >= 30 && [Days Taken to Complete] <= 59, "30-59 Days",
+			            IF (
+			                [Days Taken to Complete] >= 60, "60+ Days",
+			                BLANK()
+			            )
+			        )
+			    )
+			)
+			)
+		lineageTag: 542ebd3c-9de6-4b72-bb55-e0f48ce05d6e
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incomplete RAGB Rating' =
+			
+			VAR DaysTaken = IF(ISBLANK([Date Completed]),DATEDIFF([Date Sent],TODAY(),DAY),-1)
+			
+			RETURN
+			
+			IF(DaysTaken = -1,"Complete",
+			    IF (
+			        DaysTaken >= 0 && DaysTaken <= 14, "0-14 Days",
+			        IF (
+			            DaysTaken >= 15 && DaysTaken <= 29, "15-29 Days",
+			            IF (
+			                DaysTaken >= 30 && DaysTaken <= 59, "30-59 Days",
+			                IF (
+			                    DaysTaken >= 60, "60+ Days",
+			                    BLANK()
+			                )
+			            )
+			        )
+			    )
+			)
+		lineageTag: b55c8e5a-2ebc-48c0-a4d6-a661188b37dc
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Time'
+		dataType: string
+		lineageTag: 0a91594b-18f0-4891-bcea-0071d7602ae4
+		summarizeBy: none
+		sourceColumn: Work Time
+		sortByColumn: 'Work Time Sort'
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Time Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: edb8b7a8-9998-4503-a958-71c1d5af35f4
+		summarizeBy: sum
+		sourceColumn: Work Time Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Boxphish Courses-f1e7a304-2f62-4a3b-8133-a84d4a1edcf3' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a2f752de-6e4f-43cf-9a56-64fe1de995d4" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a2f752de-6e4f-43cf-9a56-64fe1de995d4"]}[Data],
+				    #"Boxphish Courses_" = #"a2f752de-6e4f-43cf-9a56-64fe1de995d4"{[entity="Boxphish Courses",version=""]}[Data]
+				in
+				    #"Boxphish Courses_"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

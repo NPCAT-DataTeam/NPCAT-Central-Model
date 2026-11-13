@@ -1,0 +1,58 @@
+table 'zP Period Attainment Change (South)'
+	lineageTag: 224126be-175d-4910-97a6-19c6e91ef4d1
+
+	column 'zP Period Attainment Change (South)'
+		lineageTag: 28ed4e91-90f4-4b09-a471-0a1407add7f0
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Period Attainment Change (South) Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Period Attainment Change (South) Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Period Attainment Change (South) Fields'
+		isHidden
+		lineageTag: de3c794f-bee9-4dc2-8521-6ef046767712
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Period Attainment Change (South) Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Period Attainment Change (South) Order'
+		isHidden
+		formatString: 0
+		lineageTag: dc628dd5-27ac-452f-9af8-f3bf859f8bfe
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Period Attainment Change (South)-2cdd3699-0273-41ad-8f24-f8981984759a' = calculated
+		mode: import
+		source =
+				{
+				    ("WTS+ %", NAMEOF('Measures Folder'[2. Working Towards or Above %]), 8),
+				    ("WTS+ Diff", NAMEOF('Measures Folder'[2. ARE - Working Towards+ Period Offset Measure]), 9),
+				    ("At+ %", NAMEOF('Measures Folder'[2. At or Above %]), 10),
+				    ("AT+ Diff", NAMEOF('Measures Folder'[2. ARE - At+ Period Offset Measure]), 11),
+				    ("BLW %", NAMEOF('Measures Folder'[2. Below %]), 0),
+				    ("BLW Diff", NAMEOF('Measures Folder'[2. ARE - Below Period Offset Measure]), 1),
+				    ("WTS %", NAMEOF('Measures Folder'[2. Working Towards %]), 2),
+				    ("WTS Diff", NAMEOF('Measures Folder'[2. ARE - Working Towards Period Offset Measure]), 3),
+				    ("At %", NAMEOF('Measures Folder'[2. At %]), 4),
+				    ("At Diff", NAMEOF('Measures Folder'[2. ARE - At Period Offset Measure]), 5),
+				    ("AB %", NAMEOF('Measures Folder'[2. Above %]), 6),
+				    ("AB Diff", NAMEOF('Measures Folder'[2. ARE - Above Period Offset Measure]), 7)
+				}
+
+	annotation PBI_Id = 123945f6f374413195efd24bdcdf2b6f
+

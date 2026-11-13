@@ -1,0 +1,2543 @@
+table 'Dynamic student Calc group'
+	lineageTag: ec0b699e-b029-457f-99a5-283e6b6e262e
+
+	calculationGroup
+		precedence: 2
+
+		calculationItem 'All Students' = SELECTEDMEASURE ()
+
+		calculationItem Male =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Gender] = "Male"
+				)
+
+		calculationItem Female =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Gender] = "Female"
+				)
+
+		calculationItem Catholic = ```
+				CALCULATE (
+				    SELECTEDMEASURE (), 
+				    'Student Database (Full)'[Religion]
+				            IN {
+				            "Roman Catholic"
+				        }
+				)
+				```
+
+		calculationItem 'Non Catholic' = ```
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    NOT( 
+				    'Student Database (Full)'[Religion]
+				            IN {
+				            "Roman Catholic"
+				        })
+				)
+				```
+
+		calculationItem FSM = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not FSM' = ```
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents, StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Male FSM' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+				    
+				    -- 4) Also filter on "Gender = Male"
+				    KEEPFILTERS(
+				        FILTER(
+				            'Student Database (Full)',
+				            'Student Database (Full)'[Gender] = "Male"
+				        )
+				    )
+				)
+				```
+
+		calculationItem 'Female FSM' = ```
+				
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+				    
+				    -- 4) Also filter on "Gender = Female"
+				    KEEPFILTERS(
+				        FILTER(
+				            'Student Database (Full)',
+				            'Student Database (Full)'[Gender] = "Female"
+				        )
+				    )
+				)
+				```
+
+		calculationItem 'FSM Ever 6' = ```
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Ever 6 FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not FSM Ever 6' = ```
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Ever 6 FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem Disadvantaged = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Disadvantaged" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Disadvantaged"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not Disadvantaged' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Disadvantaged" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Disadvantaged"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Male Disadvantaged' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Disadvantaged" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Disadvantaged"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+				    
+				    -- 4) Also filter on "Gender = Male"
+				    KEEPFILTERS(
+				        FILTER(
+				            'Student Database (Full)',
+				            'Student Database (Full)'[Gender] = "Male"
+				        )
+				    )
+				)
+				```
+
+		calculationItem 'Female Disadvantaged' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Disadvantaged" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Disadvantaged"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+				    
+				    -- 4) Also filter on "Gender = Female"
+				    KEEPFILTERS(
+				        FILTER(
+				            'Student Database (Full)',
+				            'Student Database (Full)'[Gender] = "Female"
+				        )
+				    )
+				)
+				```
+
+		calculationItem 'Dis / SEN' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Disadvantaged" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Disadvantaged Ofsted 2023"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not Dis / Not SEN' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Disadvantaged" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Disadvantaged Ofsted 2023"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem PP = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Pupil Premium" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Pupil Premium"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not PP' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Pupil Premium" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Pupil Premium"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Male PP' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Pupil Premium" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Pupil Premium"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+				    
+				    -- 4) Also filter on "Gender = Male"
+				    KEEPFILTERS(
+				        FILTER(
+				            'Student Database (Full)',
+				            'Student Database (Full)'[Gender] = "Male"
+				        )
+				    )
+				)
+				```
+
+		calculationItem 'Female PP' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Pupil Premium" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Pupil Premium"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+				    
+				    -- 4) Also filter on "Gender = Female"
+				    KEEPFILTERS(
+				        FILTER(
+				            'Student Database (Full)',
+				            'Student Database (Full)'[Gender] = "Female"
+				        )
+				    )
+				)
+				```
+
+		calculationItem 'Any SEND' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "Pupil Premium" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "SEN"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'SEN Support' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "SEN Support"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem EHCP = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "EHCP"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not SEND' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "SEN"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem EAL =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Database (Full)'[English as additional language] = "EAL"
+				)
+
+		calculationItem 'Not EAL' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Database (Full)'[English as additional language] = "Not EAL"
+				)
+
+		calculationItem 'Autumn Born' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Student-TOB] = "Autumn Born"
+				)
+
+		calculationItem 'Spring Born' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Student-TOB] = "Spring Born"
+				)
+
+		calculationItem 'Summer Born' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Student-TOB] = "Summer Born"
+				)
+
+		calculationItem 'Mobile Student' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile Student] = "Mobile"
+				)
+
+		calculationItem 'Not Mobile Student' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile Student] = "Non Mobile"
+				)
+
+		calculationItem 'Mobile KS1' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile KS1] = "KS1 Mobile"
+				)
+
+		calculationItem 'Not Mobile KS1' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile KS1] = "Not KS1 Mobile"
+				)
+
+		calculationItem 'Mobile Lower KS2' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile Lower KS2] = "Lower KS2 Mobile"
+				)
+
+		calculationItem 'Not Mobile Lower KS2' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile Lower KS2] = "Not Lower KS2 Mobile"
+				)
+
+		calculationItem 'Mobile Upper KS2' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile Upper KS2] = "Upper KS2 Mobile"
+				)
+
+		calculationItem 'Not Mobile Upper KS2' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile Upper KS2] = "Not Upper KS2 Mobile"
+				)
+
+		calculationItem 'Mobile KS3' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile KS3] = "KS3 Mobile"
+				)
+
+		calculationItem 'Not Mobile KS3' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile KS3] = "Not KS3 Mobile"
+				)
+
+		calculationItem 'Mobile KS4' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile KS4] = "KS4 Mobile"
+				)
+
+		calculationItem 'Not Mobile KS4' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Mobile KS4] = "Not KS4 Mobile"
+				)
+
+		calculationItem 'High Prior Attainment' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Prior Attainment (Short)] = "H"
+				)
+
+		calculationItem 'Middle Prior Attainment' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Prior Attainment (Short)] = "M"
+				)
+
+		calculationItem 'Low Prior Attainment' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Prior Attainment (Short)] = "L"
+				)
+
+		calculationItem 'No Prior Attainment' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Student Database (Full)'[Prior Attainment] = "No Prior Attainment"
+				)
+
+		calculationItem CP = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Child Protection"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not CP' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Child Protection"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Service Child' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Service Child"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not Service Child' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Service Child"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem Traveller = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Taveller"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not Traveller' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Traveller"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Compulsory Age' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Compulsory School Age"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not Compulsory Age' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "Compulsory School Age"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'In Care' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "In Care"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Not In Care' = ```
+				 
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "In Care"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    EXCEPT( CurrentStudents,StudentsWithTag )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Attendance 97%-100%' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Attendance Rank] = "97%-100%"
+				)
+
+		calculationItem 'Attendance 94%-97%' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				   'Student Year Groups'[Attendance Rank] = "94%-97%"
+				)
+
+		calculationItem 'Attendance 90%-94%' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Attendance Rank] = "90%-94%"
+				)
+
+		calculationItem 'Attendance 75%-90%' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Attendance Rank] = "75%-90%"
+				)
+
+		calculationItem 'Attendance 50%-75%' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Attendance Rank] = "50%-75%"
+				)
+
+		calculationItem 'Attendance 25%-50%' =
+				
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Attendance Rank] = "25%-50%"
+				)
+
+		calculationItem 'Attendance 0%-25%' =
+				
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Attendance Rank] = "0%-25%"
+				)
+
+		calculationItem 'Suspension 0 Incidents' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)] = 0
+				)
+
+		calculationItem 'Suspension 1+ Incidents' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)] >= 1
+				)
+
+		calculationItem 'Suspension 2+ Incidents' =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)] >= 2
+				)
+
+		calculationItem 'SEN + FSM' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				-- 1) Gather the set of Student IDs who have Tag = "SEN Support" active at _MaxDate
+				VAR StudentsWithTag =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] IN { "SEN", "FSM" }
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR FinalIDs =
+				    INTERSECT( StudentsWithTag, CurrentStudents )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'SEN + Not FSM' = ```
+				
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				VAR StudentsWithTag1 =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "SEN"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag2 =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR SENstudentIDs =
+				    INTERSECT( StudentsWithTag1, CurrentStudents )
+				
+				VAR FinalIDs =
+				    EXCEPT( SENstudentIDs, StudentsWithTag2 )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+		calculationItem 'Hidden Dis' = ```
+				
+				//Hidden Vulnerabilities
+				VAR CurrentMeasure = SELECTEDMEASURENAME()
+				VAR BaseMaxDate    = MAX ( 'Calendar'[Date] )
+				VAR CurrentOffset  = MAX ( 'Calendar'[Current School Year Offset] )
+				
+				-- Dynamic max date calculated directly inside the item
+				VAR _MaxDate = 
+				    SWITCH (
+				        TRUE (),
+				
+				        -- 1. SPLY: Same point in time 12 months prior
+				        CONTAINSSTRING ( CurrentMeasure, "SPLY" ),
+				        EDATE ( BaseMaxDate, -12 ),
+				
+				        -- 2. -1 Years: Max date of previous school year
+				        CONTAINSSTRING ( CurrentMeasure, "-1 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 1
+				        ),
+				
+				        -- 3. -2 Years: Max date of 2 school years ago
+				        CONTAINSSTRING ( CurrentMeasure, "-2 Years" ),
+				        CALCULATE (
+				            MAX ( 'Calendar'[Date] ),
+				            REMOVEFILTERS ( 'Calendar' ),
+				            'Calendar'[Current School Year Offset] = CurrentOffset - 2
+				        ),
+				
+				        -- Default: YTD or base date
+				        BaseMaxDate
+				    )
+				
+				VAR StudentsWithTag1 =
+				    CALCULATETABLE(
+				        VALUES('Student Indicies'[Globally Unique Student ID]),
+				        FILTER(
+				            'Student Indicies',
+				            'Student Indicies'[Decile] IN {"3","2","1"} &&
+				            'Student Indicies'[RELEASE_YEAR] = 2025 &&
+				            'Student Indicies'[Category] = "IDACI"
+				            
+				        )
+				    )
+				
+				
+				-- 1) Gather the set of Student IDs who have Tag = "FSM" active at _MaxDate
+				VAR StudentsWithTag2 =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "FSM"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				VAR StudentsWithTag3 =
+				    CALCULATETABLE(
+				        VALUES('Student Database (Full)'[Globally Unique Student ID]),
+				        FILTER(
+				            'Demographics',
+				            'Demographics'[Tag] = "SEN"
+				            && 'Demographics'[Tag Start Date] <= _MaxDate
+				            && 'Demographics'[Tag End Date]   >= _MaxDate
+				        )
+				    )
+				
+				-- 2) Intersect with current filter context if needed.
+				--    Usually you can rely on the existing School->Student context,
+				--    but if you want to explicitly keep only students in the current context:
+				VAR CurrentStudents =
+				    VALUES('Student Database (Full)'[Globally Unique Student ID])
+				
+				VAR IDACIStudentIDs =
+				    INTERSECT(  CurrentStudents, StudentsWithTag1 )
+				
+				VAR studentIDs =
+				    EXCEPT(  IDACIStudentIDs, StudentsWithTag2 )
+				
+				VAR FinalIDs =
+				    EXCEPT( studentIDs, StudentsWithTag3 )
+				
+				RETURN
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    
+				    -- 3) Apply the Tag-based set of Student IDs to the Student table
+				    TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+				```
+
+	column 'Demographic Name'
+		dataType: string
+		lineageTag: b43be1e9-afc1-4288-9162-e2442d34ab72
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		lineageTag: 42605b13-c431-4ceb-8640-4bf092f50a01
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Demographic Category' =
+			SWITCH('Dynamic student Calc group'[Demographic Name],
+			"All Students", "All Students",
+			"Male", "Gender",
+			"Female", "Gender",
+			"FSM", "Eligible for free meals",
+			"Not FSM", "Eligible for free meals",
+			"FSM Ever 6", "FSM Ever 6",
+			"Not FSM Ever 6", "FSM Ever 6",
+			"Disadvantaged", "Disadvantaged",
+			"Not Disadvantaged", "Disadvantaged",
+			"PP", "Pupil Premium Indicator",
+			"Not PP", "Pupil Premium Indicator",
+			"Male PP", "Pupil Premium Gender",
+			"Female PP", "Pupil Premium Gender",
+			"Not SEND", "SEN Status (Binary)",
+			"Any SEND", "SEN Status (Binary)",
+			"SEN Support", "SEN Status",
+			"Statement", "SEN Status",
+			"EHCP", "SEN Status",
+			"EAL", "English as additional language",
+			"Not EAL", "English as additional language",
+			"Autumn Born", "TOB",
+			"Spring Born", "TOB",
+			"Summer Born", "TOB",
+			"Mobile Student","Mobility",
+			"Not Mobile Student","Mobility",
+			"Mobile KS1","KS1 Mobility",
+			"Not Mobile KS1","KS1 Mobility",
+			"Mobile Lower KS2","KS2 Mobility",
+			"Not Mobile Lower KS2","KS2 Mobility",
+			"Mobile Upper KS2","KS2 Mobility",
+			"Not Mobile Upper KS2","KS2 Mobility",
+			"Mobile KS3","KS3 Mobility",
+			"Not Mobile KS3","KS3 Mobility",
+			"Mobile KS4","KS4 Mobility",
+			"Not Mobile KS4","KS4 Mobility",
+			"High Prior Attainment","Prior Attainment",
+			"Middle Prior Attainment","Prior Attainment",
+			"Low Prior Attainment","Prior Attainment",
+			"No Prior Attainment","Prior Attainment",
+			"CP","CP",
+			"Not CP","CP",
+			"Service Child","Service Child",
+			"Not Service Child","Service Child",
+			"Traveller","Traveller",
+			"Not Traveller","Traveller",
+			"Compulsory Age","Compulsory Age",
+			"Not Compulsory Age","Compulsory Age",
+			"In Care","In Care",
+			"Not In Care","In Care",
+			"TOY","TOY",
+			"Not TOY","TOY",
+			"Medical Condition","Medical Condition",
+			"No Medical Condition","Medical Condition",
+			"Attendance 97%-100%","Attendance",
+			"Attendance 94%-97%","Attendance",
+			"Attendance 90%-94%","Attendance",
+			"Attendance 75%-90%","Attendance",
+			"Attendance 50%-75%","Attendance",
+			"Attendance 25%-50%","Attendance",
+			"Attendance 0%-25%","Attendance",
+			"Catholic","Catholicity",
+			"Non Catholic","Catholicity",
+			"Suspension 0 Incidents", "Suspension",
+			"Suspension 1+ Incidents", "Suspension",
+			"Suspension 2+ Incidents", "Suspension",
+			"Male Disadvantaged", "Disadvantaged Gender",
+			"Female Disadvantaged", "Disadvantaged Gender",
+			"Male FSM","Eligible for free meals Gender",
+			"Female FSM","Eligible for free meals Gender",
+			"SEN + FSM","SEN + FSM",
+			"SEN + Not FSM","SEN + FSM",
+			"Not Dis / Not SEN", "Disadvantaged Ofsted 2023",
+			"Dis / SEN","Disadvantaged Ofsted 2023",
+			"Hidden Dis","Hidden Disadvantage"
+			)
+		lineageTag: a8528992-38a5-4463-87ec-cc0b2f8c7119
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+

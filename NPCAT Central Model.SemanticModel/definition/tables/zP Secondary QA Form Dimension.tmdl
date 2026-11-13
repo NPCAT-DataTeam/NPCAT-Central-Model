@@ -1,0 +1,52 @@
+table 'zP Secondary QA Form Dimension'
+	lineageTag: 84780f86-e564-470a-8323-9216517a55e8
+
+	column 'zP Secondary QA Form DImension'
+		lineageTag: 15678749-976e-45c4-a6dd-22419c38eda2
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Secondary QA Form DImension Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Secondary QA Form DImension Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Secondary QA Form DImension Fields'
+		isHidden
+		lineageTag: e042bbab-137a-4bed-b610-8267f1d59fa2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Secondary QA Form DImension Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Secondary QA Form DImension Order'
+		isHidden
+		formatString: 0
+		lineageTag: 7c4630b1-576b-4ad3-9986-d94056a51f03
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Secondary QA Form Dimension' = calculated
+		mode: import
+		source =
+				{
+				    ("Observer", NAMEOF('Secondary Standards QA Forms'[Name of Observer]), 0),
+				    ("Key Stage", NAMEOF('Secondary Standards QA Forms'[Key Stage]), 1),
+				    ("Year Group", NAMEOF('Secondary Standards QA Forms'[Year Group]), 2),
+				    ("Subject", NAMEOF('Secondary Standards QA Forms'[Subject]), 3),
+				    ("Subject Lead", NAMEOF('Secondary Standards QA Forms'[Subject Lead]), 4),
+				    ("Teacher Name", NAMEOF('Secondary Standards QA Forms'[Teacher Name]), 5)
+				}
+
+	annotation PBI_Id = 5d68cd299cb14d568fc0ac3f58701f68
+

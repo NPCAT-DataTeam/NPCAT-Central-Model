@@ -1,0 +1,196 @@
+table 'Health and Safety Audit Overview'
+	lineageTag: abb83345-5fc2-455e-90ae-d312216f1d2e
+
+	/// 
+	/// CALCULATE ( COUNTROWS ( 'Health and Safety Audit Overview' ) )
+	measure 'Assurance Type Count' =
+			
+			CALCULATE ( COUNTROWS ( 'Health and Safety Audit Overview' ) )
+		formatString: 0
+		lineageTag: fa9e625b-7302-4ed6-a5a5-3976d566ee2d
+
+		changedProperty = IsHidden
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: 91960b73-24b0-4c2b-bdc2-7796986fb4f1
+		summarizeBy: none
+		sourceColumn: SUID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Health and Safety Audit ID'
+		dataType: string
+		lineageTag: c1fca464-e7bb-4140-b902-e945cc54995e
+		summarizeBy: none
+		sourceColumn: Health and Safety Audit ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: 5c80e05f-0607-4436-a8ef-2280725f96ba
+		summarizeBy: none
+		sourceColumn: School
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Audit'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 274a56cf-9599-4e70-9a97-b2874085b8bd
+		summarizeBy: none
+		sourceColumn: Date of Audit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Trust Business Manager'
+		dataType: string
+		lineageTag: 8284a6cf-0720-461b-ad27-091edbba89ae
+		summarizeBy: none
+		sourceColumn: Trust Business Manager
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assurance Status'
+		dataType: string
+		lineageTag: b124d821-3473-42dd-b256-ebf05debcc6b
+		summarizeBy: none
+		sourceColumn: Assurance Status
+		sortByColumn: 'Assurance Status Value'
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c04383c-1525-40b9-bd33-3c41de681737
+		summarizeBy: count
+		sourceColumn: ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f02d2d5-325b-42ed-a59d-242653d55f3e
+		summarizeBy: sum
+		sourceColumn: Subgroup Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '1 - Fundamental (Immediate)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 35e1f80e-f0bb-472b-8f0e-4a288e90524e
+		summarizeBy: sum
+		sourceColumn: 1 - Fundamental (Immediate)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2 - Significant (Timely Manner)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0987795a-c31b-4ea6-ae15-cae0e38e12bf
+		summarizeBy: sum
+		sourceColumn: 2 - Significant (Timely Manner)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '3 - Prudent Deficiencies (No Significant Risk)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1aa0d87c-5954-442c-8307-991a2f8a0a02
+		summarizeBy: sum
+		sourceColumn: 3 - Prudent Deficiencies (No Significant Risk)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Actions'
+		dataType: int64
+		formatString: 0
+		lineageTag: a4de45ac-6a56-493a-a07b-48b471d82596
+		summarizeBy: sum
+		sourceColumn: Total Actions
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assurance Status Value'
+		dataType: int64
+		formatString: 0
+		lineageTag: 856caff5-0f99-49bd-aaf9-3f8725ff8c14
+		summarizeBy: sum
+		sourceColumn: Assurance Status Value
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Most Recent Health and Safety Audit' =
+			
+			var __School = 'Health and Safety Audit Overview'[SUID]
+			var __MostRecentDate = CALCULATE(MAX('Health and Safety Audit Overview'[Date of Audit]),ALL('Health and Safety Audit Overview'),'Health and Safety Audit Overview'[SUID] = __School)
+			return
+			IF('Health and Safety Audit Overview'[Date of Audit] = __MostRecentDate,"Yes","No")
+		lineageTag: 804c69c6-03a2-4b9b-9670-74d0786b462b
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Since Last Audit'
+		dataType: string
+		lineageTag: 1b48ff9e-6546-4fc0-b552-8d9c40d35b4e
+		summarizeBy: none
+		sourceColumn: Days Since Last Audit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Health and Safety Audit Overview-916c0986-9c27-4559-99fd-250912032cf1' = m
+		mode: import
+		queryGroup: Estates\Health&Safety
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Health and Safety Audit Overview1" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Health and Safety Audit Overview"]}[Data]
+				in
+				    #"Health and Safety Audit Overview1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

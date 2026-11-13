@@ -1,0 +1,296 @@
+table 'Attendance Managers Actions'
+	lineageTag: a0c0842e-28dc-4815-97b5-52e31c3c301c
+
+	/// 
+	/// CONCATENATEX (
+	/// VALUES ( 'Attendance Managers Actions'[SO Code] ),
+	/// 'Attendance Managers Actions'[SO Code],
+	/// ", "
+	/// )
+	measure 'Actions (Single List)' =
+			
+			CONCATENATEX (
+			    VALUES ( 'Attendance Managers Actions'[SO Code] ),
+			    'Attendance Managers Actions'[SO Code],
+			    ", "
+			)
+		lineageTag: 2d5ca24d-d7db-4ee0-a259-7bdce791b50a
+
+	column 'Authorised By'
+		dataType: string
+		lineageTag: 841e7dc4-284c-45a2-9092-e8c0e51e8c07
+		summarizeBy: none
+		sourceColumn: Authorised By
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: d1440cb4-4225-4853-912b-80ebbe653ae2
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column Student
+		dataType: string
+		lineageTag: acf59ca6-d84a-4cc7-b321-3ea46c4556d5
+		summarizeBy: none
+		sourceColumn: Student
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: 602b38a8-0de6-4654-8630-4e7ed1006ca7
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action
+		dataType: string
+		lineageTag: 8ee2bbc3-df7c-49b1-b85c-f8ea0906781d
+		summarizeBy: none
+		sourceColumn: Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comment
+		dataType: string
+		lineageTag: b4f12bed-ff09-4f60-a76c-e9484bb05702
+		summarizeBy: none
+		sourceColumn: Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reference Number'
+		dataType: string
+		lineageTag: a138c8dd-c48a-4302-bf19-976f11176df2
+		summarizeBy: none
+		sourceColumn: Reference Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Action On Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2ce368f0-cb18-48e6-aac8-00224dbe1952
+		summarizeBy: none
+		sourceColumn: Action On Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Previous Letter Date'
+		dataType: string
+		lineageTag: bc014be2-55a4-4155-b116-17e63d189ab9
+		summarizeBy: none
+		sourceColumn: Previous Letter Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sent Date'
+		dataType: string
+		lineageTag: d59ee58d-1d28-4252-8236-ff604b808562
+		summarizeBy: none
+		sourceColumn: Sent Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Created'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8662fd0b-5a35-483f-b61d-d14b14ad650f
+		summarizeBy: none
+		sourceColumn: Date Created
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Create Letter'
+		dataType: string
+		lineageTag: 64896a9a-a067-4fc9-9884-c397f705eea9
+		summarizeBy: none
+		sourceColumn: Create Letter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date From'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 50431050-e41e-40b8-b036-39f1a23065d7
+		summarizeBy: none
+		sourceColumn: Date From
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date To'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 621ff126-ab41-4588-a1f2-b9c212442a7e
+		summarizeBy: none
+		sourceColumn: Date To
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Possible Sessions'
+		dataType: string
+		lineageTag: 4c2a7827-9d8e-499e-ad08-9a65454bbc7f
+		summarizeBy: none
+		sourceColumn: Possible Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Present Sessions'
+		dataType: string
+		lineageTag: 60d38bb6-fca9-451d-ad8e-9a23db6b2c3d
+		summarizeBy: none
+		sourceColumn: Present Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authorised Sessions'
+		dataType: string
+		lineageTag: 8e69ab30-df3e-4920-9117-d718239a8d3f
+		summarizeBy: none
+		sourceColumn: Authorised Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unauthorised Sessions'
+		dataType: string
+		lineageTag: 0201daec-eda9-4e70-90cb-c93b3ce528f1
+		summarizeBy: none
+		sourceColumn: Unauthorised Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SO Code'
+		dataType: string
+		lineageTag: b1fd1b14-4e24-403d-9765-92fd77960244
+		summarizeBy: none
+		sourceColumn: SO Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Attendance Monitoring Letter' = SWITCH('Attendance Managers Actions'[Create Letter], "Yes",1,"No",0, "Failed to Notify",-1)
+		formatString: 0
+		lineageTag: 5709488e-27f2-4cda-a9fa-94cd1725074a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Conference/Home Visit Date (If Applicable)'
+		dataType: string
+		lineageTag: 3819487d-5276-48f8-9d06-563c176bc534
+		summarizeBy: none
+		sourceColumn: Case Conference/Home Visit Date (If Applicable)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Conference/Home Visit Time (If Applicable)'
+		dataType: string
+		lineageTag: 5b0e6227-2754-4e7c-bcc4-972c548e1369
+		summarizeBy: none
+		sourceColumn: Case Conference/Home Visit Time (If Applicable)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance %'
+		dataType: string
+		lineageTag: 382a4ee8-4197-49e2-8f81-835c780259d8
+		summarizeBy: none
+		sourceColumn: Attendance %
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authorised Absence %'
+		dataType: string
+		lineageTag: 1faa6f7d-21d7-48f9-a63a-bbe91e48c0f9
+		summarizeBy: none
+		sourceColumn: Authorised Absence %
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unauthorised Absence %'
+		dataType: string
+		lineageTag: 02c9a7b7-a629-43b5-ba7b-550d556eeaa3
+		summarizeBy: none
+		sourceColumn: Unauthorised Absence %
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Minutes Late'
+		dataType: string
+		lineageTag: 3245ed5c-72db-4eb7-a7db-e29d79aead8c
+		summarizeBy: none
+		sourceColumn: Minutes Late
+
+		annotation SummarizationSetBy = Automatic
+
+	column '15 Day Start'
+		dataType: string
+		lineageTag: 742603c9-746a-4052-b743-e4ab8453c5c2
+		summarizeBy: none
+		sourceColumn: 15 Day Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column '15 Day End'
+		dataType: string
+		lineageTag: 0a1d120f-0a95-4c1f-bd25-0b6ff2b7c461
+		summarizeBy: none
+		sourceColumn: 15 Day End
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Evidence Date(If Applicable)'
+		dataType: string
+		lineageTag: 0bcf9819-fdc3-47ec-a631-6891d7f7df23
+		summarizeBy: none
+		sourceColumn: Evidence Date(If Applicable)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: dd0ecb7b-854e-46ae-8cd2-5d53a51ad0eb
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN-SUID
+		dataType: string
+		lineageTag: b7352311-cc23-4cf9-9bfb-7d76f046d5db
+		summarizeBy: none
+		sourceColumn: UPN-SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Attendance Managers Actions-e7ad6956-23af-4c9c-b829-ac5d2ad7a777' = m
+		mode: import
+		queryGroup: 'Attendance Monitoring'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"9d39034d-4335-4771-8ffc-dd856de78850" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="9d39034d-4335-4771-8ffc-dd856de78850"]}[Data],
+				    #"Attendance Managers Actions1" = #"9d39034d-4335-4771-8ffc-dd856de78850"{[entity="Attendance Managers Actions"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Attendance Managers Actions1",{{"Date Created", type date}, {"Action On Date", type date}, {"Date From", type date}, {"Date To", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_QueryRelationships = {"columnCount":30,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Attendance Managers Actions/Attendance Managers Actions1.{Authorised By,0}","Section1/Attendance Managers Actions/Changed Type.{Date Created,1}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{School,2}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Student,3}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{UPN,4}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Action,5}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Comment,6}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Create Letter,7}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Reference Number,8}","Section1/Attendance Managers Actions/Changed Type.{Action On Date,9}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Case Conference/Home Visit Date (If Applicable),10}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Case Conference/Home Visit Time (If Applicable),11}","Section1/Attendance Managers Actions/Changed Type.{Date From,12}","Section1/Attendance Managers Actions/Changed Type.{Date To,13}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Previous Letter Date,14}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Possible Sessions,15}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Present Sessions,16}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Authorised Sessions,17}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Unauthorised Sessions,18}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Attendance %,19}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Authorised Absence %,20}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Unauthorised Absence %,21}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Minutes Late,22}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{15 Day Start,23}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{15 Day End,24}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Sent Date,25}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Evidence Date\n(If Applicable),26}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{SU ID,27}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{UPN-SUID,28}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{SO Code,29}"],"ColumnCount":30,"KeyColumnNames":[],"ColumnIdentities":["Section1/Attendance Managers Actions/Attendance Managers Actions1.{Authorised By,0}","Section1/Attendance Managers Actions/Changed Type.{Date Created,1}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{School,2}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Student,3}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{UPN,4}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Action,5}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Comment,6}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Create Letter,7}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Reference Number,8}","Section1/Attendance Managers Actions/Changed Type.{Action On Date,9}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Case Conference/Home Visit Date (If Applicable),10}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Case Conference/Home Visit Time (If Applicable),11}","Section1/Attendance Managers Actions/Changed Type.{Date From,12}","Section1/Attendance Managers Actions/Changed Type.{Date To,13}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Previous Letter Date,14}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Possible Sessions,15}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Present Sessions,16}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Authorised Sessions,17}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Unauthorised Sessions,18}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Attendance %,19}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Authorised Absence %,20}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Unauthorised Absence %,21}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Minutes Late,22}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{15 Day Start,23}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{15 Day End,24}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Sent Date,25}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{Evidence Date\n(If Applicable),26}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{SU ID,27}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{UPN-SUID,28}","Section1/Attendance Managers Actions/Attendance Managers Actions1.{SO Code,29}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,53 @@
+table 'zP KS3 Assessment'
+	lineageTag: 04797297-3b55-4250-9793-8ca58b2da036
+
+	column 'zP KS3 Assessment'
+		lineageTag: 09d0ae12-9d41-4042-b575-8b561384f4dc
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS3 Assessment Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS3 Assessment Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS3 Assessment Fields'
+		isHidden
+		lineageTag: 3f75f311-0773-4c53-aba8-775797d7512e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS3 Assessment Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS3 Assessment Order'
+		isHidden
+		formatString: 0
+		lineageTag: 20654c64-9c88-427d-badb-a11aab5568a7
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS3 Assessment-624e767c-5a03-4066-8a09-892587b7f510' = calculated
+		mode: import
+		source =
+				{
+				    ("Avg Rank Change", NAMEOF('Measures Folder'[Avg Rank Change]), 0),
+				    ("Baseline Rank", NAMEOF('Measures Folder'[Baseline Rank]), 1),
+				    ("Current Rank", NAMEOF('Measures Folder'[Current Rank (School)]), 2),
+				    ("Baseline Band", NAMEOF('Measures Folder'[Baseline Band]), 3),
+				    ("Current Band", NAMEOF('Measures Folder'[Current Band (School)]), 4),
+				    ("Assessment %", NAMEOF('Measures Folder'[Avg %]), 5),
+				    ("Effort", NAMEOF('Measures Folder'[Avg Effort Grade]), 6)
+				    }
+
+	annotation PBI_Id = b7e8d20ce0494692abfa94c51fe91437
+

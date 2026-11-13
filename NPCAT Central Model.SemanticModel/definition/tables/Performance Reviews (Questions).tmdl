@@ -1,0 +1,50 @@
+table 'Performance Reviews (Questions)'
+	lineageTag: f6942370-0fd6-42b4-82be-9f09851873d7
+
+	column 'School ID - Employee ID'
+		dataType: string
+		lineageTag: c95d2b99-0f65-4303-95df-760c58fc9685
+		summarizeBy: none
+		sourceColumn: School ID - Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Question
+		dataType: string
+		lineageTag: 74744164-0783-484b-b142-0edf3ad58a57
+		summarizeBy: none
+		sourceColumn: Question
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answer
+		dataType: string
+		lineageTag: 50cc3f70-e59e-4026-a0de-ae61392771cb
+		summarizeBy: none
+		sourceColumn: Answer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Key'
+		dataType: string
+		isHidden
+		lineageTag: 048ef6f4-495e-4b3c-a5a1-d2036f5cc339
+		summarizeBy: none
+		sourceColumn: Review Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Performance Reviews (Questions)-9ad8af52-6918-40eb-b7a2-155af574a8d3' = m
+		mode: import
+		queryGroup: HR
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Performance Reviews (Questions)1" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Performance Reviews (Questions)"]}[Data]
+				in
+				    #"Performance Reviews (Questions)1"
+
+	annotation PBI_ResultType = Table
+

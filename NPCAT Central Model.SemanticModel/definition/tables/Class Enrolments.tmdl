@@ -1,0 +1,188 @@
+table 'Class Enrolments'
+	lineageTag: 248ab5b3-bf5e-4a14-8452-5096bf0bb590
+
+	column 'Class Assessment ID'
+		dataType: string
+		lineageTag: 70744f85-16b4-499f-bc02-87e1743491e4
+		summarizeBy: none
+		sourceColumn: Class Assessment ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ENROLMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 2d7079c2-48d3-4575-9928-0812c9dfe49b
+		summarizeBy: none
+		sourceColumn: COURSE_ENROLMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 85a11bb4-fbb8-475c-af37-d49c589c2893
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ENROLMENT_ID
+		dataType: string
+		lineageTag: dba40ab4-7530-494b-a88c-ad7115c38bf2
+		summarizeBy: none
+		sourceColumn: COURSE_ENROLMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ID
+		dataType: string
+		lineageTag: da8c2c84-afe6-4856-a46d-175e17d81bb8
+		summarizeBy: none
+		sourceColumn: COURSE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: 70be1df8-b442-415d-8aae-99eb905230f1
+		summarizeBy: none
+		sourceColumn: COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_ID
+		dataType: string
+		lineageTag: 0ab08bee-22f7-455d-9d39-c97fb1a37c55
+		summarizeBy: none
+		sourceColumn: STUDENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 0ef5b7ec-ecc7-48c3-a342-be917b5dbe5a
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column START_DATE
+		dataType: string
+		lineageTag: af9eb88f-244d-40ef-8985-e9cd467f4061
+		summarizeBy: none
+		sourceColumn: START_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column END_DATE
+		dataType: string
+		lineageTag: a207804c-f4c4-41f6-80ad-cf597670cb50
+		summarizeBy: none
+		sourceColumn: END_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENROLMENT_STATUS
+		dataType: string
+		lineageTag: b1444bc8-c7d9-46af-8d5f-9d65dba42850
+		summarizeBy: none
+		sourceColumn: ENROLMENT_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column REPEAT_ENROLMENT
+		dataType: string
+		lineageTag: c7b688f0-6ede-4c97-b7f1-c8427688842b
+		summarizeBy: none
+		sourceColumn: REPEAT_ENROLMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_CODE
+		dataType: string
+		lineageTag: 743aaebe-e4f5-43be-a143-e42a1a8d4b3b
+		summarizeBy: none
+		sourceColumn: SUBJECT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_NAME
+		dataType: string
+		lineageTag: f86b763c-425f-477b-97a0-9d2eaa00f8ad
+		summarizeBy: none
+		sourceColumn: COURSE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_YEAR_START
+		dataType: string
+		lineageTag: 73856e24-d7b0-4f93-98bd-886423a924da
+		summarizeBy: none
+		sourceColumn: ACADEMIC_YEAR_START
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_CLASS
+		dataType: string
+		lineageTag: 127c4a73-de17-409d-a6cc-315990d7c174
+		summarizeBy: none
+		sourceColumn: IS_CLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ASSESSMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: fd6ab121-2949-4bdf-b647-79ef8e34764d
+		summarizeBy: none
+		sourceColumn: COURSE_ASSESSMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 4a91a2c3-e2de-4d2a-9da8-98a7b8aac7b8
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLASS_NAME_ID
+		dataType: string
+		lineageTag: dad676d1-3ab0-43ac-a401-5108ec413e34
+		summarizeBy: none
+		sourceColumn: CLASS_NAME_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLASS_NAME
+		dataType: string
+		lineageTag: 07f0cf32-a6e0-43a3-9ac5-d54160df3216
+		summarizeBy: none
+		sourceColumn: CLASS_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment - Student_Unique_ID'
+		dataType: string
+		lineageTag: 87b2d71f-34ac-41cf-a956-806880202508
+		summarizeBy: none
+		sourceColumn: Assessment - Student_Unique_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Class Enrolments-e868f913-3763-4133-a70c-3f2072702a6b' = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"Course Enrollment_" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Course Enrollment",version=""]}[Data]
+				in
+				    #"Course Enrollment_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,7 @@
+role 'St Joseph''s (M''boro)'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT15"
+
+	annotation PBI_Id = d9896e3090ea418699df42d1ac78a349
+

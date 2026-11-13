@@ -1,0 +1,56 @@
+table 'zP Student Houses / Reg'
+	lineageTag: a323e298-5146-460f-97da-14f7a9b55b44
+
+	column 'zP Student Houses / Reg'
+		lineageTag: f31cbe32-d2b2-4da4-ab8a-9d7b4d903fa5
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Student Houses / Reg Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Student Houses / Reg Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Student Houses / Reg Fields'
+		isHidden
+		lineageTag: e27515e1-d685-4569-9fa6-12409196fe6d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Student Houses / Reg Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Student Houses / Reg Order'
+		isHidden
+		formatString: 0
+		lineageTag: 3da232b2-67e3-4058-af68-841815c215b3
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Selector =
+			
+			IF('zP Student Houses / Reg'[zP Student Houses / Reg] = "House","House","Registration")
+		lineageTag: 6b512d86-4519-4a69-aab2-26278c141b24
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Student Houses / Reg' = calculated
+		mode: import
+		source =
+				{
+				    ("Registration", NAMEOF('Student Database (Full)'[Reg]), 0),
+				    ("House", NAMEOF('Student Database (Full)'[House Name]), 1)
+				}
+
+	annotation PBI_Id = d521fddc4ed24f138238a38e0e678362
+

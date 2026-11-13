@@ -1,0 +1,536 @@
+table Calendar
+	lineageTag: 2bf0a4d3-867d-4d0c-89a8-882c473b5e11
+	dataCategory: Time
+
+	column CurMonthOffset
+		dataType: int64
+		formatString: 0
+		lineageTag: 9304734e-68de-4733-9335-6a28e63e8941
+		summarizeBy: sum
+		sourceColumn: CurMonthOffset
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurQuarterOffset
+		dataType: int64
+		formatString: 0
+		lineageTag: 10349a7e-82fd-425c-97c8-d04e1a091c74
+		summarizeBy: sum
+		sourceColumn: CurQuarterOffset
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurYearOffset
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b69cf08-970c-41a2-afb6-02fc5040d0be
+		summarizeBy: sum
+		sourceColumn: CurYearOffset
+
+		annotation SummarizationSetBy = Automatic
+
+	column FutureDate
+		dataType: string
+		lineageTag: e06ff985-7f52-4984-8086-eb7e4e8935b1
+		summarizeBy: none
+		sourceColumn: FutureDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekdayNum
+		dataType: int64
+		formatString: 0
+		lineageTag: 88deb61e-9dec-4280-b3cd-f3ff42eab728
+		summarizeBy: sum
+		sourceColumn: WeekdayNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		dataType: string
+		lineageTag: 7eea7f31-412b-4021-80e0-9cb8ab1765dc
+		summarizeBy: none
+		sourceColumn: Weekday
+		sortByColumn: WeekdayNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekdayWeekend
+		dataType: string
+		lineageTag: ff90b777-b94d-4330-b760-7c3104a5a42d
+		summarizeBy: none
+		sourceColumn: WeekdayWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekSequenceNum
+		dataType: double
+		lineageTag: e4cb47f6-5ef4-4708-a3e2-23f6ed5d6848
+		summarizeBy: sum
+		sourceColumn: WeekSequenceNum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CurWeekOffset
+		dataType: int64
+		formatString: 0
+		lineageTag: 65a6fc44-0cdb-43b2-a34e-2884dd293d63
+		summarizeBy: sum
+		sourceColumn: CurWeekOffset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Week' = WEEKNUM('Calendar'[Date],2)
+		formatString: 0
+		lineageTag: bd6cb05b-832e-4c00-97df-fffdee54e6bd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column WeekStartDate = [Date] - (WEEKDAY([Date],2)-1)
+		formatString: dd/mm/yy
+		lineageTag: f585fd23-e03b-446e-8f56-1a19578e0f22
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column WeekEndDate = [Date] + (7-WEEKDAY([Date],2))
+		formatString: Short Date
+		lineageTag: 65ba003c-7b57-45fb-ac1f-c419b5bd8a10
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WeekDateRange = CONCATENATE(FORMAT('Calendar'[WeekStartDate], "dd/MM/YY"), CONCATENATE(" - ",Format('Calendar'[WeekEndDate], "dd/MM/YY")))
+		lineageTag: 69bdf854-59ac-4027-ac99-1857a2963d6d
+		summarizeBy: none
+		sortByColumn: 'School Week'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Month' = FORMAT([Date] + (3-WEEKDAY([Date],2)),"MMM")
+		lineageTag: 3ee9c723-d509-4e5a-8a08-a2634dd65aa2
+		summarizeBy: none
+		sortByColumn: WeekMonthSort
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekMonthSort =
+			
+			if ([WeekMonthNum] > 8, [WeekMonthNum] - 8, [WeekMonthNum] + 4)
+		formatString: 0
+		lineageTag: 7fc5a1ff-0b37-4b5b-b118-c1afb139af8a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekMonthNum = FORMAT([Date] + (3-WEEKDAY([Date],2)),"MM")
+		dataType: int64
+		formatString: 0
+		lineageTag: 32320c42-7d91-4045-9e9c-ddd585cb629c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week&WeekDateRange = CONCATENATE('Calendar'[School Week], CONCATENATE(": ",'Calendar'[WeekDateRange]))
+		lineageTag: f41f3716-4558-4d7e-8e9b-074831923eca
+		summarizeBy: none
+		sortByColumn: 'School Week'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 8d6f8445-60e3-415e-9d1b-131fbc84f2b1
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Calendar Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c913a5d-7c6d-4c07-87b6-087d67913061
+		summarizeBy: sum
+		sourceColumn: Calendar Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month'
+		dataType: string
+		lineageTag: 27753fa2-15d1-48d9-9068-367daeaecfb9
+		summarizeBy: none
+		sourceColumn: Calendar Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month (Long)'
+		dataType: string
+		lineageTag: aa81dceb-e8ee-46f5-8e2d-6dff47c0cb5c
+		summarizeBy: none
+		sourceColumn: Calendar Month (Long)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Quarter'
+		dataType: string
+		lineageTag: 9bac2301-c3f9-4795-a88a-764e26126cc1
+		summarizeBy: none
+		sourceColumn: Calendar Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: c68601d6-b675-4919-bf8d-0c14efe7abcb
+		summarizeBy: sum
+		sourceColumn: Calendar Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Month Number'
+		dataType: double
+		isNullable: false
+		formatString: 0
+		lineageTag: 4a7367c3-770d-4d59-a99f-d8106cbf1dea
+		summarizeBy: sum
+		sourceColumn: School Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Month'
+		dataType: string
+		lineageTag: c820e47b-b59b-4f60-81b2-97f95f05b29d
+		summarizeBy: none
+		sourceColumn: School Month
+		sortByColumn: 'School Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Month Long'
+		dataType: string
+		lineageTag: b23a101e-6e96-46b1-8f40-dff006768dec
+		summarizeBy: none
+		sourceColumn: School Month Long
+		sortByColumn: 'School Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Quarter'
+		dataType: string
+		lineageTag: 2804892a-85b2-4b58-b307-89b286c0ac72
+		summarizeBy: none
+		sourceColumn: School Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year (Long)'
+		dataType: string
+		lineageTag: 97d8d31d-63f7-4798-aa37-3057fbbc0581
+		summarizeBy: none
+		sourceColumn: School Year (Long)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: cdf2b316-d811-401b-881d-1612496d2d97
+		summarizeBy: none
+		sourceColumn: School Year
+		sortByColumn: 'Current School Year Offset'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current School Year Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ed16871-d942-4af3-9d76-684560e1fcbd
+		summarizeBy: sum
+		sourceColumn: Current School Year Offset
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Week'
+		dataType: double
+		formatString: 0
+		lineageTag: 8fb0280b-a42e-40a8-ae80-fc6e2b9d83c6
+		summarizeBy: sum
+		sourceColumn: School Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYearNum
+		dataType: int64
+		formatString: 0
+		lineageTag: e230e87f-032a-4976-ac11-5b10ec9c371e
+		summarizeBy: sum
+		sourceColumn: MonthYearNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: string
+		lineageTag: af9e2c84-1312-457a-a86e-0932dc883ef6
+		summarizeBy: none
+		sourceColumn: MonthYear
+		sortByColumn: MonthYearNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYearLong
+		dataType: string
+		lineageTag: 57234a55-77f4-43e0-8553-4897e28ea14c
+		summarizeBy: none
+		sourceColumn: MonthYearLong
+		sortByColumn: MonthYearNum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurDayOffset
+		dataType: int64
+		formatString: 0
+		lineageTag: 047743c6-9575-44e8-8e43-3203f7dcdc7e
+		summarizeBy: sum
+		sourceColumn: CurDayOffset
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAXMonthNum
+		dataType: double
+		lineageTag: ef9774b8-5099-4c04-aa8a-3ff04e3aef37
+		summarizeBy: sum
+		sourceColumn: TAXMonthNum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TAXMonth
+		dataType: string
+		lineageTag: c3150ea5-61e6-40a6-a644-3e047a98794b
+		summarizeBy: none
+		sourceColumn: TAXMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAXMonthLong
+		dataType: string
+		lineageTag: 8eec8164-d6bd-4188-8974-362701ecebc7
+		summarizeBy: none
+		sourceColumn: TAXMonthLong
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAXQuarter
+		dataType: string
+		lineageTag: 392be355-cbdc-47f7-8b50-3d18300fbd4c
+		summarizeBy: none
+		sourceColumn: TAXQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAXYear
+		dataType: string
+		lineageTag: d7f13f2d-645e-49e3-aec6-81315f80ac8c
+		summarizeBy: none
+		sourceColumn: TAXYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TAX Year (Short)'
+		dataType: string
+		lineageTag: 5f02ded6-d7af-4311-b588-db4658011caf
+		summarizeBy: none
+		sourceColumn: TAX Year (Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Finance Period'
+		dataType: string
+		lineageTag: 726618fd-049b-4e74-8c87-020a45b9e850
+		summarizeBy: none
+		sourceColumn: Finance Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Card Period'
+		dataType: string
+		lineageTag: 7f9c4ede-df6a-407e-aad7-505a60bd71c2
+		summarizeBy: none
+		sourceColumn: Credit Card Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Card Period Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 069dabd2-e636-48ad-be5c-87314db29ea4
+		summarizeBy: sum
+		sourceColumn: Credit Card Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Finance Period Sort.1'
+		dataType: int64
+		formatString: 0
+		lineageTag: 75ce77b5-1cee-4407-93f4-e5eee64a9b70
+		summarizeBy: sum
+		sourceColumn: Finance Period Sort.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Finance Period Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: ed7bb817-5ce6-4e6a-909d-27a8a2a37ef1
+		summarizeBy: sum
+		sourceColumn: Finance Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DrillThrough School MonthYear' = 'Calendar'[School Month]& " " & 'Calendar'[Calendar Year]
+		dataType: dateTime
+		formatString: mmmm yyyy
+		lineageTag: de0f7bfd-b499-409b-b40d-99e83b7ca4c5
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'DrillThrough Fiscal MonthYear' = 'Calendar'[TAXMonth]& " " & 'Calendar'[Calendar Year]
+		dataType: dateTime
+		formatString: mmmm yyyy
+		lineageTag: 72cb014a-a6f7-4289-a85f-2964b3c29e44
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Term Name'
+		dataType: string
+		lineageTag: dcbd0710-0107-4d58-abea-64c2eb595266
+		summarizeBy: none
+		sourceColumn: Term Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Half Term Name'
+		dataType: string
+		lineageTag: c2d5188e-5512-43f4-94d0-5be15ebc8f8d
+		summarizeBy: none
+		sourceColumn: Half Term Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Term Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: bde6857d-582f-410f-b8b6-9fbc726d2faf
+		summarizeBy: sum
+		sourceColumn: Term Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Half Term Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4db6dcae-a002-4328-a261-125fcce45c18
+		summarizeBy: sum
+		sourceColumn: Half Term Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year Start'
+		dataType: int64
+		formatString: 0
+		lineageTag: 14e12088-e9cd-41e0-8688-a817cfeee2c5
+		summarizeBy: sum
+		sourceColumn: Academic Year Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Assessment Year Offset' =
+			
+			VAR _MaxYear = [Max School Year (All)]
+			
+			RETURN
+			[Academic Year Start]-_MaxYear
+		dataType: int64
+		lineageTag: 9dca1443-f428-4129-89e4-154c25c81e94
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'School Month Short' = LEFT([School Month],1)
+		lineageTag: ce8b1c3b-5d79-49b5-9233-ec36fe345957
+		summarizeBy: none
+		sortByColumn: 'School Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar-c9cb487a-25f3-4b0f-bda8-7a211419ab36 = m
+		mode: import
+		queryGroup: Calendar
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a9473bea-0ca6-4d19-b1d0-9924bea9df70" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a9473bea-0ca6-4d19-b1d0-9924bea9df70"]}[Data],
+				    Calendar1 = #"a9473bea-0ca6-4d19-b1d0-9924bea9df70"{[entity="Calendar"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Calendar1,{{"Date", type date}, {"Current School Year Offset", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_QueryRelationships = {"columnCount":23,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Calendar/Changed Type.{Date,0}","Section1/Calendar/Calendar1.{Calendar Month Number,1}","Section1/Calendar/Calendar1.{Calendar Month,2}","Section1/Calendar/Calendar1.{Calendar Month (Long),3}","Section1/Calendar/Calendar1.{Calendar Quarter,4}","Section1/Calendar/Calendar1.{Calendar Year,5}","Section1/Calendar/Calendar1.{School Month Number,6}","Section1/Calendar/Calendar1.{School Month,7}","Section1/Calendar/Calendar1.{School Month Long,8}","Section1/Calendar/Calendar1.{School Quarter,9}","Section1/Calendar/Calendar1.{School Year (Long),10}","Section1/Calendar/Calendar1.{School Year,11}","Section1/Calendar/Calendar1.{CurMonthOffset,12}","Section1/Calendar/Calendar1.{CurQuarterOffset,13}","Section1/Calendar/Calendar1.{CurYearOffset,14}","Section1/Calendar/Calendar1.{FutureDate,15}","Section1/Calendar/Calendar1.{Current School Year Offset,16}","Section1/Calendar/Calendar1.{WeekdayNum,17}","Section1/Calendar/Calendar1.{Weekday,18}","Section1/Calendar/Calendar1.{WeekdayWeekend,19}","Section1/Calendar/Calendar1.{WeekSequenceNum,20}","Section1/Calendar/Calendar1.{CurWeekOffset,21}","Section1/Calendar/Calendar1.{School Week,22}"],"ColumnCount":23,"KeyColumnNames":[],"ColumnIdentities":["Section1/Calendar/Changed Type.{Date,0}","Section1/Calendar/Calendar1.{Calendar Month Number,1}","Section1/Calendar/Calendar1.{Calendar Month,2}","Section1/Calendar/Calendar1.{Calendar Month (Long),3}","Section1/Calendar/Calendar1.{Calendar Quarter,4}","Section1/Calendar/Calendar1.{Calendar Year,5}","Section1/Calendar/Calendar1.{School Month Number,6}","Section1/Calendar/Calendar1.{School Month,7}","Section1/Calendar/Calendar1.{School Month Long,8}","Section1/Calendar/Calendar1.{School Quarter,9}","Section1/Calendar/Calendar1.{School Year (Long),10}","Section1/Calendar/Calendar1.{School Year,11}","Section1/Calendar/Calendar1.{CurMonthOffset,12}","Section1/Calendar/Calendar1.{CurQuarterOffset,13}","Section1/Calendar/Calendar1.{CurYearOffset,14}","Section1/Calendar/Calendar1.{FutureDate,15}","Section1/Calendar/Calendar1.{Current School Year Offset,16}","Section1/Calendar/Calendar1.{WeekdayNum,17}","Section1/Calendar/Calendar1.{Weekday,18}","Section1/Calendar/Calendar1.{WeekdayWeekend,19}","Section1/Calendar/Calendar1.{WeekSequenceNum,20}","Section1/Calendar/Calendar1.{CurWeekOffset,21}","Section1/Calendar/Calendar1.{School Week,22}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

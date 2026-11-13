@@ -1,0 +1,235 @@
+table 'zP Headlines + Buckets'
+	lineageTag: e7aba961-59d8-4b20-b07c-c752efb60d56
+
+	column 'zP Headlines + Buckets'
+		lineageTag: 5791fd62-bc92-44e4-a8f7-caeb2bec5d76
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP P8 Slots + Headlines Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Headlines + Buckets Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Headlines + Buckets Fields'
+		lineageTag: 4080c566-c806-4661-94cf-c47de07ec82e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP P8 Slots + Headlines Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP P8 Slots + Headlines Order'
+		isHidden
+		formatString: 0
+		lineageTag: 9ad6a264-234e-40f8-b0f0-e15c0ca8455c
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bucket =
+			
+			SWITCH(TRUE(),
+			    [zP P8 Slots + Headlines Order]<5,"Headlines",
+			    [zP P8 Slots + Headlines Order]<14,"English",
+			    [zP P8 Slots + Headlines Order]<23,"Maths",
+			    [zP P8 Slots + Headlines Order]<32,"Ebacc 1",
+			    [zP P8 Slots + Headlines Order]<41,"Ebacc 2",
+			    [zP P8 Slots + Headlines Order]<50,"Ebacc 3",
+			    [zP P8 Slots + Headlines Order]<59,"Open 1",
+			    [zP P8 Slots + Headlines Order]<68,"Open 2",
+			    [zP P8 Slots + Headlines Order]<77,"Open 3",
+			    [zP P8 Slots + Headlines Order]<86,"Spare 1",
+			    [zP P8 Slots + Headlines Order]<95,"Spare 2",
+			    [zP P8 Slots + Headlines Order]<=103,"Spare 3"
+			    )
+		lineageTag: 69285a0a-1cbb-4178-b56b-9af7758c3e64
+		summarizeBy: none
+		sortByColumn: 'Bucket Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bucket Type' = ```
+			
+			    SWITCH( TRUE(),
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets]," P8"),"Headlines",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Subject"),"Subject",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Class"),"Class",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Target"),"Target",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Grade"),"Grade",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Diff"),"Diff",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"P8/SPI"),"P8/SPI",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Residual"),"Residual",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"ABCD"),"ABCD",
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Effort"),"Effort"
+			)
+			```
+		lineageTag: 692e7ab6-74fb-454b-bfc4-0006904a012a
+		summarizeBy: none
+		sortByColumn: 'Bucket Type Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bucket Sort' =
+			
+			SWITCH(TRUE(),
+			    [zP P8 Slots + Headlines Order]<5,0,
+			    [zP P8 Slots + Headlines Order]<14,1,
+			    [zP P8 Slots + Headlines Order]<23,2,
+			    [zP P8 Slots + Headlines Order]<32,3,
+			    [zP P8 Slots + Headlines Order]<41,4,
+			    [zP P8 Slots + Headlines Order]<50,5,
+			    [zP P8 Slots + Headlines Order]<59,6,
+			    [zP P8 Slots + Headlines Order]<68,7,
+			    [zP P8 Slots + Headlines Order]<77,8,
+			    [zP P8 Slots + Headlines Order]<86,9,
+			    [zP P8 Slots + Headlines Order]<95,10,
+			    [zP P8 Slots + Headlines Order]<=103,11
+			    )
+		formatString: 0
+		lineageTag: 7f2b559d-5588-4bbb-960d-b675df9c30e9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bucket Type Sort' = ```
+			
+			    SWITCH( TRUE(),
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets]," P8"),0,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Subject"),1,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Class"),2,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Target"),3,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Grade"),4,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Diff"),5,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"P8/SPI"),6,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Residual"),7,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"ABCD"),8,
+			    CONTAINSSTRING('zP Headlines + Buckets'[zP Headlines + Buckets],"Effort"),9
+			)
+			```
+		formatString: 0
+		lineageTag: a099ea79-9677-477f-b1cd-b6cc1fe2615b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Headlines + Buckets' = calculated
+		mode: import
+		source =
+				{
+				    ("Headlines"&UNICHAR(10)&"Overall P8", NAMEOF('Measures Folder'[Selected Overall P8]), 0),
+				    (UNICHAR(10)&"English P8", NAMEOF('Measures Folder'[Selected English P8]), 1),
+				    (UNICHAR(10)&"Maths P8", NAMEOF('Measures Folder'[Selected Maths P8]), 2),
+				    (UNICHAR(10)&"EBacc P8", NAMEOF('Measures Folder'[Selected EBacc P8]), 3),
+				    (UNICHAR(10)&"Open P8", NAMEOF('Measures Folder'[Selected Open P8]), 4),
+				    ("English"& UNICHAR(10)&"Subject", NAMEOF([Selected English Bucket KS4 Subject Name]), 5),
+				    (UNICHAR(10)&"Class", NAMEOF('Measures Folder'[Selected English Bucket KS4 Class - Staff Initials]), 6),
+				    (UNICHAR(10)&"Target", NAMEOF('Measures Folder'[Selected English Bucket Target]), 7),
+				    (UNICHAR(10)&"Grade", NAMEOF([Selected English Bucket KS4 Grade]), 8),
+				    (UNICHAR(10)&"Diff", NAMEOF('Measures Folder'[Selected English Bucket KPI]), 9),
+				    (UNICHAR(10)&"P8/SPI", NAMEOF([Subject English Bucket Progress 8 (SPI)]), 10),
+				    (UNICHAR(10)&"Residual", NAMEOF([Student English Bucket Residual Grade]), 11),
+				    (UNICHAR(10)&"ABCD", NAMEOF('Measures Folder'[Selected English Bucket ABCD]), 12),
+				    (UNICHAR(10)&"Effort", NAMEOF('Measures Folder'[Selected English Bucket Effort]), 13),
+				    ("Maths"&UNICHAR(10)&"Subject", NAMEOF([Selected Maths Bucket KS4 Subject Name]), 14),
+				    (UNICHAR(10)&"Class", NAMEOF('Measures Folder'[Selected Maths Bucket KS4 Class - Staff Initials]), 15),
+				    (UNICHAR(10)&"Target", NAMEOF('Measures Folder'[Selected Maths Bucket Target]), 16),
+				    (UNICHAR(10)&"Grade", NAMEOF([Selected Maths Bucket KS4 Grade]), 17),
+				    (UNICHAR(10)&"Diff", NAMEOF('Measures Folder'[Selected Maths Bucket KPI]), 18),
+				    (UNICHAR(10)&"P8/SPI", NAMEOF('Measures Folder'[Subject Maths Bucket Progress 8 (SPI)]), 19),
+				    (UNICHAR(10)&"Residual", NAMEOF('Measures Folder'[Student Maths Bucket Residual Grade]), 20),
+				    (UNICHAR(10)&"ABCD", NAMEOF('Measures Folder'[Selected Maths Bucket ABCD]), 21),
+				    (UNICHAR(10)&"Effort", NAMEOF('Measures Folder'[Selected Maths Bucket Effort]), 22),
+				    ("Ebacc 1"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket KS4 Subject Name]),23),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket KS4 Class - Staff Initials]),24),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket Target]),25),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket KS4 Grade]),26),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket KPI]),27),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Ebacc 1 Bucket Progress 8 (SPI)]),28),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Ebacc 1 Bucket Residual Grade]),29),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket ABCD]),30),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Ebacc 1 Bucket Effort]),31),
+				    ("Ebacc 2"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket KS4 Subject Name]),32),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket KS4 Class - Staff Initials]),33),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket Target]),34),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket KS4 Grade]),35),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket KPI]),36),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Ebacc 2 Bucket Progress 8 (SPI)]),37),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Ebacc 2 Bucket Residual Grade]),38),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket ABCD]),39),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Ebacc 2 Bucket Effort]),40),
+				    ("Ebacc 3"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket KS4 Subject Name]),41),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket KS4 Class - Staff Initials]),42),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket Target]),43),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket KS4 Grade]),44),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket KPI]),45),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Ebacc 3 Bucket Progress 8 (SPI)]),46),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Ebacc 3 Bucket Residual Grade]),47),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket ABCD]),48),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Ebacc 3 Bucket Effort]),49),
+				    ("Open 1"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Open 1 Bucket KS4 Subject Name]),50),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Open 1 Bucket KS4 Class - Staff Initials]),51),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Open 1 Bucket Target]),52),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Open 1 Bucket KS4 Grade]),53),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Open 1 Bucket KPI]),54),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Open 1 Bucket Progress 8 (SPI)]),55),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Open 1 Bucket Residual Grade]),56),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Open 1 Bucket ABCD]),57),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Open 1 Bucket Effort]),58),
+				    ("Open 2"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Open 2 Bucket KS4 Subject Name]),59),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Open 2 Bucket KS4 Class - Staff Initials]),60),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Open 2 Bucket Target]),61),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Open 2 Bucket KS4 Grade]),62),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Open 2 Bucket KPI]),63),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Open 2 Bucket Progress 8 (SPI)]),64),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Open 2 Bucket Residual Grade]),65),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Open 2 Bucket ABCD]),66),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Open 2 Bucket Effort]),67),
+				    ("Open 3"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Open 3 Bucket KS4 Subject Name]),68),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Open 3 Bucket KS4 Class - Staff Initials]),69),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Open 3 Bucket Target]),70),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Open 3 Bucket KS4 Grade]),71),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Open 3 Bucket KPI]),72),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Open 3 Bucket Progress 8 (SPI)]),73),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Open 3 Bucket Residual Grade]),74),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Open 3 Bucket ABCD]),75),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Open 3 Bucket Effort]),76),
+				    ("Spare 1"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Spare 1 Bucket KS4 Subject Name]),77),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Spare 1 Bucket KS4 Class - Staff Initials]),78),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Spare 1 Bucket Target]),79),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Spare 1 Bucket KS4 Grade]),80),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Spare 1 Bucket KPI]),81),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Spare 1 Bucket Progress 8 (SPI)]),82),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Spare 1 Bucket Residual Grade]),83),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Spare 1 Bucket ABCD]),84),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Spare 1 Bucket Effort]),85),
+				    ("Spare 2"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Spare 2 Bucket KS4 Subject Name]),86),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Spare 2 Bucket KS4 Class - Staff Initials]),87),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Spare 2 Bucket Target]),88),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Spare 2 Bucket KS4 Grade]),89),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Spare 2 Bucket KPI]),90),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Spare 2 Bucket Progress 8 (SPI)]),91),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Spare 2 Bucket Residual Grade]),92),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Spare 2 Bucket ABCD]),93),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Spare 2 Bucket Effort]),94),
+				    ("Spare 3"&UNICHAR(10)&"Subject",NAMEOF('Measures Folder'[Selected Spare 3 Bucket KS4 Subject Name]),95),
+				    (UNICHAR(10)&"Class",NAMEOF('Measures Folder'[Selected Spare 3 Bucket KS4 Class - Staff Initials]),96),
+				    (UNICHAR(10)&"Target",NAMEOF('Measures Folder'[Selected Spare 3 Bucket Target]),97),
+				    (UNICHAR(10)&"Grade",NAMEOF('Measures Folder'[Selected Spare 3 Bucket KS4 Grade]),98),
+				    (UNICHAR(10)&"Diff",NAMEOF('Measures Folder'[Selected Spare 3 Bucket KPI]),99),
+				    (UNICHAR(10)&"P8/SPI",NAMEOF('Measures Folder'[Subject Spare 3 Bucket Progress 8 (SPI)]),100),
+				    (UNICHAR(10)&"Residual",NAMEOF('Measures Folder'[Student Spare 3 Bucket Residual Grade]),101),
+				    (UNICHAR(10)&"ABCD",NAMEOF('Measures Folder'[Selected Spare 3 Bucket ABCD]),102),
+				    (UNICHAR(10)&"Effort",NAMEOF('Measures Folder'[Selected Spare 3 Bucket Effort]),103)
+				}
+
+	annotation PBI_Id = bd81461cf670498eba89b2e03370c8fd
+

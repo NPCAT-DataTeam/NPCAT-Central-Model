@@ -1,0 +1,30 @@
+table 'Calculation Group: HR Absences (Post vs Headcount)'
+	lineageTag: 3342638e-8d3e-4595-9f86-b4421b781a30
+
+	calculationGroup
+		precedence: 4
+
+		calculationItem Post = SELECTEDMEASURE ()
+
+		calculationItem Employee =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Absences'[Absence Instance] =1
+				)
+
+	column Name
+		dataType: string
+		lineageTag: fab24e76-96ca-48e1-a563-84692dbd1f4c
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		lineageTag: 52fdaf2a-6d72-49b2-bf92-7fb4ac0d2d53
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

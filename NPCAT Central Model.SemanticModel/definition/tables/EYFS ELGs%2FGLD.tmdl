@@ -1,0 +1,216 @@
+table 'EYFS ELGs/GLD'
+	lineageTag: bd9324eb-f1f5-4c35-bf5c-271068b96dc7
+
+	column 'Globally Unique ID'
+		dataType: string
+		isHidden
+		lineageTag: 5a08241f-dffb-40a0-b3a2-5d0b768ebee4
+		summarizeBy: none
+		sourceColumn: Globally Unique ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 30bca79c-5ef1-457c-b969-44bfb4ef6633
+		summarizeBy: sum
+		sourceColumn: Assessment Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column AOL
+		dataType: string
+		lineageTag: 2850af5e-3407-49e5-a858-60c13f0a3983
+		summarizeBy: none
+		sourceColumn: AOL
+		sortByColumn: 'AOL Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 10542c96-9091-46a9-aac8-04c637d6cdb1
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: cafa425e-c584-4c44-88c2-c4ab203781ad
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: 01c452a1-c90b-4dba-8ac5-318d6926e344
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Short Code'
+		dataType: string
+		lineageTag: f53d13a2-a2f6-4c1e-b557-dac8bb71c56b
+		summarizeBy: none
+		sourceColumn: Assessment Short Code
+		sortByColumn: 'Assessment Index'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AOL Sort'
+		dataType: int64
+		lineageTag: b2413e14-e8f4-403e-b28c-5c00f4a6a597
+		summarizeBy: sum
+		sourceColumn: AOL Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Arrival Flag'
+		dataType: string
+		lineageTag: af6d42cd-3198-4767-86e5-ad924ce3c265
+		summarizeBy: none
+		sourceColumn: Arrival Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name'
+		dataType: string
+		lineageTag: aa1ff009-c483-4536-a8c8-5d5011630c59
+		summarizeBy: none
+		sourceColumn: Assessment Name
+		sortByColumn: 'Assessment Index'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grade
+		dataType: string
+		lineageTag: e43bf050-f322-407c-9681-4d34f8567cc0
+		summarizeBy: none
+		sourceColumn: Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3a02940c-87a9-4e20-a71b-5a4d2a9c699a
+		summarizeBy: none
+		sourceColumn: Assessment Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 98764356-6804-4277-b5b9-688230231a90
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Value'
+		dataType: int64
+		formatString: 0
+		lineageTag: a9303427-ffeb-4251-8c36-9f1bb0c80671
+		summarizeBy: sum
+		sourceColumn: Grade Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: d5d82a53-ddd3-4021-bfd5-dc767e24309f
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prime/Specific
+		dataType: string
+		lineageTag: 82959480-c147-48db-b109-5941b5bf2f41
+		summarizeBy: none
+		sourceColumn: Prime/Specific
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 90d11398-5243-4532-8302-ef2358df6ea3
+		summarizeBy: sum
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: 6482cffe-dbcb-4227-b7e4-3cd41dce61fb
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: 3b967e98-f2bf-4b80-bf10-072b20a15a94
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Included in GLD' =
+			
+			IF([Assessment Index] <= 12, UNICHAR(10004),UNICHAR(10006))
+		lineageTag: 31ead7f6-80a8-4672-8a29-99c33c744d83
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AOL (Long)'
+		dataType: string
+		lineageTag: b4a2a19c-4e91-4c75-b70f-893a464e07b7
+		summarizeBy: none
+		sourceColumn: AOL (Long)
+		sortByColumn: 'AOL Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 2b7263f2-0a6a-4267-97b6-0d24e1fd4190
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'EYFS ELGs/GLD-93421242-5807-4092-9fef-3ed16023543a' = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary\EYFS'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    #"EYFS ELGs/GLD1" = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="EYFS ELGs/GLD"]}[Data]
+				in
+				    #"EYFS ELGs/GLD1"
+
+	annotation PBI_ResultType = Table
+

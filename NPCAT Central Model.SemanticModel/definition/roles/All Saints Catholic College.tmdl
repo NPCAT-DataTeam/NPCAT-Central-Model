@@ -1,0 +1,11 @@
+role 'All Saints Catholic College'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT39"
+
+	tablePermission 'AP-Grade Type' = [Grade Type] <> "Predicted"
+
+	tablePermission 'Secondary QA Permissions' = 'Secondary QA Permissions'[Visible to ID] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = f9295a3bc95c4fbcb5b66570aac434b8
+

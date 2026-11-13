@@ -1,0 +1,7 @@
+DEFINE
+    MEASURE 'Measures Folder'[KS4 Students] = TREATAS(VALUES('KS4 Assessments'[KS4 Student]),'Student Database (Full)'[Full Name])
+
+EVALUATE
+    SUMMARIZECOLUMNS(
+        "KS4 Students", 'Measures Folder'[KS4 Students]
+    )

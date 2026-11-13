@@ -1,0 +1,116 @@
+table 'HSLO Logs'
+	lineageTag: 042a9671-a9a8-417b-ae3a-a86316d0037b
+
+	column School
+		dataType: string
+		lineageTag: 15e82963-ef39-4778-8d53-d37f0e4e8801
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column Student
+		dataType: string
+		lineageTag: 7d3ca8be-2a48-41c4-9645-dc7154aa5468
+		summarizeBy: none
+		sourceColumn: Student
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: 86ca5c4f-7806-4b13-a652-980e90b6bd96
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 26394b17-930d-4fdd-b249-dc466dafcdbf
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comment
+		dataType: string
+		lineageTag: 3b06f02e-e468-4d3f-9aec-ffceb058c90d
+		summarizeBy: none
+		sourceColumn: Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: c4564fd3-265c-4a57-a2f7-312e0ef8ad86
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Visited By'
+		dataType: string
+		lineageTag: 53df6f9a-5c27-40cd-9984-885563470107
+		summarizeBy: none
+		sourceColumn: Visited By
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7fbb5f66-7582-466c-b3c5-1e5fd87e0340
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Stop Order'
+		dataType: string
+		lineageTag: e443a69f-9805-4ab0-88fa-afd6018dd36f
+		summarizeBy: none
+		sourceColumn: Stop Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: f039f120-66d9-4f50-ae75-c37682542412
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN-SUID
+		dataType: string
+		lineageTag: 80b41061-2fb9-4fd5-b900-8716e248e927
+		summarizeBy: none
+		sourceColumn: UPN-SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'HSLO Logs-33e29a01-290e-43c3-b569-444171803f18' = m
+		mode: import
+		queryGroup: 'Attendance Monitoring'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"9d39034d-4335-4771-8ffc-dd856de78850" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="9d39034d-4335-4771-8ffc-dd856de78850"]}[Data],
+				    #"HSLO Logs1" = #"9d39034d-4335-4771-8ffc-dd856de78850"{[entity="HSLO Logs"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"HSLO Logs1", each ([Date] <> null and [Date] <> "")),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Date", type datetime}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Date", type date}}),
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Changed Type1", {"Date"})
+				in
+				    #"Removed Errors"
+
+	annotation PBI_QueryRelationships = {"columnCount":10,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/HSLO Logs/HSLO Logs1.{Visited By,0}","Section1/HSLO Logs/Extracted Date.{Date,1}","Section1/HSLO Logs/HSLO Logs1.{School,2}","Section1/HSLO Logs/HSLO Logs1.{Student,3}","Section1/HSLO Logs/HSLO Logs1.{UPN,4}","Section1/HSLO Logs/HSLO Logs1.{Address,5}","Section1/HSLO Logs/HSLO Logs1.{Stop Order,6}","Section1/HSLO Logs/HSLO Logs1.{Comment,7}","Section1/HSLO Logs/HSLO Logs1.{SU ID,8}","Section1/HSLO Logs/HSLO Logs1.{UPN-SUID,9}"],"ColumnCount":10,"KeyColumnNames":[],"ColumnIdentities":["Section1/HSLO Logs/HSLO Logs1.{Visited By,0}","Section1/HSLO Logs/Extracted Date.{Date,1}","Section1/HSLO Logs/HSLO Logs1.{School,2}","Section1/HSLO Logs/HSLO Logs1.{Student,3}","Section1/HSLO Logs/HSLO Logs1.{UPN,4}","Section1/HSLO Logs/HSLO Logs1.{Address,5}","Section1/HSLO Logs/HSLO Logs1.{Stop Order,6}","Section1/HSLO Logs/HSLO Logs1.{Comment,7}","Section1/HSLO Logs/HSLO Logs1.{SU ID,8}","Section1/HSLO Logs/HSLO Logs1.{UPN-SUID,9}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

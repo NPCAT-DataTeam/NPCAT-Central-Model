@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5fad0b74d291d65dec7d",
+  "position": {
+    "x": 1240,
+    "y": 197.5,
+    "z": 1000,
+    "height": 461.25,
+    "width": 658.125
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Student Indicies"
+                    }
+                  },
+                  "Property": "Decile"
+                }
+              },
+              "queryRef": "Student Indicies.Decile",
+              "nativeQueryRef": "Decile"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Student Indicies"
+                    }
+                  },
+                  "Property": "RELEASE_YEAR"
+                }
+              },
+              "queryRef": "Student Indicies.RELEASE_YEAR",
+              "nativeQueryRef": "RELEASE_YEAR"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Student Indicies"
+                    }
+                  },
+                  "Property": "Rank"
+                }
+              },
+              "queryRef": "Student Indicies.Rank",
+              "nativeQueryRef": "Rank"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Student Indicies"
+                    }
+                  },
+                  "Property": "Academic Year"
+                }
+              },
+              "queryRef": "Student Indicies.Academic Year",
+              "nativeQueryRef": "Academic Year"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Student Database (Full)"
+                    }
+                  },
+                  "Property": "Full Name: DOB"
+                }
+              },
+              "queryRef": "Student Database (Full).Full Name: DOB",
+              "nativeQueryRef": "Full Name: DOB"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "School Database"
+                    }
+                  },
+                  "Property": "School Short Name"
+                }
+              },
+              "queryRef": "School Database.School Short Name",
+              "nativeQueryRef": "School Short Name"
+            }
+          ],
+          "showAll": true
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Student Indicies"
+                  }
+                },
+                "Property": "Academic Year"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e177ad361828b176431a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "School Database"
+              }
+            },
+            "Property": "School Short Name"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "s",
+              "Entity": "School Database",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "s"
+                          }
+                        },
+                        "Property": "School Short Name"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Corpus Christi'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

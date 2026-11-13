@@ -1,0 +1,201 @@
+table 'Courses (No Students)'
+	lineageTag: 7f38eaa9-3d35-4b20-8163-936d30d61f08
+
+	column COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: 066db14f-696c-4094-97aa-9613facefe27
+		summarizeBy: none
+		sourceColumn: COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 3bb6f209-214c-4617-af59-0c812635cbc6
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ID
+		dataType: double
+		lineageTag: 7be382d5-de8f-4b05-a1f8-350c9d92cfa0
+		summarizeBy: count
+		sourceColumn: COURSE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PARENT_COURSE_ID
+		dataType: double
+		lineageTag: c4e210e0-ce58-427a-8d11-0f0053c44625
+		summarizeBy: count
+		sourceColumn: PARENT_COURSE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PARENT_COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: 41a071e1-7e20-4ebb-bc8f-b241d90a96e2
+		summarizeBy: none
+		sourceColumn: PARENT_COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_CODE
+		dataType: string
+		lineageTag: f07af4f0-c718-4333-a5ce-217fd289fd2f
+		summarizeBy: none
+		sourceColumn: COURSE_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_NAME
+		dataType: string
+		lineageTag: e9c9f165-85e8-4985-bd57-515ff1f3a522
+		summarizeBy: none
+		sourceColumn: COURSE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_YEAR_ID
+		dataType: double
+		lineageTag: 6070487f-f323-4269-a67e-652562d217f6
+		summarizeBy: count
+		sourceColumn: ACADEMIC_YEAR_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACADEMIC_YEAR_UNIQUE_ID
+		dataType: string
+		lineageTag: 5a4e537d-1306-4490-b9c8-2814f5f0daeb
+		summarizeBy: none
+		sourceColumn: ACADEMIC_YEAR_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_LEVEL_ID
+		dataType: double
+		lineageTag: 1f198e3c-d2df-4c16-b3fb-bd2597acf138
+		summarizeBy: count
+		sourceColumn: ACADEMIC_LEVEL_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACADEMIC_LEVEL_UNIQUE_ID
+		dataType: string
+		lineageTag: a9918ae1-5995-4d49-ada8-5aa018a436bf
+		summarizeBy: none
+		sourceColumn: ACADEMIC_LEVEL_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACULTY_ID
+		dataType: double
+		lineageTag: 38a77dbb-2001-4284-b63b-7ad21b1a02ad
+		summarizeBy: count
+		sourceColumn: FACULTY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FACULTY_UNIQUE_ID
+		dataType: string
+		lineageTag: 042f0dfc-a503-4c76-b6d0-5a97d90600d7
+		summarizeBy: none
+		sourceColumn: FACULTY_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_ID
+		dataType: double
+		lineageTag: a39f68e6-88f2-44fa-accc-ead6cf063b07
+		summarizeBy: count
+		sourceColumn: SUBJECT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUBJECT_CODE
+		dataType: string
+		lineageTag: fdae9a44-3529-41d7-af74-88d79b04d791
+		summarizeBy: none
+		sourceColumn: SUBJECT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_NAME
+		dataType: string
+		lineageTag: 916c61fe-1047-4180-9fcb-1915a3a1e59b
+		summarizeBy: none
+		sourceColumn: SUBJECT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_MAIN_ASSESSABLE_UNIT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7bfb07ff-4b54-4a05-84e3-8c2b124ce983
+		summarizeBy: none
+		sourceColumn: IS_MAIN_ASSESSABLE_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENT_ID
+		dataType: string
+		lineageTag: 3399e27f-f18d-4004-a597-16205f10c15e
+		summarizeBy: none
+		sourceColumn: DEPARTMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 6de3e4f2-5866-4e56-93ce-738164016b0d
+		summarizeBy: none
+		sourceColumn: DEPARTMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_CLASS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f39f8e02-fbf7-4bb9-b478-883fa3a8d39d
+		summarizeBy: none
+		sourceColumn: IS_CLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_UNIQUE_ID
+		dataType: string
+		lineageTag: b0c59b17-8fed-43db-bd5d-db2d40829c35
+		summarizeBy: none
+		sourceColumn: SUBJECT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Courses (No Students)' = m
+		mode: import
+		queryGroup: Attendance
+		source =
+				let
+				    Source = Snowflake.Databases("xs48132.eu-west-2.aws.snowflakecomputing.com", "POWER_BI_GENERAL", [Role = null, CreateNavigationProperties = null, ConnectionTimeout = null, CommandTimeout = null]),
+				    ARBOR_BI_CONNECTOR_PRODUCTION_Database = Source{[Name="ARBOR_BI_CONNECTOR_PRODUCTION",Kind="Database"]}[Data],
+				    ARBOR_MIS_ENGLAND_MODELLED_Schema = ARBOR_BI_CONNECTOR_PRODUCTION_Database{[Name="ARBOR_MIS_ENGLAND_MODELLED",Kind="Schema"]}[Data],
+				    COURSES_View = ARBOR_MIS_ENGLAND_MODELLED_Schema{[Name="COURSES",Kind="View"]}[Data]
+				in
+				    COURSES_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

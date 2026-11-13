@@ -1,0 +1,340 @@
+table 'Purchasing Details'
+	lineageTag: b3cc02e5-6950-4bf3-ab95-01ffdf928ea8
+
+	column 'Year Code'
+		dataType: string
+		lineageTag: 142cb719-17f7-49bd-8d70-2edcfff54829
+		summarizeBy: none
+		sourceColumn: Year Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: string
+		lineageTag: 913fd231-7092-4dc1-bb7a-a40059422374
+		summarizeBy: none
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requisition Input Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 05c2d737-7cdb-4d6b-a7d8-ce2b7e8f29e2
+		summarizeBy: none
+		sourceColumn: Requisition Input Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Requisition User'
+		dataType: string
+		lineageTag: 7845f86c-d0a2-4f08-90ba-e4c8bfbf6f9a
+		summarizeBy: none
+		sourceColumn: Requisition User
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Account'
+		dataType: string
+		lineageTag: a483d85e-d2a6-4851-9c0e-70efc841244d
+		summarizeBy: none
+		sourceColumn: Supplier Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code'
+		dataType: string
+		lineageTag: 0eed14d6-5d6b-435b-96bf-7c2fdf722af4
+		summarizeBy: none
+		sourceColumn: Nominal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code Prefix'
+		dataType: string
+		lineageTag: 0bc33477-4b30-4ddd-9369-29c3806e0b22
+		summarizeBy: none
+		sourceColumn: Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Core Nominal'
+		dataType: string
+		lineageTag: 7fbaef1d-30dc-4075-afd2-f1e1868690e3
+		summarizeBy: none
+		sourceColumn: Core Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 764eab3c-0068-4fff-9139-93bc777960e8
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Budget
+		dataType: string
+		lineageTag: 559e3cf3-17c7-48c7-86cb-08cc728f4ffc
+		summarizeBy: none
+		sourceColumn: Budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: a6201e68-57cb-422a-98a8-f628e82863bb
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit Price'
+		dataType: double
+		lineageTag: 05f5492f-f104-4fcd-a112-2e250df86e5e
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Cost'
+		dataType: double
+		lineageTag: d095b9cb-bef2-47be-a911-544b64a4503d
+		summarizeBy: sum
+		sourceColumn: Total Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PO Input Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6ec7a874-9e77-4801-abd8-ef686466d512
+		summarizeBy: none
+		sourceColumn: PO Input Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'PO User'
+		dataType: string
+		lineageTag: a23c0e4b-5f51-40d7-9c4c-f1d901b77e13
+		summarizeBy: none
+		sourceColumn: PO User
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Authoriser'
+		dataType: string
+		lineageTag: ff91ae65-323e-4152-958f-da11b8c94d41
+		summarizeBy: none
+		sourceColumn: PO Authoriser
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GRN Input Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b25285e3-e5b3-479e-8cc9-1833db7cf7ac
+		summarizeBy: none
+		sourceColumn: GRN Input Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'GRN Quantity'
+		dataType: double
+		lineageTag: 1c4425d9-16f2-4897-9404-b8406b6b2e71
+		summarizeBy: sum
+		sourceColumn: GRN Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'GRN User'
+		dataType: string
+		lineageTag: 7e3831ce-a79b-46f3-9091-b9fcf73da2dd
+		summarizeBy: none
+		sourceColumn: GRN User
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'INV Document Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4c4fef1a-efc4-4d8e-92dd-baf45275af83
+		summarizeBy: none
+		sourceColumn: INV Document Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'INV Input Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cad99b46-5b7f-4188-b184-ca9169ef11cd
+		summarizeBy: none
+		sourceColumn: INV Input Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'INV Quantity'
+		dataType: double
+		lineageTag: fbd20df8-a986-477e-8f43-99c8d684d1ca
+		summarizeBy: sum
+		sourceColumn: INV Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'INV Total Cost'
+		dataType: double
+		lineageTag: e991a0a1-9478-4ed8-b365-e8e97deb8a98
+		summarizeBy: sum
+		sourceColumn: INV Total Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'INV User'
+		dataType: string
+		lineageTag: 903e65ea-81fc-4db2-8ee1-af57b0697c20
+		summarizeBy: none
+		sourceColumn: INV User
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time from REQ to PO (Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 59ce8a9f-3be2-4edc-9127-521b311bc22b
+		summarizeBy: sum
+		sourceColumn: Time from REQ to PO (Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time from REQ to INV Document (Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: f83cbabe-22dd-4b8a-a1f9-72afbdfa1812
+		summarizeBy: sum
+		sourceColumn: Time from REQ to INV Document (Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time from PO to GRN (Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 048fb312-9b9f-4669-8416-d7f59c3a4d41
+		summarizeBy: sum
+		sourceColumn: Time from PO to GRN (Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time from GRN to INV Input (Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0e0c830-af90-4146-aae0-228dcf07749d
+		summarizeBy: sum
+		sourceColumn: Time from GRN to INV Input (Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time from GRN to INV Document (Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6585f521-b45a-4517-9cd6-89c5d82a68e2
+		summarizeBy: sum
+		sourceColumn: Time from GRN to INV Document (Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GRN Process Compliance'
+		dataType: string
+		lineageTag: 7374d2f4-d399-4241-90f1-c836588dc0db
+		summarizeBy: none
+		sourceColumn: GRN Process Compliance
+		sortByColumn: 'GRN Process Compliance (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GRN Process Compliance (Sort)'
+		dataType: int64
+		lineageTag: 0bd9b4d0-b808-4a85-97ce-5769089b117e
+		summarizeBy: sum
+		sourceColumn: GRN Process Compliance (Sort)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'REQ Prior to INV Compliance'
+		dataType: string
+		lineageTag: 448fb8b3-d326-4c22-ad47-46e8685f56d3
+		summarizeBy: none
+		sourceColumn: REQ Prior to INV Compliance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requisition Document Number'
+		dataType: string
+		lineageTag: dbc590a3-a9c7-4a8c-ba08-e83639321c21
+		summarizeBy: none
+		sourceColumn: Requisition Document Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requisition Document Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 47906e75-c2e0-4511-9efb-50369622384e
+		summarizeBy: none
+		sourceColumn: Requisition Document Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Requisition Authoriser'
+		dataType: string
+		lineageTag: e9ffad45-68f8-4385-af3c-300172bd7777
+		summarizeBy: none
+		sourceColumn: Requisition Authoriser
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Purchasing Details' = m
+		mode: import
+		queryGroup: Finance\PSF
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    #"Purchasing Details_" = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Purchasing Details",version=""]}[Data]
+				in
+				    #"Purchasing Details_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

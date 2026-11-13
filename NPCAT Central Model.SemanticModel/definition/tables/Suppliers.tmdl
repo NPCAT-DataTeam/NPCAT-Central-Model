@@ -1,0 +1,44 @@
+table Suppliers
+	lineageTag: 0ab06f6c-00e6-4680-acd4-79ee75bd1d62
+
+	column 'Supplier Name'
+		dataType: string
+		lineageTag: e9be97f9-51e0-4a59-953e-35e3b3121020
+		summarizeBy: none
+		sourceColumn: Supplier Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Account'
+		dataType: string
+		lineageTag: 237d3666-1472-4715-8141-0c986bc32346
+		summarizeBy: none
+		sourceColumn: Supplier Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Address'
+		dataType: string
+		lineageTag: 890bee7e-1eb7-4f02-ab0a-dd93a939cedb
+		summarizeBy: none
+		sourceColumn: Delivery Address
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Suppliers = m
+		mode: import
+		queryGroup: Finance\PSF
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    Suppliers_ = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Suppliers",version=""]}[Data]
+				in
+				    Suppliers_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,55 @@
+table 'zP Persistent Absences'
+	lineageTag: a08ba69e-d010-4953-89de-0d4828dc5d8d
+
+	column 'Zz Persistent Absences'
+		lineageTag: 22f2d439-f9ee-4c42-a1f9-3a6ab8f3fc50
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Zz Persistent Absences Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Zz Persistent Absences Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zz Persistent Absences Fields'
+		isHidden
+		lineageTag: 4455062d-2f3d-423b-80a9-941d06748645
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Zz Persistent Absences Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zz Persistent Absences Order'
+		isHidden
+		formatString: 0
+		lineageTag: ab46ed3f-4e40-4456-80d6-01f769891880
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Persistent Absences-5fd07c47-e1da-4295-9b3c-eb943868e659' = calculated
+		mode: import
+		source =
+				
+				VAR CurrentYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = 0)
+				VAR LastYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -1)
+				VAR TwoYearAgo =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -2)
+				RETURN
+				{
+				    (TwoYearAgo, NAMEOF([PA Year End (-2 Years)]), 0),
+				    (LastYear, NAMEOF([PA Year End (-1 Years)]), 1),
+				    (CurrentYear, NAMEOF([Persistent Absence % YTD]), 2),
+				    ("SPLY", NAMEOF([PA % YTD SPLY]), 3)
+				}
+
+	annotation PBI_Id = 8115442a65344598aacce5874e199205
+

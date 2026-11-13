@@ -1,0 +1,95 @@
+table 'zP KS4 Headlines'
+	lineageTag: f11ac2f2-addb-4d3a-ad81-99fc2943651a
+
+	column 'zP KS4 Headlines'
+		lineageTag: 4225e73d-bb14-474c-a714-65b58f6ce66b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS4 Headlines Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS4 Headlines Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Headlines Fields'
+		isHidden
+		lineageTag: ece58bfb-c48f-4655-9555-28f300a93779
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS4 Headlines Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Headlines Order'
+		isHidden
+		formatString: 0
+		lineageTag: 44eeb9b4-4baa-4f06-b9cc-aa64888632a1
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Headline Type' =
+			
+			
+			SWITCH(
+			    TRUE(),
+			    CONTAINSSTRING('zP KS4 Headlines'[zP KS4 Headlines Fields],"P8"),"P8",
+			    CONTAINSSTRING('zP KS4 Headlines'[zP KS4 Headlines Fields],"A8"),"A8",
+			    CONTAINSSTRING('zP KS4 Headlines'[zP KS4 Headlines Fields],"+%"),"Basics"
+			)
+		lineageTag: 6fc142c0-f7f4-4c87-908c-dc6edbc16be8
+		summarizeBy: none
+		sortByColumn: 'KS4 Headline Type Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Headline Type Sort' =
+			
+			
+			SWITCH(
+			    TRUE(),
+			    CONTAINSSTRING('zP KS4 Headlines'[zP KS4 Headlines Fields],"P8"),1,
+			    CONTAINSSTRING('zP KS4 Headlines'[zP KS4 Headlines Fields],"A8"),2,
+			    CONTAINSSTRING('zP KS4 Headlines'[zP KS4 Headlines Fields],"+%"),3
+			)
+		formatString: 0
+		lineageTag: c0f6dcb8-98f2-41b4-bb76-99cbfcc0cdec
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS4 Headlines' = calculated
+		mode: import
+		source =
+				{
+				    ("Overall P8", NAMEOF('Measures Folder'[Headline Overall P8]), 0),
+				    ("English P8", NAMEOF('Measures Folder'[Headline English P8]), 1),
+				    ("Maths P8", NAMEOF('Measures Folder'[Headline Maths P8]), 2),
+				    ("Ebacc P8", NAMEOF('Measures Folder'[Headline Ebacc P8]), 3),
+				    ("Open P8", NAMEOF('Measures Folder'[Headline Open P8]), 4),
+				    ("Overall A8", NAMEOF('Measures Folder'[Headline Overall A8]), 5),
+				    ("English A8", NAMEOF('Measures Folder'[Headline English A8]), 6),
+				    ("Maths A8", NAMEOF('Measures Folder'[Headline Maths A8]), 7),
+				    ("Ebacc A8", NAMEOF('Measures Folder'[Headline Ebacc A8]), 8),
+				    ("Open A8", NAMEOF('Measures Folder'[Headline Open A8]), 9),
+				    ("Basics 4+%", NAMEOF('Measures Folder'[Basics 4+%]), 10),
+				    ("Basics 5+%", NAMEOF('Measures Folder'[Basics 5+%]), 11),
+				    //("Basics 7+%", NAMEOF('Measures Folder'[Basics 7+%]), 12),// Don't listen to Danielle they don't work on the app cause Over capacity
+				    ("English 4+%", NAMEOF('Measures Folder'[English 4+%]), 12),
+				    ("English 5+%", NAMEOF('Measures Folder'[English 5+%]), 13),
+				    //("English 7+%", NAMEOF('Measures Folder'[English 7+%]), 15),
+				    ("Maths 4+%", NAMEOF('Measures Folder'[Maths 4+%]), 14),
+				    ("Maths 5+%", NAMEOF('Measures Folder'[Maths 5+%]), 15)
+				    //("Maths 7+%", NAMEOF('Measures Folder'[Maths 7+%]), 18)
+				}
+
+	annotation PBI_Id = 686de7444eb245e38d045db142273c5b
+

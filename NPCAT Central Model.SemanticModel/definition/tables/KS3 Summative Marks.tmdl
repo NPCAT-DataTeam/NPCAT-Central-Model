@@ -1,0 +1,519 @@
+table 'KS3 Summative Marks'
+	lineageTag: 465f69c4-284c-4031-b142-c6e2417fba17
+
+	column 'School Arbor ID'
+		dataType: string
+		lineageTag: d34fa839-8ee7-44ac-a7e5-f1c06dc5a77b
+		summarizeBy: none
+		sourceColumn: School Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		isHidden
+		lineageTag: e9f491f5-53e9-4e2b-b660-2ab738aef6be
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Name'
+		dataType: string
+		lineageTag: 43ab01a5-f8a8-418e-ae01-901948ad1288
+		summarizeBy: none
+		sourceColumn: Subject Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: b10886a4-bef1-4c72-9547-40b5e735e996
+		summarizeBy: none
+		sourceColumn: Subject
+		sortByColumn: 'Subject Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: string
+		lineageTag: 63ffa6be-fb58-43da-a66a-105244048c98
+		summarizeBy: none
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Points'
+		dataType: double
+		lineageTag: 36351b48-1ecd-4922-98b9-6da84aa4a83a
+		summarizeBy: none
+		sourceColumn: Grade Points
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Max Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: f4c66036-29fc-4aa9-8ed5-b5ff7f3488e4
+		summarizeBy: none
+		sourceColumn: Max Mark
+
+		annotation SummarizationSetBy = User
+
+	column %
+		dataType: double
+		lineageTag: 51d834aa-ec27-4647-a69e-d8549aaf1f1f
+		summarizeBy: none
+		sourceColumn: %
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Rounded %'
+		dataType: int64
+		formatString: 0
+		lineageTag: ee93786c-c6df-4c86-8b4c-9bac1d897c00
+		summarizeBy: none
+		sourceColumn: Rounded %
+
+		annotation SummarizationSetBy = User
+
+	column 'Effort Points'
+		dataType: int64
+		formatString: 0
+		lineageTag: f98dca2b-ddba-4d38-899f-c1c93d1298dd
+		summarizeBy: none
+		sourceColumn: Effort Points
+
+		annotation SummarizationSetBy = User
+
+	column Effort
+		dataType: string
+		lineageTag: 6d6c9259-96ef-47c3-988c-fac703b62cb1
+		summarizeBy: none
+		sourceColumn: Effort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Baseline Band Point'
+		dataType: int64
+		formatString: 0
+		lineageTag: e84f368f-8b52-4a94-a428-c492ad229322
+		summarizeBy: none
+		sourceColumn: Baseline Band Point
+
+		annotation SummarizationSetBy = User
+
+	column 'Baseline Band'
+		dataType: string
+		lineageTag: 04298eff-4c63-4fb9-ab37-715ca411f83a
+		summarizeBy: none
+		sourceColumn: Baseline Band
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Baseline Rank'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a6fc94d-1228-4c4f-a993-4245d0aa6ca4
+		summarizeBy: none
+		sourceColumn: Baseline Rank
+
+		annotation SummarizationSetBy = User
+
+	column 'Subject Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dcfbf33-9f56-4f4d-9d61-7779e79e59e6
+		summarizeBy: none
+		sourceColumn: Subject Sort
+
+		annotation SummarizationSetBy = User
+
+	column 'Band Change' =
+			IF(NOT(ISBLANK([Baseline Rank])),
+			 'KS3 Summative Marks'[Current Band Point (School)] - 'KS3 Summative Marks'[Baseline Band Point])
+		formatString: 0
+		lineageTag: 5dc39ab4-8c00-47f3-9067-18dc262a0c95
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Band (School)' = ```
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Percentile (School)] >= .9 , "Band A",
+			    'KS3 Summative Marks'[Percentile (School)] >= .75 , "Band B",
+			    'KS3 Summative Marks'[Percentile (School)] >= .5 , "Band C",
+			    'KS3 Summative Marks'[Percentile (School)] >= .25 , "Band D",
+			    'KS3 Summative Marks'[Percentile (School)] >= .1 , "Band E",
+			    'KS3 Summative Marks'[Percentile (School)] < .1 , "Band F"
+			    )
+			    
+			```
+		lineageTag: dc9a761a-9408-4684-a22e-177019333298
+		summarizeBy: none
+		sortByColumn: 'Current Band Point (School) (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Band Point (School)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Percentile (School)] >= .9 , 6,
+			    'KS3 Summative Marks'[Percentile (School)] >= .75 , 5,
+			    'KS3 Summative Marks'[Percentile (School)] >= .5 , 4,
+			    'KS3 Summative Marks'[Percentile (School)] >= .25 , 3,
+			    'KS3 Summative Marks'[Percentile (School)] >= .1 , 2,
+			    'KS3 Summative Marks'[Percentile (School)] < .1 , 1
+			    )
+		lineageTag: 5b340b7a-95b8-4459-9320-e637ba02e767
+		summarizeBy: sum
+		sortByColumn: 'Current Band Point (School) (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Band Point (School) (Sort)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Percentile (School)] >= .9 , 1,
+			    'KS3 Summative Marks'[Percentile (School)] >= .75 , 2,
+			    'KS3 Summative Marks'[Percentile (School)] >= .5 , 3,
+			    'KS3 Summative Marks'[Percentile (School)] >= .25 , 4,
+			    'KS3 Summative Marks'[Percentile (School)] >= .1 , 5,
+			    'KS3 Summative Marks'[Percentile (School)] < .1 , 6
+			    )
+		lineageTag: b0b7e775-428d-46fa-a73f-2197ccf4ec25
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentile (School)' =
+			
+			VAR StudentCount =
+			    COUNTROWS (
+			        FILTER (
+			            'KS3 Summative Marks',
+			            //'KS3 Summative Marks'[Year]              = EARLIER ( 'KS3 Summative Marks'[Year] )              &&
+			            'KS3 Summative Marks'[School Arbor ID]   = EARLIER ( 'KS3 Summative Marks'[School Arbor ID] )   &&
+			            //'KS3 Summative Marks'[Assessment Type]   = EARLIER ( 'KS3 Summative Marks'[Assessment Type] )   &&
+			            'KS3 Summative Marks'[Academic Year Start]     = EARLIER ( 'KS3 Summative Marks'[Academic Year Start] )     &&
+			            'KS3 Summative Marks'[Subject]           = EARLIER ( 'KS3 Summative Marks'[Subject] )           &&
+			            'KS3 Summative Marks'[Period]            = EARLIER ( 'KS3 Summative Marks'[Period] )            &&
+			            'KS3 Summative Marks'[Year Group]        = EARLIER ( 'KS3 Summative Marks'[Year Group] )        &&
+			            NOT ISBLANK ( 'KS3 Summative Marks'[Grade Points] )
+			        )
+			    )
+			
+			VAR RankPos =
+			    'KS3 Summative Marks'[Rank within Subject (School)]
+			
+			RETURN
+			    DIVIDE ( StudentCount - RankPos, StudentCount )
+		lineageTag: fe0597fc-62bb-4574-b68e-d94c39b7bd80
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rank Change' = ```
+			IF(NOT(ISBLANK([Baseline Rank])),
+			'KS3 Summative Marks'[Baseline Rank]  - 'KS3 Summative Marks'[Rank within Subject (School)]) 
+			```
+		formatString: 0
+		lineageTag: 72079e7b-1e19-43bd-af8d-d67591677d4f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rank within Subject (School)' = ```
+			
+			RANKX( 
+			    FILTER( 'KS3 Summative Marks' , 
+			    'KS3 Summative Marks'[Academic Year Start] = EARLIER( 'KS3 Summative Marks'[Academic Year Start] ) &&
+			    'KS3 Summative Marks'[Year Group] = EARLIER( 'KS3 Summative Marks'[Year Group] ) && 
+			    //'KS3 Summative Marks'[Year] = EARLIER( 'KS3 Summative Marks'[Year] ) &&
+			    'KS3 Summative Marks'[School Arbor ID] = EARLIER( 'KS3 Summative Marks'[School Arbor ID] ) && 
+			    //'KS3 Summative Marks'[Assessment Type] = EARLIER( 'KS3 Summative Marks'[Assessment Type] ) &&
+			    //'KS3 Summative Marks'[Academic Year Start] = EARLIER( 'KS3 Summative Marks'[Academic Year Start] ) &&
+			    'KS3 Summative Marks'[Subject] = EARLIER( 'KS3 Summative Marks'[Subject] ) && 
+			    'KS3 Summative Marks'[Period] = EARLIER( 'KS3 Summative Marks'[Period] ) && 
+			    //'KS3 Summative Marks'[Year Group] = EARLIER( 'KS3 Summative Marks'[Year Group] ) && 
+			    NOT ( ISBLANK ( 'KS3 Summative Marks'[Grade Points] ))),
+			    'KS3 Summative Marks'[Grade Points],
+			    ,
+			    DESC
+			)
+			```
+		formatString: 0
+		lineageTag: 539b48e6-3475-45db-bacf-3994180e4207
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rank within Subject (Trust)' = ```
+			
+			RANKX( 
+			    FILTER( 'KS3 Summative Marks' , 
+			    // 'KS3 Summative Marks'[Year] = EARLIER( 'KS3 Summative Marks'[Year] ) &&
+			    // 'KS3 Summative Marks'[Assessment Type] = EARLIER( 'KS3 Summative Marks'[Assessment Type] ) &&
+			    'KS3 Summative Marks'[Academic Year Start] = EARLIER( 'KS3 Summative Marks'[Academic Year Start] ) &&
+			    'KS3 Summative Marks'[Subject] = EARLIER( 'KS3 Summative Marks'[Subject] ) && 
+			    'KS3 Summative Marks'[Period] = EARLIER( 'KS3 Summative Marks'[Period] ) && 
+			    'KS3 Summative Marks'[Year Group] = EARLIER( 'KS3 Summative Marks'[Year Group] ) && 
+			    NOT ( ISBLANK ( 'KS3 Summative Marks'[Grade Points] ))),
+			    'KS3 Summative Marks'[Grade Points],
+			    ,
+			    DESC
+			)
+			```
+		formatString: 0
+		lineageTag: 2e5ea80b-3b91-46b3-819e-13b1e4d71f05
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentile (Trust)' = ```
+			
+			VAR StudentCount = 
+			    COUNTROWS( 
+			        FILTER( 
+			        'KS3 Summative Marks' ,
+			        // 'KS3 Summative Marks'[Year]             = EARLIER( 'KS3 Summative Marks'[Year] ) &&
+			        // 'KS3 Summative Marks'[Assessment Type]  = EARLIER( 'KS3 Summative Marks'[Assessment Type] ) &&
+			        'KS3 Summative Marks'[Academic Year Start]    = EARLIER( 'KS3 Summative Marks'[Academic Year Start] ) &&
+			        'KS3 Summative Marks'[Subject]          = EARLIER( 'KS3 Summative Marks'[Subject] ) && 
+			        'KS3 Summative Marks'[Period]           = EARLIER( 'KS3 Summative Marks'[Period] ) && 
+			        'KS3 Summative Marks'[Year Group]       = EARLIER( 'KS3 Summative Marks'[Year Group] ) && 
+			    NOT ( ISBLANK ( 'KS3 Summative Marks'[Grade Points] )))
+			)
+			
+			VAR RankPos =
+			    'KS3 Summative Marks'[Rank within Subject (School)]
+			
+			RETURN
+			    DIVIDE ( StudentCount - RankPos, StudentCount )
+			```
+		lineageTag: f18977f0-ce58-4a54-844c-22e836e88b1d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Current Band (Trust)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .9 , "Band A",
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .75 , "Band B",
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .5 , "Band C",
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .25 , "Band D",
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .1 , "Band E",
+			    'KS3 Summative Marks'[Percentile (Trust)] < .1 , "Band F"
+			    )
+		lineageTag: e69c2db4-e88e-4527-9fb5-1fdd312d97c1
+		summarizeBy: none
+		sortByColumn: 'Current Band Point (Trust) (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Band Point (Trust)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .9 , 6,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .75 , 5,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .5 , 4,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .25 , 3,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .1 , 2,
+			    'KS3 Summative Marks'[Percentile (Trust)] < .1 , 1
+			    )
+		formatString: 0
+		lineageTag: ddb9d145-66a8-48c9-aea3-46c29ffe638b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Band Point (Trust) (Sort)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .9 , 1,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .75 , 2,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .5 , 3,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .25 , 4,
+			    'KS3 Summative Marks'[Percentile (Trust)] >= .1 , 5,
+			    'KS3 Summative Marks'[Percentile (Trust)] < .1 , 6
+			    )
+		formatString: 0
+		lineageTag: 1f531487-59e0-497b-898c-4e1b06e22d35
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rank Change Group (School)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Rank Change] <= -10 , "10-19",
+			    'KS3 Summative Marks'[Rank Change] <= -20 , "20-29",
+			    'KS3 Summative Marks'[Rank Change] <= -30 , "30-39",
+			    'KS3 Summative Marks'[Rank Change] <= -40 , "40-49",
+			    'KS3 Summative Marks'[Rank Change] <= -50 , "50-59",
+			    'KS3 Summative Marks'[Rank Change] <= -60 , "60-69",
+			    'KS3 Summative Marks'[Rank Change] <= -70 , "70-79",
+			    'KS3 Summative Marks'[Rank Change] <= -80 , "80-89",
+			    'KS3 Summative Marks'[Rank Change] <= -90 , "90-99",
+			    'KS3 Summative Marks'[Rank Change] <= -100 , "100+"
+			    )
+		lineageTag: 19de35f6-bd40-46b8-a29e-5155a0f24619
+		summarizeBy: none
+		sortByColumn: 'Rank Change Group (School) (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rank Change Group (School) (Sort)' =
+			
+			SWITCH (
+			    TRUE(),
+			    'KS3 Summative Marks'[Rank Change] <= -10 , 1,
+			    'KS3 Summative Marks'[Rank Change] <= -20 , 2,
+			    'KS3 Summative Marks'[Rank Change] <= -30 , 3,
+			    'KS3 Summative Marks'[Rank Change] <= -40 , 4,
+			    'KS3 Summative Marks'[Rank Change] <= -50 , 5,
+			    'KS3 Summative Marks'[Rank Change] <= -60 , 6,
+			    'KS3 Summative Marks'[Rank Change] <= -70 , 7,
+			    'KS3 Summative Marks'[Rank Change] <= -80 , 8,
+			    'KS3 Summative Marks'[Rank Change] <= -90 , 9,
+			    'KS3 Summative Marks'[Rank Change] <= -100 , 10
+			    )
+		formatString: 0
+		lineageTag: 3fcb4260-0ee6-4b68-b0ed-6415672c9028
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column UPN = RELATED('Student Database (Full)'[UPN])
+		lineageTag: f0559bc8-15e8-41b5-954d-01d171791bbb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: a3704e3e-2517-43db-a3fd-9727327dbef8
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: f5e2ecc2-3971-4977-9597-23db7ecf44e6
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class Assessment ID'
+		dataType: string
+		lineageTag: bdf21323-6225-47dd-a946-552cc88a79a3
+		summarizeBy: none
+		sourceColumn: Class Assessment ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class Name' =
+			
+			RELATED('Class Enrolments'[CLASS_NAME])
+		lineageTag: 30183391-bc8a-4b8d-955e-9a9430794ed6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Prior Attainment' = RELATED('Student Database (Full)'[KS2 Prior Attainment (Int)])
+		dataType: double
+		lineageTag: 9953c42d-9517-4ccb-afb9-0472495e9f23
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'KS3 Student Full Name' = ```
+			
+			 RELATED('Student Database (Full)'[Full Name: DOB])
+			```
+		lineageTag: 12d00764-b2af-4399-8420-f23b2bf2e8ef
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: bbe91706-5a49-4d39-a313-a740e6374e98
+		summarizeBy: none
+		sourceColumn: COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year Start'
+		dataType: string
+		lineageTag: a4254f8c-3dca-48a6-b237-885f6fb4ec81
+		summarizeBy: none
+		sourceColumn: Academic Year Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student - Year ID'
+		dataType: string
+		lineageTag: 3f074288-1394-432f-883b-23dedbb8d88a
+		summarizeBy: none
+		sourceColumn: Student - Year ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 51eb6293-cb64-46a9-890c-810fd9e4cfae
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS3 Summative Marks-b666f7a6-d955-4840-a736-c760b20f83c7' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"8bef8aa1-aa2a-4d0c-849e-a8f303261586" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="8bef8aa1-aa2a-4d0c-849e-a8f303261586"]}[Data],
+				    #"KS3 Summative Marks (New)_" = #"8bef8aa1-aa2a-4d0c-849e-a8f303261586"{[entity="KS3 Summative Marks (New)",version=""]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"KS3 Summative Marks (New)_", each [Year Group] <> null and [Year Group] <> "")
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

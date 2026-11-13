@@ -1,0 +1,203 @@
+table 'Health&Safety Actions'
+	lineageTag: c0864422-300c-429e-b395-872d89d62d27
+
+	column School
+		dataType: string
+		lineageTag: 41537252-0f02-4c77-b18e-2004e60bd5c7
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Type'
+		dataType: string
+		lineageTag: 1e25af24-4cb0-4c60-b42d-f6c8814ef2f1
+		summarizeBy: none
+		sourceColumn: Audit Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Category'
+		dataType: string
+		lineageTag: 49f7df11-8d8c-4176-9f05-4dae3319e821
+		summarizeBy: none
+		sourceColumn: Audit Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 81b1f4ff-1eb5-43a8-976c-70fe3d2cb8a8
+		summarizeBy: none
+		sourceColumn: Audit Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Action Ref Number'
+		dataType: string
+		lineageTag: bb3be868-bf1c-4d04-b3e1-cf43b0da038c
+		summarizeBy: none
+		sourceColumn: Action Ref Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action
+		dataType: string
+		lineageTag: 266b09ee-5895-4a01-8715-35e534dfc230
+		summarizeBy: none
+		sourceColumn: Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Action Category'
+		dataType: string
+		lineageTag: 4c44b555-9df4-4576-90cf-3c4498a5ae05
+		summarizeBy: none
+		sourceColumn: Action Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: b67607b1-b06b-405e-8ab7-5a7813032d75
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Person'
+		dataType: string
+		lineageTag: e02c1fde-24fc-4cac-85bd-dd9bb1d083bd
+		summarizeBy: none
+		sourceColumn: Responsible Person
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Action Officer'
+		dataType: string
+		lineageTag: d3a5a45b-46ae-4764-be6b-24c96cf93958
+		summarizeBy: none
+		sourceColumn: Action Officer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 03c428a0-9fcb-4b03-95b4-b1354b77f43a
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Evidence Required'
+		dataType: string
+		lineageTag: 355cd1be-922a-40d6-914c-ba3a12d0c2d9
+		summarizeBy: none
+		sourceColumn: Evidence Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Certified Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 199f5cdc-47cf-4d1f-b0d8-1a35cac1cd72
+		summarizeBy: none
+		sourceColumn: School Certified Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Auditor Certified Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9ed41c29-6e22-4b0b-b954-9df18c43f3ac
+		summarizeBy: none
+		sourceColumn: Auditor Certified Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Notes
+		dataType: string
+		lineageTag: 449ace92-8426-4e4e-b869-cdd06a7e3105
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: 4d2b6c14-532c-4f76-9a1c-893a4cd5304b
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Check'
+		dataType: string
+		lineageTag: be0aca33-6a77-4350-acf9-eb9e006c210c
+		summarizeBy: none
+		sourceColumn: Complete Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Health and Safety Audit ID'
+		dataType: string
+		lineageTag: a77fa052-86cc-484a-b73d-5d554d3b23a6
+		summarizeBy: none
+		sourceColumn: Health and Safety Audit ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Priority Sort'
+		dataType: double
+		lineageTag: 89508d0e-e662-4b0a-8632-32ea9a668e44
+		summarizeBy: none
+		sourceColumn: Priority Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Priority (Short)'
+		dataType: string
+		lineageTag: 68897e0f-5b61-4fbd-be20-fe9f00191106
+		summarizeBy: none
+		sourceColumn: Priority (Short)
+		sortByColumn: 'Priority Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Entity (Binary)'
+		dataType: string
+		lineageTag: c48a38c7-a11f-408a-87c3-fea9fec3bd16
+		summarizeBy: none
+		sourceColumn: Responsible Entity (Binary)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Health&Safety Actions-dd06f228-11f5-4c31-8667-0b21608ec858' = m
+		mode: import
+		queryGroup: Estates\Health&Safety
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Health&Safety Actions1" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Health&Safety Actions"]}[Data]
+				in
+				    #"Health&Safety Actions1"
+
+	annotation PBI_ResultType = Table
+

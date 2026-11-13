@@ -1,0 +1,115 @@
+table Behaviour
+	lineageTag: b12a5e2f-369c-490c-aa77-23123b5fd80f
+
+	column 'Incident Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 42dd9517-cde3-481c-9fc8-6e7ff1e04b60
+		summarizeBy: none
+		sourceColumn: Incident Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Incident Name'
+		dataType: string
+		lineageTag: 9e77b1b8-1477-4249-b413-a012855f03ca
+		summarizeBy: none
+		sourceColumn: Incident Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: int64
+		formatString: 0
+		lineageTag: 15009adb-5e75-4f14-9eb6-af8bd3e43b71
+		summarizeBy: sum
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: cece0d68-eb1c-4255-90e8-74453c6b345b
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Type'
+		dataType: string
+		lineageTag: 8642f212-e240-43d2-9746-7307604d57c0
+		summarizeBy: none
+		sourceColumn: Incident Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sanction Level'
+		dataType: string
+		lineageTag: 0b986565-5c8b-4cd2-bc3a-2d433da5d36d
+		summarizeBy: none
+		sourceColumn: Sanction Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		isHidden
+		lineageTag: 74470cef-e69d-4139-a6d2-c7ba833b333d
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 800b626e-3384-457f-ba54-0dd3f904f3e9
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Time - Rounded'
+		dataType: string
+		lineageTag: 912fc60f-31c9-4e4a-b7f3-77deb95e0e8e
+		summarizeBy: none
+		sourceColumn: Incident Time - Rounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Reporter(s)'
+		dataType: string
+		lineageTag: 701753bb-e18c-4ce5-ba24-05922fe083a6
+		summarizeBy: none
+		sourceColumn: Incident Reporter(s)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Behaviour Type'
+		dataType: string
+		lineageTag: 350e9385-a1bb-4671-8129-23c5a3fb0808
+		summarizeBy: none
+		sourceColumn: Behaviour Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Behaviour-13976aa8-cbd3-4986-9be5-952b055d82e3 = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    Behaviour1 = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Behaviour"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Behaviour1,{{"Severity", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_QueryRelationships = {"columnCount":15,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Behaviour/Behaviour1.{SUID,0}","Section1/Behaviour/Behaviour1.{UPN,1}","Section1/Behaviour/Behaviour1.{Type,2}","Section1/Behaviour/Behaviour1.{Type Code,3}","Section1/Behaviour/Behaviour1.{Behaviour Points,4}","Section1/Behaviour/Behaviour1.{Status,5}","Section1/Behaviour/Changed Type.{Date,6}","Section1/Behaviour/Behaviour1.{Time,7}","Section1/Behaviour/Behaviour1.{Activity,8}","Section1/Behaviour/Behaviour1.{Description,9}","Section1/Behaviour/Behaviour1.{NI Number,10}","Section1/Behaviour/Behaviour1.{Action Taken,11}","Section1/Behaviour/Changed Type.{Action Date,12}","Section1/Behaviour/Behaviour1.{Parent/Guardian Informed,13}","Section1/Behaviour/Behaviour1.{UPN-SUID,14}"],"ColumnCount":15,"KeyColumnNames":[],"ColumnIdentities":["Section1/Behaviour/Behaviour1.{SUID,0}","Section1/Behaviour/Behaviour1.{UPN,1}","Section1/Behaviour/Behaviour1.{Type,2}","Section1/Behaviour/Behaviour1.{Type Code,3}","Section1/Behaviour/Behaviour1.{Behaviour Points,4}","Section1/Behaviour/Behaviour1.{Status,5}","Section1/Behaviour/Changed Type.{Date,6}","Section1/Behaviour/Behaviour1.{Time,7}","Section1/Behaviour/Behaviour1.{Activity,8}","Section1/Behaviour/Behaviour1.{Description,9}","Section1/Behaviour/Behaviour1.{NI Number,10}","Section1/Behaviour/Behaviour1.{Action Taken,11}","Section1/Behaviour/Changed Type.{Action Date,12}","Section1/Behaviour/Behaviour1.{Parent/Guardian Informed,13}","Section1/Behaviour/Behaviour1.{UPN-SUID,14}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

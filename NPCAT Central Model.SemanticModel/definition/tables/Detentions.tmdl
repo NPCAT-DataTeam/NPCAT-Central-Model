@@ -1,0 +1,130 @@
+table Detentions
+	lineageTag: fc61f6c1-f792-4e69-aa88-9236d3ff8bd8
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 81baff56-acf0-44a3-b1e4-4e903c78a574
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 71796c45-7879-445c-a90c-ff3b961ec1b2
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Detention Type'
+		dataType: string
+		lineageTag: 57800eec-0533-4c8a-9676-74b04e993bb9
+		summarizeBy: none
+		sourceColumn: Detention Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: cc56ad27-5957-4dc9-aae1-fd33aa8b448b
+		summarizeBy: none
+		sourceColumn: Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'End Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 99f0b8b5-bedf-4e0c-bae4-634ce019821b
+		summarizeBy: none
+		sourceColumn: End Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance Mark'
+		dataType: string
+		lineageTag: c9736886-5165-4a80-a665-445214e8f576
+		summarizeBy: none
+		sourceColumn: Attendance Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 8fecbba9-9167-4a41-bc9f-4d18b2150e73
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 52f38c64-a5e6-4169-88e1-a6b54d85b6e9
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Decision Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eaa0a2a0-f2f2-4a13-bde7-f713da2a905d
+		summarizeBy: none
+		sourceColumn: Decision Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Absent Action'
+		dataType: string
+		lineageTag: 00f77c04-6839-4c93-8748-ab824b93fda1
+		summarizeBy: none
+		sourceColumn: Absent Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: 8f0060b8-073d-4a95-9282-736545d69eaa
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column Room
+		dataType: string
+		lineageTag: 6cfc8e24-8679-4f16-95d5-f034a9d6161b
+		summarizeBy: none
+		sourceColumn: Room
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Detention Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4b4d23f9-5701-4934-8e18-5e565fa9dad4
+		summarizeBy: none
+		sourceColumn: Detention Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Detentions = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"cac18991-39e9-44fc-a199-7ead3fd3e517" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cac18991-39e9-44fc-a199-7ead3fd3e517"]}[Data],
+				    Detentions_ = #"cac18991-39e9-44fc-a199-7ead3fd3e517"{[entity="Detentions",version=""]}[Data]
+				in
+				    Detentions_
+

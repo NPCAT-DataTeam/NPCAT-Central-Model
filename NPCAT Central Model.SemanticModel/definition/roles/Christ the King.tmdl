@@ -1,0 +1,7 @@
+role 'Christ the King'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT25"
+
+	annotation PBI_Id = 3c09bb47faac45a0b9326908a1fe6e96
+

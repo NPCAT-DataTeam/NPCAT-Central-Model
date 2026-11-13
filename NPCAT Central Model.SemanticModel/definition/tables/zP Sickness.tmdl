@@ -1,0 +1,87 @@
+table 'zP Sickness'
+	lineageTag: bb7d4232-a8eb-444d-a8bf-ad375b2f534a
+
+	column 'zP Sickness'
+		lineageTag: a96db22b-a8da-4335-a2bf-663875aa992c
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Sickness Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Sickness Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Sickness Fields'
+		isHidden
+		lineageTag: 1098528b-13e0-474b-9af5-2cf70182eff2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Sickness Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Sickness Order'
+		isHidden
+		formatString: 0
+		lineageTag: 901ab501-633f-422e-8705-2c9fb609b04b
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sickness Time Series' = ```
+			
+			SWITCH(TRUE(),
+			'zP Sickness'[zP Sickness]= "YTD","School Year",
+			'zP Sickness'[zP Sickness] = "SPLY","School Year",
+			'zP Sickness'[zP Sickness]= "Avg Days Lost YTD","School Year",
+			'zP Sickness'[zP Sickness] = "Avg Days Lost SPLY","School Year",
+			'zP Sickness'[zP Sickness]= "MTD","Month",
+			'zP Sickness'[zP Sickness] = "SPLM","Month",
+			'zP Sickness'[zP Sickness]= "Avg Days Lost MTD","Month",
+			'zP Sickness'[zP Sickness] = "Avg Days Lost SPLM","Month",
+			'zP Sickness'[zP Sickness]= "Last 12 Months","12 Months",
+			'zP Sickness'[zP Sickness] = "Previous 12 Months","12 Months",
+			'zP Sickness'[zP Sickness]= "Avg Days Lost Last 12 Months","12 Months",
+			'zP Sickness'[zP Sickness] = "Avg Days Lost Previous 12 Months","12 Months",
+			'zP Sickness'[zP Sickness] = "Avg Days/FTE Ratio YTD","School Year",
+			'zP Sickness'[zP Sickness]= "Avg Days/FTE Ratio Last 12 Months","12 Months",
+			'zP Sickness'[zP Sickness] = "Avg Days/FTE Ratio MTD","Month"
+			)
+			
+			```
+		lineageTag: ab910b41-bcf0-42d5-9ed0-8a0ae0fda457
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Sickness-501731a5-fbfb-4af5-9ad6-7bb5cca58336' = calculated
+		mode: import
+		source =
+				{
+				    ("YTD", NAMEOF('Measures Folder'[Sickness (YTD)]), 0),
+				    ("SPLY", NAMEOF('Measures Folder'[Sickness YTD SPLY]), 1),
+				    ("Avg Days Lost YTD", NAMEOF('Measures Folder'[Sickness Avg Days Lost YTD]), 2),
+				    ("Avg Days Lost SPLY", NAMEOF('Measures Folder'[Sickness Avg Days Lost YTD SPLY]), 3),
+				    ("Avg Days/FTE Ratio YTD", NAMEOF('Measures Folder'[Sickness Avg Days/FTE Ratio (YTD)]), 4),
+				    ("MTD", NAMEOF('Measures Folder'[Sickness MTD]), 5),
+				    ("SPLM", NAMEOF('Measures Folder'[Sickness MTD SPLM]), 6),
+				    ("Avg Days Lost MTD", NAMEOF('Measures Folder'[Sickness Avg Days Lost MTD]), 7),
+				    ("Avg Days Lost SPLM", NAMEOF('Measures Folder'[Sickness Avg Days Lost MTD SPLM]), 8),
+				    ("Avg Days/FTE Ratio MTD", NAMEOF('Measures Folder'[Sickness Avg Days/FTE Ratio (MTD)]), 9),
+				    ("Last 12 months", NAMEOF('Measures Folder'[Sickness Last 12 months]), 10),
+				    ("Previous 12 months", NAMEOF('Measures Folder'[Sickness 12 months prior to last 12 months]), 11),
+				    ("Avg Days Lost Last 12 months", NAMEOF('Measures Folder'[Sickness Avg Days Lost Last 12 months]), 12),
+				    ("Avg Days Lost Previous 12 Months", NAMEOF('Measures Folder'[Sickness Avg Days Lost Previous Rolling 12 Months]), 13),
+				    ("Avg Days/FTE Ratio Last 12 Months", NAMEOF('Measures Folder'[Sickness Avg Days/FTE Ratio (Last 12 Months)]), 14 )
+				}
+
+	annotation PBI_Id = 4adce665591f413db12b8af91b12b05e
+

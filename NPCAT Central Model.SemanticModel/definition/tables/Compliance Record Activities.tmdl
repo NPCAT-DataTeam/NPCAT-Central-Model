@@ -1,0 +1,289 @@
+table 'Compliance Record Activities'
+	lineageTag: 25c7e424-63ef-48a8-9404-dedad88a26de
+
+	column 'Every ID'
+		dataType: string
+		isHidden
+		lineageTag: 4d506888-797e-4826-a471-62218c3e63ac
+		summarizeBy: none
+		sourceColumn: Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: f57ddf05-6139-4bbd-ba9f-1162a5a9deb9
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column Activity
+		dataType: string
+		lineageTag: 645cc2bc-0d33-4f56-8c97-ddfe591b603d
+		summarizeBy: none
+		sourceColumn: Activity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: ba9ff3d0-de0a-4060-9507-4bf383b43904
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: 84d31429-07c5-454a-8d35-4109b7ea430e
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forename
+		dataType: string
+		lineageTag: 90f8df5a-f48c-44cf-aac8-4bbae945d08c
+		summarizeBy: none
+		sourceColumn: Forename
+
+		annotation SummarizationSetBy = Automatic
+
+	column Surname
+		dataType: string
+		lineageTag: 4e6c1ff4-76f3-4b97-af15-76ffbb1a9ec2
+		summarizeBy: none
+		sourceColumn: Surname
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityTypeKey
+		dataType: string
+		lineageTag: 3004cc4a-ecc8-47a5-8a13-66c3bbd73ee0
+		summarizeBy: none
+		sourceColumn: ActivityTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityRecordKey
+		dataType: string
+		lineageTag: cffea157-c4fc-498f-af36-82bb5de8ae8e
+		summarizeBy: none
+		sourceColumn: ActivityRecordKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 15f72702-548a-4e7e-9cd1-19316f8a046b
+		summarizeBy: none
+		sourceColumn: Priority
+		sortByColumn: 'Priority Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Overdue When Closed'
+		dataType: string
+		lineageTag: 0660ea16-dae9-4a7c-840c-3e46b43b562d
+		summarizeBy: none
+		sourceColumn: Days Overdue When Closed
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deleted
+		dataType: string
+		lineageTag: 98fc1c7f-0b79-4013-b166-fc3439920e12
+		summarizeBy: none
+		sourceColumn: Deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOE
+		dataType: string
+		lineageTag: 9d4f277b-e64b-49f0-9471-14eb03c701b9
+		summarizeBy: none
+		sourceColumn: DOE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1e66ef6e-0fd7-4774-b630-9ee37e2938d7
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Last Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 812dfb42-a2a4-4766-abfe-ec30f63d07da
+		summarizeBy: none
+		sourceColumn: Last Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Activity Record Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6cfb91a-eccc-4cfb-bc68-267866c5f890
+		summarizeBy: none
+		sourceColumn: Activity Record Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Activity Record Status'
+		dataType: string
+		lineageTag: 40961e6e-328f-46a0-a870-03a33ab633d9
+		summarizeBy: none
+		sourceColumn: Activity Record Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner
+		dataType: string
+		lineageTag: 0a1e0900-5e77-4af1-b18f-75d2c71c7c44
+		summarizeBy: none
+		sourceColumn: Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Frequency'
+		dataType: string
+		lineageTag: c48bc354-e890-4088-8ac6-9d7a7e16903d
+		summarizeBy: none
+		sourceColumn: Activity Frequency
+		sortByColumn: 'Activity Frequency Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Priority Sort'
+		dataType: string
+		lineageTag: 475685e5-0747-4a6e-8cbf-5ba9b436a61a
+		summarizeBy: none
+		sourceColumn: Priority Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity URL Link'
+		dataType: string
+		lineageTag: 95403587-1dc0-492e-84c1-6cd273e5ea50
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: Activity URL Link
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Frequency Sort'
+		dataType: double
+		lineageTag: 00fd9559-10af-497a-b52b-5843ed9a5c66
+		summarizeBy: none
+		sourceColumn: Activity Frequency Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Resource Type'
+		dataType: string
+		lineageTag: 404b283b-7217-46dd-9c87-95a327acf776
+		summarizeBy: none
+		sourceColumn: Resource Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Role'
+		dataType: string
+		lineageTag: a1d12446-10f7-4020-b13f-f52d60d61353
+		summarizeBy: none
+		sourceColumn: Responsible Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Department'
+		dataType: string
+		lineageTag: 5100ef42-b4cd-4c1a-9fc5-dd34a52a0993
+		summarizeBy: none
+		sourceColumn: Responsible Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Area'
+		dataType: string
+		lineageTag: dc5663c2-d17c-4dfa-b0bf-deac64a25780
+		summarizeBy: none
+		sourceColumn: Responsible Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Done'
+		dataType: string
+		lineageTag: a9cbf759-ac19-438d-88e6-8f38a45c8ac9
+		summarizeBy: none
+		sourceColumn: Date Done
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: f135cca7-6e02-4e52-b59f-143f4184bbf7
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Original Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 614f3d35-97c1-4590-82b0-dd97076944f9
+		summarizeBy: none
+		sourceColumn: Original Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Extended Due Date'
+		dataType: string
+		lineageTag: d4d608ed-73a2-4b55-8642-386287c1357e
+		summarizeBy: none
+		sourceColumn: Extended Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Compliance Type'
+		dataType: string
+		lineageTag: 4a3753d5-2c3f-4117-9570-85411cf8ee02
+		summarizeBy: none
+		sourceColumn: Compliance Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Compliance Record Activities-c6fa747d-d20f-4bc9-8c6e-1d4204d90f70' = m
+		mode: import
+		queryGroup: 'Every System\Compliance'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Compliance Activity Records (Date List Load)" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Compliance Activity Records (Date List Load)"]}[Data]
+				in
+				    #"Compliance Activity Records (Date List Load)"
+
+	annotation PBI_ResultType = Table
+

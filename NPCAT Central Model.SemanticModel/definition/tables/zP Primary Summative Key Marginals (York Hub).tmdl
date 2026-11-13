@@ -1,0 +1,85 @@
+table 'zP Primary Summative Key Marginals (York Hub)'
+	lineageTag: a768f33f-77c1-428e-9868-0e99bc30d86b
+
+	column 'zP Primary Summative Key Marginals (York Hub)'
+		lineageTag: 0bbe8f72-b0fb-4d34-97c0-f4d249722272
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Primary Summative Key Marginals (York Hub) Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Primary Summative Key Marginals (York Hub) Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Primary Summative Key Marginals (York Hub) Fields'
+		isHidden
+		lineageTag: 81634032-de30-4d16-84fd-67ae6c94146c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Primary Summative Key Marginals (York Hub) Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Primary Summative Key Marginals (York Hub) Order'
+		isHidden
+		formatString: 0
+		lineageTag: f0d0fcff-48ef-4a56-a47a-2493dfe587d0
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Intervention Level' = ```
+			
+			Switch (
+			    True (),
+			    CONTAINSSTRING( 'zP Primary Summative Key Marginals (York Hub)'[zP Primary Summative Key Marginals (York Hub) Fields] , "WTS"), "WTS", 
+			    CONTAINSSTRING( 'zP Primary Summative Key Marginals (York Hub)'[zP Primary Summative Key Marginals (York Hub) Fields] , "At or"), "AT",
+			    CONTAINSSTRING( 'zP Primary Summative Key Marginals (York Hub)'[zP Primary Summative Key Marginals (York Hub) Fields] , "GDS"), "GDS"
+			)
+			```
+		lineageTag: a329549e-8c7f-4dbc-b18e-64f597fa0e82
+		summarizeBy: none
+		sortByColumn: 'Intervention Level Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Intervention Level Sort' = ```
+			
+			Switch (
+			    True (),
+			    CONTAINSSTRING( 'zP Primary Summative Key Marginals (York Hub)'[zP Primary Summative Key Marginals (York Hub) Fields] , "WTS"), 1, 
+			    CONTAINSSTRING( 'zP Primary Summative Key Marginals (York Hub)'[zP Primary Summative Key Marginals (York Hub) Fields] , "At or"), 2,
+			    CONTAINSSTRING( 'zP Primary Summative Key Marginals (York Hub)'[zP Primary Summative Key Marginals (York Hub) Fields] , "GDS"), 3
+			)
+			```
+		formatString: 0
+		lineageTag: 850ad5ef-0666-4c5a-b8f3-62e199fbf99f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition 'zP Primary Summative Key Marginals (York Hub)' = calculated
+		mode: import
+		source =
+				{
+				    ("Maths", NAMEOF('Measures Folder'[2. GDS (Period ARE Target) - Maths Int]), 8),
+				    ("Reading", NAMEOF('Measures Folder'[2. GDS (Period ARE Target) - Reading Int]), 6),
+				    ("Writing", NAMEOF('Measures Folder'[2. GDS (Period ARE Target) - Writing Int]), 7),
+				    ("Maths", NAMEOF('Measures Folder'[2. At or Above (Period ARE Target) - Maths Int]), 5),
+				    ("Reading", NAMEOF('Measures Folder'[2. At or Above (Period ARE Target) - Reading Int]), 3),
+				    ("Writing", NAMEOF('Measures Folder'[2. At or Above (Period ARE Target) - Writing Int]), 4),
+				    ("Maths", NAMEOF('Measures Folder'[2. WTS or Above (Period ARE Target) - Maths Int]), 2),
+				    ("Reading", NAMEOF('Measures Folder'[2. WTS or Above (Period ARE Target) - Reading Int]), 0),
+				    ("Writing", NAMEOF('Measures Folder'[2. WTS or Above (Period ARE Target) - Writing Int]), 1)
+				}
+
+	annotation PBI_Id = 5ab5626083d340a28288053cbe30e794
+

@@ -1,0 +1,59 @@
+table 'Chart of Accounts'
+	lineageTag: 31147cd1-8d77-4e30-88d7-8835021cbc62
+
+	column 'Core Nominal'
+		dataType: string
+		lineageTag: 321df3b6-db55-405c-9f73-74636e868e76
+		summarizeBy: none
+		sourceColumn: Core Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: 5e3c7ef8-381b-425e-ac91-f3d9978aeef9
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Management Grouping'
+		dataType: string
+		lineageTag: 8c23186f-b1ae-4d1c-8751-f174196c556d
+		summarizeBy: none
+		sourceColumn: Management Grouping
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Management Group Title'
+		dataType: string
+		lineageTag: 064811d5-9f78-4a82-9290-f6697b4de174
+		summarizeBy: none
+		sourceColumn: Management Group Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expense Department'
+		dataType: string
+		lineageTag: 72d75011-f3a6-458c-97d5-e6cff02356ae
+		summarizeBy: none
+		sourceColumn: Expense Department
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Chart of Accounts' = m
+		mode: import
+		queryGroup: Finance
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    #"Chart of Accounts" = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Chart of Accounts"]}[Data]
+				in
+				    #"Chart of Accounts"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

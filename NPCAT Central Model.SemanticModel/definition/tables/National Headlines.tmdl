@@ -1,0 +1,99 @@
+table 'National Headlines'
+	lineageTag: 801b4c08-e239-4744-9f19-46f25d54f551
+
+	column Demographic
+		dataType: string
+		lineageTag: fd85c08b-051a-4aa8-a598-c68bb841aa56
+		summarizeBy: none
+		sourceColumn: Demographic
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variable Description'
+		dataType: string
+		lineageTag: 142fe398-dc5f-4d37-b7c0-a64f47c89918
+		summarizeBy: none
+		sourceColumn: Variable Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 80bb7937-19fb-4e17-bb80-9a35b82e2aad
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: c7d52bb9-9226-4b31-8bb8-713b4e68aa88
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attainment 8'
+		dataType: double
+		lineageTag: 8baad347-2bf4-4516-b96b-097abe6c8ec7
+		summarizeBy: sum
+		sourceColumn: Attainment 8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Percentage
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b476262b-ed6d-4eb6-a5fb-dab5aee2c2fe
+		summarizeBy: sum
+		sourceColumn: Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Progress 8'
+		dataType: double
+		lineageTag: 5dae6d25-023b-4d0b-8c0a-ee867518d693
+		summarizeBy: sum
+		sourceColumn: Progress 8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column la_name
+		dataType: string
+		lineageTag: 44b9d7d0-464b-44b4-ac73-73bf774631e1
+		summarizeBy: none
+		sourceColumn: la_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: 21fa8fc4-fe7a-4217-b0c1-45faa773e742
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'National Headlines' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"367f4448-a928-4f2b-9233-266612d07dab" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="367f4448-a928-4f2b-9233-266612d07dab"]}[Data],
+				    #"National Headlines_" = #"367f4448-a928-4f2b-9233-266612d07dab"{[entity="National Headlines",version=""]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"National Headlines_", each ([la_name] = "National"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

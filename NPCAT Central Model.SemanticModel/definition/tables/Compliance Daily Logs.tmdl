@@ -1,0 +1,99 @@
+table 'Compliance Daily Logs'
+	lineageTag: f6657a33-3008-435b-aea0-026e930a349f
+
+	column 'Every ID'
+		dataType: string
+		lineageTag: bac86d0d-e7f5-414a-98ba-a58fb4a56af1
+		summarizeBy: none
+		sourceColumn: Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityTypeKey
+		dataType: string
+		lineageTag: aaecf9f9-7e59-4045-8ca3-c39333b9aa21
+		summarizeBy: none
+		sourceColumn: ActivityTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityRecordKey
+		dataType: string
+		isHidden
+		lineageTag: 4e70c837-000a-488f-be37-41a695d4def7
+		summarizeBy: none
+		sourceColumn: ActivityRecordKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 89631988-03ba-43b3-a4d6-6ba75ccb36e7
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Compliance Status'
+		dataType: string
+		lineageTag: 1f282b8c-3986-4277-979b-b77cd6074342
+		summarizeBy: none
+		sourceColumn: Compliance Status
+		sortByColumn: 'Compliance Status Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Compliance Status Sort'
+		dataType: string
+		lineageTag: e11413fc-8cf0-4978-9e7a-7e2b83378551
+		summarizeBy: none
+		sourceColumn: Compliance Status Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Overdue'
+		dataType: int64
+		formatString: 0
+		lineageTag: db7d4147-6670-44fb-bade-efbfb5b19897
+		summarizeBy: sum
+		sourceColumn: Days Overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Left'
+		dataType: int64
+		formatString: 0
+		lineageTag: 74e899e1-f87b-4aa3-8369-621da3d05566
+		summarizeBy: sum
+		sourceColumn: Days Left
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Awaiting Documentation'
+		dataType: int64
+		formatString: 0
+		lineageTag: baec2571-c477-4a67-ba86-02435897c267
+		summarizeBy: sum
+		sourceColumn: Days Awaiting Documentation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Compliance Daily Logs-a08819d3-3bfe-4c0a-a718-0a020e89960f' = m
+		mode: import
+		queryGroup: 'Every System\Compliance'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Compliance Date List" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Compliance Date List"]}[Data]
+				in
+				    #"Compliance Date List"
+
+	annotation PBI_ResultType = Table
+

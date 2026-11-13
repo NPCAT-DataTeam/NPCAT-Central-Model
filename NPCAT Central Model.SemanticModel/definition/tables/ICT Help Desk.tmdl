@@ -1,0 +1,172 @@
+table 'ICT Help Desk'
+	lineageTag: b37cfa8c-6663-4640-8ff3-997ad89e7973
+
+	column 'Ticket #'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0479796f-a733-49de-b866-cc0eb8ae527d
+		summarizeBy: none
+		sourceColumn: Ticket #
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By(Email)'
+		dataType: string
+		lineageTag: 5238adb9-3c02-40e3-8217-7ab55b277c2c
+		summarizeBy: none
+		sourceColumn: Created By(Email)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Summary
+		dataType: string
+		lineageTag: 8d8c2946-ff42-434c-8224-be36cdcb0182
+		summarizeBy: none
+		sourceColumn: Summary
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Create Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6cd6a06e-7a8a-41d1-a432-ff597f96edbe
+		summarizeBy: none
+		sourceColumn: Create Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Close Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f3f76f3c-a11a-45e7-afe2-e1c2881bdbcc
+		summarizeBy: none
+		sourceColumn: Close Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Status
+		dataType: string
+		lineageTag: a4d9bc5b-57bd-4a29-a5da-c9e8d5795055
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assigned to'
+		dataType: string
+		lineageTag: 5a7d3db6-00e3-45ba-9d36-d54998598671
+		summarizeBy: none
+		sourceColumn: Assigned to
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Open'
+		dataType: int64
+		formatString: 0
+		lineageTag: 92016b2b-194d-4fcb-8e01-1a62424ea93d
+		summarizeBy: none
+		sourceColumn: Hours Open
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Response Time (Mins)'
+		dataType: double
+		lineageTag: a5132d22-21c4-41d5-a703-764acbf470f5
+		summarizeBy: none
+		sourceColumn: First Response Time (Mins)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: 310d5320-b598-4b61-9bdb-4951d702e046
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created Hour (Working Day)'
+		dataType: string
+		lineageTag: 73d8bc7a-8b05-4c88-8b51-f869e1a7ecb8
+		summarizeBy: none
+		sourceColumn: Created Hour (Working Day)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By(Username)'
+		dataType: string
+		lineageTag: b707d56c-4d2e-4767-86b9-7a328adc4f9e
+		summarizeBy: none
+		sourceColumn: Created By(Username)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Opened' =
+			
+			VAR Weekdaynum = WEEKDAY('ICT Help Desk'[Create Date],2)
+			Return
+			SWITCH(Weekdaynum,
+			1,"Monday",
+			2,"Tuesday",
+			3,"Wednesday",
+			4,"Thursday",
+			5,"Friday",
+			6,"Saturday",
+			7,"Sunday"
+			)
+		lineageTag: 421ec75a-ffe5-4a50-876c-ff0de2ae0798
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 17fffe51-a532-42a2-98f5-2dbeb6356288
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Working Hours'
+		dataType: double
+		lineageTag: 31815d0a-4021-4b86-aff4-896d17ef57d6
+		summarizeBy: none
+		sourceColumn: Total Working Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Working Response Time Minutes'
+		dataType: double
+		lineageTag: 59c5e2d7-d0ea-45a0-8f64-a5d0b8c7e11c
+		summarizeBy: none
+		sourceColumn: Working Response Time Minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'ICT Help Desk-6d440147-e26b-4597-938a-20bcb8934520' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"186393c6-7e8f-4791-b385-5ce643b35c11" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="186393c6-7e8f-4791-b385-5ce643b35c11"]}[Data],
+				    #"ICT Help Desk1" = #"186393c6-7e8f-4791-b385-5ce643b35c11"{[entity="ICT Help Desk"]}[Data]
+				in
+				    #"ICT Help Desk1"
+
+	annotation PBI_QueryRelationships = {"columnCount":19,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/ICT Help Desk/ICT Help Desk1.{Ticket #,0}","Section1/ICT Help Desk/ICT Help Desk1.{Created By(Email),1}","Section1/ICT Help Desk/ICT Help Desk1.{Summary,2}","Section1/ICT Help Desk/ICT Help Desk1.{Related to,3}","Section1/ICT Help Desk/ICT Help Desk1.{Create Date,4}","Section1/ICT Help Desk/ICT Help Desk1.{Close Date,5}","Section1/ICT Help Desk/ICT Help Desk1.{Status,6}","Section1/ICT Help Desk/ICT Help Desk1.{Days Open,7}","Section1/ICT Help Desk/ICT Help Desk1.{Assigned to,8}","Section1/ICT Help Desk/ICT Help Desk1.{Hours Open,9}","Section1/ICT Help Desk/ICT Help Desk1.{Site Location,10}","Section1/ICT Help Desk/ICT Help Desk1.{Total Hours,11}","Section1/ICT Help Desk/ICT Help Desk1.{Total Days,12}","Section1/ICT Help Desk/ICT Help Desk1.{First Response Time (Mins),13}","Section1/ICT Help Desk/ICT Help Desk1.{Created Hour,14}","Section1/ICT Help Desk/ICT Help Desk1.{Created Hour (Working Day),15}","Section1/ICT Help Desk/ICT Help Desk1.{SUID,16}","Section1/ICT Help Desk/ICT Help Desk1.{Category,17}","Section1/ICT Help Desk/ICT Help Desk1.{Created By(Username),18}"],"ColumnCount":19,"KeyColumnNames":[],"ColumnIdentities":["Section1/ICT Help Desk/ICT Help Desk1.{Ticket #,0}","Section1/ICT Help Desk/ICT Help Desk1.{Created By(Email),1}","Section1/ICT Help Desk/ICT Help Desk1.{Summary,2}","Section1/ICT Help Desk/ICT Help Desk1.{Related to,3}","Section1/ICT Help Desk/ICT Help Desk1.{Create Date,4}","Section1/ICT Help Desk/ICT Help Desk1.{Close Date,5}","Section1/ICT Help Desk/ICT Help Desk1.{Status,6}","Section1/ICT Help Desk/ICT Help Desk1.{Days Open,7}","Section1/ICT Help Desk/ICT Help Desk1.{Assigned to,8}","Section1/ICT Help Desk/ICT Help Desk1.{Hours Open,9}","Section1/ICT Help Desk/ICT Help Desk1.{Site Location,10}","Section1/ICT Help Desk/ICT Help Desk1.{Total Hours,11}","Section1/ICT Help Desk/ICT Help Desk1.{Total Days,12}","Section1/ICT Help Desk/ICT Help Desk1.{First Response Time (Mins),13}","Section1/ICT Help Desk/ICT Help Desk1.{Created Hour,14}","Section1/ICT Help Desk/ICT Help Desk1.{Created Hour (Working Day),15}","Section1/ICT Help Desk/ICT Help Desk1.{SUID,16}","Section1/ICT Help Desk/ICT Help Desk1.{Category,17}","Section1/ICT Help Desk/ICT Help Desk1.{Created By(Username),18}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

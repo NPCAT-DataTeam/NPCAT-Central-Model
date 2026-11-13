@@ -1,0 +1,389 @@
+table 'Primary Nationals Calc'
+	lineageTag: 205c374e-81f4-4db1-8302-cf8512e63bde
+
+	calculationGroup
+		precedence: 9
+
+		calculationItem 'School Value into KPI' =
+				
+				IF(ISBLANK(SELECTEDMEASURE()),"N/A",SELECTEDMEASURE())
+
+		calculationItem 'National or LA Value' = ```
+				
+				VAR _NatVsLA =
+				    IF (
+				        SELECTEDVALUE ( 'zP Primary Nat vs LA'[Nat or LA] ) = "National",
+				        "",
+				        SELECTEDVALUE ( 'School Database'[Local Authority] )
+				    )
+				
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				
+				VAR _SelectedMeasure =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        SUBSTITUTE ( SELECTEDMEASURENAME (), "Primary Conditional Formatting ", "" ),
+				        SELECTEDMEASURENAME ()
+				    )
+				VAR _ValuePercentage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Nationals'[Percentage] ),
+				        'Primary Nationals'[Demographic] = _DemoVsNat,
+				        'Primary Nationals'[LA Name] = _NatVsLA,
+				        'Primary National Measures'[Central Model Measure Name] = _SelectedMeasure
+				    )
+				VAR _ValueAverage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Nationals'[Average] ),
+				        'Primary Nationals'[Demographic] = _DemoVsNat,
+				        'Primary Nationals'[LA Name] = _NatVsLA,
+				        'Primary National Measures'[Central Model Measure Name] = _SelectedMeasure
+				    )
+				VAR _Value =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "%" ),
+				        _ValuePercentage,
+				        _ValueAverage
+				    )
+				RETURN
+				
+				    IF ( ISBLANK ( _Value ), "N/A", _Value )
+				```
+
+		calculationItem Difference =
+				
+				VAR _NatOrLA = IF (
+				        SELECTEDVALUE ( 'zP Primary Nat vs LA'[Nat or LA] ) = "Trust",
+				        CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "Trust"),
+				        CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "National or LA Value")
+				    )
+				
+				VAR _School = CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "School Value into KPI")
+				
+				RETURN
+				IF(OR((_School="N/A"),(_NatOrLA="N/A")),BLANK(),_School-_NatOrLA)
+
+		calculationItem 'Primary KPI' =
+				
+				VAR _NatOrLA =     IF (
+				        SELECTEDVALUE ( 'zP Primary Nat vs LA'[Nat or LA] ) = "Trust",
+				        CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "Trust"),
+				        CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "National or LA Value")
+				    )
+				VAR _School = CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "School Value into KPI")
+				
+				VAR _ConditionalDifference = IF(OR((_School ="N/A"),OR(_NatOrLA="N/A",ISBLANK(_NatOrLA))),404,_School-_NatOrLA)
+				
+				VAR _Difference = IF(OR((_School ="N/A"),OR(_NatOrLA="N/A",ISBLANK(_NatOrLA))),"",_School-_NatOrLA)
+				
+				VAR _Operator =
+				    IF(_Difference="","",IF ( _Difference > 0, " +", " " ))
+				RETURN
+				IF(AND(CONTAINSSTRING(SELECTEDMEASURENAME(),"No."),CONTAINSSTRING(SELECTEDMEASURENAME(),"Pupil")),SELECTEDMEASURE(),
+				    IF (
+				         ( _NatOrLA = "N/A" ) &&  ( _School = "N/A" ),
+				        BLANK(),
+				        IF (
+				            CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				            _ConditionalDifference,
+				            FORMAT ( _School, SELECTEDMEASUREFORMATSTRING () ) & UNICHAR ( 10 ) & "("
+				                & FORMAT ( _NatOrLA, SELECTEDMEASUREFORMATSTRING () ) & ")" & _Operator
+				                & FORMAT ( _Difference, SELECTEDMEASUREFORMATSTRING () )
+				        )
+				    )
+				)
+
+		calculationItem School = ```
+				
+				// VAR _DemoVsNat = 
+				//     IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				//     "All Students",
+				//     SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				//     )
+				// RETURN
+				//Single School Trend
+				    IF (  ISBLANK(SELECTEDVALUE('School Database'[School Short Name])),
+				        BLANK(),
+				            SELECTEDMEASURE()
+				    )
+				```
+
+		calculationItem Trust = ```
+				
+				// Trend code for Trust
+				//CALCULATE(SELECTEDMEASURE(),REMOVEFILTERS('School Database'))
+				
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				
+				VAR _SelectedMeasure =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        SUBSTITUTE ( SELECTEDMEASURENAME (), "Primary Conditional Formatting ", "" ),
+				        SELECTEDMEASURENAME ()
+				    )
+				VAR _ValuePercentage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Trust Averages'[Percentage] ),
+				        'Primary Trust Averages'[Demographic Name] = _DemoVsNat,
+				        'Primary Trust Averages'[Measure Name] = _SelectedMeasure
+				    )
+				VAR _ValueAverage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Trust Averages'[Average] ),
+				        'Primary Trust Averages'[Demographic Name] = _DemoVsNat,
+				        'Primary Trust Averages'[Measure Name] = _SelectedMeasure
+				    )
+				VAR _Value =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "%" ),
+				        _ValuePercentage,
+				        _ValueAverage
+				    )
+				RETURN
+				
+				    IF ( ISBLANK ( _Value ), BLANK(), _Value )
+				```
+
+		calculationItem LA = ```
+				
+				VAR _SelectedMeasure =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        SUBSTITUTE ( SELECTEDMEASURENAME (), "Primary Conditional Formatting ", "" ),
+				        SELECTEDMEASURENAME ()
+				    )
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				VAR _LA = IF(ISBLANK(SELECTEDVALUE('School Database'[Local Authority])),"204",SELECTEDVALUE('School Database'[Local Authority]))
+				VAR _ValuePercentage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Nationals'[Percentage] ),
+				        'Primary Nationals'[Demographic]
+				            = _DemoVsNat,
+				        'Primary Nationals'[LA Name] = _LA,
+				        'Primary National Measures'[Central Model Measure Name] = _SelectedMeasure
+				    )
+				VAR _ValueAverage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Nationals'[Average] ),
+				        'Primary Nationals'[Demographic]
+				            = _DemoVsNat,
+				        'Primary Nationals'[LA Name] = _LA,
+				        'Primary National Measures'[Central Model Measure Name] = _SelectedMeasure
+				    )
+				VAR _Value =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "%" ),
+				        _ValuePercentage,
+				        _ValueAverage
+				    )
+				RETURN
+				
+				    IF ( ISBLANK ( _Value ), BLANK(), _Value )
+				```
+
+		calculationItem National = ```
+				
+				VAR _SelectedMeasure =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        SUBSTITUTE ( SELECTEDMEASURENAME (), "Primary Conditional Formatting ", "" ),
+				        SELECTEDMEASURENAME ()
+				    )
+				
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				
+				VAR _ValuePercentage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Nationals'[Percentage] ),
+				        'Primary Nationals'[Demographic]
+				            = _DemoVsNat,
+				        'Primary Nationals'[LA Name] = "",
+				        'Primary National Measures'[Central Model Measure Name] = _SelectedMeasure
+				    )
+				VAR _ValueAverage =
+				    CALCULATE (
+				        AVERAGE ( 'Primary Nationals'[Average] ),
+				        'Primary Nationals'[Demographic]
+				            = _DemoVsNat,
+				        'Primary Nationals'[LA Name] = "",
+				        'Primary National Measures'[Central Model Measure Name] = _SelectedMeasure
+				    )
+				VAR _Value =
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "%" ),
+				        _ValuePercentage,
+				        _ValueAverage
+				    )
+				RETURN
+				
+				    IF ( ISBLANK ( _Value ), BLANK(), _Value )
+				```
+
+		calculationItem 'School Value' =
+				
+				VAR _NatOrLA = CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "National or LA Value")
+				
+				VAR _School = CALCULATE(SELECTEDMEASURE(),'Primary Nationals Calc'[Name] = "School Value into KPI")
+				VAR _ConditionalDifference = IF(OR((_School ="N/A"),(_NatOrLA="N/A")),404,_School-_NatOrLA)
+				RETURN
+				IF (
+				            CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				            _ConditionalDifference,
+				IF(ISBLANK(SELECTEDMEASURE()),"N/A",SELECTEDMEASURE()))
+
+		calculationItem 'Vs National' = ```
+				
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				VAR __SchoolValue = 
+				CALCULATE ( SELECTEDMEASURE (), 'Primary Nationals Calc'[Name] = "School")
+				
+				VAR __NationalValue = 
+				CALCULATE ( SELECTEDMEASURE (), 'Primary Nationals Calc'[Name] = "National", 'Dynamic student Calc group'[Demographic Name] = _DemoVsNat )
+				
+				VAR __ConditionalSchoolValue =
+				CALCULATE(
+				    IF(CONTAINSSTRING(SELECTEDMEASURENAME(),"%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0")
+				    ),
+				    'Primary Nationals Calc'[Name] = "School" )
+				VAR __ConditionalNationalValue =
+				CALCULATE(
+				    IF(CONTAINSSTRING(SELECTEDMEASURENAME(),"%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0")
+				    ),
+				    'Primary Nationals Calc'[Name] = "National",
+				    'Dynamic student Calc group'[Demographic Name] = _DemoVsNat
+				)
+				RETURN
+				IF(
+				    CONTAINSSTRING(SELECTEDMEASURENAME(),"Primary Conditional Formatting"),
+				    "School: "&__ConditionalSchoolValue & UNICHAR ( 10 ) & "National: "& __ConditionalNationalValue,
+				    IF (
+				        OR ( ISBLANK ( __SchoolValue ), ISBLANK ( __NationalValue ) ),
+				        BLANK (),
+				        __SchoolValue - __NationalValue
+				    )
+				)
+				```
+
+		calculationItem 'Vs LA' = ```
+				
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				VAR __SchoolValue = 
+				CALCULATE ( SELECTEDMEASURE (), 'Primary Nationals Calc'[Name] = "School")
+				
+				VAR __LAValue =
+				    CALCULATE ( SELECTEDMEASURE (), 'Primary Nationals Calc'[Name] = "LA", 'Dynamic student Calc group'[Demographic Name] = _DemoVsNat  )
+				VAR __ConditionalSchoolValue =
+				CALCULATE(
+				    IF(CONTAINSSTRING(SELECTEDMEASURENAME(),"%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0")
+				    ),
+				    'Primary Nationals Calc'[Name] = "School" )
+				VAR __ConditionalLAValue =
+				CALCULATE(
+				    IF(CONTAINSSTRING(SELECTEDMEASURENAME(),"%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0")
+				    ),
+				    'Primary Nationals Calc'[Name] = "LA",
+				    'Dynamic student Calc group'[Demographic Name] = _DemoVsNat
+				)
+				RETURN
+				IF(
+				    CONTAINSSTRING(SELECTEDMEASURENAME(),"Primary Conditional Formatting"),
+				    "School: "&__ConditionalSchoolValue & UNICHAR ( 10 ) & "LA: "& __ConditionalLAValue,
+				    IF (
+				        OR ( ISBLANK ( __SchoolValue ), ISBLANK ( __LAValue ) ),
+				        BLANK (),
+				        __SchoolValue - __LAValue
+				    )
+				)
+				  
+				```
+
+		calculationItem 'Vs Trust' = ```
+				
+				VAR _DemoVsNat = 
+				    IF ( SELECTEDVALUE('zP Demographic vs Nat value'[Demo vs Nat]) = "Vs All Students" ,
+				    "All Students",
+				    SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+				    )
+				VAR __SchoolValue = 
+				CALCULATE ( SELECTEDMEASURE (), 'Primary Nationals Calc'[Name] = "School")
+				
+				VAR __TrustValue =
+				    CALCULATE ( SELECTEDMEASURE (), 'Primary Nationals Calc'[Name] = "Trust", 'Dynamic student Calc group'[Demographic Name] = _DemoVsNat  )
+				VAR __ConditionalSchoolValue =
+				CALCULATE(
+				    IF(CONTAINSSTRING(SELECTEDMEASURENAME(),"%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0")
+				    ),
+				    'Primary Nationals Calc'[Name] = "School" )
+				VAR __ConditionalTrustValue =
+				CALCULATE(
+				    IF(CONTAINSSTRING(SELECTEDMEASURENAME(),"%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0%"),
+				        FORMAT(SELECTEDMEASURE (),"0.0")
+				    ),
+				    'Primary Nationals Calc'[Name] = "Trust",
+				    'Dynamic student Calc group'[Demographic Name] = _DemoVsNat
+				)
+				RETURN
+				IF(
+				    CONTAINSSTRING(SELECTEDMEASURENAME(),"Primary Conditional Formatting"),
+				    "School: "&__ConditionalSchoolValue & UNICHAR ( 10 ) & "Trust: "& __ConditionalTrustValue,
+				    IF (
+				        OR ( ISBLANK ( __SchoolValue ), ISBLANK ( __TrustValue ) ),
+				        BLANK (),
+				        __SchoolValue - __TrustValue
+				    )
+				)
+				```
+
+	column Name
+		dataType: string
+		lineageTag: 14ceb817-e32b-4868-8ccd-6bceac8842b6
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: b3a69027-01ec-4bd5-a2e5-b8da93813b20
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

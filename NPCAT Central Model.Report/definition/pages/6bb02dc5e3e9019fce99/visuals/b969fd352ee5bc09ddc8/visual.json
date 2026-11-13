@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b969fd352ee5bc09ddc8",
+  "position": {
+    "x": 982.370820668693,
+    "y": 73.9209726443769,
+    "z": 2,
+    "height": 76.838905775075986,
+    "width": 192.58358662613983
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Communication and Interaction CY"
+                }
+              },
+              "queryRef": "Measures Folder.Communication and Interaction CY",
+              "nativeQueryRef": "Communication and Interaction CY"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "39b2d0d816b7224dd1f7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Communication and Interaction CY"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

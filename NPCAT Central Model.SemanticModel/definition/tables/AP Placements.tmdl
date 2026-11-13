@@ -1,0 +1,216 @@
+table 'AP Placements'
+	lineageTag: 8f29d8e5-a9ca-471e-8b9a-b3004f03815f
+
+	column ALTERNATIVE_PROVISION_PLACEMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 05be71e5-5ead-4090-952f-86b0db9ea832
+		summarizeBy: none
+		sourceColumn: ALTERNATIVE_PROVISION_PLACEMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: f8d30104-c052-4f68-b88e-a0b6eb4a5b15
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: fbdcc054-459d-493a-ad40-b53d8ec2477c
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EDUCATIONAL_INSTITUTION_UNIQUE_ID
+		dataType: string
+		lineageTag: c495ded9-0fdf-4ee3-8f84-a08cd875d444
+		summarizeBy: none
+		sourceColumn: EDUCATIONAL_INSTITUTION_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 56168e2e-6b59-4170-ac9f-e4ea7a5c2e42
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ecab8fc7-fa49-4f1f-92d9-29996d7f0a84
+		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Setting Type'
+		dataType: string
+		lineageTag: 8af0f437-92b9-4321-bc9a-208110343696
+		summarizeBy: none
+		sourceColumn: Setting Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance Pattern'
+		dataType: string
+		lineageTag: 6f1ea20e-ec44-4092-bbf3-7dbc69f56d35
+		summarizeBy: none
+		sourceColumn: Attendance Pattern
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sessions per Week'
+		dataType: double
+		lineageTag: 5a332b93-33fa-4413-816c-89ccc281ca3c
+		summarizeBy: sum
+		sourceColumn: Sessions per Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'AP Reason'
+		dataType: string
+		lineageTag: cac4e2e7-5734-4575-a99f-68b228f1c163
+		summarizeBy: none
+		sourceColumn: AP Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP Reason Code'
+		dataType: string
+		lineageTag: 3bb347a0-2901-4164-9320-ed56028af816
+		summarizeBy: none
+		sourceColumn: AP Reason Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMPANY_UNIQUE_ID
+		dataType: string
+		lineageTag: 19a43f40-07ac-4517-9ca9-f4cb2de8aa6c
+		summarizeBy: none
+		sourceColumn: COMPANY_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company Name'
+		dataType: string
+		lineageTag: b41d991f-550a-478b-9dfd-a168c3411f66
+		summarizeBy: none
+		sourceColumn: Company Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company Reg Number'
+		dataType: string
+		lineageTag: 8a71f538-208f-460d-b995-0123ce81a078
+		summarizeBy: none
+		sourceColumn: Company Reg Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP School Name'
+		dataType: string
+		lineageTag: 70e3c545-d33c-4410-aca3-10b9c9653d5f
+		summarizeBy: none
+		sourceColumn: AP School Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LA Name'
+		dataType: string
+		lineageTag: 52e17faa-614e-4541-adec-28165bbe814d
+		summarizeBy: none
+		sourceColumn: LA Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Type'
+		dataType: string
+		lineageTag: bf748a7f-13c6-49ca-acc2-6b332f384874
+		summarizeBy: none
+		sourceColumn: School Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: 198921bb-8304-40bc-8273-fe357043ba79
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'STUDENT UNIQUE YEAR ID'
+		dataType: string
+		lineageTag: 68e6fcdc-17aa-4458-8a7a-4ca9512d7196
+		summarizeBy: none
+		sourceColumn: STUDENT UNIQUE YEAR ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Current'
+		dataType: string
+		lineageTag: 81323a49-9b29-46aa-b1e4-75ee95ad22a2
+		summarizeBy: none
+		sourceColumn: Is Current
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Placement Checker'
+		dataType: string
+		lineageTag: 6002c1ed-5110-4d44-a93c-25f1b8c8cf22
+		summarizeBy: none
+		sourceColumn: Placement Checker
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP Reason (Short)'
+		dataType: string
+		lineageTag: 44eed3d5-7a45-4064-8c87-a9bd3a53179e
+		summarizeBy: none
+		sourceColumn: AP Reason (Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP Name'
+		dataType: string
+		lineageTag: e1873595-ed18-44c4-a1a5-c586810d8c21
+		summarizeBy: none
+		sourceColumn: AP Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'AP Placements' = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"934b8a2d-49b8-483f-b74f-7a62d47f97b6" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="934b8a2d-49b8-483f-b74f-7a62d47f97b6"]}[Data],
+				    #"AP Placements_" = #"934b8a2d-49b8-483f-b74f-7a62d47f97b6"{[entity="AP Placements",version=""]}[Data],
+				    #"Added Custom" = Table.AddColumn(#"AP Placements_", "Academic Year", each if Date.Month([Start Date]) >= 9
+				    then Date.Year([Start Date])
+				    else Date.Year([Start Date]) - 1),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Added Custom", "STUDENT UNIQUE YEAR ID", each Text.Combine({[STUDENT_UNIQUE_ID], Text.From([Academic Year], "en-GB")}, "-"), type text)
+				in
+				    #"Inserted Merged Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

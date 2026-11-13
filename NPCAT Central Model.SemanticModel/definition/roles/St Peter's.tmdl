@@ -1,0 +1,11 @@
+role 'St Peter''s'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT21"
+
+	tablePermission 'AP-Grade Type' = [Grade Type] <> "Mock"
+
+	tablePermission 'Secondary QA Permissions' = 'Secondary QA Permissions'[Visible to ID] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = 89cba88aaa9044c788e140401e2e5436
+

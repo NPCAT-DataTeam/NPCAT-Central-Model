@@ -1,0 +1,1145 @@
+table 'Employee Job Roles'
+	lineageTag: 282836b6-301d-49dc-8e4d-6636227b3fba
+
+	column 'Every School ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c6621d0-d694-4fb9-afab-d5e190e288db
+		summarizeBy: count
+		sourceColumn: Every School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Every ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd911f5b-1fce-4417-bb30-dab9aa71b2a9
+		summarizeBy: count
+		sourceColumn: Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4500a2d6-5231-4d89-944c-47ccd60b9768
+		summarizeBy: count
+		sourceColumn: Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NI Number'
+		dataType: string
+		lineageTag: 57e1c3ce-640d-43ed-b317-f94d8bf1f2bf
+		summarizeBy: none
+		sourceColumn: NI Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post ID / Contract Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: d27bec5e-0711-469e-835e-c5a86d883aec
+		summarizeBy: sum
+		sourceColumn: Post ID / Contract Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Title'
+		dataType: string
+		lineageTag: 454f60a2-3788-4a4b-b8fc-3ce4fcb5f68b
+		summarizeBy: none
+		sourceColumn: Job Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type of Post'
+		dataType: string
+		lineageTag: afdc517f-8695-4fff-a88d-154a11cc1d92
+		summarizeBy: none
+		sourceColumn: Type of Post
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status (Current Staff etc)'
+		dataType: string
+		lineageTag: 1a81b443-0ba4-4f48-8f8d-eab4009f1428
+		summarizeBy: none
+		sourceColumn: Status (Current Staff etc)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Role Identifier'
+		dataType: string
+		lineageTag: bebe9029-a8b9-4273-ba2d-ed9b42ac4809
+		summarizeBy: none
+		sourceColumn: Role Identifier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Description'
+		dataType: string
+		lineageTag: e599a752-a25b-4e70-baa8-7ed24ed24358
+		summarizeBy: none
+		sourceColumn: Job Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 87c51f53-dbfb-4905-ac32-b7d5d9803ac1
+		summarizeBy: none
+		sourceColumn: Post Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Post End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7d15df22-738c-408a-9372-4073ad623d81
+		summarizeBy: none
+		sourceColumn: Post End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Origin
+		dataType: string
+		lineageTag: 36fc9c6f-5dce-4eae-ab3a-6ab871c5fd8b
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination
+		dataType: string
+		lineageTag: eabdf950-c745-40de-b05b-4ff06dd756ec
+		summarizeBy: none
+		sourceColumn: Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: ddf6a5ca-5d58-4947-bb1d-e268b29e9541
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Manager Email'
+		dataType: string
+		lineageTag: a34f154f-2550-4c30-94a8-386746b0a50f
+		summarizeBy: none
+		sourceColumn: Line Manager Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line manager NI Number'
+		dataType: string
+		lineageTag: 190ffe3a-fb6e-4868-9914-aadebf538948
+		summarizeBy: none
+		sourceColumn: Line manager NI Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line manager Every ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a1792b4-bf2f-44c7-a475-935eb9e41389
+		summarizeBy: count
+		sourceColumn: Line manager Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Property Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bf927e81-6519-4eb6-abed-896a2c8dac2e
+		summarizeBy: none
+		sourceColumn: Property Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Contract Agreement Type'
+		dataType: string
+		lineageTag: d4c5b539-6620-496a-880e-d781a9f83609
+		summarizeBy: none
+		sourceColumn: Contract Agreement Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Length of Service'
+		dataType: string
+		lineageTag: 844d0d3f-cf05-4f1e-9638-28da23b39c62
+		summarizeBy: none
+		sourceColumn: Length of Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Hour Type'
+		dataType: string
+		lineageTag: 8511e084-26ae-477b-abc6-df68992bb74b
+		summarizeBy: none
+		sourceColumn: Contract Hour Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Notice Period (Number)'
+		dataType: string
+		lineageTag: 7cf26b59-febb-4fd1-b821-2666042cfc5e
+		summarizeBy: none
+		sourceColumn: Notice Period (Number)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Notice Period (Months/Days/Weeks/Term)'
+		dataType: string
+		lineageTag: e2497097-4558-42d9-a4a0-4e4105b2b262
+		summarizeBy: none
+		sourceColumn: Notice Period (Months/Days/Weeks/Term)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Holiday Entitlement (Number)'
+		dataType: int64
+		formatString: 0
+		lineageTag: edf411dc-519d-49f1-9e2a-9911c6b8754b
+		summarizeBy: sum
+		sourceColumn: Holiday Entitlement (Number)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Holiday Entitlement (Days/Hours)'
+		dataType: string
+		lineageTag: 26db5e17-5431-4bbd-b725-83aead0d4e93
+		summarizeBy: none
+		sourceColumn: Holiday Entitlement (Days/Hours)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bank Holidays'
+		dataType: string
+		lineageTag: 8c24043c-9d3a-417d-b612-3d8d5adc260f
+		summarizeBy: none
+		sourceColumn: Bank Holidays
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sick Leave Policy'
+		dataType: string
+		lineageTag: 1a109809-2db1-4d23-aefd-7fd8fec2fe2c
+		summarizeBy: none
+		sourceColumn: Sick Leave Policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salary
+		dataType: double
+		lineageTag: 3a2463ce-e59f-425e-96b0-33e9bc876454
+		summarizeBy: sum
+		sourceColumn: Salary
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Contract Hours'
+		dataType: double
+		lineageTag: 65830f80-69ea-4dea-a055-e38dbc677209
+		summarizeBy: sum
+		sourceColumn: Contract Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Contract Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: f3f8cefc-3aad-4c04-a06e-8db4aa5cd776
+		summarizeBy: sum
+		sourceColumn: Contract Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Salary'
+		dataType: double
+		lineageTag: e4f7dbb6-d42e-4319-9cb4-845506b9d655
+		summarizeBy: sum
+		sourceColumn: FTE Salary
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE Hours'
+		dataType: double
+		lineageTag: 4fecb3ff-2c9a-47f3-847d-41554e772cf1
+		summarizeBy: sum
+		sourceColumn: FTE Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Pay Range'
+		dataType: string
+		lineageTag: 28856b06-0731-4e7c-9121-ec799f1bfb15
+		summarizeBy: none
+		sourceColumn: Pay Range
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pay Scale'
+		dataType: string
+		lineageTag: e9e4eac3-31af-42d0-bada-cab7b6c19058
+		summarizeBy: none
+		sourceColumn: Pay Scale
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Weeks'
+		dataType: double
+		lineageTag: a17cb3c6-eba4-4190-9e1d-5c58230b5c8a
+		summarizeBy: sum
+		sourceColumn: Working Weeks
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paid Weeks'
+		dataType: double
+		lineageTag: 371c3fee-f79c-4be1-8915-f92498e20c8a
+		summarizeBy: sum
+		sourceColumn: Paid Weeks
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paid For'
+		dataType: double
+		lineageTag: 158a72aa-55d0-4b2a-a14d-f26467674a36
+		summarizeBy: sum
+		sourceColumn: Paid For
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Payroll Number'
+		dataType: string
+		lineageTag: 033ed72b-d963-4331-b389-b290dd0a1259
+		summarizeBy: none
+		sourceColumn: Payroll Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarded Salary'
+		dataType: string
+		lineageTag: 08a77f3f-2cc3-4f22-abf1-fedd3c2cb0d5
+		summarizeBy: none
+		sourceColumn: Safeguarded Salary
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Eligible for Pay Progression'
+		dataType: string
+		lineageTag: c29a159c-36b9-473e-aee0-eec5118277b2
+		summarizeBy: none
+		sourceColumn: Eligible for Pay Progression
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Code'
+		dataType: string
+		lineageTag: ba0f4d9a-517d-431f-9a9f-fc2eee107365
+		summarizeBy: none
+		sourceColumn: Tax Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agency Staff'
+		dataType: string
+		lineageTag: 7b994820-920e-4999-b986-5847fb5756dc
+		summarizeBy: none
+		sourceColumn: Agency Staff
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Rate'
+		dataType: string
+		lineageTag: 5b90e8e6-bf9f-4117-a4d2-f1b7e811fd61
+		summarizeBy: none
+		sourceColumn: Day Rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pension Provider'
+		dataType: string
+		lineageTag: 59175224-c86b-44cc-8adf-10a80cf2f6b4
+		summarizeBy: none
+		sourceColumn: Pension Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pension Account Number'
+		dataType: string
+		lineageTag: baa7186c-4271-4e9b-8a4f-ee0329869fb2
+		summarizeBy: none
+		sourceColumn: Pension Account Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pension Contribution Rate'
+		dataType: string
+		lineageTag: 7c4ff432-3691-47e3-aab3-f9d8c1622153
+		summarizeBy: none
+		sourceColumn: Pension Contribution Rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employer Contribution Rate'
+		dataType: string
+		lineageTag: 6d754e77-64d8-4a8e-944f-6b474333e4fb
+		summarizeBy: none
+		sourceColumn: Employer Contribution Rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Auto Enrolment Opt out Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1d4e3827-3ca5-4a22-955f-2b8452dc608e
+		summarizeBy: none
+		sourceColumn: Auto Enrolment Opt out Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date joined Scheme'
+		dataType: string
+		lineageTag: d0e51e4c-1bd5-4c8f-b51c-a7475328145e
+		summarizeBy: none
+		sourceColumn: Date joined Scheme
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Probation End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f62aad61-4284-4eb4-8508-e63af3e98dd3
+		summarizeBy: none
+		sourceColumn: Probation End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Probation Passed'
+		dataType: string
+		lineageTag: 4be25eba-cb25-4f52-ae87-9d754f15a186
+		summarizeBy: none
+		sourceColumn: Probation Passed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Probation Extended'
+		dataType: string
+		lineageTag: f324d264-0e82-470f-8cab-3f05ce4af405
+		summarizeBy: none
+		sourceColumn: Probation Extended
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extended Probation Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 75804c13-d492-429d-a470-56bd725b31aa
+		summarizeBy: none
+		sourceColumn: Extended Probation Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Included in the Workforce Census'
+		dataType: string
+		lineageTag: f65c7be1-820f-4831-aea7-ecd4f62e6697
+		summarizeBy: none
+		sourceColumn: Included in the Workforce Census
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Ratio'
+		dataType: double
+		lineageTag: 6d4ed3cf-9040-4988-86ed-8893bf6cffc2
+		summarizeBy: sum
+		sourceColumn: FTE Ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Employee Key'
+		dataType: string
+		isHidden
+		lineageTag: 6880987c-69de-49d1-a623-82ebddafc006
+		summarizeBy: none
+		sourceColumn: Employee Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calculated FTE Ratio'
+		dataType: double
+		lineageTag: bc23e55e-b23a-4994-88a5-50f6b4d0a30e
+		summarizeBy: sum
+		sourceColumn: Calculated FTE Ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE Check'
+		dataType: string
+		lineageTag: e5117ab5-2a96-4a7c-a469-c0529d59d3f8
+		summarizeBy: none
+		sourceColumn: FTE Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post Type (Inc Leadership)'
+		dataType: string
+		lineageTag: fd402627-3c2e-4548-9140-80a6f6fad284
+		summarizeBy: none
+		sourceColumn: Post Type (Inc Leadership)
+		sortByColumn: 'Post Type (Inc Leadership) Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post Type'
+		dataType: string
+		lineageTag: 6f280035-aa37-488c-82f1-d1bbf1366b85
+		summarizeBy: none
+		sourceColumn: Post Type
+		sortByColumn: 'Post Type Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post Type (Inc Leadership) Sort'
+		dataType: double
+		lineageTag: 184528d4-0f07-48ed-85fc-56a8cd590587
+		summarizeBy: sum
+		sourceColumn: Post Type (Inc Leadership) Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Post Type Sort'
+		dataType: double
+		lineageTag: 93e4dd03-97da-4139-9596-8755bd54e002
+		summarizeBy: sum
+		sourceColumn: Post Type Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Starter Type'
+		dataType: string
+		lineageTag: 6e77dbd2-3d4c-48aa-a7bd-cffcf60cd005
+		summarizeBy: none
+		sourceColumn: Starter Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Years in Post'
+		dataType: double
+		lineageTag: 43fb938e-e367-4838-9950-09166e226863
+		summarizeBy: sum
+		sourceColumn: Years in Post
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Years in Post Brackets'
+		dataType: string
+		lineageTag: cb6eae17-35af-4745-8d55-55faef8a8a6b
+		summarizeBy: none
+		sourceColumn: Years in Post Brackets
+		sortByColumn: 'Years in Post Bracketed Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Years in Post Bracketed Sort'
+		dataType: double
+		lineageTag: fcb33d2b-0bde-4005-8d0d-8e4ea5e41827
+		summarizeBy: sum
+		sourceColumn: Years in Post Bracketed Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Salary Brackets'
+		dataType: string
+		lineageTag: 1b31fc38-6030-420b-9f70-c901c9c8ce97
+		summarizeBy: none
+		sourceColumn: Salary Brackets
+		sortByColumn: 'Salary Brackets (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Salary Brackets'
+		dataType: string
+		lineageTag: e9e8d191-d964-4f46-8ef4-54320d8c2265
+		summarizeBy: none
+		sourceColumn: FTE Salary Brackets
+		sortByColumn: 'FTE Salary Brackets (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hourly Pay'
+		dataType: double
+		lineageTag: b15a6fb1-5e69-4091-93b9-08129fe374e6
+		summarizeBy: sum
+		sourceColumn: Hourly Pay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Hourly Pay Brackets'
+		dataType: string
+		lineageTag: c546c8d9-df20-4ce9-9bd1-f06258c8d937
+		summarizeBy: none
+		sourceColumn: Hourly Pay Brackets
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Birth'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0c523b71-9a6c-48a1-8611-93a52d26081f
+		summarizeBy: none
+		sourceColumn: Date of Birth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Age at DOL'
+		dataType: string
+		lineageTag: 599db976-edfc-450b-8229-cbe85d507b1c
+		summarizeBy: none
+		sourceColumn: Age at DOL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age DOL Bracket'
+		dataType: string
+		lineageTag: eaf3f0f3-0456-46e2-aab6-0e58b4e9447d
+		summarizeBy: none
+		sourceColumn: Age DOL Bracket
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Bracket Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ce49390-cfe9-48a8-8f8b-990197ad3fca
+		summarizeBy: sum
+		sourceColumn: Age Bracket Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Teacher/Support
+		dataType: string
+		lineageTag: 40b25cbd-39a4-431d-86c1-3fea517ee563
+		summarizeBy: none
+		sourceColumn: Teacher/Support
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Employee ID'
+		dataType: string
+		lineageTag: 8aa3666d-97cb-464b-b63f-5c42baca6b15
+		summarizeBy: none
+		sourceColumn: Unique Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employment Status'
+		dataType: string
+		lineageTag: fd46fb97-4c66-48ae-9f60-bdd2f6a2a91d
+		summarizeBy: none
+		sourceColumn: Employment Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hourly Pay Bracket Sort'
+		dataType: string
+		lineageTag: 3ac6beec-2050-42ac-85fa-495ab354ac4f
+		summarizeBy: none
+		sourceColumn: Hourly Pay Bracket Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Post Key'
+		dataType: string
+		lineageTag: 94800c1d-b573-409f-b48d-6b54f79eecfa
+		summarizeBy: none
+		sourceColumn: Employee Post Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract End'
+		dataType: string
+		lineageTag: 1602c4de-07dd-454d-a5cb-b7e81758f6ec
+		summarizeBy: none
+		sourceColumn: Contract End
+		sortByColumn: 'Contract End Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days till Contract End'
+		dataType: string
+		lineageTag: e033c272-bda1-4472-b4e9-830d40493b2e
+		summarizeBy: none
+		sourceColumn: Days till Contract End
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract End Sort'
+		dataType: string
+		lineageTag: 29575bee-f55d-4177-9fe3-836412227583
+		summarizeBy: none
+		sourceColumn: Contract End Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Number'
+		dataType: string
+		lineageTag: 4cf5c1da-4f78-4027-ba26-d4755b5d96b5
+		summarizeBy: none
+		sourceColumn: Contract Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Continuous Service Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 035fd4de-fde3-4e47-a2df-be24b1ba09b4
+		summarizeBy: none
+		sourceColumn: Continuous Service Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Continuous Service Start Date within Organisation'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 58042014-6b0d-4baf-a07d-fce2a14ce79e
+		summarizeBy: none
+		sourceColumn: Continuous Service Start Date within Organisation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Length of Service Within Organisation'
+		dataType: string
+		lineageTag: c6bc1fe9-7b1a-4d1f-b932-16dc1a47094f
+		summarizeBy: none
+		sourceColumn: Length of Service Within Organisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Deleted On'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f61128e8-451f-404e-bacb-83840015ba2b
+		summarizeBy: none
+		sourceColumn: Job Deleted On
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Employee Deleted On'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: efa3b47f-2e70-4d30-896a-9fd51512bc55
+		summarizeBy: none
+		sourceColumn: Employee Deleted On
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Continuous Service'
+		dataType: double
+		lineageTag: dc8ca85f-f068-4811-a2ef-52836528ec4a
+		summarizeBy: sum
+		sourceColumn: Continuous Service
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Continuous Service Bracket'
+		dataType: string
+		lineageTag: 5d697220-30a4-4d8c-9b5f-9b5d58373e31
+		summarizeBy: none
+		sourceColumn: Continuous Service Bracket
+		sortByColumn: 'Continuous Service Bracket Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Continuous Service Bracket Sort'
+		dataType: string
+		lineageTag: 6f812063-7a2e-49c3-9305-7a1114628b0e
+		summarizeBy: none
+		sourceColumn: Continuous Service Bracket Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Manager Full Name'
+		dataType: string
+		lineageTag: 58e12920-8ec3-4226-b720-4ef0e6073a54
+		summarizeBy: none
+		sourceColumn: Line Manager Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Manager School ID'
+		dataType: string
+		lineageTag: c96b350d-8bb3-418a-92ff-adcbe1c935b2
+		summarizeBy: none
+		sourceColumn: Line Manager School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payroll Number Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 75d4e4bf-420a-421f-bc64-9a26533bdb11
+		summarizeBy: sum
+		sourceColumn: Payroll Number Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Manager Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: c9029b82-3f1c-4d9d-9918-702cf2f9b447
+		summarizeBy: sum
+		sourceColumn: Line Manager Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NI Number Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: fa911fbb-de7a-4924-9e75-20b5b77e3b2c
+		summarizeBy: sum
+		sourceColumn: NI Number Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Role Identifier Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: d6b1d136-5974-47c0-b4c4-0c6d0be08224
+		summarizeBy: sum
+		sourceColumn: Role Identifier Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type of Post Check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e965dd6-27ae-435a-97ec-b7e4d76f5d1b
+		summarizeBy: sum
+		sourceColumn: Type of Post Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Movement Type' = ```
+			
+			VAR NI         = 'Employee Job Roles'[NI Number]
+			VAR ThisStart  = 'Employee Job Roles'[Post Start Date]
+			VAR ThisEnd    = 'Employee Job Roles'[Post End Date]
+			VAR ThisPost   = 'Employee Job Roles'[Employee Post Key]
+			VAR ThisSchool = 'Employee Job Roles'[Every School ID]
+			
+			// — find the next assignment for the same person —
+			VAR NextStart =
+			    CALCULATE(
+			        MIN ( 'Employee Job Roles'[Post Start Date] ),
+			        FILTER(
+			            ALLEXCEPT( 'Employee Job Roles', 'Employee Job Roles'[NI Number] ),
+			            'Employee Job Roles'[Post Start Date] > ThisStart
+			        )
+			    )
+			VAR NextSchool =
+			    CALCULATE(
+			        SELECTEDVALUE( 'Employee Job Roles'[Every School ID] ),
+			        FILTER(
+			            ALLEXCEPT( 'Employee Job Roles', 'Employee Job Roles'[NI Number] ),
+			            'Employee Job Roles'[Post Start Date] = NextStart
+			        )
+			    )
+			
+			// — how many days between this end and the next start (blank if no next) —
+			VAR GapDays =
+			    IF(
+			        ISBLANK( ThisEnd ) || ISBLANK( NextStart ),
+			        BLANK(),
+			        DATEDIFF( ThisEnd, NextStart, DAY )
+			    )
+			
+			// — 1) Internal Move: SAME person, DIFFERENT school, NEGATIVE→+7-day gap —
+			VAR IsInternal =
+			       NOT( ISBLANK( NextStart ))
+			    && GapDays <= 7
+			    && NextSchool <> ThisSchool
+			
+			// — 2) Does the person still hold ANY other role *past* ThisEnd? —
+			VAR HasOtherRole =
+			    CALCULATE(
+			        COUNTROWS( 'Employee Job Roles' ),
+			        FILTER(
+			            ALL( 'Employee Job Roles' ),
+			            'Employee Job Roles'[NI Number] = NI
+			            && 'Employee Job Roles'[Employee Post Key] <> ThisPost
+			            && 'Employee Job Roles'[Post Start Date] <= ThisEnd
+			            && (
+			                 ISBLANK( 'Employee Job Roles'[Post End Date] )
+			              ||  'Employee Job Roles'[Post End Date] > ThisEnd
+			            )
+			        )
+			    ) > 0
+			
+			// — 3) Candidate exit: they have an end-date, no next start or gap > 7d, AND no other active role —
+			VAR IsCandidateExit =
+			       NOT( ISBLANK( ThisEnd ))
+			    && ( ISBLANK( NextStart ) || GapDays > 7 )
+			    && NOT( HasOtherRole )
+			
+			// — 4) Tie-break among all candidate exits on THIS End-Date —
+			//    (a) highest FTE Salary
+			VAR MaxFTE =
+			    CALCULATE(
+			        MAX( 'Employee Job Roles'[FTE Salary] ),
+			        FILTER(
+			            ALL( 'Employee Job Roles' ),
+			            'Employee Job Roles'[NI Number] = NI
+			            && 'Employee Job Roles'[Post End Date] = ThisEnd
+			            && (
+			                   NOT( ISBLANK( 'Employee Job Roles'[Post End Date] ))
+			                && ( 
+			                     ISBLANK(
+			                       CALCULATE(
+			                         MIN( 'Employee Job Roles'[Post Start Date] ),
+			                         FILTER(
+			                             ALL( 'Employee Job Roles' ),
+			                             'Employee Job Roles'[NI Number] = NI
+			                             && 'Employee Job Roles'[Post Start Date] > ThisStart
+			                         )
+			                       )
+			                     )
+			                  || DATEDIFF(
+			                       ThisEnd,
+			                       CALCULATE(
+			                         MIN( 'Employee Job Roles'[Post Start Date] ),
+			                         FILTER(
+			                             ALLEXCEPT( 'Employee Job Roles', 'Employee Job Roles'[NI Number] ),
+			                             'Employee Job Roles'[Post Start Date] > ThisStart
+			                         )
+			                       ),
+			                       DAY
+			                     ) > 7
+			                )
+			                && NOT(
+			                    CALCULATE(
+			                        COUNTROWS( 'Employee Job Roles' ),
+			                        FILTER(
+			                            ALL( 'Employee Job Roles' ),
+			                            'Employee Job Roles'[NI Number] = NI
+			                            && 'Employee Job Roles'[Employee Post Key] <> 'Employee Job Roles'[Employee Post Key]
+			                            && 'Employee Job Roles'[Post Start Date] <= ThisEnd
+			                            && (
+			                                ISBLANK( 'Employee Job Roles'[Post End Date] )
+			                             || 'Employee Job Roles'[Post End Date] > ThisEnd
+			                            )
+			                        )
+			                    ) > 0
+			                )
+			        )
+			    )
+			)
+			//    (b) among those, highest Years in Post
+			VAR MaxYears =
+			    CALCULATE(
+			        MAX( 'Employee Job Roles'[Years in Post] ),
+			        FILTER(
+			            ALL( 'Employee Job Roles' ),
+			            'Employee Job Roles'[NI Number] = NI
+			            && 'Employee Job Roles'[Post End Date] = ThisEnd
+			            && 'Employee Job Roles'[FTE Salary] = MaxFTE
+			            && NOT(
+			                CALCULATE(
+			                    COUNTROWS( 'Employee Job Roles' ),
+			                    FILTER(
+			                        ALL( 'Employee Job Roles' ),
+			                        'Employee Job Roles'[NI Number] = NI
+			                        && 'Employee Job Roles'[Employee Post Key] <> 'Employee Job Roles'[Employee Post Key]
+			                        && 'Employee Job Roles'[Post Start Date] <= ThisEnd
+			                        && (
+			                            ISBLANK( 'Employee Job Roles'[Post End Date] )
+			                         || 'Employee Job Roles'[Post End Date] > ThisEnd
+			                        )
+			                    )
+			                ) > 0
+			            )
+			        )
+			    )
+			//    (c) among *those*, lowest Employee ID
+			VAR MinEmpID =
+			    CALCULATE(
+			        MIN( 'Employee Job Roles'[Employee ID] ),
+			        FILTER(
+			            ALL( 'Employee Job Roles' ),
+			            'Employee Job Roles'[NI Number] = NI
+			            && 'Employee Job Roles'[Post End Date] = ThisEnd
+			            && 'Employee Job Roles'[FTE Salary] = MaxFTE
+			            && 'Employee Job Roles'[Years in Post] = MaxYears
+			            && NOT(
+			                CALCULATE(
+			                    COUNTROWS( 'Employee Job Roles' ),
+			                    FILTER(
+			                        ALL( 'Employee Job Roles' ),
+			                        'Employee Job Roles'[NI Number] = NI
+			                        && 'Employee Job Roles'[Employee Post Key] <> 'Employee Job Roles'[Employee Post Key]
+			                        && 'Employee Job Roles'[Post Start Date] <= ThisEnd
+			                        && (
+			                            ISBLANK( 'Employee Job Roles'[Post End Date] )
+			                         || 'Employee Job Roles'[Post End Date] > ThisEnd
+			                        )
+			                    )
+			                ) > 0
+			            )
+			        )
+			    )
+			
+			// — 5) Only that one becomes TRUE “Leaver” —
+			VAR IsTieBreakLeaver =
+			       IsCandidateExit
+			    && 'Employee Job Roles'[FTE Salary]    = MaxFTE
+			    && 'Employee Job Roles'[Years in Post] = MaxYears
+			    && 'Employee Job Roles'[Employee ID]   = MinEmpID
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			      ISBLANK( NI ),            BLANK()
+			    , IsInternal,               "Internal Move"
+			    , IsTieBreakLeaver,         "Leaver"
+			    , HasOtherRole,             "Role Ceased"
+			    , IsCandidateExit,          "Role Ceased"
+			    , BLANK()
+			)
+			
+			```
+		lineageTag: c4c6bc2a-84cb-4351-a60e-075d5134bd0a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Salary Brackets (Sort)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ad87f37-e773-4083-95ea-9a1d67991170
+		summarizeBy: sum
+		sourceColumn: Salary Brackets (Sort)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Salary Brackets (Sort)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 58200671-7952-4485-843e-fdfa865a27fb
+		summarizeBy: sum
+		sourceColumn: FTE Salary Brackets (Sort)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Email' =
+			
+			RELATED(Employees[Work Email])
+		lineageTag: f7a8528b-6b2c-43d3-aee8-169b0b1aeaed
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Main Role' =
+			
+			VAR _Employee = 'Employee Job Roles'[Employee ID]
+			RETURN
+			 CALCULATE(
+			MIN('Employee Job Roles'[Post Type (Inc Leadership) Sort]),
+			'Employee Job Roles'[Employee ID] = _Employee)
+		lineageTag: e76941cf-9863-4e2c-81f2-b032c8ea1c1d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Employee Job Roles-9cd96acd-ea23-474e-9690-64197d79b377' = m
+		mode: import
+		queryGroup: HR
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Employee Job Roles1" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Employee Job Roles"]}[Data],
+				    #"Inserted Merged Column" = Table.AddColumn(#"Employee Job Roles1", "Unique Employee ID", each Text.Combine({Text.From([Every School ID], "en-GB"), Text.From([Employee ID], "en-GB")}, "-"), type text),
+				    #"Added Hourly pay Bracket Sort" = Table.AddColumn(#"Inserted Merged Column", "Hourly Pay Bracket Sort", each if [Hourly Pay Brackets] = "" then 0 else if [Hourly Pay Brackets] = "Less than £5.00 " then 1 else if [Hourly Pay Brackets] = "£5.00-£10.00" then 2 else if [Hourly Pay Brackets] = "£10.00-£15.00" then 3 else if [Hourly Pay Brackets] = "£15.00-£20.00" then 4 else if [Hourly Pay Brackets] = "£20.00-£25.00" then 5 else if [Hourly Pay Brackets] = "£25.00-£30.00" then 6 else if [Hourly Pay Brackets] = "£30.00+" then 7 else "Error")
+				in
+				    #"Added Hourly pay Bracket Sort"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

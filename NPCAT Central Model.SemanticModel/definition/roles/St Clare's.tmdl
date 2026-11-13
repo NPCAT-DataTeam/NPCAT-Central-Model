@@ -1,0 +1,7 @@
+role 'St Clare''s'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT12"
+
+	annotation PBI_Id = e29265117e7c4e798a2fa8df4c73059d
+

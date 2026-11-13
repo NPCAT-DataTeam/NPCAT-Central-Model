@@ -1,0 +1,61 @@
+table 'National Subject Headlines'
+	lineageTag: 055afe64-48ed-48f3-af11-94a352e8df32
+
+	column Subject
+		dataType: string
+		lineageTag: 4b3ec55e-a993-4ab3-9af3-57ff880c42d0
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'National Subject Group'
+		dataType: string
+		lineageTag: dc0b69e6-e2c1-432d-98ee-5c62c94e9b3c
+		summarizeBy: none
+		sourceColumn: National Subject Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grades
+		dataType: string
+		lineageTag: 8c52de2e-a22a-46e1-96ff-77988917dd5f
+		summarizeBy: none
+		sourceColumn: Grades
+
+		annotation SummarizationSetBy = Automatic
+
+	column Percent
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2b2a85e9-2bd6-4426-9ef9-1a7f3aa975a3
+		summarizeBy: sum
+		sourceColumn: Percent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 18ac25bb-4b5a-42c6-823b-263c4abe4d53
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'National Subject Headlines' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"367f4448-a928-4f2b-9233-266612d07dab" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="367f4448-a928-4f2b-9233-266612d07dab"]}[Data],
+				    #"National Subject Headlines_" = #"367f4448-a928-4f2b-9233-266612d07dab"{[entity="National Subject Headlines",version=""]}[Data]
+				in
+				    #"National Subject Headlines_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

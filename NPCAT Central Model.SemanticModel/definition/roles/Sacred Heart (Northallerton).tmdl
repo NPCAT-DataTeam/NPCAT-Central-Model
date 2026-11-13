@@ -1,0 +1,7 @@
+role 'Sacred Heart (Northallerton)'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT29"
+
+	annotation PBI_Id = 31405933d45940f7af81c105e112c301
+

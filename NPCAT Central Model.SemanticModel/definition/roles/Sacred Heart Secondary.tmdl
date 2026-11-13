@@ -1,0 +1,11 @@
+role 'Sacred Heart Secondary'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT02"
+
+	tablePermission 'AP-Grade Type' = [Grade Type] <> "Mock"
+
+	tablePermission 'Secondary QA Permissions' = 'Secondary QA Permissions'[Visible to ID] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = 244bacc9b5eb4a0898835300111d1d74
+

@@ -1,0 +1,98 @@
+table 'Catholic Standards Scores'
+	lineageTag: f292d05e-25cb-48b1-9b61-2493b08ed040
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: cc03cbb0-62f5-4dc3-ba47-febdfceaf185
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cc35cd3-aae0-445a-b332-d440eb15c425
+		summarizeBy: sum
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: 188f189c-f800-40aa-bc5c-159c612be1bb
+		summarizeBy: sum
+		sourceColumn: QA Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: db7ccc56-e11d-4283-9ce1-2adef6ce3249
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answer
+		dataType: string
+		lineageTag: e8cc6b11-f734-44e7-addc-80a91f83324c
+		summarizeBy: none
+		sourceColumn: Answer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Answer Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 82337cf3-833a-47e3-92db-89a012752bd8
+		summarizeBy: sum
+		sourceColumn: Answer Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 084a92d3-f60e-4839-87d1-64089d6072ee
+		summarizeBy: sum
+		sourceColumn: Question Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Question
+		dataType: string
+		lineageTag: 01e78431-45af-4b0b-b9f8-6a5d439218f7
+		summarizeBy: none
+		sourceColumn: Question
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: a4c70ecc-5f9a-4c9e-a04b-fb6da29a27aa
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catholic Standards Scores' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Catholic Standards Scores_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Catholic Standards Scores",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Catholic Standards Scores_",{{"Id", Int64.Type}, {"Subgroup Index", Int64.Type}, {"QA Offset", Int64.Type}, {"Answer Sort", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,7 @@
+role 'Our Lady Queen of Martyrs'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT35"
+
+	annotation PBI_Id = 6ae6e22edc114a0dbc3c4c01a854b6df
+

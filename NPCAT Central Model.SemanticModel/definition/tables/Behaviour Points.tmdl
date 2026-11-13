@@ -1,0 +1,145 @@
+table 'Behaviour Points'
+	lineageTag: 69dc8cb2-e2dd-4c36-aafc-7437869bd521
+
+	column 'Incident Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 66a1a1c7-56e4-4d7a-a4e5-b74a953851a6
+		summarizeBy: none
+		sourceColumn: Incident Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Incident Name'
+		dataType: string
+		lineageTag: 230911e1-3b4d-425c-a515-7c38a6262d0e
+		summarizeBy: none
+		sourceColumn: Incident Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: d65273c3-e269-44c8-af84-965c531bb09e
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Narrative
+		dataType: string
+		lineageTag: ee90f9b7-f7e2-476b-a4fc-612a30ff42af
+		summarizeBy: none
+		sourceColumn: Narrative
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a3ecf5a-6153-42e6-a2c2-f0a6170097e8
+		summarizeBy: sum
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Staff ID'
+		dataType: string
+		lineageTag: d6987a8f-9c06-46d9-b129-ec821905bacb
+		summarizeBy: none
+		sourceColumn: Unique Staff ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 973463e5-6dca-4717-84ed-def07a14d733
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: c4b6a76b-7d50-4c13-b72f-52f6ef8e7d29
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class Name'
+		dataType: string
+		lineageTag: d49b6ea1-225d-4d0b-9049-d10d5c89ecd4
+		summarizeBy: none
+		sourceColumn: Class Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Time - Rounded'
+		dataType: string
+		lineageTag: c160f85d-a43a-43db-844b-cd353591c781
+		summarizeBy: none
+		sourceColumn: Incident Time - Rounded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: 038f26d2-7ca4-4fde-98c3-b8f0c9a574b4
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Reporter(s)'
+		dataType: string
+		lineageTag: 3609127c-2a1e-4a6e-bd24-94ebf543ae2f
+		summarizeBy: none
+		sourceColumn: Incident Reporter(s)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sanction Level'
+		dataType: string
+		lineageTag: 386b48cd-f6ce-4abc-b910-09039b6eab8e
+		summarizeBy: none
+		sourceColumn: Sanction Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Behaviour Type'
+		dataType: string
+		lineageTag: 60b46a62-d4d4-42e6-b207-080ae766884c
+		summarizeBy: none
+		sourceColumn: Behaviour Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column BEHAVIOUR_INCIDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 2dd66f02-ad8f-4ab3-9ac7-38a3893650ac
+		summarizeBy: none
+		sourceColumn: BEHAVIOUR_INCIDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Behaviour Points' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"cac18991-39e9-44fc-a199-7ead3fd3e517" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cac18991-39e9-44fc-a199-7ead3fd3e517"]}[Data],
+				    #"Behaviour Points_" = #"cac18991-39e9-44fc-a199-7ead3fd3e517"{[entity="Behaviour Points",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Behaviour Points_",{{"Severity", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

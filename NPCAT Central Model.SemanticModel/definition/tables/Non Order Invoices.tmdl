@@ -1,0 +1,276 @@
+table 'Non Order Invoices'
+	lineageTag: ee1c9eaa-80ac-42fd-86b9-907bd3cb9602
+
+	column 'Doc Type'
+		dataType: string
+		lineageTag: 4565843c-7830-415f-ba01-9ead450d5993
+		summarizeBy: none
+		sourceColumn: Doc Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc ID'
+		dataType: string
+		lineageTag: 7924b9c8-ef0f-4d84-97b1-1ba5f48c70ff
+		summarizeBy: none
+		sourceColumn: Doc ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Type Number'
+		dataType: string
+		lineageTag: 79fcecf1-684f-41f6-b3bf-05023e211e31
+		summarizeBy: none
+		sourceColumn: Doc Type Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: e8772bb0-fe3c-4bce-9b8a-909327eaa048
+		summarizeBy: sum
+		sourceColumn: Doc Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Year'
+		dataType: string
+		lineageTag: 94e3c4a4-59b9-4db0-ba7c-e1d2ab1540ce
+		summarizeBy: none
+		sourceColumn: Invoice Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Period'
+		dataType: string
+		lineageTag: 3dbe7e75-5ff0-4ce4-b27e-5ef911cb0a1e
+		summarizeBy: none
+		sourceColumn: Invoice Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Period (Full)'
+		dataType: string
+		lineageTag: 355898cc-81c5-4944-a344-14d3868c1572
+		summarizeBy: none
+		sourceColumn: Invoice Period (Full)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nominal
+		dataType: string
+		lineageTag: ac15ca36-f83d-443b-b1f2-79f23c94f369
+		summarizeBy: none
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code Prefix'
+		dataType: string
+		lineageTag: 0d9db523-2aa9-4b5b-a380-e3e53d217a2a
+		summarizeBy: none
+		sourceColumn: Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Core Nominal'
+		dataType: string
+		lineageTag: fe07a83e-c151-4d59-9dd8-84af21b0cb09
+		summarizeBy: none
+		sourceColumn: Core Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ledger
+		dataType: string
+		lineageTag: 8d284c35-db5c-44bd-94f1-07889c3e04b9
+		summarizeBy: none
+		sourceColumn: Ledger
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 2c5801ee-3e0c-4b28-9cd8-406e72336e7c
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 188072d4-5e71-4baa-ab12-31c555fdccb0
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: e5ffd566-1259-4d96-b6bb-c74127dd7bad
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: string
+		lineageTag: 610c394c-5b67-4ee4-8d24-70bc152e1190
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pay List'
+		dataType: string
+		lineageTag: df27989b-870a-458c-a05a-1104d4cc8a5e
+		summarizeBy: none
+		sourceColumn: Pay List
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocation
+		dataType: int64
+		formatString: 0
+		lineageTag: 448c097b-db7a-471a-a84b-4e850cf7d244
+		summarizeBy: sum
+		sourceColumn: Allocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: f3418dce-29f0-4ee9-9e93-8f09d6b361af
+		summarizeBy: count
+		sourceColumn: Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b7b40f48-8ea8-46b2-8956-58a83dc5a071
+		summarizeBy: none
+		sourceColumn: Invoice Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Pay Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c3040cb7-7987-4d0b-b8c9-6ec8f0bd4a23
+		summarizeBy: none
+		sourceColumn: Pay Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Payment Year'
+		dataType: string
+		lineageTag: 3f7a2b0d-d04c-415e-8aa4-691c98fff278
+		summarizeBy: none
+		sourceColumn: Payment Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Period'
+		dataType: string
+		lineageTag: 19f2ac6f-1e15-4622-9174-1131e18b6133
+		summarizeBy: none
+		sourceColumn: Payment Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Period (Full)'
+		dataType: string
+		lineageTag: 4ed62599-39f2-47d7-9214-4a509794b2ad
+		summarizeBy: none
+		sourceColumn: Payment Period (Full)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 41a6178f-d5cb-4d1f-ac41-1a81b2852388
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PSF System Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a291ede8-728b-43c4-877a-c1ca943cba87
+		summarizeBy: none
+		sourceColumn: PSF System Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days from Invoice to System'
+		dataType: int64
+		formatString: 0
+		lineageTag: 65798e69-7704-4c18-9776-e3aafb350673
+		summarizeBy: sum
+		sourceColumn: Days from Invoice to System
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Non Order Invoice Check'
+		dataType: string
+		lineageTag: ec0c55bb-9b47-490c-a355-03fc5a8083d1
+		summarizeBy: none
+		sourceColumn: Non Order Invoice Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type Suffix'
+		dataType: string
+		lineageTag: 38456056-c9cc-4c56-b27b-658aa88842e0
+		summarizeBy: none
+		sourceColumn: Type Suffix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Miscode Error Type'
+		dataType: string
+		lineageTag: 9125491c-52ba-4d16-863a-1006e0a5e19f
+		summarizeBy: none
+		sourceColumn: Miscode Error Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Function'
+		dataType: string
+		lineageTag: 639fc2e2-8af9-47cb-b4e4-012960039a53
+		summarizeBy: none
+		sourceColumn: Responsible Function
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Non Order Invoices' = m
+		mode: import
+		queryGroup: Finance\PSF
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    #"Non Order Invoices_" = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Non Order Invoices",version=""]}[Data]
+				in
+				    #"Non Order Invoices_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

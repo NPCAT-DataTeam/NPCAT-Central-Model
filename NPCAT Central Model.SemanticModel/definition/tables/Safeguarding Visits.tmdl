@@ -1,0 +1,303 @@
+table 'Safeguarding Visits'
+	lineageTag: cc74c918-3aad-43d2-bac6-04de1d80e6a8
+
+	column Email
+		dataType: string
+		lineageTag: 41851f63-a7ff-4641-8c65-015ae30c16ca
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: bd68b7cf-1669-4ce0-aa1d-8e31a44bd398
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: 5b6fc9f8-58bb-48a7-9b3d-4dc5a736113f
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Snapshot Date'
+		dataType: dateTime
+		formatString: d/m/yy
+		lineageTag: b44079fa-9351-4e82-b632-4d586a7e5139
+		summarizeBy: none
+		sourceColumn: Snapshot Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Child Protection'
+		dataType: int64
+		formatString: 0
+		lineageTag: 44ae9184-f31c-444e-942e-e4a70d8893c9
+		summarizeBy: none
+		sourceColumn: Child Protection
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Child in Need'
+		dataType: int64
+		formatString: 0
+		lineageTag: 639cb035-8efe-43c7-b950-81416575926e
+		summarizeBy: none
+		sourceColumn: Child in Need
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Early Help'
+		dataType: int64
+		formatString: 0
+		lineageTag: b801ea76-aeae-48f3-ac42-205dacf20562
+		summarizeBy: none
+		sourceColumn: Early Help
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Looked After Child'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c492538-1a9c-4f94-8109-8790dacdc012
+		summarizeBy: none
+		sourceColumn: Looked After Child
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operation Encompass'
+		dataType: int64
+		formatString: 0
+		lineageTag: 64a68603-a27f-4db4-b97c-60bfcdef3252
+		summarizeBy: none
+		sourceColumn: Operation Encompass
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c6ed8b5-cbe3-4162-af5a-26990a807a4d
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: c8868bc8-0582-4cc9-b5d2-6c9aaeb3b303
+		summarizeBy: none
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup ID Offset'
+		dataType: string
+		lineageTag: f50e24a8-3cef-42a2-b09e-146320f78e3e
+		summarizeBy: none
+		sourceColumn: Subgroup ID Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Form Completion Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 84d3ae28-af59-4ed5-850e-f9efc8dac27e
+		summarizeBy: none
+		sourceColumn: Form Completion Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: cd31e5de-9872-4552-a7af-b71405a783fc
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Safeguarding Status'
+		dataType: string
+		lineageTag: 3dc2d61e-7e59-4732-9fb5-96972646d560
+		summarizeBy: none
+		sourceColumn: Overall Safeguarding Status
+		sortByColumn: 'Overall Safeguarding Status Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Statutory Status'
+		dataType: string
+		lineageTag: 5053d3a8-109f-4a0e-92ac-38e879bb1c51
+		summarizeBy: none
+		sourceColumn: Overall Statutory Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Trust Status'
+		dataType: string
+		lineageTag: d38f91b7-0ba2-47e6-8054-1486d029b458
+		summarizeBy: none
+		sourceColumn: Overall Trust Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Safeguarding Status Sort'
+		dataType: double
+		lineageTag: 0fe22f42-28ed-4971-97b9-b8031a43cd36
+		summarizeBy: none
+		sourceColumn: Overall Safeguarding Status Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Is Most Recent Safeguarding Visit' =
+			
+			var thisSchool = 'Safeguarding Visits'[SUID]
+			var mostRecentDate = CALCULATE(MAX('Safeguarding Visits'[Snapshot Date]),ALL('Safeguarding Visits'),'Safeguarding Visits'[SUID] = thisSchool)
+			return
+			IF('Safeguarding Visits'[Snapshot Date] = mostRecentDate,"Yes","No")
+		lineageTag: a3277bae-fb2c-440e-b96e-19c975d9cc41
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarding Tier' =
+			
+			SWITCH(TRUE(),
+			[Safeguarding Trust Compliance %] = 1,"Tier 1",
+			[Safeguarding Trust Compliance %] > 0.95,"Tier 2",
+			[Safeguarding Trust Compliance %] >= 0.9,"Tier 3",
+			[Safeguarding Trust Compliance %] < 0.9,"Tier 4")
+		lineageTag: 158cf743-131b-47dc-a717-b7683519c12f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarding Tier Sort' =
+			
+			SWITCH(TRUE(),
+			[Safeguarding Trust Compliance %] = 1,1,
+			[Safeguarding Trust Compliance %] > 0.66,2,
+			[Safeguarding Trust Compliance %] > 0.33,3,
+			[Safeguarding Trust Compliance %] >= 0,4)
+		formatString: 0
+		lineageTag: 2fc5fd96-41df-45c0-a1c5-8a19aba05af9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Type'
+		dataType: string
+		lineageTag: 06f1b14c-f8f5-48f4-814c-b09169dd65d3
+		summarizeBy: none
+		sourceColumn: School Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supervision/Audit
+		dataType: string
+		lineageTag: 8379a1b5-f67e-4adc-b6b1-97277eb1083f
+		summarizeBy: none
+		sourceColumn: Supervision/Audit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervision 1-6'
+		dataType: string
+		lineageTag: 6dea82bb-f21f-4e0d-af92-6e632c478036
+		summarizeBy: none
+		sourceColumn: Supervision 1-6
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Most Recent Safeguarding Audit' =
+			
+			var thisSchool = 'Safeguarding Visits'[SUID]
+			var mostRecentDate = CALCULATE(MAX('Safeguarding Visits'[Snapshot Date]),ALL('Safeguarding Visits'),'Safeguarding Visits'[SUID] = thisSchool,'Safeguarding Visits'[Supervision/Audit] = "Audit")
+			return
+			IF('Safeguarding Visits'[Snapshot Date] = mostRecentDate,"Yes","No")
+		lineageTag: e40cb25f-b250-4cc1-9217-c91fd0555b99
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarding Statutory Tier' =
+			
+			SWITCH(TRUE(),
+			[Safeguarding Statutory Compliance %] = 1,"Tier 1",
+			[Safeguarding Statutory Compliance %] > 0.95,"Tier 2",
+			[Safeguarding Statutory Compliance %] >= 0.9,"Tier 3",
+			[Safeguarding Statutory Compliance %] < 0.9,"Tier 4")
+		lineageTag: debae665-8da5-4bf9-ab02-c811eb3b9f42
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarding Statutory Tier Sort' =
+			
+			SWITCH(TRUE(),
+			[Safeguarding Statutory Compliance %] = 1,1,
+			[Safeguarding Statutory Compliance %] > 0.66,2,
+			[Safeguarding Statutory Compliance %] > 0.33,3,
+			[Safeguarding Statutory Compliance %] >= 0,4)
+		formatString: 0
+		lineageTag: 132ac1ae-53d6-43ce-a02b-b5f47276c885
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trust Compliance' = [Safeguarding Trust Compliance %]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d611e3a8-27dd-4075-8f64-41c42b99aacd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Statutory Compliance' = [Safeguarding Statutory Compliance %]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b037c522-6ebf-4cb7-921b-70f83cf8fcd8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Part Time Students'
+		dataType: int64
+		formatString: 0
+		lineageTag: e34e896c-a546-445d-b5d1-fad9499c1e47
+		summarizeBy: sum
+		sourceColumn: Part Time Students
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Safeguarding Visits-97133e3e-67b0-4b5c-b6f7-fcce3621ab47' = m
+		mode: import
+		queryGroup: Safeguarding
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c"]}[Data],
+				    #"Safeguarding Visits1" = #"5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c"{[entity="Safeguarding Visits"]}[Data]
+				in
+				    #"Safeguarding Visits1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,74 @@
+table 'School Logos'
+	isHidden
+	lineageTag: c1969223-aa86-47b8-a143-852ac82783f5
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: 0ef61d3c-6894-4823-8329-68a29f54f6a0
+		summarizeBy: none
+		sourceColumn: SUID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Part
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 61069ed8-a9d2-4523-9528-57f266f42af4
+		summarizeBy: sum
+		sourceColumn: Part
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Logo
+		dataType: string
+		isHidden
+		lineageTag: 1a1fd0e8-9495-44b6-bc04-e77a372b3a34
+		summarizeBy: none
+		sourceColumn: Logo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d17f0af7-9459-4852-a925-1d55da4be703
+		summarizeBy: sum
+		sourceColumn: Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column1
+		dataType: string
+		lineageTag: e6d5c5e5-f56d-4892-8728-8ef1b1e490be
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'School Logos-5427fc93-286a-4786-b939-8acce7670504' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    #"School Logos1" = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="School Logos"]}[Data]
+				in
+				    #"School Logos1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

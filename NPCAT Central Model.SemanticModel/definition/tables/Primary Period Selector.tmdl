@@ -1,0 +1,93 @@
+table 'Primary Period Selector'
+	lineageTag: 22e2060f-aa2c-46ba-9158-4796fb6c64cb
+
+	column 'Academic Year Start'
+		dataType: int64
+		lineageTag: fd19fbfd-d33c-4861-8ab8-64afc45e8b36
+		summarizeBy: sum
+		sourceColumn: Academic Year Start
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Assessment Period'
+		dataType: string
+		lineageTag: 3f6d1642-a45a-4260-a850-068aa71be7a2
+		summarizeBy: none
+		sourceColumn: Assessment Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 3554a149-53c1-4658-afda-6a087f9982f0
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Period Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6cac8183-421b-464f-9d6a-631277c11a97
+		summarizeBy: sum
+		sourceColumn: Assessment Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 689d63ef-fb53-48ed-aa22-e7d169f8ce13
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Period Selector ID'
+		dataType: string
+		lineageTag: 4f66c02b-e382-4033-bb4d-a635582e7df9
+		summarizeBy: none
+		sourceColumn: Primary Period Selector ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year - Period'
+		dataType: string
+		lineageTag: a936cf0b-ba0d-49c7-a1fe-597e4465dff4
+		summarizeBy: none
+		sourceColumn: School Year - Period
+		sortByColumn: 'Assessment Period Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period Sort'
+		dataType: string
+		lineageTag: 41a54a6b-cd47-4391-b208-cf87a662babd
+		summarizeBy: none
+		sourceColumn: Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary Period Selector' = m
+		mode: import
+		queryGroup: 'Primary Summative (South)'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"134964d2-693f-4004-aafe-4288d9f6e02e" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="134964d2-693f-4004-aafe-4288d9f6e02e"]}[Data],
+				    #"Primary Period Selector_" = #"134964d2-693f-4004-aafe-4288d9f6e02e"{[entity="Primary Period Selector",version=""]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"Primary Period Selector_", each ([Year Group] <> "" and [Year Group] <> "N1" and [Year Group] <> "N2" and [Year Group] <> "Reception"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

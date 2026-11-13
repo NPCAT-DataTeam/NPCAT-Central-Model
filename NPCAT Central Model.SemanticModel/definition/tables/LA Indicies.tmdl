@@ -1,0 +1,62 @@
+table 'LA Indicies'
+	lineageTag: e4f7b605-4f0d-4276-8520-aa2399bf2a72
+
+	column RELEASE_YEAR
+		dataType: string
+		lineageTag: 2eb4b48d-b94b-4bbd-b508-80721e843644
+		summarizeBy: none
+		sourceColumn: RELEASE_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Indicies Region'
+		dataType: string
+		lineageTag: a2d4929e-415f-4b4c-a8cc-7e2ac4e2e928
+		summarizeBy: none
+		sourceColumn: Indicies Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: bbd55936-7e74-4b8d-a275-8dd74dcca000
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decile
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3ee1e237-4238-4d00-9243-286139880365
+		summarizeBy: sum
+		sourceColumn: Decile
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 73e3a36d-81a9-48a7-9534-6b2a68c603e9
+		summarizeBy: sum
+		sourceColumn: Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'LA Indicies' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"fd347496-f570-46a9-b6a5-54133390026b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="fd347496-f570-46a9-b6a5-54133390026b"]}[Data],
+				    #"Indicies LA Values_" = #"fd347496-f570-46a9-b6a5-54133390026b"{[entity="Indicies LA Values",version=""]}[Data]
+				in
+				    #"Indicies LA Values_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

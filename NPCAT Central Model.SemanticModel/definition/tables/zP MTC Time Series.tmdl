@@ -1,0 +1,59 @@
+table 'zP MTC Time Series'
+	lineageTag: 86ccda91-f2a5-42be-b3ec-a0b378d40ba7
+
+	column 'zP MTC Time Series'
+		lineageTag: 26cc9aaa-fc35-46ef-b1ef-8d4fa62dc416
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP MTC Time Series Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP MTC Time Series Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP MTC Time Series Fields'
+		isHidden
+		lineageTag: c8873316-83f3-4057-8055-b0ca6dee6d7d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP MTC Time Series Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP MTC Time Series Order'
+		isHidden
+		formatString: 0
+		lineageTag: 13850bef-f6b7-4460-b62c-1c80515e15ce
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MTC Measure Type' =
+			Switch(TRUE(),
+			CONTAINSSTRING('zP MTC Time Series'[zP MTC Time Series Fields],"#"),"No. Ach Full",
+			CONTAINSSTRING('zP MTC Time Series'[zP MTC Time Series Fields],"Avg."),"Avg. Score",
+			CONTAINSSTRING('zP MTC Time Series'[zP MTC Time Series Fields],"%"),"% Ach Full")
+		lineageTag: 0d5133f6-f66e-4aaa-991c-386553c5d224
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP MTC Time Series-df7c7222-aa3b-4b8e-b6ca-98d327424988' = calculated
+		mode: import
+		source =
+				{
+				    ("Avg. Score", NAMEOF('Measures Folder'[Avg. MTC Mark]), 1),
+				    ("No. Ach Full", NAMEOF('Measures Folder'[MTC # Ach Full Marks]), 2),
+				    ("% Ach Full", NAMEOF('Measures Folder'[MTC % Ach Full Marks]), 3)
+				}
+
+	annotation PBI_Id = 21928d9fb4fb404997e6ce232ed4d41d
+

@@ -1,0 +1,297 @@
+createOrReplace
+
+	ref table 'Measures Folder'
+
+		/// 
+		/// DIVIDE([Permanently Excluded YTD],[Students on roll])*100 
+		measure 'Permenant Exclusion Rate YTD' = ```
+				
+				DIVIDE([Permanently Excluded YTD],[Students on roll])*100 
+				```
+			displayFolder: Behaviour Sanctions
+			lineageTag: 3fa693bc-b3e4-4407-844d-20c136cf6d55
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 1
+		/// RETURN
+		///     CALCULATE (
+		///         [Permanently Excluded Students],
+		///         'Calendar'[Current School Year Offset] = LastYear
+		///     )
+		measure 'Permanently Excluded -1 Year' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				    CALCULATE (
+				        [Permanently Excluded Students],
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 5b05602e-79f2-4b44-a5bc-9aabffdffec5
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 2
+		/// RETURN
+		///     CALCULATE (
+		///         [Permanently Excluded Students],
+		///         'Calendar'[Current School Year Offset] = LastYear
+		///     )
+		measure 'Permanently Excluded -2 Year' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 2
+				RETURN
+				    CALCULATE (
+				        [Permanently Excluded Students],
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 00e48299-cc93-4385-97a7-39842469b387
+
+		/// 
+		/// DIVIDE (
+		///     [Permanently Excluded Students],
+		///     DISTINCTCOUNT ( 'Student Database (Full)'[Globally Unique Student ID] )
+		/// )
+		measure 'Permanently Excluded %' =
+				
+				DIVIDE (
+				    [Permanently Excluded Students],
+				    DISTINCTCOUNT ( 'Student Database (Full)'[Globally Unique Student ID] )
+				)
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: d1eb09e3-0e5a-410a-a287-f4630910e5c7
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 1
+		/// RETURN
+		///     CALCULATE (
+		///         [Permanent Percentage Excluded],
+		///         'Calendar'[Current School Year Offset] = LastYear
+		///     )
+		measure 'Permanently Excluded % -1 Year' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				    CALCULATE (
+				        [Permanent Percentage Excluded],
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 83d78b25-1f64-48dc-bf26-dd1a0f2b7909
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 2
+		/// RETURN
+		///     CALCULATE (
+		///         [Permanent Percentage Excluded],
+		///         'Calendar'[Current School Year Offset] = LastYear
+		///     )
+		measure 'Permanently Excluded % -2 Year' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 2
+				RETURN
+				    CALCULATE (
+				        [Permanent Percentage Excluded],
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: bda83995-e2b7-4b6b-a6bc-0e7f99ed8b62
+
+		/// 
+		/// TOTALYTD ( [Permanent Percentage Excluded], 'Calendar'[Date], "31/08" ) + 0
+		measure 'Permanently Excluded % YTD' =
+				
+				TOTALYTD ( [Permanent Percentage Excluded], 'Calendar'[Date], "31/08" ) + 0
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: fce43b24-e7ff-4679-9652-c78317949aaf
+
+		/// 
+		/// CALCULATE (
+		///     [Permanent Percentage Exclusions YTD],
+		///     SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+		/// ) + 0
+		measure 'Permanently Excluded % YTD SPLY' =
+				
+				CALCULATE (
+				    [Permanent Percentage Exclusions YTD],
+				    SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+				) + 0
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 39665a9d-c047-4b06-a20d-ac1219c079b3
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded Students],
+		///     'Student Database (Full)'[SEN Status] IN { "Education, Health and Care Plan" }
+		/// ) + 0
+		measure 'Permanently Excluded EHCP Students' =
+				
+				CALCULATE (
+				    [Permanently Excluded Students],
+				    'Student Database (Full)'[SEN Status] IN { "Education, Health and Care Plan" }
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: a1b06b4f-d8dc-49fe-a16a-72dec8444af9
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded Students],
+		///     'Student Database (Full)'[Gender] IN { "Female" }
+		/// ) + 0
+		measure 'Permanently Excluded Female Students' =
+				
+				CALCULATE (
+				    [Permanently Excluded Students],
+				    'Student Database (Full)'[Gender] IN { "Female" }
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 59784601-cb2e-44c0-b170-c321f05a73fc
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded Students],
+		///     ( 'Student Database (Full)'[Eligible for free meals] IN { "FSM" } )
+		/// ) + 0
+		measure 'Permanently Excluded FSM Students' =
+				
+				CALCULATE (
+				    [Permanently Excluded Students],
+				    ( 'Student Database (Full)'[Eligible for free meals] IN { "FSM" } )
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 3d73e2dc-53b9-4458-8d34-b8b404d6ef3d
+
+		/// 
+		/// [Permanently Excluded YTD] - [Permanently Excluded YTD SPLY]
+		measure 'Permanently Excluded Incidents YTD YoY Change' =
+				
+				[Permanently Excluded YTD] - [Permanently Excluded YTD SPLY]
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: a3479f83-d21a-4015-b954-c24081f67aa3
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded Students],
+		///     'Student Database (Full)'[Gender] IN { "Male" }
+		/// ) + 0
+		measure 'Permanently Excluded Male Students' =
+				
+				CALCULATE (
+				    [Permanently Excluded Students],
+				    'Student Database (Full)'[Gender] IN { "Male" }
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: c7fb4050-2ae2-433c-86be-e2f82d77f81f
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded Students],
+		///     'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" }
+		/// ) + 0
+		measure 'Permanently Excluded Pupil Premium Students' =
+				
+				CALCULATE (
+				    [Permanently Excluded Students],
+				    'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" }
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: 2dde8145-827e-4add-85b8-0f14bddf0c7f
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded Students],
+		///     OR (
+		///         'Student Database (Full)'[SEN Status] IN { "Education, Health and Care Plan" },
+		///         'Student Database (Full)'[SEN Status] IN { "SEN Support" }
+		///     )
+		/// ) + 0
+		measure 'Permanently Excluded SEN Students' =
+				
+				CALCULATE (
+				    [Permanently Excluded Students],
+				    OR (
+				        'Student Database (Full)'[SEN Status] IN { "Education, Health and Care Plan" },
+				        'Student Database (Full)'[SEN Status] IN { "SEN Support" }
+				    )
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: a11ce932-1f8a-4bda-93a1-53865663016e
+
+		/// 
+		/// TOTALYTD ( [Permanently Excluded Students], 'Calendar'[Date], "31/08" ) + 0
+		measure 'Permanently Excluded YTD' =
+				
+				TOTALYTD ( [Permanently Excluded Students], 'Calendar'[Date], "31/08" ) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: bc26e0d3-bc86-456c-9a1d-4f720da07eaa
+
+		/// CALCULATE ( DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ) )
+		///
+		measure 'Permanently Excluded Students' =
+				
+				CALCULATE ( 
+					DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+					'Behaviour Sanctions'[Source Table] = "Permanent Exclusion"
+				 )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: a61a74b9-d22d-4e79-a83b-6aa5a74cfd3c
+
+		/// 
+		/// CALCULATE (
+		///     [Permanently Excluded YTD],
+		///     SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+		/// ) + 0
+		measure 'Permanently Excluded YTD SPLY' =
+				
+				CALCULATE (
+				    [Permanently Excluded YTD],
+				    SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Permenantly Excluded
+			lineageTag: cb200773-2eba-4f7f-8f32-5ad034de0229
+
+		/// 
+		/// 
+		/// DIVIDE([Fixed Term Exclusions Incidents YTD],[Students on Roll])*100
+		measure 'Suspension Rate YTD' =
+				
+				
+				DIVIDE([Fixed Term Exclusions Incidents YTD],[Students on Roll])*100
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 68874ef3-9941-41e6-bd6f-5d31accd5867
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+

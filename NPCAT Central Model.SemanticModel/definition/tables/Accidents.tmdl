@@ -1,0 +1,498 @@
+table Accidents
+	lineageTag: fab02183-4697-49ef-a183-958fa91e6ec7
+
+	column School
+		dataType: string
+		lineageTag: 7c4a0b44-cd14-40b5-9ccd-eec1cf2cc336
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Who had the accident?'
+		dataType: string
+		lineageTag: f430e7a0-f87e-4504-9399-0aff3eb0c557
+		summarizeBy: none
+		sourceColumn: Who had the accident?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exact location of incident'
+		dataType: string
+		lineageTag: 7ce57109-9208-48be-8604-0f1ccd409a84
+		summarizeBy: none
+		sourceColumn: Exact location of incident
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Please provide full details of the incident'
+		dataType: string
+		lineageTag: e468ea54-c8f4-4d42-96c1-6995bc43d64a
+		summarizeBy: none
+		sourceColumn: Please provide full details of the incident
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What was the type of Accident?'
+		dataType: string
+		lineageTag: cf03b5ad-2cdc-44dd-bd80-b41cae52df1b
+		summarizeBy: none
+		sourceColumn: What was the type of Accident?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nature of Injury'
+		dataType: string
+		lineageTag: b481f770-bc3e-4194-806f-f191cfa3eece
+		summarizeBy: none
+		sourceColumn: Nature of Injury
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Part of Body Affected'
+		dataType: string
+		lineageTag: b8230e39-d44f-4778-883f-3c663afcd1b5
+		summarizeBy: none
+		sourceColumn: Part of Body Affected
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Was First Aid administered?'
+		dataType: string
+		lineageTag: 4da4fcec-ff01-46b5-805c-d5e5e835734f
+		summarizeBy: none
+		sourceColumn: Was First Aid administered?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Was the individual who administered First Aid trained and in date?'
+		dataType: string
+		lineageTag: 036aa22c-fa0e-49ef-a188-2787ebfb345a
+		summarizeBy: none
+		sourceColumn: Was the individual who administered First Aid trained and in date?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'The injured person:'
+		dataType: string
+		lineageTag: 131a763a-3747-4fe5-bacf-6244a6d20e4f
+		summarizeBy: none
+		sourceColumn: The injured person:
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Where was the injured person referred to?'
+		dataType: string
+		lineageTag: 15574257-877f-4bf8-8952-b45736679f5c
+		summarizeBy: none
+		sourceColumn: Where was the injured person referred to?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is the incident reportable under RIDDOR?'
+		dataType: string
+		lineageTag: 1abca4c0-e790-46c4-aef0-e5cd8df03c4e
+		summarizeBy: none
+		sourceColumn: Is the incident reportable under RIDDOR?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Was the accident avoidable?'
+		dataType: string
+		lineageTag: 83d34b29-7df0-4220-bea3-b56d31a42098
+		summarizeBy: none
+		sourceColumn: Was the accident avoidable?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9f2cb563-67f2-4bd0-b02e-07b0ab0c90d9
+		summarizeBy: none
+		sourceColumn: Start time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completion time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4f55a002-76ed-460a-bef1-f3dc35db268a
+		summarizeBy: none
+		sourceColumn: Completion time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Your Work Email'
+		dataType: string
+		lineageTag: 39f4673b-67d9-4ef4-9f39-752f68f77966
+		summarizeBy: none
+		sourceColumn: Your Work Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Accident'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c3fd981c-7132-4fec-bf95-ec76a1353171
+		summarizeBy: none
+		sourceColumn: Date of Accident
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Accident Location'
+		dataType: string
+		lineageTag: 6862e31d-9c73-481e-b788-cb6a18c131c7
+		summarizeBy: none
+		sourceColumn: Accident Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accident Cause'
+		dataType: string
+		lineageTag: 339e4988-8979-451f-b798-0aeb2754bc6a
+		summarizeBy: none
+		sourceColumn: Accident Cause
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accident Category'
+		dataType: string
+		lineageTag: 0728632f-c54a-4517-879a-2fa4d4838241
+		summarizeBy: none
+		sourceColumn: Accident Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accident Details'
+		dataType: string
+		lineageTag: 50c1bb7c-3b15-4f12-8c83-7283a790ac06
+		summarizeBy: none
+		sourceColumn: Accident Details
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Response'
+		dataType: string
+		lineageTag: 0301ac83-0a6b-456b-9279-ce082bc89db9
+		summarizeBy: none
+		sourceColumn: School Response
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Was the Parent/Guardian Informed?'
+		dataType: string
+		lineageTag: 9f5955b6-2855-4682-aab3-3d14c312e1cb
+		summarizeBy: none
+		sourceColumn: Was the Parent/Guardian Informed?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Was their parent/guardian informed?'
+		dataType: string
+		lineageTag: 08800689-4ace-4974-8da7-8983dc5f920f
+		summarizeBy: none
+		sourceColumn: Was their parent/guardian informed?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Who notified the parent/guardian?'
+		dataType: string
+		lineageTag: f57db2af-d06d-4491-b589-4af7194caeb5
+		summarizeBy: none
+		sourceColumn: Who notified the parent/guardian?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Which parent/guardian was informed?'
+		dataType: string
+		lineageTag: 0430ac70-5de3-401a-a47d-896a42c8df17
+		summarizeBy: none
+		sourceColumn: Which parent/guardian was informed?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date parent/guardian was informed'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 63576db3-c39a-4fed-aaa3-63bf8fd8e668
+		summarizeBy: none
+		sourceColumn: Date parent/guardian was informed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date of Birth'
+		dataType: string
+		lineageTag: d61f0432-9b95-4cae-a2c6-4ddcedc1a1ee
+		summarizeBy: none
+		sourceColumn: Date of Birth
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address: 1st Line'
+		dataType: string
+		lineageTag: 4a54e547-8083-4e79-a1ea-b2b68317cf6f
+		summarizeBy: none
+		sourceColumn: Address: 1st Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address: Town'
+		dataType: string
+		lineageTag: f53adc05-1600-4c2a-818f-3c2f47e27293
+		summarizeBy: none
+		sourceColumn: Address: Town
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address: Postcode'
+		dataType: string
+		lineageTag: 2fa4dc9c-095f-4b9b-9cf6-c5afc83f86ca
+		summarizeBy: none
+		sourceColumn: Address: Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Telephone
+		dataType: string
+		lineageTag: 8be9a923-9ba2-410f-9e89-efcbf5094074
+		summarizeBy: none
+		sourceColumn: Telephone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: 04d3748f-ea97-496d-bc5a-098aa5475517
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Organisation
+		dataType: string
+		lineageTag: 86edcbfc-b680-40ad-95a2-c41211b00d59
+		summarizeBy: none
+		sourceColumn: Organisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Who administered First Aid?'
+		dataType: string
+		lineageTag: 9a376024-7e9d-4166-bbf2-b04f8ecbcea6
+		summarizeBy: none
+		sourceColumn: Who administered First Aid?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What treatment was administered?'
+		dataType: string
+		lineageTag: b2998e25-279b-43aa-b03d-036925b00878
+		summarizeBy: none
+		sourceColumn: What treatment was administered?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What was the name of the hospital or doctors they were referred to?'
+		dataType: string
+		lineageTag: 132523aa-42df-448b-a37c-72c1d1931722
+		summarizeBy: none
+		sourceColumn: What was the name of the hospital or doctors they were referred to?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What immediate actions have been taken to prevent a recurrence?'
+		dataType: string
+		lineageTag: 4f5f6cde-dad7-4883-b7a4-6b328006926b
+		summarizeBy: none
+		sourceColumn: What immediate actions have been taken to prevent a recurrence?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What actions should be taken to prevent a recurrence in the future?'
+		dataType: string
+		lineageTag: c7aabfc6-f066-49c2-a98e-f205aaf574cc
+		summarizeBy: none
+		sourceColumn: What actions should be taken to prevent a recurrence in the future?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Were there any witnesses to the incident?'
+		dataType: string
+		lineageTag: 6ad1a8b4-74dd-4629-bf7c-86a3f0038a88
+		summarizeBy: none
+		sourceColumn: Were there any witnesses to the incident?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Witness 1 Full Name'
+		dataType: string
+		lineageTag: ef55387f-be4b-4a01-8ae5-78154a7b7a79
+		summarizeBy: none
+		sourceColumn: Witness 1 Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Witness 1 Contact Details'
+		dataType: string
+		lineageTag: 52a364f3-f5f5-434d-b3ef-b3e04edcfa17
+		summarizeBy: none
+		sourceColumn: Witness 1 Contact Details
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Witness 2 Full Name'
+		dataType: string
+		lineageTag: acdb102a-989d-4dbb-a01f-313b1bfcd390
+		summarizeBy: none
+		sourceColumn: Witness 2 Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Witness 2 Contact Details'
+		dataType: string
+		lineageTag: 1da026c7-2980-431e-a190-1e1745fe0e16
+		summarizeBy: none
+		sourceColumn: Witness 2 Contact Details
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contractor Name'
+		dataType: string
+		lineageTag: 20e4c97f-76e3-43e6-868a-5fc4153e0560
+		summarizeBy: none
+		sourceColumn: Contractor Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date work was carried out'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e5ebd98e-7894-4cda-9433-b5639976b09f
+		summarizeBy: none
+		sourceColumn: Date work was carried out
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Details of work carried out'
+		dataType: string
+		lineageTag: b57c3f1b-940e-49a0-b31c-1071aef717af
+		summarizeBy: none
+		sourceColumn: Details of work carried out
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'If you have any other comments about the incident, please write them here:'
+		dataType: string
+		lineageTag: 40f1c7be-b18b-4bdd-90c2-24b79fab7b87
+		summarizeBy: none
+		sourceColumn: If you have any other comments about the incident, please write them here:
+
+		annotation SummarizationSetBy = Automatic
+
+	column Filename
+		dataType: string
+		lineageTag: f026e2de-4980-478e-9ebb-81e98e97f715
+		summarizeBy: none
+		sourceColumn: Filename
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: 0f033cef-10ba-491d-b24c-4e16acf86a05
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accident Date Text'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d919a51a-a243-49a5-b0fe-f1b8cbf79e8a
+		summarizeBy: none
+		sourceColumn: Accident Date Text
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Accident Time Text'
+		dataType: string
+		lineageTag: c33dd274-ed97-4d17-b523-f3e9e552f18d
+		summarizeBy: none
+		sourceColumn: Accident Time Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour (Rounded)'
+		dataType: string
+		lineageTag: be444176-ef52-4fe6-a951-01b41b659ee3
+		summarizeBy: none
+		sourceColumn: Hour (Rounded)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accident Category (Short)'
+		dataType: string
+		lineageTag: f4feee00-cef4-4524-b670-ad89c5ecc81e
+		summarizeBy: none
+		sourceColumn: Accident Category (Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'If the injured person was accompanied, please provide the name of the individual'
+		dataType: string
+		lineageTag: c40e1212-c184-47fc-8a4f-399b14785a84
+		summarizeBy: none
+		sourceColumn: If the injured person was accompanied, please provide the name of the individual
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Could the incident have been caused either directly or indirectly by work carrie'
+		dataType: string
+		lineageTag: 2f33ce29-22c7-4094-b3a7-20262f30a422
+		summarizeBy: none
+		sourceColumn: Could the incident have been caused either directly or indirectly by work carrie
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accident Reporter Name'
+		dataType: string
+		lineageTag: 749ccea1-1956-4749-b179-f5179489be6e
+		summarizeBy: none
+		sourceColumn: Accident Reporter Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Injured Full Name'
+		dataType: string
+		lineageTag: 5e982801-cf20-4bdb-833f-e76d1576a9a9
+		summarizeBy: none
+		sourceColumn: Injured Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Accidents-e4c4fbb3-18a8-4f3d-8137-f1d6cc96884b = m
+		mode: import
+		queryGroup: 'Estates\Accidents and Near Misses'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    Accidents1 = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Accidents"]}[Data]
+				in
+				    Accidents1
+
+	annotation PBI_QueryRelationships = {"columnCount":59,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Accidents/Changed Type.{Start time,1}","Section1/Accidents/Changed Type.{Completion time,2}","Section1/Accidents/Changed Type.{School,5}","Section1/Accidents/Changed Type.{Your Name,6}","Section1/Accidents/Changed Type.{Your Work Email,7}","Section1/Accidents/Changed Type.{Date of Accident,8}","Section1/Accidents/Changed Type.{Accident Location,10}","Section1/Accidents/Changed Type.{Part of Body Affected,11}","Section1/Accidents/Changed Type.{Accident Cause,12}","Section1/Accidents/Changed Type.{Accident Category,13}","Section1/Accidents/Changed Type.{Students Name,14}","Section1/Accidents/Changed Type.{Accident Details,15}","Section1/Accidents/Changed Type.{School Response,16}","Section1/Accidents/Changed Type.{Was the Parent/Guardian Informed?,17}","Section1/Accidents/Changed Type.{Who had the accident?,18}","Section1/Accidents/Changed Type.{Was their parent/guardian informed?,19}","Section1/Accidents/Changed Type.{Who notified the parent/guardian?,20}","Section1/Accidents/Changed Type.{Which parent/guardian was informed?,21}","Section1/Accidents/Changed Type.{Date parent/guardian was informed,22}","Section1/Accidents/Changed Type.{First Name,23}","Section1/Accidents/Changed Type.{Surname,24}","Section1/Accidents/Changed Type.{Date of Birth,25}","Section1/Accidents/Changed Type.{Address: 1st Line,26}","Section1/Accidents/Changed Type.{Address: Town,27}","Section1/Accidents/Changed Type.{Address: Postcode,28}","Section1/Accidents/Changed Type.{Telephone,29}","Section1/Accidents/Changed Type.{Email Address,30}","Section1/Accidents/Changed Type.{Organisation,31}","Section1/Accidents/Changed Type.{Exact location of incident,32}","Section1/Accidents/Changed Type.{Please provide full details of the incident,33}","Section1/Accidents/Changed Type.{What was the type of Accident?,34}","Section1/Accidents/Changed Type.{Nature of Injury,35}","Section1/Accidents/Changed Type.{Was First Aid administered?,36}","Section1/Accidents/Changed Type.{Who administered First Aid?,37}","Section1/Accidents/Changed Type.{Was the individual who administered First Aid trained and in date?,38}","Section1/Accidents/Changed Type.{What treatment was administered?,39}","Section1/Accidents/Changed Type.{The injured person:,40}","Section1/Accidents/Changed Type.{Where was the injured person referred to?,41}","Section1/Accidents/Changed Type.{What was the name of the hospital or doctors they were referred to?,42}","Section1/Accidents/Changed Type.{If the injured person was accompanied, please provide the name of the individual that accompanied them.,43}","Section1/Accidents/Changed Type.{Is the incident reportable under RIDDOR?,44}","Section1/Accidents/Changed Type.{Was the accident avoidable?,45}","Section1/Accidents/Changed Type.{What immediate actions have been taken to prevent a recurrence?,46}","Section1/Accidents/Changed Type.{What actions should be taken to prevent a recurrence in the future?,47}","Section1/Accidents/Changed Type.{Were there any witnesses to the incident?,48}","Section1/Accidents/Changed Type.{Witness 1 Full Name,49}","Section1/Accidents/Changed Type.{Witness 1 Contact Details,50}","Section1/Accidents/Changed Type.{Witness 2 Full Name,51}","Section1/Accidents/Changed Type.{Witness 2 Contact Details,52}","Section1/Accidents/Changed Type.{Could the incident have been caused either directly or indirectly by work carried out by a contractor?,53}","Section1/Accidents/Changed Type.{Contractor Name,54}","Section1/Accidents/Changed Type.{Date work was carried out,55}","Section1/Accidents/Changed Type.{Details of work carried out,56}","Section1/Accidents/Changed Type.{If you have any other comments about the incident, please write them here:,57}","Section1/Accidents/Changed Type.{Filename,61}","Section1/Accidents/Changed Type.{SUID,65}","Section1/Accidents/Changed Type.{Accident Date Text,68}","Section1/Accidents/Changed Type.{Accident Time Text,69}","Section1/Accidents/Changed Time to Text.{Hour (Rounded),74}"],"ColumnCount":59,"KeyColumnNames":[],"ColumnIdentities":["Section1/Accidents/Changed Type.{Start time,1}","Section1/Accidents/Changed Type.{Completion time,2}","Section1/Accidents/Changed Type.{School,5}","Section1/Accidents/Changed Type.{Your Name,6}","Section1/Accidents/Changed Type.{Your Work Email,7}","Section1/Accidents/Changed Type.{Date of Accident,8}","Section1/Accidents/Changed Type.{Accident Location,10}","Section1/Accidents/Changed Type.{Part of Body Affected,11}","Section1/Accidents/Changed Type.{Accident Cause,12}","Section1/Accidents/Changed Type.{Accident Category,13}","Section1/Accidents/Changed Type.{Students Name,14}","Section1/Accidents/Changed Type.{Accident Details,15}","Section1/Accidents/Changed Type.{School Response,16}","Section1/Accidents/Changed Type.{Was the Parent/Guardian Informed?,17}","Section1/Accidents/Changed Type.{Who had the accident?,18}","Section1/Accidents/Changed Type.{Was their parent/guardian informed?,19}","Section1/Accidents/Changed Type.{Who notified the parent/guardian?,20}","Section1/Accidents/Changed Type.{Which parent/guardian was informed?,21}","Section1/Accidents/Changed Type.{Date parent/guardian was informed,22}","Section1/Accidents/Changed Type.{First Name,23}","Section1/Accidents/Changed Type.{Surname,24}","Section1/Accidents/Changed Type.{Date of Birth,25}","Section1/Accidents/Changed Type.{Address: 1st Line,26}","Section1/Accidents/Changed Type.{Address: Town,27}","Section1/Accidents/Changed Type.{Address: Postcode,28}","Section1/Accidents/Changed Type.{Telephone,29}","Section1/Accidents/Changed Type.{Email Address,30}","Section1/Accidents/Changed Type.{Organisation,31}","Section1/Accidents/Changed Type.{Exact location of incident,32}","Section1/Accidents/Changed Type.{Please provide full details of the incident,33}","Section1/Accidents/Changed Type.{What was the type of Accident?,34}","Section1/Accidents/Changed Type.{Nature of Injury,35}","Section1/Accidents/Changed Type.{Was First Aid administered?,36}","Section1/Accidents/Changed Type.{Who administered First Aid?,37}","Section1/Accidents/Changed Type.{Was the individual who administered First Aid trained and in date?,38}","Section1/Accidents/Changed Type.{What treatment was administered?,39}","Section1/Accidents/Changed Type.{The injured person:,40}","Section1/Accidents/Changed Type.{Where was the injured person referred to?,41}","Section1/Accidents/Changed Type.{What was the name of the hospital or doctors they were referred to?,42}","Section1/Accidents/Changed Type.{If the injured person was accompanied, please provide the name of the individual that accompanied them.,43}","Section1/Accidents/Changed Type.{Is the incident reportable under RIDDOR?,44}","Section1/Accidents/Changed Type.{Was the accident avoidable?,45}","Section1/Accidents/Changed Type.{What immediate actions have been taken to prevent a recurrence?,46}","Section1/Accidents/Changed Type.{What actions should be taken to prevent a recurrence in the future?,47}","Section1/Accidents/Changed Type.{Were there any witnesses to the incident?,48}","Section1/Accidents/Changed Type.{Witness 1 Full Name,49}","Section1/Accidents/Changed Type.{Witness 1 Contact Details,50}","Section1/Accidents/Changed Type.{Witness 2 Full Name,51}","Section1/Accidents/Changed Type.{Witness 2 Contact Details,52}","Section1/Accidents/Changed Type.{Could the incident have been caused either directly or indirectly by work carried out by a contractor?,53}","Section1/Accidents/Changed Type.{Contractor Name,54}","Section1/Accidents/Changed Type.{Date work was carried out,55}","Section1/Accidents/Changed Type.{Details of work carried out,56}","Section1/Accidents/Changed Type.{If you have any other comments about the incident, please write them here:,57}","Section1/Accidents/Changed Type.{Filename,61}","Section1/Accidents/Changed Type.{SUID,65}","Section1/Accidents/Changed Type.{Accident Date Text,68}","Section1/Accidents/Changed Type.{Accident Time Text,69}","Section1/Accidents/Changed Time to Text.{Hour (Rounded),74}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

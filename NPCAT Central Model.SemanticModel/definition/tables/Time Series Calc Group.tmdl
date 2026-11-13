@@ -1,0 +1,97 @@
+table 'Time Series Calc Group'
+	lineageTag: 6cad41cb-bc41-4eaa-9328-416c93753256
+
+	calculationGroup
+		precedence: 5
+
+		calculationItem CY =
+				
+				VAR _MaxOffset = MAX('Calendar'[Current School Year Offset])
+				VAR _MaxSchoolMonth = MAX('Calendar'[School Month Number])
+				
+				VAR _Yearselector = IF(_MaxSchoolMonth<10,_MaxOffset-1,_MaxOffset)
+				RETURN
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'Calendar'[Current School Year Offset] = _MaxOffset //_Yearselector
+				)
+
+		calculationItem PY =
+				
+				VAR _MaxOffset = MAX('Calendar'[Current School Year Offset])-1
+				VAR _MaxSchoolMonth = MAX('Calendar'[School Month Number])
+				
+				VAR _Yearselector = IF(_MaxSchoolMonth<10,_MaxOffset-1,_MaxOffset)
+				RETURN
+				
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'Calendar'[Current School Year Offset] = _MaxOffset //_Yearselector
+				)
+
+		calculationItem YoY = ```
+				
+				VAR CY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'Time Series Calc Group'[Name] = "CY"
+				)
+				VAR PY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'Time Series Calc Group'[Name] = "PY"
+				)
+				
+				RETURN
+				
+				IF ( ISBLANK ( PY ) = TRUE () ,BLANK() , CY - PY )
+				```
+
+		calculationItem 24/25 =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 2
+				RETURN
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+
+		calculationItem 25/26 =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+
+		calculationItem 26/27 =
+				
+				TOTALYTD(SELECTEDMEASURE(),'Calendar'[Date],"31/08")
+
+		calculationItem SPLY =
+				
+				CALCULATE( TOTALYTD(SELECTEDMEASURE(),'Calendar'[Date],"31/08"),SAMEPERIODLASTYEAR('Calendar'[Date]) )
+
+	column Name
+		dataType: string
+		lineageTag: 3e97d1f3-45bf-4476-9792-39afe92e37e6
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: 56a0f420-d1fe-4d7f-aaff-d45f72734f4e
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

@@ -1,0 +1,236 @@
+table 'Excluded Students'
+	lineageTag: f0346ee6-619a-4189-b54f-1165e59a0134
+
+	column 'Exclusions YTD' = CALCULATE(COUNTROWS('Excluded Students'), ALLEXCEPT('Excluded Students', 'Excluded Students'[Unique ID - Academic Year]))
+		formatString: 0
+		lineageTag: dcd175df-1459-40be-bf16-35c1ea254395
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Days Excluded'
+		dataType: double
+		formatString: 0
+		lineageTag: a5e953ab-10b8-48e0-ad05-43886d256f3e
+		summarizeBy: sum
+		sourceColumn: Days Excluded
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 863afb4c-1212-4920-9970-c0a49b30db21
+		summarizeBy: sum
+		sourceColumn: Sessions
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 80841001-b2fd-4afc-9e10-812cd8414c32
+		summarizeBy: none
+		sourceColumn: Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		isHidden
+		lineageTag: cf7c7909-da89-4ab1-b62f-b98d74ef9836
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: 33300c8f-b635-429d-bc0c-6a8f15a74cb4
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suspension ID'
+		dataType: string
+		lineageTag: 94c047d2-f70d-4e91-8a46-4b1d21c493b1
+		summarizeBy: none
+		sourceColumn: Suspension ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Application ID'
+		dataType: string
+		lineageTag: 32776755-4729-40e6-89eb-2e9a9b0fda86
+		summarizeBy: none
+		sourceColumn: Application ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student ID'
+		dataType: string
+		lineageTag: c3818518-3d7f-4b40-9990-f3d05a18acbf
+		summarizeBy: none
+		sourceColumn: Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d29e702d-f01c-4a2a-9ec7-bb33abee04c1
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Decision Date'
+		dataType: string
+		lineageTag: 7105a03f-9e01-417b-9f74-881ad03eb4e0
+		summarizeBy: none
+		sourceColumn: Decision Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exclusion Reason'
+		dataType: string
+		lineageTag: 92687109-42f9-4098-8808-31659f416df2
+		summarizeBy: none
+		sourceColumn: Exclusion Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique ID - Academic Year'
+		dataType: string
+		lineageTag: 599244b1-58fb-4ef4-9830-b11f8d703528
+		summarizeBy: none
+		sourceColumn: Unique ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID - Suspension ID'
+		dataType: string
+		lineageTag: 29f64da9-85e8-452e-9ce9-73cb1073c659
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID - Suspension ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUSPENSION_UNIQUE_ID
+		dataType: string
+		lineageTag: bf781810-ccdf-4319-a27e-91965dbed6e0
+		summarizeBy: none
+		sourceColumn: SUSPENSION_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eb4c2e34-ab83-4ca1-8a31-328afe0cc5fe
+		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SUSPENSION_REASONS_NAME_LIST
+		dataType: string
+		lineageTag: 32e283e2-806e-4840-81c2-0ffeeb97b459
+		summarizeBy: none
+		sourceColumn: SUSPENSION_REASONS_NAME_LIST
+
+		annotation SummarizationSetBy = Automatic
+
+	column NARRATIVE
+		dataType: string
+		lineageTag: 1c7fd2aa-3d8c-4e70-a87e-ad6625757200
+		summarizeBy: none
+		sourceColumn: NARRATIVE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DFE_EXPORT_CODE
+		dataType: string
+		lineageTag: 8ee1e9fb-930e-475c-930e-1dca6ac66926
+		summarizeBy: none
+		sourceColumn: DFE_EXPORT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATISTICAL_SESSIONS_EXCLUDED
+		dataType: double
+		lineageTag: 6c5459a6-66c0-4b5e-859c-3e952ddbbab0
+		summarizeBy: sum
+		sourceColumn: STATISTICAL_SESSIONS_EXCLUDED
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SCHOOL_DEFINED_SESSIONS_EXCLUDED
+		dataType: double
+		lineageTag: af5d62c0-24e5-4fc6-b7ad-c36eb618fb94
+		summarizeBy: sum
+		sourceColumn: SCHOOL_DEFINED_SESSIONS_EXCLUDED
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SCHOOL_DEFINED_DAYS_EXCLUDED
+		dataType: double
+		lineageTag: ce588bf4-12b9-4a3b-b59f-ecd58aad2f04
+		summarizeBy: sum
+		sourceColumn: SCHOOL_DEFINED_DAYS_EXCLUDED
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'School Year'
+		dataType: string
+		lineageTag: b2568c7a-21d5-4238-8ba8-12c76ec4e300
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Excluded Students-f7b7243f-11fd-4077-8ace-c5838d2e90e3' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    Suspensions = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Suspensions"]}[Data],
+				    #"Merged Queries" = Table.NestedJoin(Suspensions, {"Start Date"}, Calendar, {"Date"}, "Calendar", JoinKind.LeftOuter),
+				    #"Expanded Calendar" = Table.ExpandTableColumn(#"Merged Queries", "Calendar", {"School Year"}, {"Year"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Calendar",{{"Suspension Reason", "Exclusion Reason"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_QueryRelationships = {"columnCount":12,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Excluded Students/Excluded Students1.{SUID,0}","Section1/Excluded Students/Excluded Students1.{UPN,1}","Section1/Excluded Students/Excluded Students1.{Type,2}","Section1/Excluded Students/Excluded Students1.{Reason,3}","Section1/Excluded Students/Excluded Students1.{Reason code,4}","Section1/Excluded Students/Excluded Students1.{Term,5}","Section1/Excluded Students/Changed Type.{Start date,6}","Section1/Excluded Students/Changed Type.{End date,7}","Section1/Excluded Students/Excluded Students1.{Sessions,8}","Section1/Excluded Students/Excluded Students1.{Days Excluded,9}","Section1/Excluded Students/Excluded Students1.{UPN-SUID,10}","Section1/Excluded Students/Excluded Students1.{Year,11}"],"ColumnCount":12,"KeyColumnNames":[],"ColumnIdentities":["Section1/Excluded Students/Excluded Students1.{SUID,0}","Section1/Excluded Students/Excluded Students1.{UPN,1}","Section1/Excluded Students/Excluded Students1.{Type,2}","Section1/Excluded Students/Excluded Students1.{Reason,3}","Section1/Excluded Students/Excluded Students1.{Reason code,4}","Section1/Excluded Students/Excluded Students1.{Term,5}","Section1/Excluded Students/Changed Type.{Start date,6}","Section1/Excluded Students/Changed Type.{End date,7}","Section1/Excluded Students/Excluded Students1.{Sessions,8}","Section1/Excluded Students/Excluded Students1.{Days Excluded,9}","Section1/Excluded Students/Excluded Students1.{UPN-SUID,10}","Section1/Excluded Students/Excluded Students1.{Year,11}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

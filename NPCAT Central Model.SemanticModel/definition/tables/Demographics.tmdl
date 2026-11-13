@@ -1,0 +1,67 @@
+table Demographics
+	lineageTag: c2a6b147-8b12-4508-bdd6-bddb7d5ab36e
+
+	column 'Person Unique ID'
+		dataType: string
+		lineageTag: 0ce92352-1f58-4749-abf1-6d1b0d6d5d87
+		summarizeBy: none
+		sourceColumn: Person Unique ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tag
+		dataType: string
+		lineageTag: d66464b0-bba8-4e0b-93fc-93439a1a1036
+		summarizeBy: none
+		sourceColumn: Tag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tag Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b1e0db67-c16e-4616-ae27-75e58af46d83
+		summarizeBy: none
+		sourceColumn: Tag Start Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Tag End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 942a88ff-2721-45b9-b33b-b829328ee2e2
+		summarizeBy: none
+		sourceColumn: Tag End Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Demographics-6f72ddf9-2755-4624-946b-bf27d3ebffca = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"f8fe4326-dc8d-4e0c-a22e-c4caf5848b3c" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="f8fe4326-dc8d-4e0c-a22e-c4caf5848b3c"]}[Data],
+				    Demographics1 = #"f8fe4326-dc8d-4e0c-a22e-c4caf5848b3c"{[entity="Demographics"]}[Data]
+				in
+				    Demographics1
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

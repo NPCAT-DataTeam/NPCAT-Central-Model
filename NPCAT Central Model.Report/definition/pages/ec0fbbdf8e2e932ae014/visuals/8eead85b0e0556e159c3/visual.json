@@ -1,0 +1,152 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8eead85b0e0556e159c3",
+  "position": {
+    "x": 566.11544461778476,
+    "y": 528.17472698907966,
+    "z": 4006,
+    "height": 130.79563182527303,
+    "width": 586.08424336973485
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Percentage Suspension -1 Years 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Percentage Suspension -1 Years 1+",
+              "nativeQueryRef": "Percentage Suspension -1 Years 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Percentage Suspension -2 Years 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Percentage Suspension -2 Years 1+",
+              "nativeQueryRef": "Percentage Suspension -2 Years 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Percentage Suspension YTD 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Percentage Suspension YTD 1+",
+              "nativeQueryRef": "Percentage Suspension YTD 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Percentage Suspension YTD SPLY 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Percentage Suspension YTD SPLY 1+",
+              "nativeQueryRef": "Percentage Suspension YTD SPLY 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Incidents -1 Years 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Incidents -1 Years 1+",
+              "nativeQueryRef": "Suspension Incidents -1 Years 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Incidents -2 Years 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Incidents -2 Years 1+",
+              "nativeQueryRef": "Suspension Incidents -2 Years 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Incidents YTD 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Incidents YTD 1+",
+              "nativeQueryRef": "Suspension Incidents YTD 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Incidents YTD SPLY 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Incidents YTD SPLY 1+",
+              "nativeQueryRef": "Suspension Incidents YTD SPLY 1+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Sessions -1 Years 1+"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Sessions -1 Years 1+",
+              "nativeQueryRef": "Suspension Sessions -1 Years 1+"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,174 @@
+table 'Student Absences'
+	lineageTag: 2db5700d-bd4c-4447-84c1-d816349511f7
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 19827646-0aad-4296-b7e4-a26fd7d6293b
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: dad9ad88-1d3e-4cef-b9d6-021f9c26c5ef
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 08b2c328-1722-49c2-85b5-293b3a30af46
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 59468b00-ae71-4eab-9cc1-64ffad5aeb31
+		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days Missed'
+		dataType: double
+		lineageTag: 60965adf-824f-4340-8e02-409940e85390
+		summarizeBy: sum
+		sourceColumn: Days Missed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sessions Missed'
+		dataType: double
+		lineageTag: 2863f1a1-5c5e-48de-b688-092d689089bc
+		summarizeBy: sum
+		sourceColumn: Sessions Missed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Current Absence'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e64daa6d-b503-4dd6-b86a-abda4c9baed8
+		summarizeBy: none
+		sourceColumn: Current Absence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence Codes'
+		dataType: string
+		lineageTag: 65ebb3e0-ef8c-462f-9500-f49a547b8b6b
+		summarizeBy: none
+		sourceColumn: Absence Codes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence Reasons'
+		dataType: string
+		lineageTag: 4a337abd-e819-4c8f-bd76-e1c725a91a51
+		summarizeBy: none
+		sourceColumn: Absence Reasons
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authorised Sessions'
+		dataType: double
+		lineageTag: 5e1b0196-b530-4cd6-a1e4-e745dc47f434
+		summarizeBy: sum
+		sourceColumn: Authorised Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Authorised Days'
+		dataType: double
+		lineageTag: c8430d65-1a38-463a-8a10-a0d800a920db
+		summarizeBy: sum
+		sourceColumn: Authorised Days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unauthorised Sessions'
+		dataType: double
+		lineageTag: feb6c73a-e695-4426-b3cf-a2a963d5319f
+		summarizeBy: sum
+		sourceColumn: Unauthorised Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unauthorised Days'
+		dataType: double
+		lineageTag: 7d3118f8-b86c-4226-ab9d-a47654357af4
+		summarizeBy: sum
+		sourceColumn: Unauthorised Days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: 1683a084-a7ec-499f-b916-3cce69b3117c
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student - Year ID'
+		dataType: string
+		lineageTag: 2f2d5487-0154-4e62-9342-bd11ebc07c9e
+		summarizeBy: none
+		sourceColumn: Student - Year ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birthday Check' =
+			
+			VAR  Birthday = LOOKUPVALUE('Student Database (Full)'[DOB],'Student Database (Full)'[Globally Unique Student ID],[STUDENT_UNIQUE_ID])
+			VAR  Birthday_Year = VALUE([Academic Year])+ (IF(MONTH(Birthday)>8,0,1))
+			VAR  Academic_BDay = IFERROR(DATE(Birthday_Year,MONTH(Birthday),DAY(Birthday)),"")
+			RETURN
+			    IF(Academic_BDay="","Unenrolled",
+			        IF( 'Student Absences'[Start Date]<=Academic_BDay &&'Student Absences'[End Date]>=Academic_BDay,
+			        "Yes",
+			        "No"))
+		lineageTag: 5107f783-0781-454a-8888-1c7c19cbbae7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Student Absences' = m
+		mode: import
+		queryGroup: Attendance
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"5f992d63-d14f-4ef7-a9cf-bb725a2767f2" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="5f992d63-d14f-4ef7-a9cf-bb725a2767f2"]}[Data],
+				    #"Consecutive Days Absent (Student)_" = #"5f992d63-d14f-4ef7-a9cf-bb725a2767f2"{[entity="Consecutive Days Absent (Student)",version=""]}[Data]
+				in
+				    #"Consecutive Days Absent (Student)_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

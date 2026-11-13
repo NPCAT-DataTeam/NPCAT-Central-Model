@@ -1,0 +1,28 @@
+table 'MTD/YTD Calc Group'
+	lineageTag: 408c76c0-5aff-47ae-944b-55e2686f0206
+
+	calculationGroup
+		precedence: 7
+
+		calculationItem YTD = CALCULATE ( TOTALYTD ( SELECTEDMEASURE (), 'Calendar'[Date], "31/08" ) )
+
+		calculationItem MTD = CALCULATE ( TOTALMTD ( SELECTEDMEASURE (), 'Calendar'[Date] ) )
+
+	column Name
+		dataType: string
+		lineageTag: 91dd13f6-ee48-44b0-9e35-ea6ce4a4e488
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: 9a54ada7-0611-4c30-b489-956bb5b9a80a
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

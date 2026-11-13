@@ -1,0 +1,11 @@
+role 'St Francis Xavier'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT31"
+
+	tablePermission 'AP-Grade Type' = [Grade Type] <> "Mock"
+
+	tablePermission 'Secondary QA Permissions' = 'Secondary QA Permissions'[Visible to ID] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = 210c43b8b3ff4f3187250a0555787d8f
+

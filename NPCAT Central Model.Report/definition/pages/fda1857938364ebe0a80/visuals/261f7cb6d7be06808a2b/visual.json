@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "261f7cb6d7be06808a2b",
+  "position": {
+    "x": 27.337909992372236,
+    "y": 106.42257818459191,
+    "z": 0,
+    "height": 300,
+    "width": 300
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "School Year"
+                }
+              },
+              "queryRef": "Calendar.School Year",
+              "nativeQueryRef": "School Year",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Attendance Percentage"
+                }
+              },
+              "queryRef": "Measures Folder.Attendance Percentage",
+              "nativeQueryRef": "Attendance Percentage"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "FORMAT( [Attendance Percentage] - PREVIOUS([Attendance Percentage]),\"0.0%\")",
+                  "Name": "Versus previous"
+                }
+              },
+              "queryRef": "select1",
+              "nativeQueryRef": "Versus previous"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b7c59d79bca1c9c018d8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Attendance Percentage"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8d35a1b0b3373b003a01",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "School Year"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+table 'Feeder School Locations'
+	lineageTag: 6f426d6e-fc56-40b6-8852-a5ebe5398420
+
+	column 'Secondary School'
+		dataType: string
+		lineageTag: 14f09224-2ad7-4c85-a463-6901e586b797
+		summarizeBy: none
+		sourceColumn: Secondary School
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: 9eeb35ff-62b3-4953-9a7e-cbe5450e0ea8
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Secondary School Postcode'
+		dataType: string
+		lineageTag: 749eeb16-6e12-413e-9bf6-67b490490520
+		summarizeBy: none
+		sourceColumn: Secondary School Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Secondary School Lat'
+		dataType: double
+		lineageTag: e3a36362-9b42-4cf7-bd48-889db1bb6f3b
+		summarizeBy: sum
+		sourceColumn: Secondary School Lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Secondary School Long'
+		dataType: double
+		lineageTag: 801bee7d-a60a-4be6-84a0-27cf72a08ee4
+		summarizeBy: sum
+		sourceColumn: Secondary School Long
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Feeder School'
+		dataType: string
+		lineageTag: 062f03c7-0eda-4e1a-b6bd-c0091c42de2d
+		summarizeBy: none
+		sourceColumn: Feeder School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder School Postcode'
+		dataType: string
+		lineageTag: 66df47fd-03c1-4c28-8d56-bc4f64adc0c1
+		summarizeBy: none
+		sourceColumn: Feeder School Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder School Lat'
+		dataType: double
+		lineageTag: 9dd1d6d4-a314-4eca-a650-ff4f92e44837
+		summarizeBy: sum
+		sourceColumn: Feeder School Lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Feeder School Long'
+		dataType: double
+		lineageTag: 198f7170-51cb-40ab-9bd3-8137cf1264ba
+		summarizeBy: sum
+		sourceColumn: Feeder School Long
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Proximity Rank'
+		dataType: string
+		lineageTag: 8ef13c52-a1c6-4f65-9ebf-bbbe378700f7
+		summarizeBy: none
+		sourceColumn: Proximity Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Travel Distance (Km)'
+		dataType: double
+		lineageTag: 25c39e8d-6f12-4a8d-bc05-5edae5ecaeb5
+		summarizeBy: sum
+		sourceColumn: Travel Distance (Km)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Feeder School PAN'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5742dbb7-9c8c-4fbf-a46e-f43b0b6bcd00
+		summarizeBy: sum
+		sourceColumn: Feeder School PAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder SUID'
+		dataType: string
+		lineageTag: b2dc32f8-267b-4752-aace-519c4bbac83d
+		summarizeBy: none
+		sourceColumn: Feeder SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year 6' = ```
+			
+			
+			VAR _School = [Feeder SUID]
+			
+			RETURN
+			 CALCULATE(
+			    [Students on roll], 
+			    'Student Year Groups'[Year Group] = "Year 6",
+			    'School Database'[SU ID] = _School,
+			    'Calendar'[FutureDate] = "Past"
+			 )
+			```
+		formatString: 0
+		lineageTag: 85466cd9-85ec-4132-82cd-b91d8de793b1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year 5' = ```
+			
+			
+			VAR _School = [Feeder SUID]
+			
+			RETURN
+			 CALCULATE(
+			    [Students on roll], 
+			    'Student Year Groups'[Year Group] = "Year 5",
+			    'School Database'[SU ID] = _School,
+			    'Calendar'[FutureDate] = "Past"
+			 )
+			```
+		formatString: 0
+		lineageTag: c853b26b-d5f4-4aca-97a2-f1780d73d335
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year 4' = ```
+			
+			
+			VAR _School = [Feeder SUID]
+			
+			RETURN
+			 CALCULATE(
+			    [Students on roll], 
+			    'Student Year Groups'[Year Group] = "Year 4",
+			    'School Database'[SU ID] = _School,
+			    'Calendar'[FutureDate] = "Past"
+			 )
+			```
+		formatString: 0
+		lineageTag: b953a38c-624a-4a0f-9f7d-1b222f86a1f3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Feeder School Locations' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    #"Feeder School Locations1" = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="Feeder School Locations"]}[Data]
+				in
+				    #"Feeder School Locations1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,204 @@
+table 'Enrichment Attendance'
+	lineageTag: 2e95c4cc-4c6f-41ad-8ce5-267136f60b56
+
+	column ENRICHMENT_ATTENDANCE_RECORD_UNIQUE_ID
+		dataType: string
+		lineageTag: a2652980-5789-445a-9b4a-b0f4c281d4f2
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_ATTENDANCE_RECORD_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENRICHMENT_ATTENDANCE_RECORD_ID
+		dataType: double
+		lineageTag: 47370074-f0cf-4b26-bb14-c13b28b4732f
+		summarizeBy: count
+		sourceColumn: ENRICHMENT_ATTENDANCE_RECORD_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 3f6dc630-1315-46e5-b898-d35c65a4f56a
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: ecb028a7-b934-4b97-a775-1288404f0808
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_ID
+		dataType: double
+		lineageTag: 728e8fc3-c301-4889-ab4e-4f1a23e9c72b
+		summarizeBy: count
+		sourceColumn: STUDENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RAW_MARK
+		dataType: string
+		lineageTag: 2306141d-c1fc-468f-98f0-b8e1cf1485dd
+		summarizeBy: none
+		sourceColumn: RAW_MARK
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARK_CODE
+		dataType: string
+		lineageTag: 5b2bb64c-99dc-430e-993d-e37edf9f4ceb
+		summarizeBy: none
+		sourceColumn: MARK_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENRICHMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: b3306bcd-d030-4617-bd7f-065d243907d9
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENRICHMENT_ID
+		dataType: double
+		lineageTag: 5ea41804-a85d-431f-bf09-b9c3175b97e0
+		summarizeBy: count
+		sourceColumn: ENRICHMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ENRICHMENT_NAME
+		dataType: string
+		lineageTag: 1f095942-d2b3-48d7-92f8-c2303aefde9c
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLUB_SESSION_UNIQUE_ID
+		dataType: string
+		lineageTag: 03a4f1bf-92eb-499d-8333-41a4553d5eae
+		summarizeBy: none
+		sourceColumn: CLUB_SESSION_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLUB_SESSION_ID
+		dataType: double
+		lineageTag: 12c6bbd6-4076-46d3-bc22-bf94270e9f7b
+		summarizeBy: count
+		sourceColumn: CLUB_SESSION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TIMETABLE_SLOT_UNIQUE_ID
+		dataType: string
+		lineageTag: 21973ed2-49c3-4eae-84a6-db57b1391d65
+		summarizeBy: none
+		sourceColumn: TIMETABLE_SLOT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIMETABLE_SLOT_ID
+		dataType: double
+		lineageTag: 08475e42-eea2-42c2-bc41-9d4001a3e8e0
+		summarizeBy: count
+		sourceColumn: TIMETABLE_SLOT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LOCATION_UNIQUE_ID
+		dataType: string
+		lineageTag: c7103724-e57f-424e-87f1-2c88e3a48042
+		summarizeBy: none
+		sourceColumn: LOCATION_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column START_DATETIME
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a9d9d36-a5ba-478a-bccd-8dcf051a8519
+		summarizeBy: none
+		sourceColumn: START_DATETIME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column END_DATETIME
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2cb3e6da-ec39-4b12-b03b-388e537e05f7
+		summarizeBy: none
+		sourceColumn: END_DATETIME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IS_PRESENT
+		dataType: int64
+		formatString: 0
+		lineageTag: cba87905-6d2d-4021-b885-d348efe649f9
+		summarizeBy: sum
+		sourceColumn: IS_PRESENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ENRICHMENT TYPE'
+		dataType: string
+		lineageTag: 4d286903-835a-46f0-9ee9-3cfb4704c930
+		summarizeBy: none
+		sourceColumn: ENRICHMENT TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: b3333c3b-115d-4d8f-9476-518322c39548
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Sudent ID - Academic Year'
+		dataType: string
+		lineageTag: 87c824f4-13eb-46bf-aadb-3b3688134ae5
+		summarizeBy: none
+		sourceColumn: Unique Sudent ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Enrichment Attendance' = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"dec0f7d7-e49f-433b-bf49-0f0a5e57e018" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="dec0f7d7-e49f-433b-bf49-0f0a5e57e018"]}[Data],
+				    #"Enrichment Attendance_" = #"dec0f7d7-e49f-433b-bf49-0f0a5e57e018"{[entity="Enrichment Attendance",version=""]}[Data]
+				in
+				    #"Enrichment Attendance_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

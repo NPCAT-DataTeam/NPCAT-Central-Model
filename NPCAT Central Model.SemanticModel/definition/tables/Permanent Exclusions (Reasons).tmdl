@@ -1,0 +1,35 @@
+table 'Permanent Exclusions (Reasons)'
+	lineageTag: 4c9726e1-f710-4ee9-a79e-e9c0abbcc8ab
+
+	column 'Globally Unique Student ID - Permenant ID'
+		dataType: string
+		lineageTag: c89bead2-f85d-4903-8427-303414cccb9c
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID - Permenant ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EXCLUSION_REASONS
+		dataType: string
+		lineageTag: bcdf8d0f-6293-443e-8eb0-6cc6d2c58665
+		summarizeBy: none
+		sourceColumn: EXCLUSION_REASONS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Permanent Exclusions (Reasons)-5778108d-7854-4a49-8d5d-229782a14ad0' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"Permanent Exclusions (Reasons)1" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Permanent Exclusions (Reasons)"]}[Data]
+				in
+				    #"Permanent Exclusions (Reasons)1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

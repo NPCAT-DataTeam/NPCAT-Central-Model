@@ -1,0 +1,241 @@
+table 'Performance Reviews'
+	lineageTag: b51d100d-8916-4877-8530-ace773ae259e
+
+	column 'Every School ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b511370-73ef-4e47-bb8d-313db3f1c7a8
+		summarizeBy: count
+		sourceColumn: Every School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: string
+		lineageTag: 3689fd18-d978-4a6e-b935-ccd356da4b4e
+		summarizeBy: none
+		sourceColumn: Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Name'
+		dataType: string
+		lineageTag: 2c42168c-238b-4083-92ae-5d228a96b975
+		summarizeBy: none
+		sourceColumn: Employee Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Appraisal Cycle'
+		dataType: string
+		lineageTag: f47640da-69e7-4096-98af-856962f96873
+		summarizeBy: none
+		sourceColumn: Appraisal Cycle
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Performance Record Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 625a1f91-53e4-4f6f-9b54-b0c2785e0b03
+		summarizeBy: count
+		sourceColumn: Performance Record Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reviewer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 695c975a-8225-4ff7-90b3-0e34d3712292
+		summarizeBy: count
+		sourceColumn: Reviewer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reviewer Name'
+		dataType: string
+		lineageTag: 77b1afc1-0697-4f87-9433-ba2e7790b5b4
+		summarizeBy: none
+		sourceColumn: Reviewer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Key'
+		dataType: string
+		lineageTag: f150641b-0bb2-4214-bce5-0bc043eeb530
+		summarizeBy: none
+		sourceColumn: Review Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Recommended For Pay Progression'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 87d2c41f-9228-499e-8bbf-0ebada11bc9e
+		summarizeBy: none
+		sourceColumn: Recommended For Pay Progression
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pay Progression Comments'
+		dataType: string
+		lineageTag: 23451da4-4acb-40d2-9e31-8c9db1524320
+		summarizeBy: none
+		sourceColumn: Pay Progression Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Final Review Comments'
+		dataType: string
+		lineageTag: 12ad1c73-a1a1-42cf-818f-e048731968cb
+		summarizeBy: none
+		sourceColumn: Final Review Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Template Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 472fe502-caa9-4755-99a2-b28a94ed3f76
+		summarizeBy: count
+		sourceColumn: Review Template Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Template Title'
+		dataType: string
+		lineageTag: ea6577fe-5933-49d9-ab32-991fbd986af0
+		summarizeBy: none
+		sourceColumn: Review Template Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Type Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 91bfd0b6-66f8-40a5-96a9-7be7da5c9132
+		summarizeBy: count
+		sourceColumn: Review Type Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Role'
+		dataType: string
+		lineageTag: a6c401bd-445b-4df7-a1d6-c70afbaf2e81
+		summarizeBy: none
+		sourceColumn: Review Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Period'
+		dataType: string
+		lineageTag: dbf1ad39-d462-4db6-b053-a46b8fff874f
+		summarizeBy: none
+		sourceColumn: Review Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Entry (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1deccff4-6796-4f20-aece-e06156d00cc4
+		summarizeBy: none
+		sourceColumn: Date of Entry (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Completed (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cfcdde1c-5697-4866-88ce-23eddd5aeae4
+		summarizeBy: none
+		sourceColumn: Date Completed (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Visible to Employees'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ed9abbe6-74d9-4ec9-9349-613cdaedddbe
+		summarizeBy: none
+		sourceColumn: Visible to Employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c8a29e8f-53e0-4379-9fac-ac64e79682d1
+		summarizeBy: none
+		sourceColumn: Due Date (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'School ID - Employee ID'
+		dataType: string
+		lineageTag: 7db5e159-9b11-420e-ba02-2f5620d9b59a
+		summarizeBy: none
+		sourceColumn: School ID - Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School ID - Employee ID - Appraisal Cycle'
+		dataType: string
+		lineageTag: 852f02bb-bae7-48a4-8c2a-bbc7af592e44
+		summarizeBy: none
+		sourceColumn: School ID - Employee ID - Appraisal Cycle
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 081e0b11-5d17-44b6-ba49-2d72faa62fec
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Period Sort'
+		dataType: string
+		lineageTag: 32e6db4d-1fd7-48b6-a367-26c89ebae7d2
+		summarizeBy: none
+		sourceColumn: Review Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Review Status'
+		dataType: string
+		lineageTag: ba6a5495-7957-440a-aed8-e8839fbac0db
+		summarizeBy: none
+		sourceColumn: Review Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Reviews'
+		dataType: string
+		lineageTag: f44238a2-e04a-476b-aa24-0e6e6b29c90c
+		summarizeBy: none
+		sourceColumn: Unique Reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Performance Reviews-f61a780c-19b6-4dfd-b37c-1b493fd4827c' = m
+		mode: import
+		queryGroup: HR
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Performance Reviews1" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Performance Reviews"]}[Data]
+				in
+				    #"Performance Reviews1"
+
+	annotation PBI_ResultType = Table
+

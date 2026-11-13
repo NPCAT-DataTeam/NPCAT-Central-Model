@@ -1,0 +1,143 @@
+table 'SEN Needs'
+	lineageTag: 66a20b55-0a10-46a2-bbe4-98f354e3d8f4
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: 2691a349-6cac-430b-8f58-c0f2421e4490
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Need Type'
+		dataType: string
+		lineageTag: 4f1e7d15-d06b-4489-89c5-1941b4ae565b
+		summarizeBy: none
+		sourceColumn: SEN Need Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 35276d66-a923-44cf-b2eb-4257fbf1924d
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ee64912a-6f10-4834-b715-0857a5fe5250
+		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'SEN Need Ranking'
+		dataType: double
+		formatString: 0
+		lineageTag: 246697a2-61c6-4e62-b057-8d0a6070aa0c
+		summarizeBy: sum
+		sourceColumn: SEN Need Ranking
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 860c5392-732d-4df6-822c-15e24b863a7c
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year Start'
+		dataType: string
+		lineageTag: dbca0296-e129-4055-ae90-9d13a23c3a51
+		summarizeBy: none
+		sourceColumn: Academic Year Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student-Academic Year'
+		dataType: string
+		lineageTag: 55173cee-9cf1-42f2-b3f0-9460b93a6176
+		summarizeBy: none
+		sourceColumn: Student-Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic School Year'
+		dataType: string
+		lineageTag: 036c38d3-b43b-46d0-9be0-e7ef9b59b517
+		summarizeBy: none
+		sourceColumn: Academic School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DfE SEN Need Type'
+		dataType: string
+		lineageTag: 3cb85b89-6630-45c9-8bb3-5d2f082ad434
+		summarizeBy: none
+		sourceColumn: DfE SEN Need Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category(Short)
+		dataType: string
+		lineageTag: da75bc8a-af21-4958-920b-d89f9ab10a5e
+		summarizeBy: none
+		sourceColumn: Category(Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent Category'
+		dataType: string
+		lineageTag: d65f2c87-b68a-422f-93e5-ffb7250ea9e1
+		summarizeBy: none
+		sourceColumn: Parent Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Need Type Sort'
+		dataType: double
+		lineageTag: d552ea6d-6b0d-45f6-9d0d-37f8e4f8b781
+		summarizeBy: sum
+		sourceColumn: SEN Need Type Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Parent Category Sort'
+		dataType: double
+		lineageTag: 8e2a94ef-c6f5-48e4-9b6c-e25ef03f05fc
+		summarizeBy: sum
+		sourceColumn: Parent Category Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'SEN Needs' = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"SEN Needs_" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="SEN Needs",version=""]}[Data]
+				in
+				    #"SEN Needs_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

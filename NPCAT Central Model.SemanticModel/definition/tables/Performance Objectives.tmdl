@@ -1,0 +1,221 @@
+table 'Performance Objectives'
+	lineageTag: 4f7718f7-708a-49bb-9a71-0d2cbe8a5d66
+
+	column 'Every School ID'
+		dataType: string
+		lineageTag: fb3f98d1-c7b5-4d9e-8edf-a48dc066f1f4
+		summarizeBy: none
+		sourceColumn: Every School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: string
+		lineageTag: d98d5b4f-3738-44be-88a7-c65749541f28
+		summarizeBy: none
+		sourceColumn: Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Name'
+		dataType: string
+		lineageTag: 7bc8e85c-56cf-4b0b-ab3b-e612c98c36c9
+		summarizeBy: none
+		sourceColumn: Employee Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Appraisal Cycle'
+		dataType: string
+		lineageTag: f8e15c23-2971-4365-b28c-0dfc7137df92
+		summarizeBy: none
+		sourceColumn: Appraisal Cycle
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Performance Record Key'
+		dataType: string
+		lineageTag: f0436f12-33ac-4df9-a707-3c4b2a28e750
+		summarizeBy: none
+		sourceColumn: Performance Record Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reviewer Key'
+		dataType: string
+		lineageTag: c17fe6fe-9554-4d1e-9fe5-dfb419bae288
+		summarizeBy: none
+		sourceColumn: Reviewer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reviewer Name'
+		dataType: string
+		lineageTag: 2b7083bd-ee60-49bc-9bed-af837ebf31e6
+		summarizeBy: none
+		sourceColumn: Reviewer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Objective Key'
+		dataType: string
+		lineageTag: 867d29a7-fb92-46ea-90bc-f07cbe11b4e9
+		summarizeBy: none
+		sourceColumn: Objective Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: f8697999-980c-46a9-be4c-ccbdc169fcc0
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Agreed (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fab4d3e7-b56a-4d60-a71a-5c61d5a18409
+		summarizeBy: none
+		sourceColumn: Date Agreed (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Due Date (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 54e931a5-6428-4932-b689-49a31c8378cf
+		summarizeBy: none
+		sourceColumn: Due Date (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Performance Criteria'
+		dataType: string
+		lineageTag: 5330fcc5-3a1c-474f-9bfd-9e9254fc342a
+		summarizeBy: none
+		sourceColumn: Performance Criteria
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Required Evidence'
+		dataType: string
+		lineageTag: 67197646-3850-41e6-b171-349069120cdd
+		summarizeBy: none
+		sourceColumn: Required Evidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Completed (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cf2d155e-c55e-4d07-a200-572e88c923d7
+		summarizeBy: none
+		sourceColumn: Date Completed (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Status Key'
+		dataType: string
+		lineageTag: 88a5ad98-b0b8-451b-ba76-f4dc058204f0
+		summarizeBy: none
+		sourceColumn: Status Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 55e5233b-c1ea-4444-9c4c-5a759d783e67
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Entry (dd/mm/yyyy)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9fefb7e4-1be3-4272-9cc6-a23af708af00
+		summarizeBy: none
+		sourceColumn: Date of Entry (dd/mm/yyyy)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Approved by Employee'
+		dataType: string
+		lineageTag: 1a2304ac-00b0-4836-983d-21956164c322
+		summarizeBy: none
+		sourceColumn: Approved by Employee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Approved by Reviewer'
+		dataType: string
+		lineageTag: f6c80a96-b8c7-4549-8179-8002ca999e28
+		summarizeBy: none
+		sourceColumn: Approved by Reviewer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Approved
+		dataType: string
+		lineageTag: c9d2c440-b8bb-474a-ae9d-65e50bebb329
+		summarizeBy: none
+		sourceColumn: Approved
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School ID - Employee ID'
+		dataType: string
+		isHidden
+		lineageTag: 168d6895-cf0e-40b0-935a-ca616c887d4b
+		summarizeBy: none
+		sourceColumn: School ID - Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 70c4792f-8d20-4051-854b-425cb9365905
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Performance Record Instances'
+		dataType: string
+		lineageTag: 1f3dde90-f788-48ae-a957-cd817bafbcbb
+		summarizeBy: none
+		sourceColumn: Unique Performance Record Instances
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Objectives In Appraisal Cycle' = CALCULATE(COUNTROWS('Performance Objectives'), ALLEXCEPT('Performance Objectives', 'Performance Objectives'[Unique Performance Record Instances]))
+		formatString: 0
+		lineageTag: a7ea96a4-1afa-4761-adf9-a6f7a39a7048
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Performance Objectives-6a6e4e91-5e4a-4d60-99be-f859c0644a09' = m
+		mode: import
+		queryGroup: HR
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Performance Objectives1" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Performance Objectives"]}[Data]
+				in
+				    #"Performance Objectives1"
+
+	annotation PBI_ResultType = Table
+

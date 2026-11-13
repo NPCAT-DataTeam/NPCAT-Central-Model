@@ -1,0 +1,7 @@
+role 'St Bernadette''s'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT11"
+
+	annotation PBI_Id = 9f22ef8adeb349688865c52a7176d1e2
+

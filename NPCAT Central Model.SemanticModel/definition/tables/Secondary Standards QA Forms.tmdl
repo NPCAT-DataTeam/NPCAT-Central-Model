@@ -1,0 +1,191 @@
+table 'Secondary Standards QA Forms'
+	lineageTag: e6fe2695-677f-4188-bc67-37d254a059f5
+
+	column 'QA Form type'
+		dataType: string
+		lineageTag: b0a9c628-fddb-4113-9163-55d4733deba0
+		summarizeBy: none
+		sourceColumn: QA Form type
+		sortByColumn: 'QA Form Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b3027bd-e8fa-44fe-bd95-4341970096db
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Observer Email'
+		dataType: string
+		lineageTag: 824f4f8e-c336-4c35-a8c7-9a2915aa1d79
+		summarizeBy: none
+		sourceColumn: Observer Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Teacher Email'
+		dataType: string
+		lineageTag: 335c47cf-d68c-4246-85e8-4409e38ec1de
+		summarizeBy: none
+		sourceColumn: Teacher Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Lead Email'
+		dataType: string
+		lineageTag: 1e80ebe3-7484-45cc-b597-767c08854b1c
+		summarizeBy: none
+		sourceColumn: Subject Lead Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Observer Name'
+		dataType: string
+		lineageTag: 7ac5fa35-17f3-43c8-a886-99653ec0b7e1
+		summarizeBy: none
+		sourceColumn: Observer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: 08f83dbf-cc00-4e19-9bcd-d4118fecf0b5
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name of Observer'
+		dataType: string
+		lineageTag: 2588064b-b045-4adc-8faa-acaebe7ec6a0
+		summarizeBy: none
+		sourceColumn: Name of Observer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: 26dc7812-4a82-4e0c-ae76-175fc45ae99c
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Teacher Name'
+		dataType: string
+		lineageTag: 913606a4-a9d9-4b17-905e-01632056a9b6
+		summarizeBy: none
+		sourceColumn: Teacher Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Lead'
+		dataType: string
+		lineageTag: 8895805c-0397-4365-888a-0509328ed636
+		summarizeBy: none
+		sourceColumn: Subject Lead
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 121b7c86-3adb-4d95-95c8-8de6d81f6a78
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of QA Form'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d64bf123-3d99-4b5a-972f-650ca01f9a49
+		summarizeBy: none
+		sourceColumn: Date of QA Form
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'QA Forms ID'
+		dataType: string
+		lineageTag: cdae9496-d30f-429d-af31-065cd985ff21
+		summarizeBy: none
+		sourceColumn: QA Forms ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: a4291e5d-17b0-4c80-bba0-038dfd0342a7
+		summarizeBy: sum
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: a38266cc-6ef7-49c7-b7c4-8ef5e8d94006
+		summarizeBy: sum
+		sourceColumn: QA Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Teacher QA Index'
+		dataType: string
+		lineageTag: 45d3d524-9073-4409-ae8f-c833a3e8e678
+		summarizeBy: none
+		sourceColumn: Teacher QA Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Type and Index'
+		dataType: string
+		lineageTag: 5e5bc20e-40c5-4e1d-b25c-df06b5827d5c
+		summarizeBy: none
+		sourceColumn: QA Type and Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Form Sort'
+		dataType: double
+		lineageTag: a492adf9-0a90-4e79-9bba-7e739194453b
+		summarizeBy: sum
+		sourceColumn: QA Form Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Key Stage' =
+			
+			IF ( [Year group] in {"Year 7","Year 8","Year 9"},"KS3","KS4")
+		lineageTag: d261fb87-3af7-4011-a926-3aaa3245bdd6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Secondary Standards QA Forms' = m
+		mode: import
+		queryGroup: 'Teacher QA Forms'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a694e134-a9c9-45a1-87d0-39adc0b09e69" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a694e134-a9c9-45a1-87d0-39adc0b09e69"]}[Data],
+				    #"Secondary Standards QA Forms_" = #"a694e134-a9c9-45a1-87d0-39adc0b09e69"{[entity="Secondary Standards QA Forms",version=""]}[Data]
+				in
+				    #"Secondary Standards QA Forms_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

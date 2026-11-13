@@ -1,0 +1,45 @@
+table 'Catering Audit Students'
+	lineageTag: 5cde0f9e-2077-46d0-97c7-64031e45c81e
+
+	column ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 97f622ae-9e11-4b2c-ae08-4da88ebc9277
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Metric'
+		dataType: string
+		lineageTag: 7df18ec6-69fc-46b1-9818-c5ed3f9ccd18
+		summarizeBy: none
+		sourceColumn: Student Metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bcdf80d-532a-4614-9ba7-b780f6fd7157
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catering Audit Students-75d1c124-22f8-4cc3-94a6-7d2495eaa8ca' = m
+		mode: import
+		queryGroup: Estates\Catering
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Catering Audit Students_" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Catering Audit Students",version=""]}[Data]
+				in
+				    #"Catering Audit Students_"
+
+	annotation PBI_ResultType = Table
+

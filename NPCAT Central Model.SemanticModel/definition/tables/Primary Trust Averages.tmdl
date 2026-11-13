@@ -1,0 +1,71 @@
+table 'Primary Trust Averages'
+	lineageTag: 9ad6ed7b-faf4-414e-aa10-a2f1db2499ad
+
+	column 'School Year'
+		dataType: string
+		lineageTag: adad1d21-dff8-49d7-be3a-ad0759cba609
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Demographic Name'
+		dataType: string
+		lineageTag: bf3722c2-91e3-4732-92ee-92200b1ca281
+		summarizeBy: none
+		sourceColumn: Demographic Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: 7ed0172c-9151-4100-bb5a-83bf05eb399f
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column Percentage
+		dataType: double
+		lineageTag: 7a55abef-8622-400d-8013-a10e88fa82d6
+		summarizeBy: sum
+		sourceColumn: Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Average
+		dataType: double
+		lineageTag: 89076bac-3f51-4b97-b820-cd4b1782f961
+		summarizeBy: sum
+		sourceColumn: Average
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Measure Name'
+		dataType: string
+		lineageTag: 2792afc3-fe23-4e00-b155-e55b8d0ad4ad
+		summarizeBy: none
+		sourceColumn: Measure Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary Trust Averages' = m
+		mode: import
+		queryGroup: 'Primary\Primary Nationals'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"367f4448-a928-4f2b-9233-266612d07dab" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="367f4448-a928-4f2b-9233-266612d07dab"]}[Data],
+				    #"Primary Trust Averages_" = #"367f4448-a928-4f2b-9233-266612d07dab"{[entity="Primary Trust Averages",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Primary Trust Averages_",{{"Percentage", Percentage.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,165 @@
+table 'Primary Standardised Assessments'
+	lineageTag: 0a187872-87c7-4d91-8770-f744e59cbdf4
+
+	column 'Arbor ID'
+		dataType: string
+		lineageTag: 7ea81605-0dc0-4c71-b2a4-e3582a05be2d
+		summarizeBy: none
+		sourceColumn: Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student ID'
+		dataType: double
+		lineageTag: 0fecbbcb-b5e1-43ed-9f0d-4908c6beeead
+		summarizeBy: count
+		sourceColumn: Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Assessment Name'
+		dataType: string
+		lineageTag: ad11bc1c-c29f-4b89-8507-bab7fa6f2cf1
+		summarizeBy: none
+		sourceColumn: Assessment Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Code'
+		dataType: string
+		lineageTag: a0850a07-d3ed-43cb-a9bd-c8d75b26f1f8
+		summarizeBy: none
+		sourceColumn: Assessment Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Name'
+		dataType: string
+		lineageTag: 22e18176-a2c3-4917-b9a6-ee80c5e3dbf0
+		summarizeBy: none
+		sourceColumn: Grade Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Marks Awarded'
+		dataType: double
+		lineageTag: 41289a11-db95-43de-8471-8974bea2d0b7
+		summarizeBy: sum
+		sourceColumn: Marks Awarded
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Mark Comments'
+		dataType: string
+		lineageTag: d0102579-0b29-461b-a9b9-4ec29921d7f0
+		summarizeBy: none
+		sourceColumn: Mark Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Category'
+		dataType: string
+		lineageTag: e111b477-41b4-4e1e-a2d4-090c65a19612
+		summarizeBy: none
+		sourceColumn: Mark Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1d67b405-7650-44e1-bfca-3fd539e2d933
+		summarizeBy: none
+		sourceColumn: Assessment Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Subject Code'
+		dataType: string
+		lineageTag: 1353d3b4-30f5-435d-abf9-ee38d67920a7
+		summarizeBy: none
+		sourceColumn: Subject Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Name'
+		dataType: string
+		lineageTag: 7b27286a-45f5-41b7-a50e-7dccac26423f
+		summarizeBy: none
+		sourceColumn: Subject Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		isHidden
+		lineageTag: 4996a4ed-738d-4e22-afa0-0a864efd6367
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year Start'
+		dataType: int64
+		formatString: 0
+		lineageTag: 16d5499b-67e3-42b9-94ad-2c95540ffbf3
+		summarizeBy: sum
+		sourceColumn: Academic Year Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		isHidden
+		lineageTag: 86c61a38-756b-401c-a9a1-c8935f4c4760
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column INTENDED_CURRICULUM_GRADE
+		dataType: string
+		lineageTag: 40e3d310-14e1-4047-8270-5287552a0c1a
+		summarizeBy: none
+		sourceColumn: INTENDED_CURRICULUM_GRADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: d03f15b9-19d0-433e-9cf3-80c646d07977
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMPONENT
+		dataType: string
+		lineageTag: e62b426d-b5b5-49b9-b029-334a00235c67
+		summarizeBy: none
+		sourceColumn: COMPONENT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary Standardised Assessments-3af05d9a-a9eb-4581-9c67-d1d759ecac68' = m
+		mode: import
+		queryGroup: Primary
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    #"Primary Standardised Assessments1" = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="Primary Standardised Assessments"]}[Data]
+				in
+				    #"Primary Standardised Assessments1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

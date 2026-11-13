@@ -1,0 +1,77 @@
+table 'zP KS2 Time Series'
+	lineageTag: 3ceb79cf-385b-4447-8eac-15889d1b999b
+
+	column 'zP KS2 Time Series'
+		lineageTag: 7558ad81-9056-461d-9d5d-12bd2dfa1c5f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS2 Time Series Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS2 Time Series Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS2 Time Series Fields'
+		isHidden
+		lineageTag: 571abd79-beba-4690-9c02-6a64fc4a7dd8
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS2 Time Series Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS2 Time Series Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2a7dfecb-eeed-49c1-b299-ddda7463ac9d
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Indicator Type' = ```
+			
+			    Switch(TRUE(),
+			    CONTAINSSTRING('zP KS2 Time Series'[zP KS2 Time Series Fields],"AS+") || CONTAINSSTRING('zP KS2 Time Series'[zP KS2 Time Series Fields],"EXS+"),"AS+/EXS+%",
+			    CONTAINSSTRING('zP KS2 Time Series'[zP KS2 Time Series Fields],"HS%") || CONTAINSSTRING('zP KS2 Time Series'[zP KS2 Time Series Fields],"GDS%"),"HS/GDS%",
+			    CONTAINSSTRING('zP KS2 Time Series'[zP KS2 Time Series Fields],"Avg SS"),"Avg SS",
+			    CONTAINSSTRING('zP KS2 Time Series'[zP KS2 Time Series Fields],"Progress"), "Avg Progress")
+			```
+		lineageTag: ffda6ce9-3aa2-4794-94fd-f82fe33a815c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS2 Time Series-51bc181d-c34b-4a65-94eb-52d21c38238a' = calculated
+		mode: import
+		source = ```
+				{
+				    ("CRWM", NAMEOF('Measures Folder'[KS2 AS+/EXS+% - CRWM]), 0),
+				    ("Reading", NAMEOF('Measures Folder'[KS2 AS+% - Reading]), 1),
+				    ("Writing", NAMEOF('Measures Folder'[KS2 EXS+% - Writing]), 2),
+				    ("Maths", NAMEOF('Measures Folder'[KS2 AS+% - Maths]), 3),
+				    ("GPS", NAMEOF('Measures Folder'[KS2 AS+% - GPS]), 4),
+				    ("Science", NAMEOF('Measures Folder'[KS2 EXS+% - Science]), 5),
+				    ("CRWM", NAMEOF('Measures Folder'[KS2 HS/GDS% - CRWM]), 6),
+				    ("Reading", NAMEOF('Measures Folder'[KS2 HS% - Reading]), 7),
+				    ("Writing", NAMEOF('Measures Folder'[KS2 GDS% - Writing]), 8),
+				    ("Maths", NAMEOF('Measures Folder'[KS2 HS% - Maths]), 9),
+				    ("GPS", NAMEOF('Measures Folder'[KS2 HS% - GPS]), 10),
+				    ("Reading", NAMEOF('Measures Folder'[KS2 Avg SS - Reading]), 11),
+				    ("Maths", NAMEOF('Measures Folder'[KS2 Avg SS - Maths]), 12),
+				    ("GPS", NAMEOF('Measures Folder'[KS2 Avg SS - GPS]), 13),
+				    ("Reading", NAMEOF('Measures Folder'[Reading Avg Progress Score]), 14),
+				    ("Writing", NAMEOF('Measures Folder'[Writing Avg Progress Score]), 15),
+				    ("Maths", NAMEOF('Measures Folder'[Maths Avg Progress Score]), 16) 
+				}
+				```
+
+	annotation PBI_Id = f183b1cb0f884f10bc6df49a45fea751
+

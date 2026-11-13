@@ -1,0 +1,44 @@
+table 'Trust and School Type'
+	lineageTag: b5fa6510-6e3f-4590-b6b9-26c8127347c1
+
+	calculationGroup
+		precedence: 1
+
+		calculationItem Trust =
+				CALCULATE (
+				    SELECTEDMEASURE ()
+				)
+
+		calculationItem Central =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'School Database'[School Type] = "Central"
+				)
+
+		calculationItem Primary =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'School Database'[School Type] = "Primary"
+				)
+
+		calculationItem Secondary =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'School Database'[School Type] = "Secondary"
+				)
+
+	column Name
+		dataType: string
+		lineageTag: 096743ac-3f4d-4572-9d0f-ced66eeaea13
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: 96229ca5-4e79-4adc-bbda-5faba303c377
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

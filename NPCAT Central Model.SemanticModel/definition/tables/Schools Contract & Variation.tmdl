@@ -1,0 +1,300 @@
+table 'Schools Contract & Variation'
+	lineageTag: 39aa6e0d-1358-44bb-bcf7-8ba741b90377
+
+	column School
+		dataType: string
+		isHidden
+		lineageTag: 7add8366-f5f0-48ff-bdb4-91ccd52401d6
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Type'
+		dataType: string
+		lineageTag: 2962a2f8-f0ae-4a3c-9c18-03fae8129fba
+		summarizeBy: none
+		sourceColumn: Contract Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3b689792-8182-458a-882d-0b95092ff551
+		summarizeBy: none
+		sourceColumn: Contract End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cont. Service Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 14c2f1d2-661d-4fc6-bdb1-d683bfe1648e
+		summarizeBy: none
+		sourceColumn: Cont. Service Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Post Title'
+		dataType: string
+		lineageTag: 6facd776-7184-401c-b505-3ad7bfcfd744
+		summarizeBy: none
+		sourceColumn: Post Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date requisition sent to MB'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 553c46f0-d60c-424f-8541-e2d0e3c57832
+		summarizeBy: none
+		sourceColumn: Date requisition sent to MB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Line Manager'
+		dataType: string
+		lineageTag: 305fdf19-cb78-489c-93aa-0ef45e00b779
+		summarizeBy: none
+		sourceColumn: Line Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closing Date'
+		dataType: string
+		lineageTag: dfcc96cc-f2ba-4e0b-9c09-a6ebdb53da13
+		summarizeBy: none
+		sourceColumn: Closing Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name of Employee'
+		dataType: string
+		lineageTag: 3ce4c312-0c99-4a4f-ba06-abcef8639415
+		summarizeBy: none
+		sourceColumn: Name of Employee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date New EmployeeRequest Rec''d'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 05192b50-9e9a-418e-951b-79eb0b83a2af
+		summarizeBy: none
+		sourceColumn: Date New EmployeeRequest Rec'd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Proposed Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0bb8d265-4062-4542-a82e-d66628ced8e6
+		summarizeBy: none
+		sourceColumn: Proposed Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Actual Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 18352aad-157c-4f4b-8490-e2ae2ba3c3ff
+		summarizeBy: none
+		sourceColumn: Actual Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Contract/Variation
+		dataType: string
+		lineageTag: 560bea75-c158-49bb-a686-f8e49f4dbb08
+		summarizeBy: none
+		sourceColumn: Contract/Variation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Checked By'
+		dataType: string
+		lineageTag: 1e2df152-7448-4f96-82df-8472f5d86d40
+		summarizeBy: none
+		sourceColumn: Checked By
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Issued'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5e29a418-28cc-4d0a-b51d-3d690270fdbc
+		summarizeBy: none
+		sourceColumn: Contract Issued
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Contract Signed & Returned'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2e8ae720-c306-446b-a101-1bddf23183a5
+		summarizeBy: none
+		sourceColumn: Date Contract Signed & Returned
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Contract Chased'
+		dataType: string
+		lineageTag: 770c8a8a-cb32-4db1-bbff-e3142005ab53
+		summarizeBy: none
+		sourceColumn: Contract Chased
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date contract signed by JF'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33d244fd-8fe9-46bc-8057-e78964e8cfea
+		summarizeBy: none
+		sourceColumn: Date contract signed by JF
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date emailed to TBM/Employee'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 07ed210f-90be-47e9-8a08-f9673227715c
+		summarizeBy: none
+		sourceColumn: Date emailed to TBM/Employee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'MISSING CHECKS/INFO QUERIES'
+		dataType: string
+		lineageTag: 81fa7bd9-1b70-4624-b7cc-0b2915214844
+		summarizeBy: none
+		sourceColumn: MISSING CHECKS/INFO QUERIES
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Notice Given'
+		dataType: int64
+		formatString: 0
+		lineageTag: d22e7776-c9bf-434f-8cea-72adc198ae53
+		summarizeBy: sum
+		sourceColumn: Days Notice Given
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Issued Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: cac1a73b-03cd-4acd-8964-c29b0cbd2fc6
+		summarizeBy: sum
+		sourceColumn: Contract Issued Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Recieved Days Before Start Date'
+		dataType: int64
+		formatString: 0
+		lineageTag: 48de9d11-a0fd-4c4d-9f07-022b360990ce
+		summarizeBy: sum
+		sourceColumn: Contract Recieved Days Before Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Policy Breach'
+		dataType: string
+		lineageTag: 071ef2b6-077a-4963-b9d5-f3db809b70de
+		summarizeBy: none
+		sourceColumn: Policy Breach
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Legal Breach'
+		dataType: string
+		lineageTag: 98c86a0b-2ece-416f-b30e-11332bd28c92
+		summarizeBy: none
+		sourceColumn: Legal Breach
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Comments / Reason late'
+		dataType: string
+		lineageTag: 8d72f493-7470-44df-8d3f-a48fa292bf82
+		summarizeBy: none
+		sourceColumn: Comments / Reason late
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Policy/ Legal Breach'
+		dataType: string
+		lineageTag: a25cbf38-6687-4fbd-8831-702e5d932339
+		summarizeBy: none
+		sourceColumn: Policy/ Legal Breach
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 098eed54-ee77-4958-abfb-c24aa8bddad2
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Current/Archive
+		dataType: string
+		lineageTag: 39133572-1e58-497b-87f3-f3d23c1ef923
+		summarizeBy: none
+		sourceColumn: Current/Archive
+
+		annotation SummarizationSetBy = Automatic
+
+	column CSD
+		dataType: string
+		lineageTag: 04f45013-af68-42f4-a5ec-143b3bc87409
+		summarizeBy: none
+		sourceColumn: CSD
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contract/Variation1
+		dataType: string
+		lineageTag: ef2b31a9-e4a5-4115-9f10-cd284eea60e5
+		summarizeBy: none
+		sourceColumn: Contract/Variation1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Schools Contract & Variation-1db87aa1-e603-4814-a551-936a25873fc6' = m
+		mode: import
+		queryGroup: HR
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"e6978e7a-cc33-4097-9449-373250a6ed15" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="e6978e7a-cc33-4097-9449-373250a6ed15"]}[Data],
+				    #"Schools Contract & Variation1" = #"e6978e7a-cc33-4097-9449-373250a6ed15"{[entity="Schools Contract & Variation"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Schools Contract & Variation1",{{"Actual Start Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

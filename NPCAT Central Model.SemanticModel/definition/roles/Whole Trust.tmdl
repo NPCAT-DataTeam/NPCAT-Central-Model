@@ -1,0 +1,7 @@
+role 'Whole Trust'
+	modelPermission: read
+
+	tablePermission 'School Database'
+
+	annotation PBI_Id = 0676c9371df44e238cd1c6ab32091f94
+

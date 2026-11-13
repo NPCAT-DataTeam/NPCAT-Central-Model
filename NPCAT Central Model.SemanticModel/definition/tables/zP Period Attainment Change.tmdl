@@ -1,0 +1,50 @@
+table 'zP Period Attainment Change'
+	lineageTag: 9b58ee97-03a6-457f-8d0d-593a2a1cf7f6
+
+	column 'Period Attainment Change'
+		lineageTag: ce7a7b7b-b145-4010-b6de-bf3562acda7f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Period Attainment Change Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Period Attainment Change Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Period Attainment Change Fields'
+		isHidden
+		lineageTag: 5260eae6-cf80-4676-92a3-c6d5aa3407cd
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Period Attainment Change Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Period Attainment Change Order'
+		isHidden
+		formatString: 0
+		lineageTag: 7cb990e2-297e-4c05-a7f3-810f56b64437
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Period Attainment Change-845367dd-d614-43be-bfa9-ab0a4b124f18' = calculated
+		mode: import
+		source =
+				{
+				    ("OT+ %", NAMEOF([On Track or Above % (Period ARE Target)]), 0),
+				    ("OT+ Diff", NAMEOF([ARE - On Track+ Period Offset Measure]), 1),
+				    ("AT+ %", NAMEOF([At or Above % (Period ARE Target)]), 2),
+				    ("At+ Diff", NAMEOF([ARE - At+ Period Offset Measure]), 3)
+				}
+
+	annotation PBI_Id = e2d9c88260254944b35f28a9ffb05e41
+

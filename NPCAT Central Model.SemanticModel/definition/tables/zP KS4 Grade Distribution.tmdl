@@ -1,0 +1,50 @@
+table 'zP KS4 Grade Distribution'
+	lineageTag: fd390a7c-a09c-406e-9abd-e829b511ed42
+
+	column 'KS4 Grade Distribution'
+		lineageTag: 60c99a73-0245-4af2-aae1-76cb65af9891
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'KS4 Grade Distribution Order'
+
+		relatedColumnDetails
+			groupByColumn: 'KS4 Grade Distribution Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Grade Distribution Fields'
+		isHidden
+		lineageTag: 4a44f1a3-4d92-4163-a687-011936049530
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'KS4 Grade Distribution Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Grade Distribution Order'
+		isHidden
+		formatString: 0
+		lineageTag: 7ef3e327-ca32-45e9-8719-18ba7eab8d37
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS4 Grade Distribution' = calculated
+		mode: import
+		source =
+				{
+				    ("Number of Grades", NAMEOF('KS4 Distinct Grades'[Grade (Short)]), 0),
+				    ("Cumulative Grade", NAMEOF('KS4 Distinct Grades'[Grade (+)]), 1),
+				    ("Grade Percentage", NAMEOF('KS4 Distinct Grades'[Grade (%)]), 2),
+				    ("Cumulative Grade Percentage", NAMEOF('KS4 Distinct Grades'[Grade (%+)]), 3)
+				}
+
+	annotation PBI_Id = 1d644b50cec0436ba6cb60dfb06741d4
+

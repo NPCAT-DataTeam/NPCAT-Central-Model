@@ -1,0 +1,59 @@
+table 'School Year Calc Group'
+	lineageTag: 0e40fda2-27b0-4396-97a9-2d6d8601518e
+
+	calculationGroup
+		precedence: 6
+
+		calculationItem 'Current Year' = ```
+				VAR _MaxYear = 
+				MAX('Calendar'[Current School Year Offset])
+				
+				RETURN
+				CALCULATE(
+				SELECTEDMEASURE(),
+				ALL(
+				'Calendar'[FutureDate],
+				//'Calendar'[School Year],
+				'Calendar'[Current School Year Offset],
+				'Calendar'[School Month]
+				),
+				
+				'Calendar'[Current School Year Offset] = _MaxYear)
+				```
+
+		calculationItem 'Previous Year' =
+				VAR _MaxYear = MAX('Calendar'[Current School Year Offset])-1
+				RETURN
+				CALCULATE(
+				SELECTEDMEASURE(),
+				//REMOVEFILTERS(
+				//'Calendar'[School Month]),
+				'Calendar'[Current School Year Offset] = _MaxYear)
+
+		calculationItem '2 Years ago' =
+				VAR _MaxYear = MAX('Calendar'[Current School Year Offset])-2
+				RETURN
+				CALCULATE(
+				SELECTEDMEASURE(),
+				//REMOVEFILTERS(
+				//'Calendar'[School Month]),
+				'Calendar'[Current School Year Offset] = _MaxYear)
+
+	column Name
+		dataType: string
+		lineageTag: 07db16c8-330d-44a3-9f64-2376b49edb90
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: d69ae843-0485-430f-a992-60a4ab5dabc6
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

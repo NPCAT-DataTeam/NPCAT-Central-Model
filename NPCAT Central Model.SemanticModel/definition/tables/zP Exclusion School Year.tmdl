@@ -1,0 +1,111 @@
+table 'zP Exclusion School Year'
+	lineageTag: bb97522f-40d4-4f69-885b-7ec3fc22d350
+
+	column 'Zp Exclusion School Year'
+		lineageTag: 190ccb5f-7ac1-493b-a158-ec6bbafbb183
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Zp Exclusion School Year Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Zp Exclusion School Year Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zp Exclusion School Year Fields'
+		isHidden
+		lineageTag: 2f2070ae-b519-46bb-bf65-eb6668dfd5e3
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Zp Exclusion School Year Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zp Exclusion School Year Order'
+		isHidden
+		formatString: 0
+		lineageTag: a7d45fe8-a1fe-48ed-b198-be9b8f09f61f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Type' =
+			
+			SWITCH (TRUE(),
+			    CONTAINSSTRING (
+			        [Zp Exclusion School Year Fields],
+			        "Percentage"
+			    ), "Percentage",
+			    CONTAINSSTRING (
+			        [Zp Exclusion School Year Fields],
+			        "Students"),
+			        "# Students",
+			    CONTAINSSTRING (
+			        [Zp Exclusion School Year Fields],
+			        "Incidents"),
+			        "# Incidents",
+			    CONTAINSSTRING (
+			        [Zp Exclusion School Year Fields],
+			        "Sessions"),
+			        "# Sessions"
+			)
+		lineageTag: e0a2d98e-7e70-42af-a532-5632c9a5baf1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column YTD =
+			
+			SWITCH (TRUE(),
+			    CONTAINSSTRING (
+			        [Zp Exclusion School Year Fields],
+			        "SPLY"
+			    ), "SPLY",
+			    CONTAINSSTRING (
+			        [Zp Exclusion School Year Fields],
+			        "YTD"
+			    ), "YTD"
+			)
+		lineageTag: 598a52e1-fc2f-468d-9581-4a13c1ec7020
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Exclusion School Year-71ef1192-e074-437d-99ac-e419019b1cfd' = calculated
+		mode: import
+		source =
+				
+				VAR CurrentYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = 0)
+				VAR LastYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -1)
+				VAR TwoYearAgo =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -2)
+				
+				
+				RETURN
+				{
+				    (TwoYearAgo, NAMEOF('Measures Folder'[Fixed Term Exclusion Students -2 Years]), 0),
+				    (LastYear, NAMEOF('Measures Folder'[Fixed Term Exclusion Students -1 Years]), 1),
+				    (CurrentYear, NAMEOF('Measures Folder'[Fixed Term Exclusion Students YTD]), 2),
+				    ("SPLY", NAMEOF('Measures Folder'[Fixed Term Exclusion Students YTD SPLY]), 3),
+				    (TwoYearAgo, NAMEOF([Percentage Excluded -2 Years]), 4),
+				    (LastYear, NAMEOF([Percentage Excluded -1 Years]), 5),
+				    (CurrentYear, NAMEOF([Percentage Excluded YTD]), 6),
+				    ("SPLY", NAMEOF([Percentage Excluded YTD SPLY]), 7),
+				    (TwoYearAgo, NAMEOF([Fixed Term Exclusions Incidents -2 Years]), 8),
+				    (LastYear, NAMEOF([Fixed Term Exclusions Incidents -1 Years]), 9),
+				    (CurrentYear, NAMEOF([Fixed Term Exclusions Incidents YTD]), 10),
+				    ("SPLY", NAMEOF([Fixed Term Exclusions Incidents YTD SPLY]), 11),
+				    (TwoYearAgo ,NAMEOF([Fixed Term Exclusion Sessions -2 Years]),12),
+				    (LastYear ,NAMEOF([Fixed Term Exclusion Sessions -1 Years]),13),
+				    (CurrentYear ,NAMEOF([Fixed Term Exclusion Sessions YTD]),14),
+				    ("SPLY" ,NAMEOF([Fixed Term Exclusion Sessions SPLY]),15)
+				}
+
+	annotation PBI_Id = 8423d71a02754bcea41bea958da7e8cf
+

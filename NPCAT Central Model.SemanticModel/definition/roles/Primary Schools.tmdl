@@ -1,0 +1,7 @@
+role 'Primary Schools'
+	modelPermission: read
+
+	tablePermission 'School Database' = [School Type] == "Primary"
+
+	annotation PBI_Id = 650bc8f9db0b43588de62449d10853eb
+

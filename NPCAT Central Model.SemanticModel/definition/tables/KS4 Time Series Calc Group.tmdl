@@ -1,0 +1,130 @@
+table 'KS4 Time Series Calc Group'
+	lineageTag: f2205338-92e1-4634-ab00-a3958a41cdc1
+
+	calculationGroup
+		precedence: 14
+
+		calculationItem CY =
+				
+				VAR _MaxOffset = MAX('Calendar'[Current School Year Offset])
+				VAR _MaxSchoolMonth = CALCULATE(MAX('Calendar'[School Month Number]),'Calendar'[Current School Year Offset]=_MaxOffset)
+				
+				VAR _Yearselector = IF(_MaxSchoolMonth=12,_MaxOffset,_MaxOffset-1)
+				RETURN
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'Calendar'[Current School Year Offset] = _Yearselector, //_Yearselector
+				'AP-Grade Type'[AP-Grade Type] = "Exam Results"
+				)
+
+		calculationItem 24/25 =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        'Calendar'[Current School Year Offset] = LastYear,
+				        'AP-Grade Type'[AP-Grade Type] = "Exam Results"
+				    )
+
+		calculationItem 23/24 =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 2
+				RETURN
+				    CALCULATE (
+				        SELECTEDMEASURE(),
+				        'Calendar'[Current School Year Offset] = LastYear,
+				        'AP-Grade Type'[AP-Grade Type] = "Exam Results"
+				    )
+
+		calculationItem 'CY vs 24/25' = ```
+				
+				VAR CY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'KS4 Time Series Calc Group'[Name] = "CY"
+				)
+				VAR PY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'KS4 Time Series Calc Group'[Name] = "24/25"
+				)
+				
+				RETURN
+				
+				IF ( ISBLANK ( PY ) = TRUE () ,BLANK() , CY - PY )
+				```
+
+		calculationItem '24/25 vs 23/24' = ```
+				
+				VAR CY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'KS4 Time Series Calc Group'[Name] = "24/25"
+				)
+				VAR PY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'KS4 Time Series Calc Group'[Name] = "23/24"
+				)
+				
+				RETURN
+				
+				IF ( ISBLANK ( PY ) = TRUE () ,BLANK() , CY - PY )
+				```
+
+		calculationItem Predicted =
+				
+				VAR _MaxOffset = MAX('Calendar'[Current School Year Offset])
+				VAR _MaxSchoolMonth = MAX('Calendar'[School Month Number])
+				
+				VAR _Yearselector = IF(_MaxSchoolMonth<10,_MaxOffset-1,_MaxOffset)
+				RETURN
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'Calendar'[Current School Year Offset] = _MaxOffset, //_Yearselector
+				'AP-Grade Type'[AP-Grade Type] = "Summer-Predicted"
+				)
+
+		calculationItem 'Predicted vs CY' = ```
+				
+				VAR CY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'KS4 Time Series Calc Group'[Name] = "CY"
+				)
+				VAR PY = 
+				CALCULATE(
+				SELECTEDMEASURE(),
+				'KS4 Time Series Calc Group'[Name] = "Predicted"
+				)
+				
+				RETURN
+				
+				IF ( ISBLANK ( PY ) = TRUE () ,BLANK() , CY - PY )
+				```
+
+	column Name
+		dataType: string
+		lineageTag: 3e97d1f3-45bf-4476-9792-39afe92e37e6
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: 56a0f420-d1fe-4d7f-aaff-d45f72734f4e
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation TE3_TableRenamedFrom = Time Series Calc Group
+

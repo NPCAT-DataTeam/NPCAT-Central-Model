@@ -1,0 +1,154 @@
+table 'Boxphish Phishing Simulations'
+	lineageTag: 6a4a8cdc-f58c-43c3-be1d-ebd5f100b9a5
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: f1e2e3a2-04e7-477a-8be7-14ca590dac9e
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: 39d5f950-9f5a-457f-bcf0-9424cbb6afca
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulation Name'
+		dataType: string
+		lineageTag: 2d5f1047-6d1f-4bd6-a35e-06b6145fc4ae
+		summarizeBy: none
+		sourceColumn: Simulation Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Sent'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: de556c12-e567-461c-b49a-fedaebfa1bf1
+		summarizeBy: none
+		sourceColumn: Date Sent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Email Clicked'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5105664c-2ef3-4569-bdd7-1190d88c9de0
+		summarizeBy: none
+		sourceColumn: Date Email Clicked
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Landing Page Clicked'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 83816bc6-0032-4d20-8117-bc69b4e5a91e
+		summarizeBy: none
+		sourceColumn: Date Landing Page Clicked
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Email Simulation Outcome'
+		dataType: string
+		lineageTag: ffb8c0fd-50ac-4acd-a9b2-40e06e9efaf0
+		summarizeBy: none
+		sourceColumn: Email Simulation Outcome
+		sortByColumn: 'Email Simulation Outcome Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Landing Page Simulation Outcome'
+		dataType: string
+		lineageTag: f80b04eb-1348-41d9-8d05-a3b96690682d
+		summarizeBy: none
+		sourceColumn: Landing Page Simulation Outcome
+		sortByColumn: 'Landing Page Simulation Outcome Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Simulation Outcome Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: a8bfbb8c-4a0a-4a4b-8857-bf58417f7fcf
+		summarizeBy: sum
+		sourceColumn: Email Simulation Outcome Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Landing Page Simulation Outcome Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 17917950-4b97-40dd-974c-2006bff01bea
+		summarizeBy: sum
+		sourceColumn: Landing Page Simulation Outcome Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour Completed on'
+		dataType: string
+		lineageTag: 7f48e0a6-4d37-4e32-aad3-1681d8ff7740
+		summarizeBy: none
+		sourceColumn: Hour Completed on
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: cb29e4e7-feda-4d52-882f-4e20a8495ee6
+		summarizeBy: sum
+		sourceColumn: Hour Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Time'
+		dataType: string
+		lineageTag: 011fb994-835d-4f5f-b3c6-a536886f209b
+		summarizeBy: none
+		sourceColumn: Work Time
+		sortByColumn: 'Work Time Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Time Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: d4b62ce5-5755-4a0b-a787-987ccc2748ed
+		summarizeBy: sum
+		sourceColumn: Work Time Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Boxphish Phishing Simulations-2cc3cf0c-b949-4c96-999a-e91669504c17' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a2f752de-6e4f-43cf-9a56-64fe1de995d4" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a2f752de-6e4f-43cf-9a56-64fe1de995d4"]}[Data],
+				    #"Boxphish Phishing Simulations_" = #"a2f752de-6e4f-43cf-9a56-64fe1de995d4"{[entity="Boxphish Phishing Simulations",version=""]}[Data]
+				in
+				    #"Boxphish Phishing Simulations_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

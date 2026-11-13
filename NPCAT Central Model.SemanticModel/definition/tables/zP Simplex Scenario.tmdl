@@ -1,0 +1,31 @@
+table 'zP Simplex Scenario'
+	lineageTag: 4316e91d-bae0-4fbc-a7d2-608cbf5d7e32
+
+	/// 
+	/// SELECTEDVALUE ( 'zP Simplex Scenario'[zP Simplex Scenario] )
+	measure 'zP Simplex Scenario Value' =
+			
+			SELECTEDVALUE ( 'zP Simplex Scenario'[zP Simplex Scenario] )
+		lineageTag: a2b975b2-b090-426b-8cd2-98f3dadea19d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'zP Simplex Scenario'
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 440a014f-d75b-4ff2-af7d-2118173fcc09
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'zP Simplex Scenario-fa0571a1-893e-41f6-944b-cde8c73a7ed0' = calculated
+		mode: import
+		source = GENERATESERIES(0, 1.01, 0.01)
+
+	annotation PBI_Id = 1359fe68c31842b5b7fe48bc2be099b1
+

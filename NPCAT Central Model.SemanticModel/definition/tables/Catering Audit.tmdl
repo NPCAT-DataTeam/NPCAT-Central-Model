@@ -1,0 +1,199 @@
+table 'Catering Audit'
+	lineageTag: c0ab5e87-a20f-4f4b-9df0-623303f4a072
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 70450a93-a7bf-4360-ad24-e590ea33131f
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 78c468c4-562a-46ae-9681-ae043c2593a7
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: 5f8ae942-84c8-4d3c-993e-84cc29627102
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Quality Standards Audit'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 55c0038b-d4c7-457a-a289-ee8ec6af5288
+		summarizeBy: none
+		sourceColumn: Date of Quality Standards Audit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Number of meals provided'
+		dataType: int64
+		formatString: 0
+		lineageTag: a44be570-e8c7-4e44-802e-df8db36e756b
+		summarizeBy: none
+		sourceColumn: Number of meals provided
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of students not eating'
+		dataType: int64
+		formatString: 0
+		lineageTag: 42863ff9-2dd7-4d99-8a44-872c25b6fb94
+		summarizeBy: none
+		sourceColumn: Number of students not eating
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of FSM students'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4905225f-2555-4a36-b9e0-9e0fe4eb76d3
+		summarizeBy: none
+		sourceColumn: Number of FSM students
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Co2 Reading PPM - Main Kitchen'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f2ed4e1-0750-48ff-ba03-a54849085023
+		summarizeBy: none
+		sourceColumn: Co2 Reading PPM - Main Kitchen
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Co2 Reading PPM - Inside Canopy'
+		dataType: int64
+		formatString: 0
+		lineageTag: e2ee9212-9dbf-44b2-8066-87e36241c150
+		summarizeBy: none
+		sourceColumn: Co2 Reading PPM - Inside Canopy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Co2 Reading PPM - Outside Canopy'
+		dataType: int64
+		formatString: 0
+		lineageTag: 79e6837d-f83e-4359-8957-559e1f2f38f4
+		summarizeBy: none
+		sourceColumn: Co2 Reading PPM - Outside Canopy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of Students Attending on Audit Date'
+		dataType: string
+		lineageTag: f6c535a8-ef6d-4761-8c00-0e93fbf35537
+		summarizeBy: none
+		sourceColumn: Number of Students Attending on Audit Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: 943b326a-e287-49a5-b464-6db822098341
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 22f87a40-a0c3-41dc-a06f-faec790f2aba
+		summarizeBy: none
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Merged ID'
+		dataType: string
+		lineageTag: 76fd81e6-511f-4ab2-af26-d1cf44f7109d
+		summarizeBy: none
+		sourceColumn: Merged ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Since Audit'
+		dataType: int64
+		formatString: 0
+		lineageTag: 28aad4a8-13a0-481c-aa67-c16fc6f7ea26
+		summarizeBy: none
+		sourceColumn: Days Since Audit
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID-Audit
+		dataType: string
+		lineageTag: 0c403d62-483f-4d0d-895d-d5c6b2f4a122
+		summarizeBy: none
+		sourceColumn: SUID-Audit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Most Recent Catering Audit' =
+			
+			var __School = 'Catering Audit'[SUID]
+			var __MostRecentDate = CALCULATE(MAX('Catering Audit'[Date of Quality Standards Audit]), ALL('Catering Audit'),'Catering Audit'[SUID]=__School)
+			
+			Return
+			If ('Catering Audit'[Date of Quality Standards Audit] = __MostRecentDate,"Yes","No")
+		lineageTag: ccd08f79-aee0-4d43-beb3-8a2c2eba48c2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Catering Audit SubIndex' =
+			
+			var __School = 'Catering Audit'[SUID]
+			var __MostRecentDate = CALCULATE(MAX('Catering Audit'[Subgroup Index]), ALL('Catering Audit'),'Catering Audit'[SUID]=__School)
+			var _LastAuditID = (__School &"-" & __MostRecentDate-1)
+			Return
+			IF('Catering Audit'[Merged ID] = _LastAuditID,"Yes","No")
+		lineageTag: 25fae2a5-ab54-453f-9db4-af8509d07505
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Average CO2 Levels' =
+			
+			DIVIDE (
+			    [Co2 Reading PPM - Main Kitchen] + 'Catering Audit'[Co2 Reading PPM - Inside Canopy] + 'Catering Audit'[Co2 Reading PPM - Outside Canopy],
+			    CALCULATE (
+			        COUNTA ( 'Catering Audit'[Co2 Reading PPM - Main Kitchen] )
+			            + COUNTA ( 'Catering Audit'[Co2 Reading PPM - Inside Canopy] )
+			            + COUNTA ( 'Catering Audit'[Co2 Reading PPM - Outside Canopy] )
+			    )
+			)
+		lineageTag: ec1ca29e-d0b6-44a1-a5f9-eeb799730588
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Catering Audit-0b401576-f7a5-49a5-bbb4-6017c448e1bd' = m
+		mode: import
+		queryGroup: Estates\Catering
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Catering Audit_" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Catering Audit",version=""]}[Data]
+				in
+				    #"Catering Audit_"
+
+	annotation PBI_ResultType = Table
+

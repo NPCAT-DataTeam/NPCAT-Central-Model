@@ -1,0 +1,117 @@
+table 'zP Primary EYFS Subjects'
+	lineageTag: a83fcfe0-6997-4921-afaa-d0e4be7ca544
+
+	column 'Primary EYFS Subjects'
+		lineageTag: d16918d1-a0b5-4c71-9e5d-3ad5b6a1b52e
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Primary EYFS Subjects Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary EYFS Subjects Fields'
+		isHidden
+		lineageTag: 3d9afa32-865d-43d1-abab-e70e5c9c30ca
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: ee6b9dda-193f-4823-ab53-f42a95706589
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EYFS Type' = IF(CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields],"-") ,"ELG","AOL")
+		lineageTag: f27d8759-aff9-4821-aae4-3d151c7b8b4b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EYFS Category' =
+			
+			SWITCH( TRUE(),
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "PRIME")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "COM")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "PSE")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "PHY"),
+			    "PRIME",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "SPECIFIC")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "LIT")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "MAT")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "UTW")||
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "EXP"),
+			    "SPECIFIC")
+		lineageTag: 04f77fd0-1841-4bc6-be41-fe5875ded4bb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EYFS AOL Category' =
+			
+			SWITCH( TRUE(),
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "PRIME"),"PRIME",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "COM"),"COM",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "PSE"),"PSE",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "PHY"),"PHY",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "SPECIFIC"),"SPECIFIC",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "LIT"),"LIT",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "MAT"),"MAT",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "UTW"),"UTW",
+			    CONTAINSSTRING('zP Primary EYFS Subjects'[Primary EYFS Subjects Fields], "EXP"),"EXP"
+			    )
+		lineageTag: 34085f95-b5ce-40f5-9030-02217ce4e946
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Primary EYFS Subjects' = calculated
+		mode: import
+		source = ```
+				{
+				    ("PRIME", NAMEOF('Measures Folder'[PRIME Exp %]), 0),
+				    ("COM", NAMEOF('Measures Folder'[COM Exp %]), 1),
+				    ("PSE", NAMEOF('Measures Folder'[PSE Exp %]), 2),
+				    ("PHY", NAMEOF('Measures Folder'[PHY Exp %]), 3),
+				    ("SPECIFIC", NAMEOF('Measures Folder'[SPECIFIC Exp %]), 4),
+				    ("LIT", NAMEOF('Measures Folder'[LIT Exp %]), 5),
+				    ("MAT", NAMEOF('Measures Folder'[MAT Exp %]), 6),
+				    ("UTW", NAMEOF('Measures Folder'[UTW Exp %]), 7),
+				    ("EXP", NAMEOF('Measures Folder'[EXP Exp %]), 8),
+				    ("LAU", NAMEOF('Measures Folder'[COM-LAU-Expected %]), 9),
+				    ("S", NAMEOF('Measures Folder'[COM-S-Expected %]), 10),
+				    ("SR", NAMEOF('Measures Folder'[PSE-SR-Expected %]), 11),
+				    ("MS", NAMEOF('Measures Folder'[PSE-MS-Expected %]), 12),
+				    ("BR", NAMEOF('Measures Folder'[PSE-BR-Expected %]), 13),
+				    ("GMS", NAMEOF('Measures Folder'[PHY-GMS-Expected %]), 14),
+				    ("FMS", NAMEOF('Measures Folder'[PHY-FMS-Expected %]), 15),
+				    ("C", NAMEOF('Measures Folder'[LIT-C-Expected %]), 16),
+				    ("WR", NAMEOF('Measures Folder'[LIT-WR-Expected %]), 17),
+				    ("W", NAMEOF('Measures Folder'[LIT-W-Expected %]), 18),
+				    ("N", NAMEOF('Measures Folder'[MAT-N-Expected %]), 19),
+				    ("NP", NAMEOF('Measures Folder'[MAT-NP-Expected %]), 20),
+				    ("PP", NAMEOF('Measures Folder'[UTW-PP-Expected %]), 21),
+				    ("PCC", NAMEOF('Measures Folder'[UTW-PCC-Expected %]), 22),
+				    ("TNW", NAMEOF('Measures Folder'[UTW-TNW-Expected %]), 23),
+				    ("CM", NAMEOF('Measures Folder'[EXP-CM-Expected %]), 24),
+				    ("BIE", NAMEOF('Measures Folder'[EXP-BIE-Expected %]), 25)
+				}
+				
+				```
+
+	annotation PBI_Id = 69f59e3b09c44142b6e2c56fec066e04
+

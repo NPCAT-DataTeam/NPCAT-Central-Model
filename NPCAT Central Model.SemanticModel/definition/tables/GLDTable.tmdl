@@ -1,0 +1,49 @@
+table GLDTable
+	lineageTag: f27e3eb1-19d5-4417-ac19-87b6aea8343f
+
+	column 'Globally Unique ID'
+		lineageTag: 7bc24c08-a08f-4b35-bbdc-b8bfa9f88915
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: EYFS ELGs/GLD[Globally Unique ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GLD FLag'
+		lineageTag: 6151ff50-bf9f-453a-a5af-198e6bbfd035
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [GLD FLag]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition GLDTable-ab275ecd-c259-41a9-b657-866c1b45c7f3 = calculated
+		mode: import
+		source = ```
+				
+				    CALCULATETABLE (
+				        SUMMARIZE (
+				            'EYFS ELGs/GLD',
+				            'EYFS ELGs/GLD'[Globally Unique ID],
+				            "GLD FLag", IF(ROUNDDOWN ( DIVIDE ( SUM ( 'EYFS ELGs/GLD'[Grade Value] ), 24 ), 0 )=1,UNICHAR(10004),UNICHAR(10006))
+				        ),
+				        'EYFS ELGs/GLD'[Assessment Name]
+				            IN {
+				            "Listening, Attention and Understanding",
+				            "Speaking",
+				            "Self-Regulation",
+				            "Managing Self",
+				            "Building Relationships",
+				            "Gross Motor Skills",
+				            "Fine Motor Skills",
+				            "Comprehension",
+				            "Word Reading",
+				            "Writing",
+				            "Number",
+				            "Numerical Patterns"
+				        }
+				    )
+				```
+
+	annotation PBI_Id = 5553c3e5837d452cadcfdb322a6a8725
+

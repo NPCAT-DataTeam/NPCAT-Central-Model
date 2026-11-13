@@ -1,0 +1,142 @@
+table 'Permanent Exclusions'
+	lineageTag: 0ccd3222-c7a9-4d19-8ae5-e5799bd2b2f8
+
+	column 'Permanent Exclusion ID'
+		dataType: string
+		lineageTag: 610e8de2-00f6-4319-9b80-2357414efc44
+		summarizeBy: none
+		sourceColumn: Permanent Exclusion ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Application ID'
+		dataType: string
+		lineageTag: c06b759d-1161-4cb0-afde-0f63d1f2bb16
+		summarizeBy: none
+		sourceColumn: Application ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student ID'
+		dataType: string
+		lineageTag: 3c79c058-ee22-4eb3-a384-10e12bf7b5b2
+		summarizeBy: none
+		sourceColumn: Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: de26ba15-a152-45a7-a9b3-2d7ff84bd665
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Decision Date'
+		dataType: string
+		lineageTag: b8a22d7e-19d9-47f0-be53-99253a398be6
+		summarizeBy: none
+		sourceColumn: Decision Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exclusion Reason'
+		dataType: string
+		lineageTag: 5e53663f-2a46-42ce-a8e5-b1b3e1a34691
+		summarizeBy: none
+		sourceColumn: Exclusion Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID'
+		dataType: string
+		isHidden
+		lineageTag: b1a6af49-09fa-4d93-ae0a-b248929ede92
+		summarizeBy: none
+		sourceColumn: Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: a097dc06-911d-4fcf-9f67-bc36169f8d56
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique ID - Academic Year'
+		dataType: string
+		isHidden
+		lineageTag: 65a8d23f-64f6-47e7-b2c0-e0c72d5b9131
+		summarizeBy: none
+		sourceColumn: Unique ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID - Permanant ID'
+		dataType: string
+		lineageTag: 74d52c8b-3087-4c05-8140-1632bd27f270
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID - Permanant ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERMANENT_EXCLUSION_UNIQUE_ID
+		dataType: string
+		lineageTag: e60687f4-623d-4146-b9fe-ccaac8523c48
+		summarizeBy: none
+		sourceColumn: PERMANENT_EXCLUSION_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 136d40ea-ec51-44ba-bb43-38abe79b9f7e
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EXCLUSION_REASONS_NAME_LIST
+		dataType: string
+		lineageTag: 4f631b9b-0543-4324-bea9-bb473fa87470
+		summarizeBy: none
+		sourceColumn: EXCLUSION_REASONS_NAME_LIST
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRICULUM_GRADE_NAME_ON_LEAVING
+		dataType: string
+		lineageTag: 52d40bed-454f-437e-a9c5-3f213350e6fd
+		summarizeBy: none
+		sourceColumn: CURRICULUM_GRADE_NAME_ON_LEAVING
+
+		annotation SummarizationSetBy = Automatic
+
+	column DFE_EXPORT_CODE
+		dataType: string
+		lineageTag: 522d996d-80e1-4e8d-992e-2b994bce3dea
+		summarizeBy: none
+		sourceColumn: DFE_EXPORT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Permanent Exclusions-0daa11b0-cd42-4354-bacd-56492aa5c9b1' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"Permanent Exclusions1" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Permanent Exclusions"]}[Data]
+				in
+				    #"Permanent Exclusions1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,1243 @@
+createOrReplace
+
+	ref table 'Measures Folder'
+
+		/// 
+		/// CALCULATE (
+		///     DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///     FILTER (
+		///         VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///         [Suspension Sessions SPLY] >= 20
+		///     )
+		/// ) + 0
+		measure '20 Sessions or Suspension SPLY' =
+				
+				CALCULATE (
+				    DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				    FILTER (
+				        VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				        [Suspension Sessions SPLY] >= 20
+				    ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 10ed8ac2-96a6-434e-9e2b-d14ea9bcfba1
+
+		/// 
+		/// CALCULATE (
+		///     DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///     FILTER (
+		///         VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///         [Suspension Sessions YTD] >= 20
+		///     )
+		/// ) + 0
+		measure '20 Sessions or Suspension YTD' =
+				
+				CALCULATE (
+				    DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				    FILTER (
+				        VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				        [Suspension Sessions YTD] >= 20
+				    ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 79bcfa39-799e-4b7b-9c79-7f00b227f96d
+
+		/// 
+		/// CALCULATE (
+		///     DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///     FILTER (
+		///         VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///         [Suspension Sessions YTD] >= 80
+		///     )
+		/// ) + 0
+		measure '80 Sessions or Suspension YTD' =
+				
+				CALCULATE (
+				    DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				    FILTER (
+				        VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				        [Suspension Sessions YTD] >= 80
+				    ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 3946020b-0181-4e46-9427-7fd8951fffde
+
+		/// 
+		/// CALCULATE (
+		///     DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///     FILTER (
+		///         VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+		///         [Suspension Sessions SPLY] >= 80
+		///     )
+		/// ) + 0
+		measure '80 Sessions or Suspension SPLY' =
+				
+				CALCULATE (
+				    DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				    FILTER (
+				        VALUES ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+				        [Suspension Sessions SPLY] >= 80
+				    ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 3ea787ca-3149-4d5a-ac88-0a58bb17cc2f
+
+		/// 
+		/// VAR _MaxWeekOffset =
+		///     MAX ( 'Calendar'[CurWeekOffset] )
+		/// RETURN
+		///     CALCULATE ( [Percentage Excluded], 'Calendar'[CurWeekOffset] = _MaxWeekOffset )
+		measure 'Percentage Suspended CW' =
+				
+				VAR _MaxWeekOffset =
+				    MAX ( 'Calendar'[CurWeekOffset] )
+				RETURN
+				    CALCULATE ( [Percentage Excluded], 'Calendar'[CurWeekOffset] = _MaxWeekOffset )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: c51b25d1-86bf-4f13-b629-f8c6f7fb7743
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// VAR __PREV_MONTH =
+		///     CALCULATE ( [Percentage Excluded MTD], DATEADD ( 'Calendar'[Date], -1, MONTH ) )
+		/// RETURN
+		///     IF ( ISBLANK ( __PREV_MONTH ), 0, [Percentage Excluded MTD] - __PREV_MONTH )
+		measure 'Percentage Suspended MoM Change' =
+				
+				VAR __PREV_MONTH =
+				    CALCULATE ( [Percentage Excluded MTD], DATEADD ( 'Calendar'[Date], -1, MONTH ) )
+				RETURN
+				    IF ( ISBLANK ( __PREV_MONTH ), 0, [Percentage Excluded MTD] - __PREV_MONTH )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 7fb180a3-b2ed-4d98-bb90-3055dd6436af
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// TOTALMTD ( [Percentage Excluded], 'Calendar'[Date] )
+		measure 'Percentage Suspended MTD' =
+				
+				TOTALMTD ( [Percentage Excluded], 'Calendar'[Date] )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: b72f4f46-7890-478d-be72-9ff6dbcf1c68
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// VAR _MaxWeekOffset =
+		///     MAX ( 'Calendar'[CurWeekOffset] )
+		/// VAR _PW =
+		///     MAX ( 'Calendar'[CurWeekOffset] ) - 1
+		/// VAR _PreviousPeriod =
+		///     CALCULATE (
+		///         [Percentage Excluded],
+		///         FILTER ( ALL ( 'Calendar' ), 'Calendar'[CurWeekOffset] = _PW )
+		///     )
+		/// VAR _CW =
+		///     CALCULATE ( [Percentage Excluded], 'Calendar'[CurWeekOffset] = _MaxWeekOffset )
+		/// RETURN
+		///     _CW - _PreviousPeriod
+		measure 'Percentage Suspended WoW' =
+				
+				VAR _MaxWeekOffset =
+				    MAX ( 'Calendar'[CurWeekOffset] )
+				VAR _PW =
+				    MAX ( 'Calendar'[CurWeekOffset] ) - 1
+				VAR _PreviousPeriod =
+				    CALCULATE (
+				        [Percentage Excluded],
+				        FILTER ( ALL ( 'Calendar' ), 'Calendar'[CurWeekOffset] = _PW )
+				    )
+				VAR _CW =
+				    CALCULATE ( [Percentage Excluded], 'Calendar'[CurWeekOffset] = _MaxWeekOffset )
+				RETURN
+				    _CW - _PreviousPeriod
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 4de5ed8f-43c9-4e56-80f5-ca6b857eacd2
+
+		/// 
+		/// DIVIDE ( [Suspension Students], [Students on Roll] )
+		measure 'Percentage Suspension' =
+				
+				DIVIDE ( [Suspension Students], [Students on Roll] )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: f83b82d0-a2b1-4861-9c99-7ada4ee3e131
+
+			changedProperty = FormatString
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 2
+		/// RETURN
+		/// CALCULATE ( [Percentage Excluded], 'Calendar'[Current School Year Offset] = LastYear )
+		measure 'Percentage Suspension -2 Years' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 2
+				RETURN
+				CALCULATE ( [Percentage Excluded], 'Calendar'[Current School Year Offset] = LastYear )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 49aeef8c-a8a2-4053-9e61-3c4d7446fb6f
+
+			changedProperty = FormatString
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 1
+		/// RETURN
+		/// CALCULATE ( [Percentage Excluded], 'Calendar'[Current School Year Offset] = LastYear )
+		measure 'Percentage Suspension -1 Years' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				CALCULATE ( [Percentage Excluded], 'Calendar'[Current School Year Offset] = LastYear )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 0f8f3ccd-0c1e-4401-879a-ada71e3c1722
+
+			changedProperty = FormatString
+
+		/// 
+		/// TOTALYTD ( [Percentage Excluded], 'Calendar'[Date], "31/08" )
+		measure 'Percentage Suspension YTD' =
+				
+				TOTALYTD ( [Percentage Excluded], 'Calendar'[Date], "31/08" )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: eff46cd4-32d4-42e6-b9e7-8fff966cfaf0
+
+			changedProperty = FormatString
+
+		/// 
+		/// [Percentage Excluded YTD] - [Percentage Excluded YTD SPLY]
+		measure 'Percentage Suspension YTD YoY Change' =
+				
+				[Percentage Excluded YTD] - [Percentage Excluded YTD SPLY]
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: fa02823b-7123-4c0a-a35f-e957b0c7712a
+
+			changedProperty = FormatString
+
+		/// 
+		/// CALCULATE ( [Percentage Excluded YTD], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+		measure 'Percentage Suspension YTD SPLY' =
+				
+				CALCULATE ( [Percentage Excluded YTD], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 7e0e2485-17bc-4041-b33f-5d6c1b3be30e
+
+			changedProperty = FormatString
+
+		/// 
+		/// CALCULATE ( COUNTROWS ( 'Behaviour Sanctions' ) )
+		measure Suspension =
+				
+				CALCULATE ( COUNTROWS ( 'Behaviour Sanctions' ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+					)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: a13a8e96-9dba-45d6-b425-9247645c4c20
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Any SEN Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Any SEN Percentage' =
+				
+				DIVIDE (
+				    [Suspension Any SEN Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 576c390d-3097-450f-bc23-c8fdd2c235a3
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     NOT ( 'Student Database (Full)'[SEN Status]
+		///         IN { "No Special Educational Need", "Provision No Longer Needed" } )
+		/// )
+		measure 'Suspension Any SEN Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    NOT ( 'Student Database (Full)'[SEN Status]
+				        IN { "No Special Educational Need", "Provision No Longer Needed" } )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 0ce7b77a-aa93-4a96-824e-8250717bb713
+
+		/// 
+		/// DIVIDE ( [Suspensions], [Suspension Students] )
+		measure 'Suspension Average per Student' =
+				
+				DIVIDE ( [Suspension], [Suspension Students] )
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: d7761f84-6ae3-4a91-8e0b-35990e5ec361
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension Average per Student],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     DIVIDE ( [Suspension Average per Student] - __PREV_YEAR, __PREV_YEAR )
+		measure 'Suspension Avg Student YoY%' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension Average per Student],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    DIVIDE ( [Suspension Average per Student] - __PREV_YEAR, __PREV_YEAR )
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 40b59ed3-c387-48c6-8edd-3ab7ba3a77af
+
+		/// 
+		/// VAR _MAXWeek =
+		///     MAX ( 'Calendar'[CurWeekOffset] )
+		/// RETURN
+		///     CALCULATE ( [Suspension], 'Calendar'[CurWeekOffset] = _MAXWeek )
+		measure 'Suspension CW' =
+				
+				VAR _MAXWeek =
+				    MAX ( 'Calendar'[CurWeekOffset] )
+				RETURN
+				    CALCULATE ( [Suspension], 'Calendar'[CurWeekOffset] = _MAXWeek )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 9454a366-9d9d-446c-a9fc-7c806d432991
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// SUM ( 'Behaviour Sanctions'[Days Excluded] )
+		measure 'Suspension Days' =
+				CALCULATE(
+				SUM ( 'Behaviour Sanctions'[Days Suspended] ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 2f85056c-59e1-4158-960d-3cb5e2043578
+
+		/// 
+		/// TOTALYTD ( [Suspension Days], 'Calendar'[Date], "31/08" )
+		measure 'Suspension Days YTD' =
+				
+				TOTALYTD ( [Suspension Days], 'Calendar'[Date], "31/08" )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 5e9d95d6-ccc1-4647-a638-4aecd8a3ad27
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Days YTD],
+		///     SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+		/// ) + 0
+		measure 'Suspension Days YTD SPLY' =
+				
+				CALCULATE (
+				    [Suspension Days YTD],
+				    SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+				) + 0
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 63dfb6d6-c504-461c-a23d-0a8447f4e2aa
+
+		/// 
+		/// DIVIDE ( [Suspension EAL Students], [Suspension Students] )
+		measure 'Suspension EAL Percentage' =
+				
+				DIVIDE ( [Suspension EAL Students], [Suspension Students] )
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: a373fbf4-883f-4728-8c89-194677fe02c6
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[English as additional language] IN { "EAL" }
+		/// )
+		measure 'Suspension EAL Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[English as additional language] IN { "EAL" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: ae63177c-628f-4b9c-bbe2-51c78f4e46fe
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension EAL Percentage],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     [Suspension EAL Percentage] - __PREV_YEAR
+		measure 'Suspension EAL% YoY' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension EAL Percentage],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    [Suspension EAL Percentage] - __PREV_YEAR
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: cdbcd52b-9139-4124-b035-5fc8841db878
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// DIVIDE ( [Suspension EHCP Students], [Suspension Students] )
+		measure 'Suspension EHCP Percentage' =
+				
+				DIVIDE ( [Suspension EHCP Students], [Suspension Students] )
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: dc8226dc-9f12-40ed-b659-1ee4825c8cf8
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[SEN Status] IN { "Education, Health And Care Plan" }
+		/// )
+		measure 'Suspension EHCP Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[SEN Status] IN { "Education, Health And Care Plan" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 103fdf40-b6a4-411e-a3ac-d34544a96fcd
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension EHCP Percentage],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     [Suspension EHCP Percentage] - __PREV_YEAR
+		measure 'Suspension EHCP% YoY' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension EHCP Percentage],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    [Suspension EHCP Percentage] - __PREV_YEAR
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 45daf15f-b005-4f2b-8599-3d290291907b
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 1
+		/// RETURN
+		///     CALCULATE (
+		///         [Suspensions],
+		///         'Calendar'[Current School Year Offset] = LastYear
+		///     )
+		measure 'Suspension End of Last Year' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				    CALCULATE (
+				        [Suspension],
+				        'Calendar'[Current School Year Offset] = LastYear
+				    )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: e6425827-488c-4e38-8485-11514b09cd27
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Female Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Female Percentage' =
+				
+				DIVIDE (
+				    [Suspension Female Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 0b60b0b2-007b-4756-8f37-97030468c2f5
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Female PP Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Female PP Percentage' =
+				
+				DIVIDE (
+				    [Suspension Female PP Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 98261401-3376-42a0-a260-40abd3b50ce4
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" },
+		///     'Student Database (Full)'[Gender] IN { "Female" }
+		/// )
+		measure 'Suspension Female PP Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" },
+				    'Student Database (Full)'[Gender] IN { "Female" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: b3ac0b6f-b888-4cde-b132-22d3d1bbb644
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[Gender] IN { "Female" }
+		/// )
+		measure 'Suspension Female Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[Gender] IN { "Female" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 6271e494-5267-4f1d-90e2-dfd77b65d448
+
+		/// 
+		/// DIVIDE ( [Suspension FSM Students], [Suspension Students] )
+		measure 'Suspension FSM Percentage' =
+				
+				DIVIDE ( [Suspension FSM Students], [Suspension Students] )
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: a7ad8c93-ec62-4458-b16d-65f4790925aa
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     ( 'Student Database (Full)'[Eligible for free meals] IN { "FSM" } )
+		/// )
+		measure 'Suspension FSM Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    ( 'Student Database (Full)'[Eligible for free meals] IN { "FSM" } )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 177d6cd5-8784-496f-ae9f-2d7980e8e3e5
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension FSM Percentage],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     [Suspension FSM Percentage] - __PREV_YEAR
+		measure 'Suspension FSM% YoY' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension FSM Percentage],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    [Suspension FSM Percentage] - __PREV_YEAR
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 87758165-9e9b-4c45-88e6-4cc57a9f9bd2
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// CALCULATE (
+		///     [Suspensions],
+		///     'Calendar'[Current School Year Offset] = -1
+		/// )
+		measure 'Suspension Incidents -1 Years' =
+				
+				CALCULATE (
+				    [Suspension],
+				    'Calendar'[Current School Year Offset] = -1
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 5e3996ae-b53b-4fdf-8cb3-f9cc572a03ad
+
+		/// 
+		/// CALCULATE (
+		///     [Suspensions],
+		///     'Calendar'[Current School Year Offset] = -2
+		/// )
+		measure 'Suspension Incidents -2 Years' =
+				
+				CALCULATE (
+				    [Suspension],
+				    'Calendar'[Current School Year Offset] = -2
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: e4a9d96b-83f4-43d0-9c5a-dfa9cad1f301
+
+		/// 
+		/// TOTALYTD ( [Suspensions], 'Calendar'[Date], "31/08" )
+		measure 'Suspension Incidents YTD' =
+				
+				TOTALYTD ( [Suspension], 'Calendar'[Date], "31/08" )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 4ae33a57-fa76-4f29-9830-7dfdda6a736b
+
+		/// 
+		/// CALCULATE (
+		///     [Suspensions Incidents YTD],
+		///     SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+		/// )
+		measure 'Suspension Incidents YTD SPLY' =
+				
+				CALCULATE (
+				    [Suspension Incidents YTD],
+				    SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 697d1420-8b27-4c4a-9d91-23719a266a22
+
+		/// 
+		/// [Suspensions Incidents YTD] - [Suspensions Incidents YTD SPLY]
+		measure 'Suspension Incidents YTD YoY Change' =
+				
+				[Suspension Incidents YTD] - [Suspension Incidents YTD SPLY]
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 5089d513-4a81-4ecd-b911-05aa36d08bec
+
+		/// 
+		/// DIVIDE ( [Suspension Male Students], [Suspension Students] )
+		measure 'Suspension Male Percentage' =
+				
+				DIVIDE ( [Suspension Male Students], [Suspension Students] )
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: b4409b4f-a03a-4586-baf6-14c606ed85e8
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Male PP Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Male PP Percentage' =
+				
+				DIVIDE (
+				    [Suspension Male PP Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 27b35e0b-a1b9-4a64-9f40-d6855b54b64c
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" },
+		///     'Student Database (Full)'[Gender] IN { "Male" }
+		/// )
+		measure 'Suspension Male PP Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" },
+				    'Student Database (Full)'[Gender] IN { "Male" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 510d4446-a6e5-453b-93ec-9fa290411077
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[Gender] IN { "Male" }
+		/// )
+		measure 'Suspension Male Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[Gender] IN { "Male" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 72a9a6d4-6f83-4c9a-971d-c8b3998e4d1f
+
+		/// 
+		/// VAR __PREV_MONTH =
+		///     CALCULATE (
+		///         [Suspensions MTD],
+		///         DATEADD ( 'Calendar'[Date], -1, MONTH )
+		///     )
+		/// RETURN
+		///     IF ( ISBLANK ( __PREV_MONTH ), 0, [Suspensions MTD] - __PREV_MONTH )
+		measure 'Suspension MoM Change' =
+				
+				VAR __PREV_MONTH =
+				    CALCULATE (
+				        [Suspension MTD],
+				        DATEADD ( 'Calendar'[Date], -1, MONTH )
+				    )
+				RETURN
+				    IF ( ISBLANK ( __PREV_MONTH ), 0, [Suspension MTD] - __PREV_MONTH )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 65d0450a-91a3-4c1a-8d45-966d89afebf1
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// TOTALMTD ( [Suspensions], 'Calendar'[Date] )
+		measure 'Suspension MTD' =
+				
+				TOTALMTD ( [Suspension], 'Calendar'[Date] )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 39178a68-2f84-4524-bf87-dc93a546dfeb
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Non EAL Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Non EAL Percentage' =
+				
+				DIVIDE (
+				    [Suspension Non EAL Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: ca1920ea-ebc5-4dae-a33a-f78dda1dae63
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     NOT ( 'Student Database (Full)'[English as additional language] IN { "EAL" } )
+		/// )
+		measure 'Suspension Non EAL Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    NOT ( 'Student Database (Full)'[English as additional language] IN { "EAL" } )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 4512ed98-f054-481e-9c69-bc93e485e8b5
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Non FSM Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Non FSM Percentage' =
+				
+				DIVIDE (
+				    [Suspension Non FSM Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: ce88df9e-e080-47de-9ab5-a58bff149dd0
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     NOT ( ( 'Student Database (Full)'[Eligible for free meals] IN { "FSM" } ) )
+		/// )
+		measure 'Suspension Non FSM Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    NOT ( ( 'Student Database (Full)'[Eligible for free meals] IN { "FSM" } ) )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 62faef0c-7be6-42a1-bd97-20cb402807b2
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Non Pupil Premium Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Non Pupil Premium Percentage' =
+				
+				DIVIDE (
+				    [Suspension Non Pupil Premium Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 6275a4ba-c2c8-408b-99c9-9168ca4a0a34
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     NOT ( 'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" } )
+		/// )
+		measure 'Suspension Non Pupil Premium Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    NOT ( 'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" } )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 0517415d-97ac-4f52-a814-0a1cdceca300
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Non SEN Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Non SEN Percentage' =
+				
+				DIVIDE (
+				    [Suspension Non SEN Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: b3949019-ed34-4e77-a8f8-c0a92e66f555
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[SEN Status]
+		///         IN { "No Special Educational Need", "Provision No Longer Needed" }
+		/// )
+		measure 'Suspension Non SEN Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[SEN Status]
+				        IN { "No Special Educational Need", "Provision No Longer Needed" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 04c84880-ffa9-4ef6-a375-be237b12f764
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension Pupil Premium Percentage],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     [Suspension Pupil Premium Percentage] - __PREV_YEAR
+		measure 'Suspension Pupil Premium% YoY' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension Pupil Premium Percentage],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    [Suspension Pupil Premium Percentage] - __PREV_YEAR
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 92ab4e5f-f2e0-4eea-9fb8-99bb9c7cef63
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" }
+		/// )
+		measure 'Suspension Pupil Premium Students' =
+				
+				CALCULATE (
+				    [Suspension Students],
+				    'Student Database (Full)'[Pupil Premium Indicator] IN { "Pupil Premium" }
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 81e443d6-9345-4e3b-a4f9-0864d418a5b9
+
+		/// 
+		/// DIVIDE (
+		///     [Suspension Pupil Premium Students],
+		///     [Suspension Students]
+		/// )
+		measure 'Suspension Pupil Premium Percentage' =
+				
+				DIVIDE (
+				    [Suspension Pupil Premium Students],
+				    [Suspension Students]
+				)
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: ff58b25a-809d-4660-905e-8ce90ae89473
+
+		/// 
+		/// VAR _MaxDayOffset =
+		///     MAX ( 'Calendar'[CurDayOffset] )
+		/// VAR _PW =
+		///     MAX ( 'Calendar'[CurDayOffset] ) - 7
+		/// VAR _PreviousPeriod =
+		///     CALCULATE (
+		///         [Suspensions],
+		///         FILTER ( ALL ( 'Calendar' ), 'Calendar'[CurDayOffset] = _PW )
+		///     )
+		/// VAR _CW =
+		///     CALCULATE ( [Suspensions], 'Calendar'[CurDayOffset] = _MaxDayOffset )
+		/// RETURN
+		///     _CW - _PreviousPeriod
+		measure 'Suspension Rolling WoW' =
+				
+				VAR _MaxDayOffset =
+				    MAX ( 'Calendar'[CurDayOffset] )
+				VAR _PW =
+				    MAX ( 'Calendar'[CurDayOffset] ) - 7
+				VAR _PreviousPeriod =
+				    CALCULATE (
+				        [Suspension],
+				        FILTER ( ALL ( 'Calendar' ), 'Calendar'[CurDayOffset] = _PW )
+				    )
+				VAR _CW =
+				    CALCULATE ( [Suspension], 'Calendar'[CurDayOffset] = _MaxDayOffset )
+				RETURN
+				    _CW - _PreviousPeriod
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 4a459755-ac11-4df0-95a3-46c43fe30350
+
+		measure 'Suspension Sessions'
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 2e384868-25c5-468c-99f6-4d51f8d5f130
+
+		/// 
+		/// CALCULATE (
+		///     SUM ( 'Behaviour Sanctions'[Sessions] ),
+		///     'Calendar'[Current School Year Offset] = -1,
+		///		'Behaviour Sanctions'[Source Table]="Suspension"
+		/// )
+		measure 'Suspension Sessions -1 Years' =
+				
+				CALCULATE (
+				    SUM ( 'Behaviour Sanctions'[Sessions] ),
+				    'Calendar'[Current School Year Offset] = -1,
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				)
+			formatString: 0.0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: c9224a4c-419b-4be0-812b-452d4560ebf7
+
+		/// 
+		/// CALCULATE (
+		///     SUM ( 'Behaviour Sanctions'[Sessions] ),
+		///     'Calendar'[Current School Year Offset] = -2,
+		///		'Behaviour Sanctions'[Source Table]="Suspension"
+		/// )
+		measure 'Suspension Sessions -2 Years' =
+				
+				CALCULATE (
+				    SUM ( 'Behaviour Sanctions'[Sessions] ),
+				    'Calendar'[Current School Year Offset] = -2,
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				)
+			formatString: 0.0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 0715c375-2a18-4573-99f1-d016e80ae177
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Sessions YTD],
+		///     SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+		/// )
+		measure 'Suspension Sessions SPLY' =
+				
+				CALCULATE (
+				    [Suspension Sessions YTD],
+				    SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+				)
+			formatString: 0.0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 15a406a1-b5b1-472c-933f-0912e7670cec
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension Sessions YTD],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     [Suspension Sessions YTD] - __PREV_YEAR
+		measure 'Suspension Sessions YoY' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension Sessions YTD],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    [Suspension Sessions YTD] - __PREV_YEAR
+			formatString: 0.0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 1902997f-5382-4947-b342-8119f9a435fd
+
+		/// 
+		/// CALCULATE (
+		///     TOTALYTD ( SUM ( 'Behaviour Sanctions'[Sessions] ), 'Calendar'[Date], "31/08" )
+		/// )
+		measure 'Suspension Sessions YTD' =
+				
+				CALCULATE (
+				    TOTALYTD ( SUM ( 'Behaviour Sanctions'[Sessions] ), 'Calendar'[Date], "31/08" ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				)
+			formatString: 0.0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 146c6a5b-4a52-4458-b9ee-e6ce484632f0
+
+		/// 
+		/// [Excluded YTD] - [Excluded SPLY]
+		measure 'Suspension YTD YoY Change' =
+				
+				[Excluded YTD] - [Excluded SPLY]
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 21c9d899-6ffc-4406-a264-70d530a93fed
+
+		/// 
+		/// TOTALYTD ( [Suspension Students], 'Calendar'[Date], "31/08" )
+		measure 'Suspension YTD' =
+				
+				TOTALYTD ( [Suspension Students], 'Calendar'[Date], "31/08" )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 3a57c723-1617-4ca6-91e7-47889debd003
+
+		/// 
+		/// VAR _MaxWeekOffset =
+		///     MAX ( 'Calendar'[CurWeekOffset] )
+		/// VAR _PW =
+		///     MAX ( 'Calendar'[CurWeekOffset] ) - 1
+		/// VAR _PreviousPeriod =
+		///     CALCULATE (
+		///         [Suspensions],
+		///         FILTER ( ALL ( 'Calendar' ), 'Calendar'[CurWeekOffset] = _PW )
+		///     )
+		/// VAR _CW =
+		///     CALCULATE (
+		///         [Suspensions],
+		///         'Calendar'[CurWeekOffset] = _MaxWeekOffset
+		///     )
+		/// RETURN
+		///     _CW - _PreviousPeriod
+		measure 'Suspension WoW' =
+				
+				VAR _MaxWeekOffset =
+				    MAX ( 'Calendar'[CurWeekOffset] )
+				VAR _PW =
+				    MAX ( 'Calendar'[CurWeekOffset] ) - 1
+				VAR _PreviousPeriod =
+				    CALCULATE (
+				        [Suspension],
+				        FILTER ( ALL ( 'Calendar' ), 'Calendar'[CurWeekOffset] = _PW )
+				    )
+				VAR _CW =
+				    CALCULATE (
+				        [Suspension],
+				        'Calendar'[CurWeekOffset] = _MaxWeekOffset
+				    )
+				RETURN
+				    _CW - _PreviousPeriod
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 7b326f32-bb63-4583-81a9-35cd2f96c94b
+
+		/// 
+		/// [Percentage Excluded YTD] - [Percentage Excluded YTD SPLY]
+		measure 'Suspension Variation YoY (YTD - SPLY)' =
+				
+				[Percentage Excluded YTD] - [Percentage Excluded YTD SPLY]
+			formatString: 0.00%;-0.00%;0.00%
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: a6f84e12-d60c-4eeb-bcaf-324bbeeac406
+
+		/// 
+		/// CALCULATE (
+		///     [Suspension Students YTD],
+		///     SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+		/// )
+		measure 'Suspension Students YTD SPLY' =
+				
+				CALCULATE (
+				    [Suspension Students YTD],
+				    SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 90628125-49b1-4982-bf3e-167d395890c0
+
+		/// 
+		/// TOTALYTD ( [Suspension Students], 'Calendar'[Date], "31/08" )
+		measure 'Suspension Students YTD' =
+				
+				TOTALYTD ( [Suspension Students], 'Calendar'[Date], "31/08" )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 8b8087ce-b79c-44af-a2c6-e2065c92491b
+
+		/// 
+		/// [Suspension Students YTD] - [Suspension Students YTD SPLY]
+		measure 'Suspension Students YoY' =
+				
+				[Suspension Students YTD] - [Suspension Students YTD SPLY]
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 87954fcd-1d8f-4583-a93f-edb9203af6c1
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 2
+		/// VAR SchoolYr = FORMAT(CALCULATE(MAX('Calendar'[Academic Year Start]),'Calendar'[Current School Year Offset] = LastYear),"0000")
+		/// RETURN
+		/// CALCULATE (
+		///     [Suspension Students],
+		///     'Calendar'[Current School Year Offset] = LastYear,
+		///     'Student Year Groups'[Academic Year] = SchoolYr
+		/// )
+		measure 'Suspension Students -2 Years' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 2
+				VAR SchoolYr = FORMAT(CALCULATE(MAX('Calendar'[Academic Year Start]),'Calendar'[Current School Year Offset] = LastYear),"0000")
+				RETURN
+				CALCULATE (
+				    [Suspension Students],
+				    'Calendar'[Current School Year Offset] = LastYear,
+				    'Student Year Groups'[Academic Year] = SchoolYr
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: dfef37a9-b6d4-400b-b685-2dbd7b4fe384
+
+		/// 
+		/// DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] )
+		measure 'Suspension Students' =
+				CALCULATE(
+					DISTINCTCOUNT ( 'Behaviour Sanctions'[Globally Unique Student ID] ),
+					'Behaviour Sanctions'[Source Table]="Suspension"
+				)
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: bc05e7e3-04f6-4cdc-9a14-8acbb2162bd1
+
+		/// 
+		/// VAR __PREV_YEAR =
+		///     CALCULATE (
+		///         [Suspension Sessions YTD],
+		///         DATEADD ( 'Calendar'[Date], -1, YEAR )
+		///     )
+		/// RETURN
+		///     IF (
+		///         ISBLANK ( __PREV_YEAR ),
+		///         BLANK (),
+		///         [Suspension Sessions YTD] - __PREV_YEAR
+		///     )
+		measure 'Suspension Sessions YTD YoY Change' =
+				
+				VAR __PREV_YEAR =
+				    CALCULATE (
+				        [Suspension Sessions YTD],
+				        DATEADD ( 'Calendar'[Date], -1, YEAR )
+				    )
+				RETURN
+				    IF (
+				        ISBLANK ( __PREV_YEAR ),
+				        BLANK (),
+				        [Suspension Sessions YTD] - __PREV_YEAR
+				    )
+			formatString: 0.0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 43af8f61-67c1-4ee5-a6de-68e9de5d8dc7
+
+			changedProperty = FormatString
+
+		/// 
+		/// VAR CurrentYearOffset =
+		///     MAX ( 'Calendar'[Current School Year Offset] )
+		/// VAR LastYear = CurrentYearOffset - 1
+		/// RETURN
+		/// CALCULATE ( [Suspension Students], 'Calendar'[Current School Year Offset] = LastYear )
+		measure 'Suspension Students -1 Years' =
+				
+				VAR CurrentYearOffset =
+				    MAX ( 'Calendar'[Current School Year Offset] )
+				VAR LastYear = CurrentYearOffset - 1
+				RETURN
+				CALCULATE ( [Suspension Students], 'Calendar'[Current School Year Offset] = LastYear )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: bc84dfb1-5be1-4614-bd63-3ca7fe19223c
+
+		/// 
+		/// CALCULATE ( [Excluded YTD], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+		measure 'Suspension SPLY' =
+				
+				CALCULATE ( [Excluded YTD], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+			formatString: 0
+			displayFolder: Behaviour Sanctions\Suspensions
+			lineageTag: 7c1431b0-6417-4084-bee9-99c7a694ece2
+

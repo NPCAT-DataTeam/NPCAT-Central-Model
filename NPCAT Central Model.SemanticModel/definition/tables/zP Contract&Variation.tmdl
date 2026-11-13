@@ -1,0 +1,60 @@
+table 'zP Contract&Variation'
+	lineageTag: 1c3e5c3e-25b8-4dc6-97fe-4cf44f79d17e
+
+	column 'zP Contract&Variation'
+		lineageTag: 747ee240-e946-4d8b-ae6f-f30918413a80
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Contract&Variation Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Contract&Variation Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Contract&Variation Fields'
+		isHidden
+		lineageTag: adb31623-41a6-4bfd-a19c-6a02c944b238
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Contract&Variation Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Contract&Variation Order'
+		isHidden
+		formatString: 0
+		lineageTag: 1b405b77-7b72-49ab-be0e-fe165b50010d
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Breach Type' =
+			
+			SWITCH(TRUE(),
+			CONTAINSSTRING([zP Contract&Variation Fields],"Policy"),"Policy",
+			CONTAINSSTRING([zP Contract&Variation Fields],"Legal"),"Legal")
+		lineageTag: 14609aa1-852c-45cc-9c45-a77d1d6ef230
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Contract&Variation' = calculated
+		mode: import
+		source =
+				{
+				    ("No.", NAMEOF('Measures Folder'[No. Legal Breach]), 0),
+				    ("No.", NAMEOF('Measures Folder'[No. Policy Breach]), 1),
+				    ("%", NAMEOF('Measures Folder'[Legal Breach %]), 2),
+				    ("%", NAMEOF('Measures Folder'[Policy Breach %]), 3)
+				}
+
+	annotation PBI_Id = 5bcbc82357324038b0f503e7b53fb62e
+

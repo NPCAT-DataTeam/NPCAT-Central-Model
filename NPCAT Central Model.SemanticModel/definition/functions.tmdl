@@ -1,0 +1,164 @@
+function GetTagsAtDate =
+		        ( studentId : INT ) =>
+					VAR checkdate = [Dynamic Max Date]
+					RETURN
+		            CALCULATETABLE (
+		                SELECTCOLUMNS (
+		                    FILTER (
+		                        Demographics,
+		                        Demographics[Person Unique ID] = studentId &&
+		                        Demographics[Tag Start Date] <= checkDate &&
+		                        ( ISBLANK ( Demographics[Tag End Date] ) || Demographics[Tag End Date] >= checkDate )
+		                    ),
+		                    "Tag", Demographics[Tag]
+		                )
+		            )
+	lineageTag: 51510baa-f5c4-420f-aeae-f362d827e69b
+
+function SELECTEDPERIODREF = ```
+		(
+		    BaseMeasure : EXPR
+		) =>
+		    VAR __Sel =
+		        SELECTEDVALUE ( 'Dynamic Time Series'[Time Period] )
+		    VAR __LastDate =
+		        MAX ( 'Calendar'[Date] )
+		
+		
+		    VAR __PrevLast7Days =
+		        DATESINPERIOD ( 'Calendar'[Date], __LastDate - 7, -7, DAY )
+		    VAR __PrevLast30Days =
+		        DATESINPERIOD ( 'Calendar'[Date], __LastDate - 30, -30, DAY )
+		
+		
+		    VAR __PrevLast3Months =
+		        VAR __Anchor3 = EDATE ( __LastDate, -3 )
+		        RETURN
+		            DATESINPERIOD ( 'Calendar'[Date], __Anchor3, -3, MONTH )
+		    VAR __PrevLast6Months =
+		        VAR __Anchor6 = EDATE ( __LastDate, -6 )
+		        RETURN
+		            DATESINPERIOD ( 'Calendar'[Date], __Anchor6, -6, MONTH )
+		    VAR __PrevLast12Months =
+		        VAR __Anchor12 = EDATE ( __LastDate, -12 )
+		        RETURN
+		            DATESINPERIOD ( 'Calendar'[Date], __Anchor12, -12, MONTH )
+		
+		
+		    VAR __WeekPrevDates =
+		        VAR __Dow = WEEKDAY ( __LastDate, 2 )              -- Mon = 1 … Sun = 7
+		        VAR __StartOfWeek = __LastDate - __Dow + 1         -- this Monday
+		        VAR __DaysElapsed = __LastDate - __StartOfWeek     -- 0 = Mon, 1 = Tue, etc.
+		        VAR __EndPrev = __LastDate - 7                     -- same weekday last week
+		        VAR __StartPrev = __EndPrev - __DaysElapsed        -- same WTD length last week
+		        RETURN
+		            DATESBETWEEN ( 'Calendar'[Date], __StartPrev, __EndPrev )
+		
+		
+		    VAR __MTD =
+		        DATESMTD ( 'Calendar'[Date] )
+		    VAR __PrevMonthMTD =
+		        DATEADD ( __MTD, -1, MONTH )
+		
+		
+		    VAR __QTD =
+		        DATESQTD ( 'Calendar'[Date] )
+		    VAR __PrevQTD =
+		        DATEADD ( __QTD, -1, QUARTER )
+		    VAR Term = MAX('Calendar'[Term Offset])
+		    VAR __Termly = 
+		        
+		    VAR __PrevTerm = (
+		
+		    VAR __YTD =
+		        DATESYTD ( 'Calendar'[Date] )
+		    VAR __PrevYTD =
+		        DATEADD ( __YTD, -1, YEAR )
+		
+		
+		    RETURN
+		        SWITCH (
+		            TRUE (),
+		
+		
+		            __Sel = "Last 7 Days",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevLast7Days
+		                ),
+		
+		
+		            __Sel = "Last 30 Days",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevLast30Days
+		                ),
+		
+		
+		            __Sel = "Last 3 Months",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevLast3Months
+		                ),
+		
+		
+		            __Sel = "Last 6 Months",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevLast6Months
+		                ),
+		
+		
+		            __Sel = "Last 12 Months",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevLast12Months
+		                ),
+		
+		
+		            __Sel = "This Week (Mon-Sun)",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __WeekPrevDates
+		                ),
+		
+		
+		            __Sel = "This Month (MTD)",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevMonthMTD
+		                ),
+		
+		
+		            __Sel = "This Quarter (QTD)",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevQTD
+		                ),
+		
+		
+		            __Sel = "This Year (YTD)",
+		                CALCULATE (
+		                    BaseMeasure,
+		                    REMOVEFILTERS ( 'Dynamic Time Series' ),
+		                    __PrevYTD
+		                ),
+		
+		
+		            __Sel = "All Time",
+		                BLANK (),
+		
+		
+		            BLANK ()
+		        ))
+		```
+	lineageTag: dee870a3-cf86-41fd-a1d4-ba6d8efc8757
+

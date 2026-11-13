@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5798369d29ecfe61f8be",
+  "position": {
+    "x": 1061.7100371747213,
+    "y": 285.50185873605949,
+    "z": 3000,
+    "height": 426.46840148698885,
+    "width": 858.28996282527885,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AP Placements"
+                    }
+                  },
+                  "Property": "Placement Checker"
+                }
+              },
+              "queryRef": "AP Placements.Placement Checker",
+              "nativeQueryRef": "Placement Checker",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Total AP Pupils"
+                }
+              },
+              "queryRef": "Measures Folder.Total AP Pupils",
+              "nativeQueryRef": "Total AP Pupils"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "AP Students on Roll"
+                }
+              },
+              "queryRef": "Measures Folder.AP Students on Roll",
+              "nativeQueryRef": "AP Students on Roll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Current AP Students on Roll"
+                }
+              },
+              "queryRef": "Measures Folder.Current AP Students on Roll",
+              "nativeQueryRef": "Current AP Students on Roll"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures Folder"
+                  }
+                },
+                "Property": "Total AP Pupils"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1f81708628344e77673a",
+  "position": {
+    "x": 520.734908136483,
+    "y": 106.38670166229221,
+    "z": 1,
+    "height": 356.11548556430449,
+    "width": 562.169728783902
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic student Calc group"
+                    }
+                  },
+                  "Property": "Demographic Name"
+                }
+              },
+              "queryRef": "Dynamic student Calc group.Demographic Name",
+              "nativeQueryRef": "Demographic Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Attendance Percentage YTD"
+                }
+              },
+              "queryRef": "Measures Folder.Attendance Percentage YTD",
+              "nativeQueryRef": "Attendance Percentage YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Attendance Percentage YTD SPLY"
+                }
+              },
+              "queryRef": "Measures Folder.Attendance Percentage YTD SPLY",
+              "nativeQueryRef": "Attendance Percentage YTD SPLY"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "FORMAT( [Attendance Percentage YTD]-[Attendance Percentage YTD SPLY],\"0.00%\")",
+                  "Name": "YoY"
+                }
+              },
+              "queryRef": "select",
+              "nativeQueryRef": "YoY"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "( [Attendance Percentage YTD]-[Attendance Percentage YTD SPLY])*100",
+                  "Name": "YoY Conditional colour"
+                }
+              },
+              "queryRef": "select1",
+              "nativeQueryRef": "YoY Conditional colour",
+              "hidden": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures Folder"
+                  }
+                },
+                "Property": "Attendance Percentage YTD"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "SelectRef": {
+                          "ExpressionName": "select1"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'minColor'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'maxColor'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "select"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b598e757a162d1097943",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Attendance Percentage YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d171f9e06088a18a0508",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Attendance Percentage YTD SPLY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4ed6c0ab84d3ebe3bc9d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dynamic student Calc group"
+              }
+            },
+            "Property": "Demographic Name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

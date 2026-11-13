@@ -1,0 +1,292 @@
+table Phonics
+	lineageTag: bad5c145-ee6e-4a85-91d2-59ac8ec2bdd5
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 0c60bf9d-40f8-40fb-8254-d4c087fe93e8
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_ID
+		dataType: string
+		lineageTag: d2075049-fde4-47d2-ac35-e026a16aa6e2
+		summarizeBy: none
+		sourceColumn: STUDENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_NAME
+		dataType: string
+		lineageTag: 5481893a-b0d5-4739-8128-a029853e098d
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_CODE
+		dataType: string
+		lineageTag: 0c2f1d18-1219-422c-9fb5-924cba2c3f8e
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARK_GRADE
+		dataType: string
+		lineageTag: 0c6b0750-f52e-4d49-b902-531b5e2d3ef3
+		summarizeBy: none
+		sourceColumn: MARK_GRADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARK_NUMERIC
+		dataType: double
+		lineageTag: bb1fbcc0-a051-44af-b70d-04d3a60cef06
+		summarizeBy: sum
+		sourceColumn: MARK_NUMERIC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MARK_COMMENT
+		dataType: string
+		lineageTag: ab1821ef-70b2-402d-9a93-0796fdc8e2cc
+		summarizeBy: none
+		sourceColumn: MARK_COMMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARK_CATEGORY
+		dataType: string
+		lineageTag: dae6ea3b-6bec-4a38-8baa-91b2cf16c571
+		summarizeBy: none
+		sourceColumn: MARK_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column INTENDED_CURRICULUM_GRADE
+		dataType: string
+		lineageTag: 719326c5-5afe-40b5-8950-966c974ed9de
+		summarizeBy: none
+		sourceColumn: INTENDED_CURRICULUM_GRADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a399d32e-59c6-493d-90ee-4bf257b36c7b
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SUBJECT_CODE
+		dataType: string
+		lineageTag: 94445888-fc03-4aff-9760-bb4e3faebb24
+		summarizeBy: none
+		sourceColumn: SUBJECT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_NAME
+		dataType: string
+		lineageTag: 0f802fb1-9820-4b0e-a0ff-cba07d1d3924
+		summarizeBy: none
+		sourceColumn: SUBJECT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global Unique ID'
+		dataType: string
+		isHidden
+		lineageTag: 68c5efbb-b3a3-4ecd-9d12-bad3509934c9
+		summarizeBy: none
+		sourceColumn: Global Unique ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 92affbb2-df99-485d-b049-898a8ac322d6
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: 43b4d3bc-8bdf-4cc7-8991-91ed7aac64a1
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8fd2bce2-fe6b-45b1-92d5-ffb747b2de80
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Leaving date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a343ef18-3d66-446e-ae41-df8924460d15
+		summarizeBy: none
+		sourceColumn: Leaving date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 6f8c9099-65a1-4a85-a524-7affe5e92df2
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: d9897b0c-c945-4bf6-bfed-0ec76dc20fe9
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: double
+		lineageTag: 715b92c5-b606-40c6-9c66-bbcfe9bf143f
+		summarizeBy: sum
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Globally Unique ID - School Year'
+		dataType: string
+		lineageTag: 67e95a23-a5ee-4c64-8740-909e758083e5
+		summarizeBy: none
+		sourceColumn: Globally Unique ID - School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Arrival Flag'
+		dataType: string
+		lineageTag: d81f4d3f-752e-4f60-bef8-28cca018e3de
+		summarizeBy: none
+		sourceColumn: Arrival Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: dad3bd9e-80ac-4667-b27b-68f672a05fb7
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Groups'
+		dataType: string
+		lineageTag: 137802b0-06e7-4208-82fb-c11a8c7c8084
+		summarizeBy: none
+		sourceColumn: Mark Groups
+		sortByColumn: 'Mark Group Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Group Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5787a52c-2f05-4f8b-bb58-d6df20c835a7
+		summarizeBy: sum
+		sourceColumn: Mark Group Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: adaacb7e-efa9-4bf0-b2dd-048a3ec1d8ef
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Marks Flag' =
+			
+			IF([MARK_NUMERIC] = 40,UNICHAR(10004),UNICHAR(10006))
+		lineageTag: 16c07f66-d174-400f-a9d9-22d73feb656f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Passed Flag' =
+			
+			IF([MARK_GRADE] = "Wa",UNICHAR(10004),UNICHAR(10006))
+		lineageTag: d5400612-ac63-4f86-9491-d7f7d3d7cfd6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 9e5131d5-7dd1-4402-987b-0c2a109f89d8
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STANDARDISED_ASSESSMENT_MARK_UNIQUE_ID
+		dataType: string
+		lineageTag: b3406ad3-b577-4efd-9011-e2e3313db404
+		summarizeBy: none
+		sourceColumn: STANDARDISED_ASSESSMENT_MARK_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STANDARDISED_ASSESSMENT_MARK_ID
+		dataType: double
+		lineageTag: b63c8cd1-34bf-48ff-9f53-690214ba19fe
+		summarizeBy: count
+		sourceColumn: STANDARDISED_ASSESSMENT_MARK_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COMPONENT
+		dataType: string
+		lineageTag: 19c3072a-6126-4be2-88ba-027965dfa3cb
+		summarizeBy: none
+		sourceColumn: COMPONENT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Phonics-ebb49bab-155a-4b15-89ae-6b85d0f5d188 = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary\Phonics'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    #"Phonics 1" = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="Phonics 2022"]}[Data]
+				in
+				    #"Phonics 1"
+
+	annotation PBI_ResultType = Table
+

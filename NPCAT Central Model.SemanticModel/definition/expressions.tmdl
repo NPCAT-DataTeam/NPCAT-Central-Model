@@ -1,0 +1,114 @@
+expression 'Workforce Census' =
+		let
+		    Source = #"Workforce Census (Staging)",
+		    #"Removed Other Columns" = Table.SelectColumns(Source,{"time_period", "school_urn", "fte_workforce", "fte_all_teachers", "fte_classroom_teachers", "fte_leadership_teachers", "fte_head_teachers", "fte_deputy_head_teachers", "fte_assistant_head_teachers", "fte_teaching_assistants", "fte_other_school_support_staff", "fte_administrative_staff", "hc_workforce", "hc_all_teachers", "hc_classroom_teachers", "hc_leadership_teachers", "hc_head_teachers", "hc_deputy_head_teachers", "hc_assistant_head_teachers", "hc_teaching_assistants", "hc_other_school_support_staff", "hc_administrative_staff"}),
+		    #"Extracted First Characters" = Table.TransformColumns(#"Removed Other Columns", {{"time_period", each Text.Start(Text.From(_, "en-GB"), 4), type text}}),
+		    #"Converted to Number" = Table.TransformColumnTypes(#"Extracted First Characters",{{"time_period", Int64.Type}}),
+		    #"Added Census Date" = Table.AddColumn(#"Converted to Number", "Census Date", each Date.StartOfWeek(#date([time_period],11,7),Day.Thursday)),
+		    #"Filtered to Last Census Date" = Table.SelectRows(#"Added Census Date", each ([time_period] = List.Max(#"Added Census Date"[time_period]))),
+		    #"Filtered Incomplete Rows" = Table.SelectRows(#"Filtered to Last Census Date", each ([fte_leadership_teachers] <> ":")),
+		    #"Replaced Value" = Table.ReplaceValue(#"Filtered Incomplete Rows",":","0",Replacer.ReplaceText,{"fte_teaching_assistants"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"school_urn", type text}, {"fte_leadership_teachers", type number}, {"fte_workforce", type number}, {"fte_all_teachers", type number}, {"fte_teaching_assistants", type number}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"fte_leadership_teachers", "FTE Leadership Teachers"}, {"fte_workforce", "FTE Workforce"}, {"school_urn", "School URN"}, {"hc_other_school_support_staff", "HC Other School Support Staff"}, {"fte_all_teachers", "FTE All Teachers"}, {"fte_teaching_assistants", "FTE Teaching Assistants"}, {"fte_classroom_teachers", "FTE Classroom Teachers"}, {"fte_head_teachers", "FTE Head Teachers"}, {"fte_deputy_head_teachers", "FTE Deputy Head Teachers"}, {"fte_assistant_head_teachers", "FTE Assistant Head Teachers"}, {"fte_other_school_support_staff", "FTE Other School Support Staff"}, {"fte_administrative_staff", "FTE Administrative Staff"}, {"hc_workforce", "HC Workforce"}, {"hc_all_teachers", "HC All Teachers"}, {"hc_classroom_teachers", "HC Classroom Teachers"}, {"hc_leadership_teachers", "HC Leadership Teachers"}, {"hc_head_teachers", "HC Head Teachers"}, {"hc_deputy_head_teachers", "HC Deputy Head Teachers"}, {"hc_assistant_head_teachers", "HC Assistant Head Teachers"}, {"hc_teaching_assistants", "HC Teaching Assistants"}, {"hc_administrative_staff", "HC Administrative Staff"}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"time_period"})
+		in
+		    #"Removed Columns"
+	lineageTag: 3bf5681c-cc25-4cab-bc44-e8098f2df0e8
+	queryGroup: Finance
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Student Census' =
+		let
+		    Source = #"Student Census (Staging)",
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"country_code", type text}, {"Country", type text}, {"Region", type text}, {"Region code", type text}, {"URN", type text}, {"new_LA_code", type text}, {"old_LA_code", type text}, {"la_name", type text}, {"Estab", type text}, {"School Name", type text}, {"LAESTAB", type text}, {"Open Date", type date}, {"Sex of school description", type text}, {"Phase-type grouping", type text}, {"TypeOfEstablishment (name)", type text}, {"Middle school", type text}, {"All through school", type text}, {"Hospital school", type text}, {"Denomination", type text}, {"Admissions Policy", type text}, {"District Administrative code", type text}, {"District Administrative name", type text}, {"Parl Con code", type text}, {"Parl Con name", type text}, {"Ward code", type text}, {"Ward name", type text}, {"Urban rural", type text}, {"School Postcode", type text}, {"Academy_flag", type text}, {"School size", type text}, {"part-time girls aged 0", Int64.Type}, {"part-time girls aged 1", Int64.Type}, {"part-time girls aged 2", Int64.Type}, {"part-time girls aged 3", Int64.Type}, {"part-time girls aged 4", Int64.Type}, {"part-time girls aged 5", Int64.Type}, {"part-time girls aged 6", Int64.Type}, {"part-time girls aged 7", Int64.Type}, {"part-time girls aged 8", Int64.Type}, {"part-time girls aged 9", Int64.Type}, {"part-time girls aged 10", Int64.Type}, {"part-time girls aged 11", Int64.Type}, {"part-time girls aged 12", Int64.Type}, {"part-time girls aged 13", Int64.Type}, {"part-time girls aged 14", Int64.Type}, {"part-time girls aged 15", Int64.Type}, {"part-time girls aged 16", Int64.Type}, {"part-time girls aged 17", Int64.Type}, {"part-time girls aged 18", Int64.Type}, {"part-time girls aged 19", Int64.Type}, {"full-time girls aged 0", Int64.Type}, {"full-time girls aged 1", Int64.Type}, {"full-time girls aged 2", Int64.Type}, {"full-time girls aged 3", Int64.Type}, {"full-time girls aged 4", Int64.Type}, {"full-time girls aged 5", Int64.Type}, {"full-time girls aged 6", Int64.Type}, {"full-time girls aged 7", Int64.Type}, {"full-time girls aged 8", Int64.Type}, {"full-time girls aged 9", Int64.Type}, {"full-time girls aged 10", Int64.Type}, {"full-time girls aged 11", Int64.Type}, {"full-time girls aged 12", Int64.Type}, {"full-time girls aged 13", Int64.Type}, {"full-time girls aged 14", Int64.Type}, {"full-time girls aged 15", Int64.Type}, {"full-time girls aged 16", Int64.Type}, {"full-time girls aged 17", Int64.Type}, {"full-time girls aged 18", Int64.Type}, {"full-time girls aged 19", Int64.Type}, {"part time boys aged 0", Int64.Type}, {"part time boys aged 1", Int64.Type}, {"part time boys aged 2", Int64.Type}, {"part-time boys aged 3", Int64.Type}, {"part-time boys aged 4", Int64.Type}, {"part time boys aged 5", Int64.Type}, {"part time boys aged 6", Int64.Type}, {"part time boys aged 7", Int64.Type}, {"part time boys aged 8", Int64.Type}, {"part time boys aged 9", Int64.Type}, {"part time boys aged 10", Int64.Type}, {"part time boys aged 11", Int64.Type}, {"part time boys aged 12", Int64.Type}, {"part time boys aged 13", Int64.Type}, {"part time boys aged 14", Int64.Type}, {"part time boys aged 15", Int64.Type}, {"part time boys aged 16", Int64.Type}, {"part time boys aged 17", Int64.Type}, {"part time boys aged 18", Int64.Type}, {"part time boys aged 19", Int64.Type}, {"full time boys aged 0", Int64.Type}, {"full time boys aged 1", Int64.Type}, {"full time boys aged 2", Int64.Type}, {"full-time boys aged 3", Int64.Type}, {"full-time boys aged 4", Int64.Type}, {"full time boys aged 5", Int64.Type}, {"full time boys aged 6", Int64.Type}, {"full time boys aged 7", Int64.Type}, {"full time boys aged 8", Int64.Type}, {"full time boys aged 9", Int64.Type}, {"full time boys aged 10", Int64.Type}, {"full time boys aged 11", Int64.Type}, {"full time boys aged 12", Int64.Type}, {"full time boys aged 13", Int64.Type}, {"full time boys aged 14", Int64.Type}, {"full time boys aged 15", Int64.Type}, {"full time boys aged 16", Int64.Type}, {"full time boys aged 17", Int64.Type}, {"full time boys aged 18", Int64.Type}, {"full time boys aged 19", Int64.Type}, {"Part time girls Early 1", Int64.Type}, {"Part time girls Early 2", Int64.Type}, {"Part time girls Nursery 1", Int64.Type}, {"Part time girls Nursery 2", Int64.Type}, {"Part time girls Reception", Int64.Type}, {"Part time girls Year group 1", Int64.Type}, {"Part time girls Year group 2", Int64.Type}, {"Part time girls Year group 3", Int64.Type}, {"Part time girls Year group 4", Int64.Type}, {"Part time girls Year group 5", Int64.Type}, {"Part time girls Year group 6", Int64.Type}, {"Part time girls Year group 7", Int64.Type}, {"Part time girls Year group 8", Int64.Type}, {"Part time girls Year group 9", Int64.Type}, {"Part time girls Year group 10", Int64.Type}, {"Part time girls Year group 11", Int64.Type}, {"Part time girls Year group 12", Int64.Type}, {"Part time girls Year group 13", Int64.Type}, {"Part time girls Year group 14", Int64.Type}, {"Part time girls Year group Not followed", Int64.Type}, {"Full time girls Early 1", Int64.Type}, {"Full time girls Early 2", Int64.Type}, {"Full time girls Nursery 1", Int64.Type}, {"Full time girls Nursery 2", Int64.Type}, {"Full time girls Reception", Int64.Type}, {"Full time girls Year group 1", Int64.Type}, {"Full time girls Year group 2", Int64.Type}, {"Full time girls Year group 3", Int64.Type}, {"Full time girls Year group 4", Int64.Type}, {"Full time girls Year group 5", Int64.Type}, {"Full time girls Year group 6", Int64.Type}, {"Full time girls Year group 7", Int64.Type}, {"Full time girls Year group 8", Int64.Type}, {"Full time girls Year group 9", Int64.Type}, {"Full time girls Year group 10", Int64.Type}, {"Full time girls Year group 11", Int64.Type}, {"Full time girls Year group 12", Int64.Type}, {"Full time girls Year group 13", Int64.Type}, {"Full time girls Year group 14", Int64.Type}, {"Full time girls Year group Not followed", Int64.Type}, {"Part time boys Early 1", Int64.Type}, {"Part time boys Early 2", Int64.Type}, {"Part time boys Nursery 1", Int64.Type}, {"Part time boys Nursery 2", Int64.Type}, {"Part time boys Reception", Int64.Type}, {"Part time boys Year group 1", Int64.Type}, {"Part time boys Year group 2", Int64.Type}, {"Part time boys Year group 3", Int64.Type}, {"Part time boys Year group 4", Int64.Type}, {"Part time boys Year group 5", Int64.Type}, {"Part time boys Year group 6", Int64.Type}, {"Part time boys Year group 7", Int64.Type}, {"Part time boys Year group 8", Int64.Type}, {"Part time boys Year group 9", Int64.Type}, {"Part time boys Year group 10", Int64.Type}, {"Part time boys Year group 11", Int64.Type}, {"Part time boys Year group 12", Int64.Type}, {"Part time boys Year group 13", Int64.Type}, {"Part time boys Year group 14", Int64.Type}, {"Part time boys Year group Not followed", Int64.Type}, {"Full time boys Early 1", Int64.Type}, {"Full time boys Early 2", Int64.Type}, {"Full time boys Nursery 1", Int64.Type}, {"Full time boys Nursery 2", Int64.Type}, {"Full time boys Reception", Int64.Type}, {"Full time boys Year group 1", Int64.Type}, {"Full time boys Year group 2", Int64.Type}, {"Full time boys Year group 3", Int64.Type}, {"Full time boys Year group 4", Int64.Type}, {"Full time boys Year group 5", Int64.Type}, {"Full time boys Year group 6", Int64.Type}, {"Full time boys Year group 7", Int64.Type}, {"Full time boys Year group 8", Int64.Type}, {"Full time boys Year group 9", Int64.Type}, {"Full time boys Year group 10", Int64.Type}, {"Full time boys Year group 11", Int64.Type}, {"Full time boys Year group 12", Int64.Type}, {"Full time boys Year group 13", Int64.Type}, {"Full time boys Year group 14", Int64.Type}, {"Full time boys Year group Not followed", Int64.Type}, {"Number of early year pupils (years E1 and E2)", Int64.Type}, {"Number of nursery pupils (years N1 and N2)", Int64.Type}, {"Number of reception pupils (year R)", Int64.Type}, {"Number of key stage 1 pupils (years 1 and 2)", Int64.Type}, {"Number of key stage 2 pupils (years 3 to 6)", Int64.Type}, {"Number of key stage 3 pupils (years 7 to 9)", Int64.Type}, {"Number of key stage 4 pupils (years 10 and 11)", Int64.Type}, {"Number of key stage 5 pupils (years 12 to 14)", Int64.Type}, {"Number of pupils not reception or key stage 1 to 5", Int64.Type}, {"headcount total girls", Int64.Type}, {"headcount total boys", Int64.Type}, {"full time pupils", Int64.Type}, {"part time pupils", Int64.Type}, {"headcount of pupils", Int64.Type}, {"fte pupils", type number}, {"boy boarders", Int64.Type}, {"girl boarders", Int64.Type}, {"total boarders", Int64.Type}, {"number of FSM eligible pupils taking a free school meal on census day", Int64.Type}, {"% of FSM eligible pupils taking free school meals", type number}, {"number of pupils known to be eligible for free school meals", Int64.Type}, {"% of pupils known to be eligible for free school meals", type number}, {"Number of pupils (used for FSM calculation in Performance Tables)", Int64.Type}, {"number of pupils known to be eligible for free school meals (Performance Tables)", Int64.Type}, {"% of pupils known to be eligible for free school meals (Performance Tables)", type number}, {"Infants taken a free school meal on census day", Int64.Type}, {"number of pupils classified as white British ethnic origin", Int64.Type}, {"% of pupils classified as white British ethnic origin", type number}, {"number of pupils classified as Irish ethnic origin", Int64.Type}, {"% of pupils classified as Irish ethnic origin", type number}, {"number of pupils classified as traveller of Irish heritage ethnic origin", Int64.Type}, {"% of pupils classified as traveller of Irish heritage ethnic origin", type number}, {"number of pupils classified as any other white background ethnic origin", Int64.Type}, {"% of pupils classified as any other white background ethnic origin", type number}, {"number of pupils classified as Gypsy/Roma ethnic origin", Int64.Type}, {"% of pupils classified as Gypsy/Roma ethnic origin", type number}, {"number of pupils classified as white and black Caribbean ethnic origin", Int64.Type}, {"% of pupils classified as white and black Caribbean ethnic origin", type number}, {"number of pupils classified as white and black African ethnic origin", Int64.Type}, {"% of pupils classified as white and black African ethnic origin", type number}, {"number of pupils classified as white and Asian ethnic origin", Int64.Type}, {"% of pupils classified as white and Asian ethnic origin", type number}, {"number of pupils classified as any other mixed background ethnic origin", Int64.Type}, {"% of pupils classified as any other mixed background ethnic origin", type number}, {"number of pupils classified as Indian ethnic origin", Int64.Type}, {"% of pupils classified as Indian ethnic origin", type number}, {"number of pupils classified as Pakistani ethnic origin", Int64.Type}, {"% of pupils classified as Pakistani ethnic origin", type number}, {"number of pupils classified as Bangladeshi ethnic origin", Int64.Type}, {"% of pupils classified as Bangladeshi ethnic origin", type number}, {"number of pupils classified as any other Asian background ethnic origin", Int64.Type}, {"% of pupils classified as any other Asian background ethnic origin", type number}, {"number of pupils classified as Caribbean ethnic origin", Int64.Type}, {"% of pupils classified as Caribbean ethnic origin", type number}, {"number of pupils classified as African ethnic origin", Int64.Type}, {"% of pupils classified as African ethnic origin", type number}, {"number of pupils classified as any other black background ethnic origin", Int64.Type}, {"% of pupils classified as any other black background ethnic origin", type number}, {"number of pupils classified as Chinese ethnic origin", Int64.Type}, {"% of pupils classified as Chinese ethnic origin", type number}, {"number of pupils classified as any other ethnic group ethnic origin", Int64.Type}, {"% of pupils classified as any other ethnic group ethnic origin", type number}, {"number of pupils unclassified", Int64.Type}, {"% of pupils unclassified", type number}, {"number of pupils of compulsory school age and above (rounded)", Int64.Type}, {"number of pupils whose first language is known or believed to be English", Int64.Type}, {"% of pupils whose first language is known or believed to be English", type number}, {"number of pupils whose first language is known or believed to be other than English", Int64.Type}, {"% of pupils whose first language is known or believed to be other than English", type number}, {"number of pupils whose first language is unclassified", Int64.Type}, {"% of pupils whose first language is unclassified", type number}, {"_", type text}, {"_1", type text}, {"_2", type text}, {"_3", type text}, {"_4", type text}, {"_5", type text}, {"_6", type text}, {"_7", type text}, {"_8", type text}, {"_9", type text}, {"_10", type text}, {"_11", type text}, {"_12", type text}, {"_13", type text}, {"_14", type text}, {"_15", type text}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"full time pupils", "Full Time Pupils"}, {"part time pupils", "Part Time Pupils"}, {"headcount of pupils", "Headcount of Pupils"}, {"fte pupils", "FTE Pupils"}}),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Renamed Columns",{"country_code", "Country", "Region", "Region code", "URN", "new_LA_code", "Estab", "old_LA_code", "School Name", "la_name", "LAESTAB", "Full Time Pupils", "Part Time Pupils", "Headcount of Pupils", "FTE Pupils"})
+		in
+		    #"Removed Other Columns"
+	lineageTag: d82054f3-b67f-4c35-b4c3-72dd11f82685
+	queryGroup: Finance
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Financial Benchmark Data (Staging)' =
+		let
+		    Source = PowerBI.Dataflows(null),
+		    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+		    #"cf4630d8-e1e4-4676-84b9-26bb39dcb280" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cf4630d8-e1e4-4676-84b9-26bb39dcb280"]}[Data],
+		    #"Financial Benchmark Data (Staging)1" = #"cf4630d8-e1e4-4676-84b9-26bb39dcb280"{[entity="Financial Benchmark Data (Staging)"]}[Data]
+		in
+		    #"Financial Benchmark Data (Staging)1"
+	lineageTag: 60cf739f-da08-411e-aa45-3c67918bd0da
+	queryGroup: 'Finance\Staging Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Workforce Census (Staging)' =
+		let
+		    Source = PowerBI.Dataflows(null),
+		    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+		    #"cf4630d8-e1e4-4676-84b9-26bb39dcb280" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cf4630d8-e1e4-4676-84b9-26bb39dcb280"]}[Data],
+		    #"Workforce Census (Staging)1" = #"cf4630d8-e1e4-4676-84b9-26bb39dcb280"{[entity="Workforce Census (Staging)"]}[Data]
+		in
+		    #"Workforce Census (Staging)1"
+	lineageTag: 817b07d7-16c6-4c97-a3cc-71ea413fa2e1
+	queryGroup: 'Finance\Staging Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Student Census (Staging)' =
+		let
+		    Source = PowerBI.Dataflows(null),
+		    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+		    #"cf4630d8-e1e4-4676-84b9-26bb39dcb280" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cf4630d8-e1e4-4676-84b9-26bb39dcb280"]}[Data],
+		    #"Student Census1" = #"cf4630d8-e1e4-4676-84b9-26bb39dcb280"{[entity="Student Census"]}[Data]
+		in
+		    #"Student Census1"
+	lineageTag: 32382c42-2dde-442a-a59d-b4975cfb64cb
+	queryGroup: 'Finance\Staging Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation LinkedQueryName = Student Census (Staging)
+
+expression 'Benchmark Group' =
+		let
+		    Source = #"Financial Benchmark Data",
+		    #"Removed Other Columns" = Table.SelectColumns(Source,{"Benchmark Group", "Benchmark Group (Full)"}),
+		    #"Grouped Rows" = Table.Group(#"Removed Other Columns", {"Benchmark Group", "Benchmark Group (Full)"}, {{"Schools with Similar Context", each Table.RowCount(_), Int64.Type}})
+		in
+		    #"Grouped Rows"
+	lineageTag: 7bd17883-58d9-4092-8719-f9336938cc52
+	queryGroup: Finance
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Catering Meals (Primary)' =
+		let
+		    Source = PowerPlatform.Dataflows(null),
+		    Workspaces = Source{[Id="Workspaces"]}[Data],
+		    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+		    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+		    #"Catering Meals (Primary)_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Catering Meals (Primary)",version=""]}[Data]
+		in
+		    #"Catering Meals (Primary)_"
+	lineageTag: 8fbb7d78-9dfd-461f-af37-29506f5aff3f
+	queryGroup: Estates\Catering
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,236 @@
+table MTC
+	lineageTag: 8fb8231c-d88a-464d-8658-34a49fa3f352
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 88ff037d-ab8f-431d-acc2-7f266e426134
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_ID
+		dataType: double
+		lineageTag: 5c679942-4380-4102-9a2a-b7c1d62f6ecd
+		summarizeBy: count
+		sourceColumn: STUDENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENT_NAME
+		dataType: string
+		lineageTag: e3709cfb-ca1a-45c5-b3be-0265c80c358d
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_CODE
+		dataType: string
+		lineageTag: cca29bbb-2232-4588-8241-fdd714d83a51
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARK_GRADE
+		dataType: string
+		lineageTag: 257d8dee-1a78-4c81-8d8b-3edd46084480
+		summarizeBy: none
+		sourceColumn: MARK_GRADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9d3d1fe9-8b7e-48e0-8ee2-2120f1c8811b
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Globally Unique ID'
+		dataType: string
+		isHidden
+		lineageTag: e26b0e46-8f99-4cdb-afa4-a8317592845d
+		summarizeBy: none
+		sourceColumn: Globally Unique ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: 731369c4-f6f5-4be3-8a1d-384e5c1e5580
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c098449d-a40d-4609-8637-18a349de472f
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Leaving date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 995bdac2-4485-4688-8455-05f6d789be04
+		summarizeBy: none
+		sourceColumn: Leaving date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UPN
+		dataType: string
+		lineageTag: e0c454a8-5160-43a1-94f8-3e501908919b
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discounted Flag'
+		dataType: string
+		lineageTag: 62edc362-921f-45de-b99f-98f56ceb8692
+		summarizeBy: none
+		sourceColumn: Discounted Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: a2a88865-ce19-49ff-9f9c-b1accc8b4355
+		summarizeBy: sum
+		sourceColumn: Mark Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Groups'
+		dataType: string
+		lineageTag: e91faf29-0dae-4c10-9bfd-40334cb51ff4
+		summarizeBy: none
+		sourceColumn: Mark Groups
+		sortByColumn: 'Mark Groups Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Groups Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 30c2cd0c-5669-4329-86a0-8d64d5de8a10
+		summarizeBy: sum
+		sourceColumn: Mark Groups Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: ca7feb2a-c217-432b-9eca-f07fd8f8045e
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: fcbb84cc-ddcc-40ea-99d6-92dc03c14f83
+		summarizeBy: sum
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique ID & Grade'
+		dataType: string
+		lineageTag: 97e0ecb5-9ed6-4c89-a9be-82884cbfcdc8
+		summarizeBy: none
+		sourceColumn: Globally Unique ID & Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique ID - Academic Year'
+		dataType: string
+		lineageTag: 973d86ea-4038-4f20-a167-22f095303a5a
+		summarizeBy: none
+		sourceColumn: Globally Unique ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: 1b8e370d-6de9-49de-8ae6-931a1a575e80
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: 0c94c2b3-2662-4154-8f49-552b712e2867
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MTC Flag' =
+			
+			IF([Mark Number] = 25 , UNICHAR(10004),UNICHAR(10006))
+		lineageTag: 7bb9ddec-afde-4299-b6c3-9db2acca11ee
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 26e80a7d-fdb5-445f-a93d-b8baac736489
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STANDARDISED_ASSESSMENT_MARK_UNIQUE_ID
+		dataType: string
+		lineageTag: 4f50146e-f432-4a67-b272-9e28f2ee62f3
+		summarizeBy: none
+		sourceColumn: STANDARDISED_ASSESSMENT_MARK_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STANDARDISED_ASSESSMENT_MARK_ID
+		dataType: double
+		lineageTag: 99d095eb-4fbf-4add-b008-3f62db025567
+		summarizeBy: count
+		sourceColumn: STANDARDISED_ASSESSMENT_MARK_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MTC-b34eff47-348d-4b5c-ba05-afd98efc195e = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary\MTC'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    MTC1 = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="MTC"]}[Data]
+				in
+				    MTC1
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,29 @@
+table 'Calculation Group: Exclusion 1+/2+'
+	lineageTag: 82553711-de6c-4c87-8960-f064f44181ef
+
+	calculationGroup
+
+		calculationItem '1+ Suspension' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Excluded Students'[Exclusions YTD] > 0
+				)
+
+		calculationItem '2+ Suspension' = CALCULATE ( SELECTEDMEASURE (), 'Excluded Students'[Exclusions YTD] > 1)
+
+	column Name
+		dataType: string
+		lineageTag: 5e29eb51-0f62-47ef-8be2-25529643d668
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		lineageTag: 84c03b62-32de-4e10-b5c4-e0b9adadf2f2
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

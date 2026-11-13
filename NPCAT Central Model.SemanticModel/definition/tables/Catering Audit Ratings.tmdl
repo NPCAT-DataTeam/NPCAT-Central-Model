@@ -1,0 +1,62 @@
+table 'Catering Audit Ratings'
+	lineageTag: 711112bb-bfd8-4949-9c18-d8a57afaa4bd
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 79b670fe-7a3d-4348-81d5-2d5b5982f7dd
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: eabbba77-cc4e-4c36-8107-a419a5c59cc2
+		summarizeBy: none
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Merged ID'
+		dataType: string
+		isHidden
+		lineageTag: 1327a6c7-f563-460c-b6b8-1438ada1338b
+		summarizeBy: none
+		sourceColumn: Merged ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: 6ef2888c-a857-419d-a4bb-a447104e51af
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: int64
+		formatString: 0
+		lineageTag: d1f78ba1-3ff8-46f5-85d9-798925f1494c
+		summarizeBy: none
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catering Audit Ratings-a0e5cca0-e007-42e3-9226-3acdfb49d38d' = m
+		mode: import
+		queryGroup: Estates\Catering
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Catering Audit Ratings_" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Catering Audit Ratings",version=""]}[Data]
+				in
+				    #"Catering Audit Ratings_"
+
+	annotation PBI_ResultType = Table
+

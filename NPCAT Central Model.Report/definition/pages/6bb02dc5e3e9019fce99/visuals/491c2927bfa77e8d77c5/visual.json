@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "491c2927bfa77e8d77c5",
+  "position": {
+    "x": 0,
+    "y": 196.47416413373861,
+    "z": 3,
+    "height": 230.51671732522797,
+    "width": 320.97264437689972
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "School Database"
+                    }
+                  },
+                  "Property": "Arbor ID"
+                }
+              },
+              "queryRef": "School Database.Arbor ID",
+              "nativeQueryRef": "Arbor ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "School Database"
+                    }
+                  },
+                  "Property": "School Short Name"
+                }
+              },
+              "queryRef": "School Database.School Short Name",
+              "nativeQueryRef": "School Short Name"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4b85e3235386b7784057",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "School Database"
+              }
+            },
+            "Property": "Arbor ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4f655d9bfe947967718a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "School Database"
+              }
+            },
+            "Property": "School Short Name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

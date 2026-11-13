@@ -1,0 +1,31 @@
+table 'zP Total page Scenario'
+	lineageTag: 5b0b9766-6f47-488f-93e1-ea83c7c04cc2
+
+	/// 
+	/// SELECTEDVALUE ( 'zP Total page Scenario'[zP Total page Scenario] )
+	measure 'zP Total page Scenario Value' =
+			
+			SELECTEDVALUE ( 'zP Total page Scenario'[zP Total page Scenario] )
+		lineageTag: 6e2a7c56-5fb4-4b6e-97b6-de83ccc58728
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'zP Total page Scenario'
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: dbf687be-bdcb-476f-adec-7eb3f0bdca06
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'zP Total page Scenario-c469a9fa-d2b4-4a28-98e2-ffe6b76770c1' = calculated
+		mode: import
+		source = GENERATESERIES(0, 1.01, 0.01)
+
+	annotation PBI_Id = 1737837a9a44458e91d40f9d2901363e
+

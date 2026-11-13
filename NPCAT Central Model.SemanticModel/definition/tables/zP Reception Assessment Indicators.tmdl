@@ -1,0 +1,48 @@
+table 'zP Reception Assessment Indicators'
+	lineageTag: 03b38f2c-c195-46df-88f5-db8baef42af3
+
+	column 'zP Reception Assessment Indicators'
+		lineageTag: f67dd2da-b31b-484b-9161-2e0bd89c6dff
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: bdbac76f-fc5d-495a-8c9c-7f2eb854e8e2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: abe36815-5e8a-4e2c-826c-de45d127c956
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Reception Assessment Indicators-952706c9-03b9-426b-ae0a-7592b62e6edb' = calculated
+		mode: import
+		source =
+				{
+				    ("Rec Below", NAMEOF([Reception Below % (Baseline/On Entry)]), 0),
+				    ("Rec At", NAMEOF([Reception At % (Baseline/On Entry)]), 1)
+				}
+
+	annotation PBI_Id = 4999e44a80a34988a1b30ec73c694dae
+

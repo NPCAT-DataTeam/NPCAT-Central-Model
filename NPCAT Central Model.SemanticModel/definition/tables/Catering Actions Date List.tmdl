@@ -1,0 +1,179 @@
+table 'Catering Actions Date List'
+	lineageTag: 4e89dbc3-df8d-46c2-b686-599f2e5752ad
+
+	column School
+		dataType: string
+		lineageTag: e050ae41-f09f-4d59-8398-75fe6dd60770
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Category'
+		dataType: string
+		lineageTag: 89fb309f-89c0-4389-8592-6f0dd59d482d
+		summarizeBy: none
+		sourceColumn: Audit Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a628c8e-10dc-4e82-a393-c50bb7ea0907
+		summarizeBy: none
+		sourceColumn: Audit Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Action Ref Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 41b1532b-a275-4b52-aa70-02ffb94a5de8
+		summarizeBy: none
+		sourceColumn: Action Ref Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 85e33e3e-f472-436b-9a23-dee533e810cf
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Evidence Required'
+		dataType: string
+		lineageTag: 3ee4f545-2002-467e-ad27-a7281b141ca5
+		summarizeBy: none
+		sourceColumn: Evidence Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column Completed
+		dataType: string
+		lineageTag: 3541fbc2-af5e-495a-beb2-2767b9d71865
+		summarizeBy: none
+		sourceColumn: Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Completed'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fc66f304-7535-4781-9978-5319d76012c6
+		summarizeBy: none
+		sourceColumn: Date Completed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Notes
+		dataType: string
+		lineageTag: f777bddc-1b23-490c-b329-accd69226c13
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: d230569a-c1d6-45e8-81c6-02a96df003fa
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID-Audit
+		dataType: string
+		lineageTag: 726eb9d5-be79-4ab6-9565-778f0c401323
+		summarizeBy: none
+		sourceColumn: SUID-Audit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date (List)'
+		dataType: string
+		lineageTag: 56c40f39-02a5-40e7-8346-5606144edde0
+		summarizeBy: none
+		sourceColumn: End Date (List)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Check'
+		dataType: string
+		lineageTag: 10c5792f-1efb-4954-8072-6715e0cd4a0b
+		summarizeBy: none
+		sourceColumn: Complete Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actions Complete Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5889d224-7fb6-4172-8e1f-ce042f9e042e
+		summarizeBy: none
+		sourceColumn: Actions Complete Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date List'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 30d640d4-56fc-44ac-bcf5-58f3c3e19de6
+		summarizeBy: none
+		sourceColumn: Date List
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Complete Check(List)'
+		dataType: int64
+		formatString: 0
+		lineageTag: a374d973-6418-4c70-a80b-344cdd52080c
+		summarizeBy: none
+		sourceColumn: Complete Check(List)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		dataType: int64
+		formatString: 0
+		lineageTag: cc1b93ac-35a7-430b-ae50-3472234812fb
+		summarizeBy: none
+		sourceColumn: Weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Late Check(List)'
+		dataType: string
+		lineageTag: 9dbafbee-6c84-42cb-b066-6378108fc6c3
+		summarizeBy: none
+		sourceColumn: Late Check(List)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catering Actions Date List-154d60c6-b048-4528-826b-b82ded2eaf3d' = m
+		mode: import
+		queryGroup: Estates\Catering
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Catering Actions Date List_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Catering Actions Date List",version=""]}[Data]
+				in
+				    #"Catering Actions Date List_"
+
+	annotation PBI_ResultType = Table
+

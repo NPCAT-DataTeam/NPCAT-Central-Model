@@ -1,0 +1,199 @@
+table 'Primary Summative Targets (South)'
+	lineageTag: 00ec4f1b-276a-4276-a010-02833405e18b
+
+	column 'Arbor ID'
+		dataType: string
+		lineageTag: 8e308452-4053-4deb-8c49-7adb7fe01cfa
+		summarizeBy: none
+		sourceColumn: Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: fa830b49-fe1c-4896-b402-739f619a3920
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year Start'
+		dataType: double
+		lineageTag: 2007d66a-5abe-4e3a-ab0f-0d9c3092fa0b
+		summarizeBy: sum
+		sourceColumn: Academic Year Start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Target Type'
+		dataType: string
+		lineageTag: 243eb907-f44c-48ba-8a28-aa947a405b78
+		summarizeBy: none
+		sourceColumn: Target Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Code'
+		dataType: string
+		lineageTag: 9dd71326-8454-4454-b5d9-c08e09adb982
+		summarizeBy: none
+		sourceColumn: Assessment Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Set Code'
+		dataType: string
+		lineageTag: 4fb8d145-d851-4e69-8a3f-f6113beba38c
+		summarizeBy: none
+		sourceColumn: Grade Set Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Points'
+		dataType: double
+		lineageTag: d2fb9f12-e864-4b8d-aedc-c5c8118683c6
+		summarizeBy: sum
+		sourceColumn: Target Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Target Name'
+		dataType: string
+		lineageTag: 9b73ec50-32bc-4531-9a19-a72fd19bdf67
+		summarizeBy: none
+		sourceColumn: Target Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period Name'
+		dataType: string
+		lineageTag: 4755736d-945c-4b7b-9048-d1540deac346
+		summarizeBy: none
+		sourceColumn: Period Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Key'
+		dataType: string
+		lineageTag: 870d559b-640d-4122-ab08-a941d38d3f11
+		summarizeBy: none
+		sourceColumn: Target Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Rows'
+		dataType: string
+		lineageTag: 4c82f1b1-b041-4b96-b0f0-97574cdc7258
+		summarizeBy: none
+		sourceColumn: Unique Rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - School Year'
+		dataType: string
+		isHidden
+		lineageTag: 74fa6d94-d72b-4b2e-8ed6-fa061f1b3671
+		summarizeBy: none
+		sourceColumn: Unique Student ID - School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name'
+		dataType: string
+		lineageTag: bf50cd66-cef1-4119-9ac2-c997c1169f52
+		summarizeBy: none
+		sourceColumn: Assessment Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Area of Learning'
+		dataType: string
+		lineageTag: d767f239-d8ba-4874-b90f-e4c9c8f07eba
+		summarizeBy: none
+		sourceColumn: Area of Learning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Date' =
+			
+			LOOKUPVALUE (
+			    'Primary Summative Marks (South)'[Assessment Date],
+			    'Primary Summative Marks (South)'[Target Key], 'Primary Summative Targets (South)'[Target Key]
+			)
+		formatString: General Date
+		lineageTag: bd664904-f6b9-479b-9df4-e1e8fbafae0c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group' = RELATED('Student Year Groups'[Year Group])
+		lineageTag: bd73d2e8-9de5-45bb-b8ed-4c86876cc7a6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_ID
+		dataType: double
+		lineageTag: e8bacde1-d2c0-4fc0-912d-a5864271a167
+		summarizeBy: count
+		sourceColumn: ASSESSMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 886362f4-3d82-482b-a7d4-29fe6e19817c
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_YEAR_UNIQUE_ID
+		dataType: string
+		lineageTag: 76beb547-5b7d-4916-b103-80346bece46a
+		summarizeBy: none
+		sourceColumn: ACADEMIC_YEAR_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_YEAR_ID
+		dataType: double
+		lineageTag: 629c3fa3-3cb7-423d-8235-76e14abda9f6
+		summarizeBy: count
+		sourceColumn: ACADEMIC_YEAR_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENT_NAME
+		dataType: string
+		lineageTag: 550b7096-7fe6-4e7f-b5bb-2db8f08e0090
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary Summative Targets (South)-051bc824-67ea-4be3-8b18-605d86928774' = m
+		mode: import
+		queryGroup: 'Primary Summative (South)'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"134964d2-693f-4004-aafe-4288d9f6e02e" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="134964d2-693f-4004-aafe-4288d9f6e02e"]}[Data],
+				    #"Primary Summative Targets (South)_" = #"134964d2-693f-4004-aafe-4288d9f6e02e"{[entity="Primary Summative Targets (South)",version=""]}[Data]
+				in
+				    #"Primary Summative Targets (South)_"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,50 @@
+table 'zP Absence Insurance'
+	lineageTag: 6bdbb10d-9976-4c6f-88d6-cb57ace23e59
+
+	column 'zP Absence Insurance '
+		lineageTag: 79d5caa5-4851-42d8-8230-444638a9a5ee
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Absence Insurance  Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Absence Insurance  Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Absence Insurance  Fields'
+		isHidden
+		lineageTag: ec53acad-2c53-4f9c-9700-20200b6af8fb
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Absence Insurance  Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Absence Insurance  Order'
+		isHidden
+		formatString: 0
+		lineageTag: 8a4274b1-21be-420b-aa06-1055d0ad1fb0
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Absence Insurance' = calculated
+		mode: import
+		source = ```
+				{
+				    ("Cost", NAMEOF('Measures Folder'[Absence Insurance Cost]), 0),
+				    ("Claims", NAMEOF('Measures Folder'[Absence Insurance Claimed Count]), 1),//Paid Claims 
+				    ("Covered Days Paid", NAMEOF('Measures Folder'[Absence Insurance Total Working Days Lost]), 2)
+				}
+				```
+
+	annotation PBI_Id = 91925dd9f3154af783b3c36eb0383c2c
+

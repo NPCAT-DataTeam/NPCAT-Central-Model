@@ -1,0 +1,279 @@
+table 'Credit Card'
+	lineageTag: d26e04b6-7a8d-4524-ab43-7c638debbc1b
+
+	column 'Doc Type'
+		dataType: string
+		lineageTag: 6b310762-89cf-41bc-a935-3db4c829f373
+		summarizeBy: none
+		sourceColumn: Doc Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Doc ID'
+		dataType: string
+		lineageTag: 3c17310e-e8cd-47d8-be35-6ba39ea0d343
+		summarizeBy: none
+		sourceColumn: School Doc ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 20a4506b-e23c-49e5-9ada-4bf7d4bb6ffc
+		summarizeBy: sum
+		sourceColumn: Doc Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Year'
+		dataType: string
+		lineageTag: 6efd7274-fb6f-4f79-b6e0-42538fd2fdaa
+		summarizeBy: none
+		sourceColumn: Invoice Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Period'
+		dataType: string
+		lineageTag: 5775f531-48f5-4a85-94ed-23d2a53e6d87
+		summarizeBy: none
+		sourceColumn: Invoice Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Period Full'
+		dataType: string
+		lineageTag: 2a678a6c-093c-4b56-9b29-3ca16125f228
+		summarizeBy: none
+		sourceColumn: Invoice Period Full
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nominal
+		dataType: string
+		lineageTag: 3a8d90d7-6bce-4bd6-bc58-5cc17a6f9fd4
+		summarizeBy: none
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code Prefix'
+		dataType: string
+		lineageTag: 1404bcfc-7f92-4f58-81c2-78ad63e245a0
+		summarizeBy: none
+		sourceColumn: Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Core Nominal'
+		dataType: string
+		lineageTag: 3c8a33b2-edcb-4c2b-86a0-46adfd6903fc
+		summarizeBy: none
+		sourceColumn: Core Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ledger
+		dataType: string
+		lineageTag: 4986e9bd-1d15-4c33-9cf6-af001a81bef9
+		summarizeBy: none
+		sourceColumn: Ledger
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: ff9a20f8-e84c-42d0-b2f8-fb493deb304c
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: a722c2a2-0cdb-4641-8878-3056475661a6
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: 6c01e935-5a43-4303-8f13-a2d19a763f3d
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: string
+		lineageTag: e5c55a8d-0360-4f87-9cb1-bec6843065bd
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pay List'
+		dataType: string
+		lineageTag: a86325fd-3ffc-4c76-b9ae-325091b64623
+		summarizeBy: none
+		sourceColumn: Pay List
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocation
+		dataType: int64
+		formatString: 0
+		lineageTag: 79e062d0-eb13-410c-ad2e-f5bd6e30c70b
+		summarizeBy: sum
+		sourceColumn: Allocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1149a4cf-d1dc-4ba6-81d9-f46bff2792f9
+		summarizeBy: count
+		sourceColumn: Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Receipt Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6623bf6d-5e30-4ab8-af77-0b1ef5694c1a
+		summarizeBy: none
+		sourceColumn: Receipt Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Pay Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6c3b3e35-0fc5-4833-94af-928de9fa9b0e
+		summarizeBy: none
+		sourceColumn: Pay Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Payment Year'
+		dataType: string
+		lineageTag: a30d7a8e-5619-46f3-ba9b-7ace79c3f40b
+		summarizeBy: none
+		sourceColumn: Payment Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Period'
+		dataType: string
+		lineageTag: 4aae2548-be19-4a8d-8175-1414c462a014
+		summarizeBy: none
+		sourceColumn: Payment Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Period Full'
+		dataType: string
+		lineageTag: 8893c625-3405-4e22-98a2-678b1e043e71
+		summarizeBy: none
+		sourceColumn: Payment Period Full
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1bab5ccd-4e46-40cb-b61b-a8c36a8697a7
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entered into PSF'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9ed49e74-be9a-4a87-9edd-8c59139c5657
+		summarizeBy: none
+		sourceColumn: Entered into PSF
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TITLE
+		dataType: string
+		lineageTag: ae6cacb3-7996-4286-96b1-83ae1690f333
+		summarizeBy: none
+		sourceColumn: TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Card Type'
+		dataType: string
+		lineageTag: 5ac9723a-9508-41d1-b4e8-eeba486b0d81
+		summarizeBy: none
+		sourceColumn: Credit Card Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Limit
+		dataType: int64
+		formatString: 0
+		lineageTag: 2df27419-090b-46ef-b986-5310cd6fd3fd
+		summarizeBy: sum
+		sourceColumn: Limit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Card User'
+		dataType: string
+		lineageTag: 1d08e806-6b80-47bb-a061-1e748cbdfaee
+		summarizeBy: none
+		sourceColumn: Credit Card User
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentage Credit Card Spend'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6b523f23-62fc-4e3c-a26c-7163776f9fee
+		summarizeBy: sum
+		sourceColumn: Percentage Credit Card Spend
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Days to Process'
+		dataType: int64
+		formatString: 0
+		lineageTag: 37967a4f-31e7-4f5d-bea5-43450ded1bb5
+		summarizeBy: sum
+		sourceColumn: Working Days to Process
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Credit Card' = m
+		mode: import
+		queryGroup: Finance\PSF
+		source =
+				let
+				    Source = PowerPlatform.Dataflows([]),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    #"Credit Card_" = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Credit Card",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Credit Card_",{{"Percentage Credit Card Spend", Percentage.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

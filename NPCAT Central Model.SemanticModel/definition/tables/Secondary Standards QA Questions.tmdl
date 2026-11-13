@@ -1,0 +1,125 @@
+table 'Secondary Standards QA Questions'
+	lineageTag: 8d31220e-3ebb-41c2-9a96-85401ede6951
+
+	column Name
+		dataType: string
+		lineageTag: 47cd357b-cdcd-4ad8-bae8-47879f14a65f
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: double
+		lineageTag: a39be0fa-7f8c-4b20-9baf-a19e0c29ea54
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Question
+		dataType: string
+		lineageTag: cf8f442f-5349-40b3-a56c-77d968fad793
+		summarizeBy: none
+		sourceColumn: Question
+		sortByColumn: 'Question Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answer
+		dataType: string
+		lineageTag: 8df660fe-a582-401c-b59b-aa75c03061a6
+		summarizeBy: none
+		sourceColumn: Answer
+		sortByColumn: 'Answer Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Section'
+		dataType: string
+		lineageTag: 0f77549d-776f-478c-8b96-869890d7c0ec
+		summarizeBy: none
+		sourceColumn: Question Section
+		sortByColumn: 'Question Section Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Form ID'
+		dataType: string
+		lineageTag: c006224e-fecc-4df4-a50d-c44fe4e1a406
+		summarizeBy: none
+		sourceColumn: QA Form ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Type'
+		dataType: string
+		lineageTag: cf159ed6-70bd-4ae0-8547-ffb1237d766d
+		summarizeBy: none
+		sourceColumn: Question Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Section Sort'
+		dataType: double
+		lineageTag: fc4d1d43-14cc-42c3-b6ba-6974f8b39bb0
+		summarizeBy: sum
+		sourceColumn: Question Section Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Question Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3268ddc9-497f-495f-8730-292d85c86847
+		summarizeBy: sum
+		sourceColumn: Question Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Form Sort'
+		dataType: double
+		lineageTag: 0f612388-54ac-4f5f-bb2e-49ead14c6a39
+		summarizeBy: sum
+		sourceColumn: QA Form Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Answer Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 727019de-c230-496a-9cbd-b8eacd44cb8a
+		summarizeBy: sum
+		sourceColumn: Answer Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Secondary Standards QA Questions' = m
+		mode: import
+		queryGroup: 'Teacher QA Forms'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a694e134-a9c9-45a1-87d0-39adc0b09e69" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a694e134-a9c9-45a1-87d0-39adc0b09e69"]}[Data],
+				    #"Secondary Standards QA Questions_" = #"a694e134-a9c9-45a1-87d0-39adc0b09e69"{[entity="Secondary Standards QA Questions",version=""]}[Data]
+				in
+				    #"Secondary Standards QA Questions_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

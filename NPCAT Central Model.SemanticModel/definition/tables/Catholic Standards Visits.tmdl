@@ -1,0 +1,154 @@
+table 'Catholic Standards Visits'
+	lineageTag: bf96a96e-3403-40e1-8523-6f6a7e40c622
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cc601bd-7e98-4016-8aaf-4491aa4d6b1e
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Form Submitter Name'
+		dataType: string
+		lineageTag: bdd5abce-86be-497e-b51d-90aa6bf4fd42
+		summarizeBy: none
+		sourceColumn: Form Submitter Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: 17a26067-cf8e-4b9f-84d8-3bb45b49d253
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Review'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9a3a358-e7f2-477e-9e0d-be2b8b34c484
+		summarizeBy: none
+		sourceColumn: Date of Review
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Lead Reviewer Name'
+		dataType: string
+		lineageTag: 95ba4acb-8dde-4324-a7fc-3336adf8bc52
+		summarizeBy: none
+		sourceColumn: Lead Reviewer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Actions
+		dataType: string
+		lineageTag: 339fbe66-449f-44c6-913a-58f07a764b7c
+		summarizeBy: none
+		sourceColumn: Actions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Does the standards team agree with the schools self evaluation?'
+		dataType: string
+		lineageTag: bc418c90-a848-44af-a893-3ae93abcf7ed
+		summarizeBy: none
+		sourceColumn: Does the standards team agree with the schools self evaluation?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Areas of Strength'
+		dataType: string
+		lineageTag: 13c03db9-5af2-4c03-965f-19e0bcaf87fe
+		summarizeBy: none
+		sourceColumn: Areas of Strength
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Follow up actions'
+		dataType: string
+		lineageTag: d30d9314-eed4-4d85-b57f-227868dc1a67
+		summarizeBy: none
+		sourceColumn: Follow up actions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b5333a1-c408-403f-9607-856ba0189d2b
+		summarizeBy: sum
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: cdfd46eb-3a77-4947-bc78-c94bea1e0192
+		summarizeBy: sum
+		sourceColumn: QA Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: e4821cc6-60e8-470a-85d8-f150062128f0
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Catholic QA Compliance Tier' =
+			
+			SWITCH(
+			    TRUE(),
+			        [Catholic QA Compliance % (Most Recent QA)] = 1,1,
+			        [Catholic QA Compliance % (Most Recent QA)] > 0.95,2,
+			        [Catholic QA Compliance % (Most Recent QA)] >= 0.9,3,
+			        [Catholic QA Compliance % (Most Recent QA)] < 0.9,4
+			    )
+		formatString: 0
+		lineageTag: c4392441-c6db-44ea-a2c1-4060271ac686
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Catholic QA Compliance Tier (Sort)' =
+			
+			SWITCH(
+			    TRUE(),
+			        [Catholic QA Compliance % (Most Recent QA)] = 1,1,
+			        [Catholic QA Compliance % (Most Recent QA)] > 0.95,2,
+			        [Catholic QA Compliance % (Most Recent QA)] >= 0.9,3,
+			        [Catholic QA Compliance % (Most Recent QA)] < 0.9,4
+			    )
+		formatString: 0
+		lineageTag: a24bc65e-54e5-4c5a-8618-e2e310e398f4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catholic Standards Visits' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Catholic Standards Visits_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Catholic Standards Visits",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Catholic Standards Visits_",{{"Date of Review", type date}, {"Subgroup Index", Int64.Type}, {"QA Offset", Int64.Type}, {"Id", Int64.Type}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"Id"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

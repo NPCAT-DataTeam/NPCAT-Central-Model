@@ -1,0 +1,91 @@
+table 'Catering Audit Compliance'
+	lineageTag: d92a1c9a-4340-459d-8886-6911699c7adf
+
+	column ID
+		dataType: string
+		lineageTag: 8d854f54-9a99-4c91-9f26-83828e1b798c
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: 2b548dab-877a-49f3-808e-87fecb6e3855
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: string
+		lineageTag: 582f3249-335e-422f-8ab2-1b55aa7e27b2
+		summarizeBy: none
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Merged ID'
+		dataType: string
+		isHidden
+		lineageTag: 20a8b23b-c9fe-42d3-a5ba-7813281a0c32
+		summarizeBy: none
+		sourceColumn: Merged ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Question
+		dataType: string
+		lineageTag: 8b1db6cb-0fa3-4852-97eb-6e3a293d6d14
+		summarizeBy: none
+		sourceColumn: Question
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: string
+		lineageTag: 95eebe16-000b-4950-9a57-0aa94d961f40
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Category'
+		dataType: string
+		lineageTag: 0fd00432-2f2d-4d80-a912-024410111380
+		summarizeBy: none
+		sourceColumn: Audit Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Entity'
+		dataType: string
+		lineageTag: 55d8f215-ade6-44cf-9d89-ab93da060f59
+		summarizeBy: none
+		sourceColumn: Responsible Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Entity (Binary)'
+		dataType: string
+		lineageTag: a1cb757f-1229-4f68-a53c-f01b1de55106
+		summarizeBy: none
+		sourceColumn: Responsible Entity (Binary)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catering Audit Compliance-f178e1a1-ab20-454d-9a24-10a8b0708725' = m
+		mode: import
+		queryGroup: Estates\Catering
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Catering Audit Compliance_" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Catering Audit Compliance",version=""]}[Data]
+				in
+				    #"Catering Audit Compliance_"
+
+	annotation PBI_ResultType = Table
+

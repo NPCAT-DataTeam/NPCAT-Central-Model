@@ -1,0 +1,367 @@
+table 'Primary Summative Marks (South)'
+	lineageTag: 3d610a0d-2272-4561-8552-1df6d046c575
+
+	column 'Academic Year Start'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c154de6-b3fc-4d42-b85b-3c4fabd944c5
+		summarizeBy: none
+		sourceColumn: Academic Year Start
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = User
+
+	column 'Arbor ID'
+		dataType: string
+		lineageTag: 18427a6b-6571-4685-878e-6cdb03dddfef
+		summarizeBy: none
+		sourceColumn: Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		isHidden
+		lineageTag: 8149b447-e1c5-46c0-b8be-c3233426b919
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Code'
+		dataType: string
+		lineageTag: b64b7ace-ae86-4ddb-a172-6069d1feff73
+		summarizeBy: none
+		sourceColumn: Subject Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Name'
+		dataType: string
+		lineageTag: d40155d0-9ebd-4fd4-a7a1-116da091edee
+		summarizeBy: none
+		sourceColumn: Subject Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Code'
+		dataType: string
+		lineageTag: 0c8273b9-0149-44b0-add1-83e8264118ec
+		summarizeBy: none
+		sourceColumn: Assessment Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Date'
+		dataType: string
+		lineageTag: 77aa395c-38f7-4d11-9299-2d824dcbb7fc
+		summarizeBy: none
+		sourceColumn: Assessment Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Period'
+		dataType: string
+		lineageTag: fea638fd-6ad2-41ca-a68a-bf498b931cb0
+		summarizeBy: none
+		sourceColumn: Assessment Period
+		sortByColumn: 'Period Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Points'
+		dataType: int64
+		lineageTag: 5f6adb01-42b4-40dd-8ee0-38f36fc58ace
+		summarizeBy: sum
+		sourceColumn: Grade Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Grade Name'
+		dataType: string
+		lineageTag: 2ee3598b-8d7a-4477-b0ca-99a10e5632c0
+		summarizeBy: none
+		sourceColumn: Grade Name
+		sortByColumn: 'Grade Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		isHidden
+		lineageTag: d30851bb-3a8f-4dce-a12e-0dcaf99a9437
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Key'
+		dataType: string
+		lineageTag: 20b795ee-7e4b-4224-843c-6529ac4d5d42
+		summarizeBy: none
+		sourceColumn: Target Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name'
+		dataType: string
+		lineageTag: e4a348c9-1b18-4c7b-8dde-e2788baa6425
+		summarizeBy: none
+		sourceColumn: Assessment Name
+		sortByColumn: 'Assessment Name Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name Sort'
+		dataType: double
+		lineageTag: f9e1500a-776d-4804-9b27-8a5acf530f07
+		summarizeBy: none
+		sourceColumn: Assessment Name Sort
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Area of Learning'
+		dataType: string
+		lineageTag: 8c86d36e-a593-436c-97d6-33660f1c28c3
+		summarizeBy: none
+		sourceColumn: Area of Learning
+		sortByColumn: 'Area of Learning Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c515b7f-f935-4dd5-9075-6dd50ce71d45
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: cb32fe20-9c5a-4df9-966e-8894229ee5d3
+		summarizeBy: none
+		sourceColumn: Assessment Index
+
+		annotation SummarizationSetBy = User
+
+	column 'Assessment Period Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 76374e3f-58bf-4dd8-95e5-7a8d56ae3fdb
+		summarizeBy: sum
+		sourceColumn: Assessment Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Sort'
+		dataType: string
+		lineageTag: 4123047a-a297-4def-9c2d-a1c0d6141187
+		summarizeBy: none
+		sourceColumn: Grade Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period Sort'
+		dataType: string
+		lineageTag: 1f684c1d-4fdf-4528-a669-07cce920d738
+		summarizeBy: none
+		sourceColumn: Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Baseline Name' =
+			
+			LOOKUPVALUE (
+			    'Primary Summative Targets (South)'[Target Name],
+			    'Primary Summative Targets (South)'[Target Key], 'Primary Summative Marks (South)'[Target Key],
+			    'Primary Summative Targets (South)'[Target Type], "Progress Baseline",Blank()
+			)
+		lineageTag: a2ff1150-003c-417b-bce9-620b33d7f180
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Baseline Points' =
+			
+			LOOKUPVALUE (
+			    'Primary Summative Targets (South)'[Target Points],
+			    'Primary Summative Targets (South)'[Target Key], 'Primary Summative Marks (South)'[Target Key],
+			    'Primary Summative Targets (South)'[Target Type], "Progress Baseline",Blank()
+			)
+		lineageTag: fee70e31-252f-4115-8bf3-c3d3824646f9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Mandatory Assessment Status' =
+			
+			SWITCH(TRUE,
+			    [Assessment Name] = "AOL - Communication" && [Year Group] IN {"N1", "N2", "Reception"}, "Core",
+			    [Assessment Name] = "AOL - Expressive Arts" && [Year Group] IN {"Reception"}, "Core",
+			    [Assessment Name] = "AOL - Literacy" && [Year Group] IN {"Reception"}, "Core",
+			    [Assessment Name] = "AOL - Mathematics" && [Year Group] IN {"Reception"}, "Core",
+			    [Assessment Name] = "AOL - Personal, Social & Emotional Development" && [Year Group] IN {"N1", "N2", "Reception"}, "Core",
+			    [Assessment Name] = "AOL - Physical Development" && [Year Group] IN {"N1", "N2", "Reception"}, "Core",
+			    [Assessment Name] = "AOL - Understanding The World" && [Year Group] IN {"Reception"}, "Core",
+			    [Assessment Name] = "Maths", "Core",
+			    [Assessment Name] = "Reading", "Core",
+			    [Assessment Name] = "RE", "Core",
+			    [Assessment Name] = "Science", "Core",
+			    [Assessment Name] = "Writing", "Core",
+			    "Optional"
+			)
+		lineageTag: b448036b-c171-4380-9631-6b550f6351c2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variation from Baseline' =
+			
+			IF (
+			    LEN ( [Grade Points] ) = 0,
+			    BLANK (),
+			    IF (
+			        LEN ( [Baseline Points] ) = 0,
+			        BLANK (),
+			        [Grade Points] - [Baseline Points]
+			    )
+			)
+		dataType: int64
+		lineageTag: a3a8ced3-9ace-4b06-b11e-2a90dd4a8689
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Variation from ARE' =
+			
+			IF (
+			    LEN ( [Grade Points] ) = 0,
+			    BLANK (),
+			        [Grade Points] - 4
+			    )
+		lineageTag: 62bc757c-55b4-4786-8506-51c72ae6dda4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 34a8f9cd-acf1-4374-aa8a-d57623a5d130
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: b2b869ce-f7c9-43e9-9d73-8fd5c1122c78
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Short Name'
+		dataType: string
+		lineageTag: 4c0b40f2-a0ec-4f70-ba06-e6da71cec35b
+		summarizeBy: none
+		sourceColumn: Grade Short Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: aefb3155-0cf8-4a50-8239-cac2a2ddd545
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Period Selector ID'
+		dataType: string
+		lineageTag: fbd5c1b3-b4e5-468a-bff4-61aee1a4cb71
+		summarizeBy: none
+		sourceColumn: Primary Period Selector ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year - Period'
+		dataType: string
+		lineageTag: 79b3a5ed-527a-4384-ad40-894c05995f49
+		summarizeBy: none
+		sourceColumn: School Year - Period
+		sortByColumn: 'Assessment Period Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AOL
+		dataType: string
+		lineageTag: 49b5d123-1ad0-44ff-b626-02f8493a2acb
+		summarizeBy: none
+		sourceColumn: AOL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Area of Learning (Short)'
+		dataType: string
+		lineageTag: 9198fe88-4cae-4c58-a545-cfb2bd7735dc
+		summarizeBy: none
+		sourceColumn: Area of Learning (Short)
+		sortByColumn: 'Area of Learning Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Area of Learning Sort'
+		dataType: double
+		lineageTag: 636b62d1-256a-42be-87b4-003f452a9719
+		summarizeBy: sum
+		sourceColumn: Area of Learning Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Primary Summative Marks (South)-8b3df24c-2a09-4a41-8971-5f3b06d5f474' = m
+		mode: import
+		queryGroup: 'Primary Summative (South)'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"134964d2-693f-4004-aafe-4288d9f6e02e" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="134964d2-693f-4004-aafe-4288d9f6e02e"]}[Data],
+				    #"Primary Summative Marks (South)_" = #"134964d2-693f-4004-aafe-4288d9f6e02e"{[entity="Primary Summative Marks (South)",version=""]}[Data],
+				    #"Reordered Columns" = Table.ReorderColumns(#"Primary Summative Marks (South)_",{"Academic Year Start", "Arbor ID", "Globally Unique Student ID", "Subject Code", "Subject Name", "Assessment Code", "School Year", "Assessment Date", "Assessment Period", "Grade Points", "Grade Name", "Unique Student ID - Academic Year", "Target Key", "Assessment Name", "Assessment Name Sort", "Area of Learning", "Index", "Assessment Index", "Assessment Period Sort", "Grade Sort", "Period Sort"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Reordered Columns",null,9,Replacer.ReplaceValue,{"Area of Learning Sort"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,51 @@
+table 'Student lvl Context'
+	lineageTag: c588ebb9-387f-454c-8dcb-8bac36a00ae0
+
+	calculationGroup
+		precedence: 11
+
+		calculationItem KS4 =
+				
+				VAR Student = SELECTEDVALUE('KS4 Assessments'[Unique Student ID])//,DISTINCT('KS4 Subject Assessments'[Unique Student ID]))
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE(),
+				        'Student Database (Full)'[Globally Unique Student ID] = Student
+				    )
+
+		calculationItem KS3 =
+				
+				VAR Student = SELECTEDVALUE('KS3 Summative Marks'[Globally Unique Student ID])
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE(),
+				        'Student Database (Full)'[Globally Unique Student ID] = Student
+				    )
+
+		calculationItem KS2 =
+				
+				VAR Student = SELECTEDVALUE('KS2 Tests & TA Results'[STUDENT_UNIQUE_ID])//,DISTINCT('KS4 Subject Assessments'[Unique Student ID]))
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE(),
+				        'Student Database (Full)'[Globally Unique Student ID] = Student
+				    )
+
+	column 'Student lvl Context'
+		dataType: string
+		lineageTag: bcbaba88-7c4e-4707-a025-a5d202a35f81
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e06b0a2-5d43-46f4-b77e-958dc58c7810
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

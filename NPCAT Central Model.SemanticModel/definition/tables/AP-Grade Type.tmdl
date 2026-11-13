@@ -1,0 +1,56 @@
+table 'AP-Grade Type'
+	lineageTag: c8fc3cda-1e51-4693-8d65-cfa3b6e70477
+
+	column 'AP-Grade Type'
+		dataType: string
+		lineageTag: f4dc8c6f-73ad-42cd-b7f5-a8617a6a9e59
+		summarizeBy: none
+		sourceColumn: AP-Grade Type
+		sortByColumn: 'AP-Grade type Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Type'
+		dataType: string
+		lineageTag: b2c975a8-5573-4075-853f-3694f53ec27e
+		summarizeBy: none
+		sourceColumn: Grade Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERIOD_NAME
+		dataType: string
+		lineageTag: 93d1db08-d49c-49e1-a54f-b93b64026563
+		summarizeBy: none
+		sourceColumn: PERIOD_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP-Grade type Sort'
+		dataType: double
+		lineageTag: b84ed8cc-808c-4980-89fb-a2101e3f936f
+		summarizeBy: sum
+		sourceColumn: AP-Grade type Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'AP-Grade Type' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = #"KS4 Period Selector",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Grade Type", "PERIOD_NAME", "AP-Grade Type"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Conditional Column" = Table.AddColumn(#"Removed Duplicates", "AP-Grade type Sort", each if [#"AP-Grade Type"] = "Autumn-Actual" then 1 else if [#"AP-Grade Type"] = "Summer-Actual" then 5 else if [#"AP-Grade Type"] = "Spring-Actual" then 3 else if [#"AP-Grade Type"] = "Autumn-Target" then 0 else if [#"AP-Grade Type"] = "Exam Results" then 10 else if [#"AP-Grade Type"] = "Autumn-Mock" then 2 else if [#"AP-Grade Type"] = "Summer-Predicted" then 9 else if [#"AP-Grade Type"] = "Spring-Predicted" then 8 else if [#"AP-Grade Type"] = "Autumn-Predicted" then 7 else if [#"AP-Grade Type"] = "Summer-Mock" then 6 else if [#"AP-Grade Type"] = "Spring-Mock" then 4 else null, type number)
+				in
+				    #"Added Conditional Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

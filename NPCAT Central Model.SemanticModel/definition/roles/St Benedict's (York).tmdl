@@ -1,0 +1,7 @@
+role 'St Benedict''s (York)'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT30"
+
+	annotation PBI_Id = 8c85a2f55a1241c7bba989406b8d63ed
+

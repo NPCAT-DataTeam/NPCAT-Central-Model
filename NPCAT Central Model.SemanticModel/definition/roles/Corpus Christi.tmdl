@@ -1,0 +1,7 @@
+role 'Corpus Christi'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT07"
+
+	annotation PBI_Id = 74bb82b1acd8457f9801e62f5f2b285f
+

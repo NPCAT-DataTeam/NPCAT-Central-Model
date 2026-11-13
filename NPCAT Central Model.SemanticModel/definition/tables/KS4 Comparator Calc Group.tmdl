@@ -1,0 +1,225 @@
+table 'KS4 Comparator Calc Group'
+	lineageTag: d9a2f551-693f-439c-a9c2-264101c43218
+
+	calculationGroup
+		precedence: 3
+
+		calculationItem 'Selected Period (Background)' = ```
+				CALCULATE ( SELECTEDMEASURE (), REMOVEFILTERS ( 'KS4 Period Selector' ) )
+				
+				```
+
+		calculationItem 'Compared Period (Background)' = ```
+				
+				VAR _MaxDate = [Comparator Max Date]
+				
+				VAR _OffSet = CALCULATE(MAX('Calendar'[Current School Year Offset]),REMOVEFILTERS('Calendar'),'Calendar'[Date]=_MaxDate)
+				
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				     ALLEXCEPT (
+				        'KS4 Student Headlines',
+				        'KS4 Student Headlines'[Unique Student ID],
+				        'KS4 Student Headlines'[Unique Student ID - Academic Year],
+				        'KS4 Student Headlines'[Tables Checking],
+				        'School Database'[School Short Name],
+				        'Student Database (Full)'[Globally Unique Student ID],
+				        'Student Database (Full)'[Gender],
+				        'Student Database (Full)'[Religion],
+				        'Student Database (Full)'[English as additional language],
+				        'Student Database (Full)'[Student-TOB],
+				        'Student Database (Full)'[Mobile Student],
+				        'Student Database (Full)'[Mobile KS4],
+				        'Student Database (Full)'[Prior Attainment (Short)],
+				        'Student Database (Full)'[Prior Attainment],
+				        'Student Year Groups'[Attendance Rank],
+				        'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)]
+				     ),
+				    ALLEXCEPT (
+				        'KS4 Assessments',
+				        'KS4 Assessments'[Unique Student ID],
+				        'KS4 Assessments'[Unique Student ID - Academic Year],
+				        'KS4 Assessments'[Subject],
+				        'KS4 Assessments'[Tables Checking],
+				        'School Database'[School Short Name],
+				        'Student Database (Full)'[Globally Unique Student ID],
+				        'Student Database (Full)'[Gender],
+				        'Student Database (Full)'[Religion],
+				        'Student Database (Full)'[English as additional language],
+				        'Student Database (Full)'[Student-TOB],
+				        'Student Database (Full)'[Mobile Student],
+				        'Student Database (Full)'[Mobile KS4],
+				        'Student Database (Full)'[Prior Attainment (Short)],
+				        'Student Database (Full)'[Prior Attainment],
+				        'Student Year Groups'[Attendance Rank],
+				        'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)]
+				    ),
+				    REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				    REMOVEFILTERS('AP-Grade Type'),
+				    ALLEXCEPT ( 'Calendar', 'Calendar'[FutureDate],'Calendar'[School Month Number]),
+				    
+				    USERELATIONSHIP ( 'KS4 Student Headlines'[KS4 Period ID], 'KS4 Period Selector'[KS4 Period Selector ID] ),
+				    USERELATIONSHIP ( 'KS4 Assessments'[KS4 Period Selector ID], 'KS4 Period Selector'[KS4 Period Selector ID] ),
+				    //USERELATIONSHIP ( 'KS4 Student Headlines'[KS4 Period ID], 'KS4 Period Selector'[KS4 Period Selector ID] ),
+				    //'Demographics'[Tag Start Date] <= _MaxDate
+				    //&& 'Demographics'[Tag End Date]   >= _MaxDate,
+				    'Calendar'[Date]=_MaxDate,
+				    'Calendar'[Current School Year Offset] = _OffSet
+				)
+				```
+
+		calculationItem 'Selected Period' =
+				VAR _Final =
+				    CALCULATE ( SELECTEDMEASURE (), REMOVEFILTERS ( 'KS4 Period Selector' ) )
+				RETURN
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "KS4 Conditional Formatting" ),
+				        BLANK (),
+				        _Final
+				    )
+
+		calculationItem 'Compared Period' = ```
+				VAR _MaxDate = [Comparator Max Date]
+				
+				VAR _Final =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        ALLEXCEPT (
+				        'KS4 Student Headlines',
+				        'KS4 Student Headlines'[Unique Student ID],
+				        'KS4 Student Headlines'[Unique Student ID - Academic Year],
+				        'KS4 Student Headlines'[Tables Checking],
+				        'School Database'[School Short Name],
+				        'Student Database (Full)'[Globally Unique Student ID],
+				        'Student Database (Full)'[Gender],
+				        'Student Database (Full)'[Religion],
+				        'Student Database (Full)'[English as additional language],
+				        'Student Database (Full)'[Student-TOB],
+				        'Student Database (Full)'[Mobile Student],
+				        'Student Database (Full)'[Mobile KS4],
+				        'Student Database (Full)'[Prior Attainment (Short)],
+				        'Student Database (Full)'[Prior Attainment],
+				        'Student Year Groups'[Attendance Rank],
+				        'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)]
+				     ),
+				    ALLEXCEPT (
+				        'KS4 Assessments',
+				        'KS4 Assessments'[Unique Student ID],
+				        'KS4 Assessments'[Unique Student ID - Academic Year],
+				        'KS4 Assessments'[Subject],
+				        'KS4 Assessments'[Tables Checking],
+				        'School Database'[School Short Name],
+				        'Student Database (Full)'[Globally Unique Student ID],
+				        'Student Database (Full)'[Gender],
+				        'Student Database (Full)'[Religion],
+				        'Student Database (Full)'[English as additional language],
+				        'Student Database (Full)'[Student-TOB],
+				        'Student Database (Full)'[Mobile Student],
+				        'Student Database (Full)'[Mobile KS4],
+				        'Student Database (Full)'[Prior Attainment (Short)],
+				        'Student Database (Full)'[Prior Attainment],
+				        'Student Year Groups'[Attendance Rank],
+				        'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)]
+				    ),
+				        REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				        REMOVEFILTERS('AP-Grade Type'),
+				        ALLEXCEPT ( 'Calendar', 'Calendar'[FutureDate],'Calendar'[School Month Number]),
+				        
+				        USERELATIONSHIP ( 'KS4 Assessments'[KS4 Period Selector ID], 'KS4 Period Selector'[KS4 Period Selector ID] ),
+				        USERELATIONSHIP ( 'KS4 Student Headlines'[KS4 Period ID], 'KS4 Period Selector'[KS4 Period Selector ID] ),
+				        // 'Demographics'[Tag Start Date] <= _MaxDate
+				        // && 'Demographics'[Tag End Date]   >= _MaxDate,
+				        'Calendar'[Date]=_MaxDate
+				    )
+				RETURN
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "KS4 Conditional Formatting" ),
+				        BLANK (),
+				        _Final
+				    )
+				```
+
+		calculationItem Variance = ```
+				
+				VAR _CurrDate = [Dynamic Max Date]
+				VAR _MaxDate = [Comparator Max Date]
+				VAR _SelectedPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'KS4 Comparator Calc Group'[Calculation group column] = "Selected Period (Background)",
+				        'Demographics'[Tag Start Date] <= _CurrDate
+				        && 'Demographics'[Tag End Date]   >= _CurrDate
+				    )
+				VAR _ComparatorPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'KS4 Comparator Calc Group'[Calculation group column] = "Compared Period (Background)",
+				        REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				        'Demographics'[Tag Start Date] <= _MaxDate
+				        && 'Demographics'[Tag End Date]   >= _MaxDate,
+				        'Calendar'[Date]<_MaxDate
+				    )
+				VAR _Difference = _SelectedPeriod - _ComparatorPeriod
+				RETURN
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "KS4 Conditional Formatting" ),
+				        _Difference,
+				        _SelectedPeriod - _ComparatorPeriod
+				    )
+				
+				```
+
+		calculationItem 'KS4 KPI' =
+				VAR _CurrDate = [Dynamic Max Date]
+				VAR _MaxDate = [Comparator Max Date]
+				VAR _SelectedPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'KS4 Comparator Calc Group'[Calculation group column] = "Selected Period (Background)"
+				        // 'Demographics'[Tag Start Date] <= _CurrDate
+				        // && 'Demographics'[Tag End Date]   >= _CurrDate
+				    )
+				VAR _ComparatorPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'KS4 Comparator Calc Group'[Calculation group column] = "Compared Period (Background)",
+				        REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				        // 'Demographics'[Tag Start Date] <= _MaxDate
+				        // && 'Demographics'[Tag End Date]   >= _MaxDate,
+				        'Calendar'[Date]=_MaxDate
+				    )
+				VAR _Difference = _SelectedPeriod - _ComparatorPeriod
+				VAR _Operator =
+				    IF ( _Difference > 0, " +", " " )
+				RETURN
+				    IF (
+				        ISBLANK ( _ComparatorPeriod ) && ISBLANK ( _SelectedPeriod ),
+				        BLANK(),
+				        IF (
+				            CONTAINSSTRING ( SELECTEDMEASURENAME (), "KS4 Conditional Formatting" ),
+				            _Difference,
+				            FORMAT ( _SelectedPeriod, SELECTEDMEASUREFORMATSTRING () ) & UNICHAR ( 10 ) & "("
+				                & FORMAT ( _ComparatorPeriod, SELECTEDMEASUREFORMATSTRING () ) & ")" & _Operator
+				                & FORMAT ( _Difference, SELECTEDMEASUREFORMATSTRING () )
+				        )
+				    )
+
+	column 'Calculation group column'
+		dataType: string
+		lineageTag: 20220e62-87cc-4d91-9a77-2432b43a9f6a
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 707827dd-ee3b-4793-afcd-e65ed321978e
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

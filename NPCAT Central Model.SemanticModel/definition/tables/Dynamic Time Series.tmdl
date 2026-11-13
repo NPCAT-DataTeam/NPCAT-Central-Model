@@ -1,0 +1,185 @@
+table 'Dynamic Time Series'
+	lineageTag: be67baab-a3fc-4b4e-a1b8-9814c1459884
+
+	calculationGroup
+		precedence: 12
+
+		calculationItem 'This Week (Mon-Sun)' = ```
+				
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESBETWEEN (
+				        'Calendar'[Date],
+				        MAX ( 'Calendar'[Date] ) - WEEKDAY ( MAX ( 'Calendar'[Date] ), 2 ) + 1,
+				        MAX ( 'Calendar'[Date] )
+				    )
+				)
+				
+				```
+
+		calculationItem 'This Month (MTD)' =
+				
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESMTD ( 'Calendar'[Date] )
+				)
+
+		calculationItem 'This Quarter (QTD)' =
+				
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESQTD ( 'Calendar'[Date] )
+				)
+
+		calculationItem 'This Year (YTD)' =
+				
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESYTD ( 'Calendar'[Date] )
+				)
+
+		calculationItem 'Last 7 Days' =
+				
+				VAR LastVisibleDate = MAX ( 'Calendar'[Date] )
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESINPERIOD ( 'Calendar'[Date], LastVisibleDate, -7, DAY )
+				)
+
+		calculationItem 'Last 30 Days' =
+				
+				VAR LastVisibleDate = MAX ( 'Calendar'[Date] )
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESINPERIOD ( 'Calendar'[Date], LastVisibleDate, -30, DAY )
+				)
+
+		calculationItem 'Last 3 Months' =
+				
+				VAR LastVisibleDate = MAX ( 'Calendar'[Date] )
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESINPERIOD ( 'Calendar'[Date], LastVisibleDate, -3, MONTH )
+				)
+
+		calculationItem 'Last 6 Months' =
+				
+				VAR LastVisibleDate = MAX ( 'Calendar'[Date] )
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESINPERIOD ( 'Calendar'[Date], LastVisibleDate, -6, MONTH )
+				)
+
+		calculationItem 'Last 12 Months' =
+				
+				VAR LastVisibleDate = MAX ( 'Calendar'[Date] )
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESINPERIOD ( 'Calendar'[Date], LastVisibleDate, -12, MONTH )
+				)
+
+		calculationItem 'All Time' =
+				
+				CALCULATE (
+				    SELECTEDMEASURE(),
+				    ALL ( 'Calendar'[Date] )
+				)
+
+		calculationItem 'Previous Week' =
+				
+				VAR LastVisibleDate =
+				    MAX ( 'Calendar'[Date] )
+				
+				VAR StartOfThisWeek =
+				    LastVisibleDate - WEEKDAY ( LastVisibleDate, 2 ) + 1    // 2 = Monday as first day
+				
+				VAR StartOfLastWeek =
+				    StartOfThisWeek - 7
+				
+				VAR EndOfLastWeek =
+				    StartOfThisWeek - 1
+				
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESBETWEEN ( 'Calendar'[Date], StartOfLastWeek, EndOfLastWeek )
+				)
+
+		calculationItem 'Previous Month' =
+				VAR CurrMo = MAX('Calendar'[Calendar Month Number])
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE(),
+				    'Calendar'[Calendar Month Number] = CurrMo - 1
+				)
+
+		calculationItem 'Same Period Last Month' = ```
+				
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        DATEADD ( DATESMTD ( 'Calendar'[Date] ), -1, MONTH )
+				    )
+				```
+
+		calculationItem 'This Month vs SPLM (Raw)' =
+				
+				VAR __CurrentPeriodValue =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        DATESMTD ( 'Calendar'[Date] )
+				    )
+				
+				VAR __SPLMValue =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        DATEADD ( DATESMTD ( 'Calendar'[Date] ), -1, MONTH )
+				    )
+				
+				RETURN
+				__CurrentPeriodValue - __SPLMValue
+
+		calculationItem 'This Month vs SPLM (% Var)' = ```
+				
+				
+				VAR CurrentPeriodValue =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        DATESMTD ( 'Calendar'[Date] )
+				    )
+				
+				VAR SPLMValue =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        DATEADD ( DATESMTD ( 'Calendar'[Date] ), -1, MONTH )
+				    )
+				
+				RETURN
+				DIVIDE ( CurrentPeriodValue - SPLMValue, SPLMValue )
+				
+				```
+
+			formatStringDefinition = "0.0%;-0.0%;0%"
+
+	column 'Time Period'
+		dataType: string
+		lineageTag: 12d15575-3fbb-4e09-a9f0-424739cd2615
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 86bfb947-3b03-4dec-80ef-920918432fbc
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

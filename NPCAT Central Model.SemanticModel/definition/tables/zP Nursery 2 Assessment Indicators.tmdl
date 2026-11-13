@@ -1,0 +1,48 @@
+table 'zP Nursery 2 Assessment Indicators'
+	lineageTag: 1190306c-d63a-4df3-a5ad-88667dd9e9a1
+
+	column 'Nursery 2 Assessment Indicators'
+		lineageTag: 028909a0-2223-4958-82bc-a03c1de67312
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 794b2f9a-657f-4364-a7ea-fbae994f5893
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2da9c93d-6153-417f-80e8-322647cec0fb
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Nursery 2 Assessment Indicators-34ce5d63-443c-44a7-8b6f-fae38317ba7c' = calculated
+		mode: import
+		source =
+				{
+				    ("N2 Below", NAMEOF([Nursery 2 Below % (Baseline/On Entry)]), 0),
+				    ("N2 At", NAMEOF([Nursery 2 At % (Baseline/On Entry)]), 1)
+				}
+
+	annotation PBI_Id = 6c7a2c4c06464b1aa558fdca78de70bc
+

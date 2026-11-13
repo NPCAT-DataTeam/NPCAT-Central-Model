@@ -1,0 +1,175 @@
+table 'Catering Actions'
+	lineageTag: d7235157-b6de-44cd-ab8b-cba71b4470a0
+
+	column School
+		dataType: string
+		lineageTag: 93b3f1a1-bc9e-47ac-8a69-e83a28e13372
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Category'
+		dataType: string
+		lineageTag: 9c2f9b35-3a40-40f2-b2a1-7aa47a582caa
+		summarizeBy: none
+		sourceColumn: Audit Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a3d0b537-838f-4c26-9efb-a67279ff3a37
+		summarizeBy: none
+		sourceColumn: Audit Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Action Ref Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dd4b43e-ae2c-48d1-80e1-bedfe0567ec0
+		summarizeBy: none
+		sourceColumn: Action Ref Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action
+		dataType: string
+		lineageTag: 64c28c9e-442d-4982-bf2c-c0965869ae98
+		summarizeBy: none
+		sourceColumn: Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Action Category'
+		dataType: string
+		lineageTag: 3e5101a0-5a1d-4775-9702-85902304c041
+		summarizeBy: none
+		sourceColumn: Action Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 1a874a75-f233-4d50-839f-a65445ed77de
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 00f59311-3dee-4f42-8abc-37bc0d8ef2b7
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Responsible Entity'
+		dataType: string
+		lineageTag: a20347bd-5dc2-4639-9b52-fce36053b6ab
+		summarizeBy: none
+		sourceColumn: Responsible Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Evidence Required'
+		dataType: string
+		lineageTag: bfef92fe-1b8b-46eb-b190-ccd866d0bd46
+		summarizeBy: none
+		sourceColumn: Evidence Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column Completed
+		dataType: string
+		lineageTag: f5a187c0-277d-4398-b458-a56a367ab1ff
+		summarizeBy: none
+		sourceColumn: Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Completed'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0d11a74a-7d63-49ad-81fe-782a5f454275
+		summarizeBy: none
+		sourceColumn: Date Completed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Notes
+		dataType: string
+		lineageTag: 7abfc85e-bf00-43ae-81e3-06fc0f0943af
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		isHidden
+		lineageTag: 38a9a755-e79e-46e0-9dc4-0f318a2ebd32
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID-Audit
+		dataType: string
+		isHidden
+		lineageTag: 8e15b584-477c-47fe-9208-8525f8872f10
+		summarizeBy: none
+		sourceColumn: SUID-Audit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date (List)'
+		dataType: string
+		lineageTag: 07f127a6-7b22-4985-bde5-ff71d883e7f7
+		summarizeBy: none
+		sourceColumn: End Date (List)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Check'
+		dataType: string
+		lineageTag: 0c9540ec-228e-4eaf-9d57-8d716a2620cd
+		summarizeBy: none
+		sourceColumn: Complete Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actions Complete Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c5da4eb-ede7-41aa-978a-eb60a7ea94ee
+		summarizeBy: sum
+		sourceColumn: Actions Complete Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Catering Actions-8180cb8b-7dd6-4b98-8efd-1188891f2cfd' = m
+		mode: import
+		queryGroup: Estates\Catering
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Catering Actions_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Catering Actions",version=""]}[Data]
+				in
+				    #"Catering Actions_"
+
+	annotation PBI_ResultType = Table
+

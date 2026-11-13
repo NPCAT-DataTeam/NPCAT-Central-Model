@@ -1,0 +1,7 @@
+role 'St Mary''s (Richmond)'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT33"
+
+	annotation PBI_Id = 9f1dc36d714a4983911d80ffe5b09960
+

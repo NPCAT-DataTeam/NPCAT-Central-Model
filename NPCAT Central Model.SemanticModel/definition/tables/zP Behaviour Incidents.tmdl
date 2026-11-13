@@ -1,0 +1,58 @@
+table 'zP Behaviour Incidents'
+	lineageTag: 41356447-e247-4c55-9492-cd309e77d7df
+
+	column 'zP Behaviour Incidents'
+		lineageTag: 4e7e121e-c246-4958-a6a5-cf97382999b2
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Behaviour Incidents Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Behaviour Incidents Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Behaviour Incidents Fields'
+		isHidden
+		lineageTag: 4f9ab7ed-b74a-4819-9bb8-2913a14dfe2d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Behaviour Incidents Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Behaviour Incidents Order'
+		isHidden
+		formatString: 0
+		lineageTag: 8d5cc9c4-6d3e-4cb2-8051-47c723394bb2
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Behaviour Incidents-783f7ff4-917d-44e7-9d92-fe38ff955a71' = calculated
+		mode: import
+		source =
+				
+				
+				VAR CurrentYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = 0)
+				VAR LastYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -1)
+				VAR TwoYearAgo =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -2)
+				
+				RETURN
+				
+				{
+				    (TwoYearAgo, NAMEOF('Measures Folder'[Behaviour Incidents -2 Years]), 0),
+				    (LastYear, NAMEOF('Measures Folder'[Behaviour Incidents -1 Years]), 1),
+				    (CurrentYear, NAMEOF('Measures Folder'[Behaviour Incidents YTD]), 2),
+				    ("SPLY", NAMEOF('Measures Folder'[Behaviour Incidents SPLY]), 3)
+				}
+
+	annotation PBI_Id = 9a8ad97550dd47518c0cc6e50b1ab03d
+

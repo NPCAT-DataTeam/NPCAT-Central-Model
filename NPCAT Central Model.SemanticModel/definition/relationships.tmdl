@@ -1,0 +1,830 @@
+relationship 63515cf1-a3ff-48f2-bba8-d3d66d66d593
+	fromColumn: 'Attendance Managers Actions'.'Action On Date'
+	toColumn: Calendar.Date
+
+relationship b70ef4f8-03c7-4150-bb1b-b4129dc61504
+	fromColumn: 'Student Database (Full)'.'SU ID'
+	toColumn: 'School Database'.'SU ID'
+
+relationship 2c5a06f0-7c68-4db6-94ba-a01a47e711bf
+	fromColumn: 'ICT Help Desk'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship 1182045b-eaf9-41b4-9552-838798ec07b5
+	fromColumn: 'ICT Help Desk'.'Create Date'
+	toColumn: Calendar.Date
+
+relationship 9f93f656-b041-4079-ae81-bda83ffa1463
+	fromColumn: Accidents.'Date of Accident'
+	toColumn: Calendar.Date
+
+relationship 8f39ec55-bcad-4be7-8627-a0b5ab10988a
+	fromColumn: 'NPCAT Workforce Census'.'SU ID'
+	toColumn: 'School Database'.'SU ID'
+
+relationship 88ffbaa6-fea7-41e5-91b3-0d18505c95a9
+	fromColumn: 'NPCAT Student Census'.'SU ID'
+	toColumn: 'School Database'.'SU ID'
+
+relationship a357c54b-1835-4f3c-adc6-ccf661e36b2b
+	fromColumn: Accidents.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship 64d8833d-215c-4130-8a1a-68da51f28e04
+	fromColumn: Behaviour.'Incident Date'
+	toColumn: Calendar.Date
+
+relationship e709051a-7069-4234-8962-58de63d740e0
+	fromColumn: 'Management Accounts'.'Nominal Prefix'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship 7efbd46a-5a25-404e-a85c-e1ff94d71568
+	fromColumn: 'Compliance Daily Logs'.Date
+	toColumn: Calendar.Date
+
+relationship 836cd8ff-b299-41d1-8c81-15987c0c283f
+	fromColumn: 'Compliance Daily Logs'.ActivityRecordKey
+	toColumn: 'Compliance Record Activities'.ActivityRecordKey
+
+relationship ec4f519d-5f33-4ea0-b407-df528636c1e9
+	fromColumn: Attendance.'Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 2f28477f-2054-4805-908d-d7a81dc43252
+	fromColumn: Attendance.'Mark Date'
+	toColumn: Calendar.Date
+
+relationship f96d620a-d6f3-4a3c-98fb-ed99459161ab
+	fromColumn: 'Excluded Students'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 8c61a14e-2f58-44b1-84eb-d5c9de7fefb6
+	fromColumn: 'Permanent Exclusions'.'Start Date'
+	toColumn: Calendar.Date
+
+relationship 7fdfdce6-52fa-4559-ace4-2c28cffce369
+	fromColumn: 'Permanent Exclusions'.'Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 341660c2-a5c5-42a7-a1c0-4c588abe323e
+	fromColumn: Employees.'Every School ID'
+	toColumn: 'School Database'.'Every ID'
+
+relationship 085cd067-0cd0-4c17-bc84-b9463d9c3131
+	fromColumn: Absences.'Absence Start Date'
+	toColumn: Calendar.Date
+
+relationship d0fc7bc7-bd4b-4dc4-b2a8-89f010e132ea
+	toCardinality: many
+	fromColumn: 'Performance Reviews'.'School Year'
+	toColumn: Calendar.'School Year (Long)'
+
+relationship 951842bf-c9b7-47ed-9e11-a8575fde5869
+	toCardinality: many
+	fromColumn: 'Performance Objectives'.'School Year'
+	toColumn: Calendar.'School Year (Long)'
+
+relationship c8e5c292-966f-48ad-9e34-dcd593bde4a5
+	fromColumn: 'Primary Standardised Assessments'.'Assessment Date'
+	toColumn: Calendar.Date
+
+relationship 6259614e-7e05-4b76-8cfa-27599a8ad152
+	fromColumn: 'Primary Standardised Assessments'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship aaddf046-02d8-4fa6-8c3c-d2b4b79b3406
+	fromColumn: 'Performance Reviews (Questions)'.'Review Key'
+	toColumn: 'Performance Reviews'.'Review Key'
+
+relationship f9a835a5-a071-4ff4-a5b1-ea478b7d2c70
+	fromColumn: 'Health&Safety Actions'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship 6a85b526-fe7e-4315-9983-bab15224c4ff
+	fromColumn: 'Health&Safety Actions Dates'.'Action Ref Number'
+	toColumn: 'Health&Safety Actions'.'Action Ref Number'
+
+relationship c2b1a117-ec0a-43a8-9834-cd30e9b38bbf
+	fromColumn: 'Health&Safety Actions Dates'.'Status Date(list)'
+	toColumn: Calendar.Date
+
+relationship b7775f23-4fa3-4692-bfae-259b4b5035b4
+	toCardinality: many
+	fromColumn: 'Financial Benchmark Data'.'Benchmark Group'
+	toColumn: 'School Database'.'Benchmark Group'
+
+relationship f783e3c6-2710-484f-bcb5-e97b7e8afab2
+	isActive: false
+	fromColumn: 'ICT Help Desk'.'Close Date'
+	toColumn: Calendar.Date
+
+relationship 89eab8c2-ac65-4d10-8ccf-ed671923787e
+	fromColumn: 'Health and Safety Audit Overview'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship 6f25bf5d-5ec4-4842-900d-1ec0faee9a74
+	fromColumn: 'Safeguarding Visits'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship 583a5eba-e277-4631-a95d-5d806e87031d
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Safeguarding Visit Scores'.ID
+	toColumn: 'Safeguarding Visits'.ID
+
+relationship 301548fa-893c-48da-ac05-14560c30470a
+	fromColumn: 'Printing and Copying'.Date
+	toColumn: Calendar.Date
+
+relationship 787fc3cd-1eec-4108-b1d4-767d23740ec6
+	fromColumn: 'School Logos'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship 37c58d6c-d26d-4404-bf43-82945906d2d2
+	fromColumn: 'Secondary Headteacher Standards Update'.'SU ID'
+	toColumn: 'School Database'.'SU ID'
+
+relationship f5902785-3a09-448f-9784-9d9939bad6c8
+	fromColumn: 'Secondary Headteacher Standards Update'.'Please select any weekday from the reported week.'
+	toColumn: Calendar.Date
+
+relationship a6615f2b-acee-4e3d-8713-a5ea513d22b1
+	fromColumn: Phonics.'Global Unique ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 20c05c78-e428-422e-8073-1c33910cea02
+	fromColumn: 'KS1 Teacher Assessments'.'Globally Unique ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 9e670629-f108-44f8-bb51-de9c8e8ef5a5
+	fromColumn: MTC.'Globally Unique ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 89358e13-0f3b-4f5c-9a06-529ad6db342b
+	fromColumn: 'KS3 Summative Marks'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship b43a4277-1dd7-46ad-9a1f-d0f7e24f126d
+	fromColumn: 'Catering Audit'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship feb94766-ddc3-44e8-8315-9194fd309a4d
+	fromColumn: 'Catering Audit Compliance'.'Merged ID'
+	toColumn: 'Catering Audit'.'Merged ID'
+
+relationship 892100a6-7cbf-43b0-941d-fab2994e78cc
+	fromColumn: 'Catering Audit Ratings'.'Merged ID'
+	toColumn: 'Catering Audit'.'Merged ID'
+
+relationship 483ae5e5-8e9b-422c-91d2-3eca64aee98a
+	fromColumn: 'Catering Actions'.SUID-Audit
+	toColumn: 'Catering Audit'.SUID-Audit
+
+relationship 1eb257a7-0921-4e5c-a81e-949b15ac095c
+	fromColumn: 'Catering Actions Date List'.'Date List'
+	toColumn: Calendar.Date
+
+relationship 792eb77a-3c2c-4c22-9f25-0b6fb17788db
+	fromColumn: 'Catering Actions Date List'.'Action Ref Number'
+	toColumn: 'Catering Actions'.'Action Ref Number'
+
+relationship 1c670a45-6505-4d52-a01d-564e016b4ba2
+	fromColumn: 'Governance KPI Tracker'.'Date of Meeting'
+	toColumn: Calendar.Date
+
+relationship 81a70855-23f8-4950-8eb9-27c9eb43507a
+	fromColumn: 'Primary Summative Marks (South)'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 3bfe44f0-7c19-404c-a251-8df22915f489
+	fromColumn: 'Primary Summative Targets (South)'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 987fb221-512b-4126-b0e9-a507e8afc008
+	fromColumn: Absences.'Employee Post Key'
+	toColumn: 'Employee Job Roles'.'Employee Post Key'
+
+relationship 6cf84ac3-7934-4e82-8758-ef903efd2324
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Employee Job Roles'.'Employee Key'
+	toColumn: Employees.'Employee Key'
+
+relationship 36c7e2fb-3cfc-45bd-ab76-5fcd3ed6d3f8
+	fromColumn: 'EYFS ELGs/GLD'.'Globally Unique ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 31852748-ceb6-4b44-a0cb-47ee464cc6f6
+	fromColumn: 'Safeguarding Visits'.'Snapshot Date'
+	toColumn: Calendar.Date
+
+relationship f0c22fb0-4ea7-4e71-92a7-605e95b6256a
+	fromColumn: 'Catering Audit Students'.ID
+	toColumn: 'Catering Audit'.ID
+
+relationship ac243d82-2374-41ab-8eae-6ee2c577ce09
+	fromColumn: RONI.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship e9e40a09-0da6-41fb-a494-ced2e3e9864b
+	toCardinality: many
+	fromColumn: RONI.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 6d83a354-7937-48a6-9eb1-e845420b15d5
+	fromColumn: 'Boxphish Phishing Simulations'.'Date Sent'
+	toColumn: Calendar.Date
+
+relationship d3d3e78e-3255-4d60-a381-1bafb419ac2b
+	fromColumn: 'Boxphish Courses'.'Date Sent'
+	toColumn: Calendar.Date
+
+relationship 912cfa59-7a29-30ef-be2e-331ac63108dc
+	fromColumn: 'Performance Objectives'.'Employee ID'
+	toColumn: Employees.'Employee ID'
+
+relationship 4c2ca2e5-157f-4cca-a23d-e7bde74bea83
+	fromColumn: 'Performance Reviews'.'Employee ID'
+	toColumn: Employees.'Employee ID'
+
+relationship 59c2bcff-8bfd-4d58-85dc-6f44c785f26e
+	fromColumn: 'Permanent Exclusions'.'Unique ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 87f12862-15ea-4f75-840b-fee434bb4600
+	fromColumn: 'Primary Standardised Assessments'.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 80b22eb7-9f10-47cb-8a87-bb877fe7a661
+	fromColumn: 'Primary Summative Targets (South)'.'Unique Student ID - School Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 43ff04f0-2cfe-4533-a602-7ed1c260756a
+	fromColumn: 'Primary Summative Marks (South)'.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship d8c3f7ad-21c9-4806-8f79-ea3419fa569d
+	fromColumn: RONI.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship f0d4a208-a3ca-4099-b617-ceb628076199
+	fromColumn: Attendance.'Unique Sudent ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 9b7cd74d-1508-4057-8692-305dafad1341
+	fromColumn: Behaviour.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 5bb4ec10-5b7e-4e2f-a7a4-9ccb42bee5a3
+	toCardinality: many
+	fromColumn: 'KS4 Assessments'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship ba5c2a7f-698d-48e0-9978-35d96c68ebbc
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+	toColumn: 'EYFS Total Points'.'Globally Unique ID'
+
+relationship ecf88e86-6998-4eec-97c3-dfaab556a403
+	toCardinality: many
+	fromColumn: 'EYFS ELGs/GLD'.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship ab2bf8ee-e0b0-47aa-9e86-e2c95c27491c
+	isActive: false
+	fromColumn: RONI.'Unique Student ID - Previous Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship cb85cc68-b03f-4718-84d5-7d947b9d1dca
+	toCardinality: many
+	fromColumn: 'KS1 Teacher Assessments'.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship 1163c7c4-8dea-4c51-a22d-4b260b462294
+	toCardinality: many
+	fromColumn: Phonics.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship 48bd34b1-8d17-4105-a7fe-c84d1bea419f
+	fromColumn: Phonics.'Globally Unique ID - School Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 4c672a5f-6483-4014-811a-b4c7d8c32a45
+	fromColumn: 'KS1 Teacher Assessments'.'Globally Unique ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 4dec35ca-88c7-40d7-a661-e59d968fdfc1
+	fromColumn: 'EYFS ELGs/GLD'.'Globally Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship f129c0e3-200c-490e-a007-9953b4ff093c
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Permanent Exclusions (Reasons)'.'Globally Unique Student ID - Permenant ID'
+	toColumn: 'Permanent Exclusions'.'Globally Unique Student ID - Permanant ID'
+
+relationship abcc2ee2-9623-47c5-1ad8-8b4de0920ece
+	fromColumn: 'Schools Contract & Variation'.'SU ID'
+	toColumn: 'School Database'.'SU ID'
+
+relationship 96491d64-dc93-4973-bbe6-2f11478eb32b
+	fromColumn: MTC.'Globally Unique ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 3244d851-02b1-4689-ad6d-32429a7003f0
+	toCardinality: many
+	fromColumn: MTC.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship 6ae8bff5-890b-4b75-85b9-402a6961bffd
+	fromColumn: 'KS2 Tests & TA Results'.'Globally Unique ID & Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship e7e1e7ed-23b6-4ae7-80df-e1d6698581a9
+	toCardinality: many
+	fromColumn: 'KS2 Tests & TA Results'.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship abea94da-a7ea-4104-a8d5-84bb8ac44251
+	fromColumn: 'Early Years Information'.APPLICATION_ID
+	toColumn: 'School Database'.'Arbor ID'
+
+relationship c7b8a63e-e063-46b9-bda7-6f52d4a54813
+	fromColumn: 'KS1-KS2 Progress'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 1bb151ac-2fd6-4b20-b04d-fd6601de66c9
+	toCardinality: many
+	fromColumn: 'KS1-KS2 Progress'.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship 268497e8-b51c-4e2f-b593-63092dfa1e6c
+	fromColumn: 'KS1-KS2 Progress'.'Globally Unique Student ID & KS2 Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 22a7eb40-511e-4751-b2f8-4ab2e9134020
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Excluded Students (Reasons)'.'Globally Unique Student ID - Suspension ID'
+	toColumn: 'Excluded Students'.'Globally Unique Student ID - Suspension ID'
+
+relationship a59392ac-fd65-436e-a8b9-a91d19e8fdd9
+	fromColumn: 'Excluded Students'.'Unique ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 7d2536c6-bb07-4a99-ac2d-0e3ad5f2c53e
+	fromColumn: 'Student Database (Full)'.'Feeder URN'
+	toColumn: 'Feeder Schools Lookup'.'Feeder URN'
+
+relationship 0361d465-3f5a-4b83-8f5b-99b7c01d19d3
+	toCardinality: many
+	fromColumn: 'KS3 Summative Marks'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship df293a24-1b89-461d-ad4a-e75f788ac5fd
+	toCardinality: many
+	fromColumn: 'National Headlines'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 3234226b-20e7-4e1c-a8c5-2ac55ffd006c
+	toCardinality: many
+	fromColumn: 'National Subject Headlines'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 4ed02dcb-d7f6-4431-b1ff-44145f6bdd1f
+	toCardinality: many
+	fromColumn: 'Safeguarding Visit Scores'.'Safeguarding Category'
+	toColumn: 'Safeguarding Headlines Lookup'.Section
+
+relationship 9e1c4348-3650-49a3-aa22-2f379320012a
+	toCardinality: many
+	fromColumn: 'Primary Summative Marks (South)'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 405ed3f5-cfea-440c-9d3a-49575d28f92b
+	fromColumn: 'KS4 Assessments'.'Grade Sort'
+	toColumn: 'KS4 Distinct Grades'.'Grade Sort'
+
+relationship ef0b4be6-1360-4074-a653-6b37b4c0494b
+	fromColumn: 'National Subject Headlines'.'School Year'
+	toColumn: 'National School Year'.'School Year'
+
+relationship 41bd3d51-7aa8-47f4-856c-447e04f4605c
+	fromColumn: 'National Headlines'.'School Year'
+	toColumn: 'National School Year'.'School Year'
+
+relationship 2e6d5225-5653-4c8d-94fa-a699e4ee00ba
+	fromColumn: 'Absence Insurance Claims'.'Employee Post Key'
+	toColumn: 'Employee Job Roles'.'Employee Post Key'
+
+relationship 3eba7b58-6b67-22ae-686a-4af24ede0110
+	fromColumn: Behaviour.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 8f6b923f-606e-36e1-7c36-fda0dc8c18da
+	fromColumn: 'Schools Contract & Variation'.'Date emailed to TBM/Employee'
+	toColumn: Calendar.Date
+
+relationship 2eb5efe0-06e1-4d33-a295-f2ccb3fc5506
+	isActive: false
+	fromColumn: Absences.'LTS Date'
+	toColumn: Calendar.Date
+
+relationship d1a30daa-7f8f-4c0b-a066-752bf135e252
+	isActive: false
+	fromColumn: Absences.'Absence End Date'
+	toColumn: Calendar.Date
+
+relationship bcac54eb-b655-4790-a811-837f26ba810f
+	fromColumn: 'Student Indicies'.'Globally Unique Student - Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 63da573c-33b7-c9b9-a03b-bba197cee277
+	fromColumn: 'Student Indicies'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 91c2d672-657f-4e3e-a3cb-749f2d7a0245
+	isActive: false
+	fromColumn: 'KS4 Assessments'.'KS4 Period Selector ID'
+	toColumn: 'KS4 Period Selector'.'KS4 Period Selector ID'
+
+relationship d84c78f5-4239-42ab-b3db-0983c2bca5ec
+	toCardinality: many
+	fromColumn: 'Student Indicies'.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship 996f6deb-b136-4c8c-a851-9f72d910f7b7
+	fromColumn: 'Excluded Students'.'Start Date'
+	toColumn: Calendar.Date
+
+relationship 24c9d785-5fe0-40c7-a8db-80059d3e1654
+	fromColumn: 'Compliance Daily Logs'.'Every ID'
+	toColumn: 'School Database'.'Every ID'
+
+relationship a0defabe-4b61-f28b-d183-0765fcdcd2eb
+	fromColumn: 'HSLO Logs'.Date
+	toColumn: Calendar.Date
+
+relationship 93b60757-3239-4bf2-ba80-527f3d5d6e1b
+	fromColumn: 'SEN Needs'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship be6d07cf-86f0-43ba-bab4-e20f02687a2b
+	fromColumn: 'KS4 Assessments'.'Class Assessment ID'
+	toColumn: 'Class Enrolments'.'Class Assessment ID'
+
+relationship 72019c9b-f1b7-47b3-81d1-5f0927e804e3
+	fromColumn: Creditors.'Core Nominal'
+	toColumn: 'Chart of Accounts'.'Core Nominal'
+
+relationship 8185d2b2-3f1a-4189-9e9c-99c5dd796412
+	fromColumn: Creditors.'Nominal Code Prefix'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship f114eba6-f4d4-4fdd-b392-5b082a8fd19f
+	fromColumn: Debtors.'Core Nominal'
+	toColumn: 'Chart of Accounts'.'Core Nominal'
+
+relationship e36c2ed8-adeb-4e68-a8b2-40a5ff6917dc
+	fromColumn: Debtors.'Nominal Code Prefix'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship 70ebdfc8-44d7-4fc9-a19a-af89ce825d6f
+	fromColumn: 'Purchasing Details'.'Core Nominal'
+	toColumn: 'Chart of Accounts'.'Core Nominal'
+
+relationship aa9c988f-f3a2-442f-b2e7-cc278028b523
+	fromColumn: 'Purchasing Details'.'Nominal Code Prefix'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship 5ed29622-d7d9-47e6-b690-be868d8e058c
+	fromColumn: 'Purchasing Details'.'Requisition Input Date'
+	toColumn: Calendar.Date
+
+relationship 5fdc39f3-b5d4-4c9c-a7cb-6c9eedca3efb
+	fromColumn: 'Credit Card'.'Core Nominal'
+	toColumn: 'Chart of Accounts'.'Core Nominal'
+
+relationship baa42d82-3cb6-40be-b495-1f1e6910b94f
+	fromColumn: 'Credit Card'.'Nominal Code Prefix'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship e94eeaf0-aab1-4db7-850f-850d0df0be9b
+	fromColumn: 'Non Order Invoices'.'Core Nominal'
+	toColumn: 'Chart of Accounts'.'Core Nominal'
+
+relationship fb8a5cf2-e5a8-4dd9-8b17-8579dee0c802
+	fromColumn: 'Non Order Invoices'.'Invoice Date'
+	toColumn: Calendar.Date
+
+relationship 78b2704f-b786-4270-b633-2c2f2854b35e
+	fromColumn: 'Non Order Invoices'.'Nominal Code Prefix'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship 0679e376-bd36-4434-8e9b-65101bbe9c0b
+	fromColumn: 'SEN Needs'.'Student-Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship f0276531-489c-448a-943e-92e82a62e7c1
+	toCardinality: many
+	fromColumn: 'SEN Needs'.'Academic School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 20036106-a41d-d35e-8a7b-5f21c3fd6768
+	fromColumn: 'Absence Insurance Claims'.'Paid Date'
+	toColumn: Calendar.Date
+
+relationship 8dbe9abc-4d10-8ce9-44fd-46c07cc59832
+	fromColumn: 'Credit Card'.'Receipt Date'
+	toColumn: Calendar.Date
+
+relationship cbccd5f4-4108-45c2-a9f3-d4ff18ee3f23
+	fromColumn: 'Purchasing Details'.Account
+	toColumn: Suppliers.'Supplier Account'
+
+relationship a5d54871-223e-4b6b-babb-6a2599c89f35
+	fromColumn: 'Non Order Invoices'.Account
+	toColumn: Suppliers.'Supplier Account'
+
+relationship 6c498765-13e0-4cd5-86bd-bdfbbbeb35a2
+	fromColumn: Creditors.Account
+	toColumn: Suppliers.'Supplier Account'
+
+relationship d8ca7684-b0f2-d875-d79b-7343dbc6bf27
+	toCardinality: many
+	fromColumn: 'Primary Nationals'.'Academic Year'
+	toColumn: Calendar.'School Year'
+
+relationship c1768bfa-ab00-b17a-e253-521db375ddef
+	fromColumn: 'Primary Nationals'.'Key Stage & Measure'
+	toColumn: 'Primary National Measures'.'Key Stage & Measure'
+
+relationship b6a9b9e6-7e48-6961-b00c-6fb4e98eb584
+	isActive: false
+	fromColumn: 'Primary Summative Marks (South)'.'Primary Period Selector ID'
+	toColumn: 'Primary Period Selector'.'Primary Period Selector ID'
+
+relationship 67d0dddc-62ae-2926-0583-f747221da18c
+	fromColumn: 'KS3 Summative Marks'.'Class Assessment ID'
+	toColumn: 'Class Enrolments'.'Class Assessment ID'
+
+relationship a234085e-15da-672f-7428-2152eb26367e
+	fromColumn: 'EYFS ELGs/GLD'.'Globally Unique ID'
+	toColumn: GLDTable.'Globally Unique ID'
+
+relationship 7d843ca5-6b41-a41c-6234-f17e7fe7a1de
+	fromColumn: Phonics.'Global Unique ID'
+	toColumn: GLDTable.'Globally Unique ID'
+
+relationship eb0fe6d0-2194-9db8-c73d-ac47657354d1
+	fromColumn: 'KS1 Teacher Assessments'.'Globally Unique ID'
+	toColumn: GLDTable.'Globally Unique ID'
+
+relationship 10995aa9-bcc2-9cfb-bacf-53fe66386127
+	toCardinality: many
+	fromColumn: 'Primary Trust Averages'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 7f83558e-b750-db25-8732-56b2c1c36a2a
+	fromColumn: MTC.'Globally Unique ID'
+	toColumn: GLDTable.'Globally Unique ID'
+
+relationship abd64fa1-6283-297c-4f10-975fc632b0f1
+	fromColumn: 'HSLO Logs'.UPN-SUID
+	toColumn: 'Student Database (Full)'.'UPN-SU ID'
+
+relationship 786f2f1a-38d3-ec68-391b-db136ca65f84
+	fromColumn: 'Attendance Managers Actions'.UPN-SUID
+	toColumn: 'Student Database (Full)'.'UPN-SU ID'
+
+relationship a7bebe74-d903-1ba4-b599-a190669d5be6
+	fromColumn: 'Enrichment Attendance'.ENRICHMENT_UNIQUE_ID
+	toColumn: Enrichment.ENRICHMENT_UNIQUE_ID
+
+relationship 9b943525-0824-704d-d94e-3504c6258309
+	fromColumn: 'Enrichment Attendance'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship c89afd98-80ae-5031-155b-04197b34623e
+	fromColumn: 'Enrichment Attendance'.'Unique Sudent ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship f430ee44-8ca7-e463-ac18-351600c1298b
+	fromColumn: 'Enrichment Attendance'.START_DATETIME
+	toColumn: Calendar.Date
+
+relationship b3954a10-0ff9-9556-04da-c09f4dd6d573
+	fromColumn: 'Primary Statutory Predictions'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 317474ec-66b0-2894-e918-ea9abf62352f
+	fromColumn: 'Primary Statutory Predictions'.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 96f78f1d-9a01-b50d-a8e9-1daad9f9462f
+	toCardinality: many
+	fromColumn: 'Primary Statutory Predictions'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship bcb97a0f-7acf-ad35-f4e6-c6b207a3e8bb
+	toCardinality: many
+	fromColumn: 'Boxphish Courses'.'Email Address'
+	toColumn: Employees.'Work Email'
+
+relationship 48cb5ec5-33e5-f080-99e2-a2ad02df9c79
+	toCardinality: many
+	fromColumn: 'Boxphish Phishing Simulations'.'Email Address'
+	toColumn: Employees.'Work Email'
+
+relationship 60b4af41-959a-daaa-ba89-a2a4ce32d9e9
+	fromColumn: 'Printing and Copying'.'School Nominal Code'
+	toColumn: 'School Database'.'Nominal Code Prefix'
+
+relationship 9820a671-bb35-3473-bbdc-33d400687cc7
+	fromColumn: 'Health and Safety Audit Overview'.'Date of Audit'
+	toColumn: Calendar.Date
+
+relationship a61e1763-158c-8abb-d8a5-bf6aeb4b71c4
+	fromColumn: 'Secondary Standards QA Forms'.'Date of QA Form'
+	toColumn: Calendar.Date
+
+relationship ef2aab86-bbca-5b41-2378-d23482b7f631
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Secondary Standards QA Forms'.'QA Forms ID'
+	toColumn: 'Secondary Standards QA Questions'.'QA Form ID'
+
+relationship 0ae4bade-f212-5b48-e689-597873c87c59
+	fromColumn: 'Secondary Standards QA Forms'.School
+	toColumn: 'School Database'.'School Short Name'
+
+relationship 71e6f6a8-128d-c065-cdb5-7abd42b9a3f0
+	fromColumn: 'SEN Audit Visits'.'Date of QA'
+	toColumn: Calendar.Date
+
+relationship ed492974-80ac-08b7-59b3-9583437abfef
+	fromColumn: 'SEN Audit Scores'.ID
+	toColumn: 'SEN Audit Visits'.ID
+
+relationship 4fb53842-0713-a0bc-90b2-94ef98c9ca7a
+	fromColumn: 'SEN Audit Visits'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship b3942398-6b2d-f46c-2458-3aa41158c27c
+	fromColumn: Employees.'Work Email'
+	toColumn: 'Boxphish Staff Rating'.'Email Address'
+
+relationship 2a5fcfcd-4813-4a8d-96ac-22083636c233
+	fromColumn: Creditors.'Invoice Date'
+	toColumn: Calendar.Date
+
+relationship aae5ba05-f5ea-5a71-d362-37e1b96a5b12
+	fromColumn: Inspections.'Arbor ID'
+	toColumn: 'School Database'.'Arbor ID'
+
+relationship 5c168061-92d7-7525-d174-f9677b617e8c
+	fromColumn: Demographics.'Person Unique ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 9110bc42-9312-a85f-6c8b-6b7c5b162ec6
+	fromColumn: Debtors.'Invoice Date'
+	toColumn: Calendar.Date
+
+relationship ef8856d3-ed40-f757-80a6-c92c312de71e
+	isActive: false
+	fromColumn: 'KS4 Student Headlines'.'KS4 Period ID'
+	toColumn: 'KS4 Period Selector'.'KS4 Period Selector ID'
+
+relationship 901d686a-1b4c-9235-d38a-dec0fa7da5ad
+	toCardinality: many
+	fromColumn: 'KS4 Student Headlines'.'School Year'
+	toColumn: Calendar.'School Year'
+
+relationship 11fb80b1-a69b-296d-5771-468e4c4e95c0
+	fromColumn: 'KS4 Assessments'.'AP-Grade Type'
+	toColumn: 'AP-Grade Type'.'AP-Grade Type'
+
+relationship d9606ab1-2395-b631-3f9f-c2ef3ef5893c
+	fromColumn: 'KS4 Student Headlines'.'AP-Grade Type'
+	toColumn: 'AP-Grade Type'.'AP-Grade Type'
+
+relationship e8b07719-89d4-cb9d-4ac8-0440247d6c5a
+	fromColumn: 'KS4 Student'.'Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 9cf4ab7f-933a-86cf-7d5d-4a8f687c0587
+	fromColumn: 'KS4 Student'.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 497ada36-7839-ecf4-e7f8-400b1049a219
+	fromColumn: 'KS4 Student Headlines'.'Unique Student ID - Academic Year'
+	toColumn: 'KS4 Student'.'Unique Student ID - Academic Year'
+
+relationship 94570e6a-45e8-70a2-d5bb-2aa1f2d904b0
+	fromColumn: 'KS4 Assessments'.'Unique Student ID - Academic Year'
+	toColumn: 'KS4 Student'.'Unique Student ID - Academic Year'
+
+relationship b01ab715-836d-0b50-4a41-fb4f62edc412
+	fromColumn: 'ICT Equipment Scores'.'SU ID'
+	toColumn: 'School Database'.'SU ID'
+
+relationship f13ab483-6056-e360-c5a1-e60390b4218c
+	fromColumn: 'Lesson Attendance'.LESSON_UNIQUE_ID
+	toColumn: Lessons.LESSON_UNIQUE_ID
+
+relationship 44c9926e-6f9f-3a6e-d357-f755374ced74
+	fromColumn: 'Lesson Attendance'.'Mark Date'
+	toColumn: Calendar.Date
+
+relationship 5cff4c89-aecf-71a6-8010-2aca6d2e388d
+	fromColumn: 'Lesson Attendance'.'Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 85bce13b-2d4b-3f00-b971-22b28d28118a
+	fromColumn: 'Lesson Attendance'.'Student Unique ID - Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 3f257949-47f4-8c41-2fb6-74e0052bb25f
+	toCardinality: many
+	fromColumn: 'Secondary Standards QA Forms'.'QA Forms ID'
+	toColumn: 'Secondary QA Permissions'.'QA Forms ID'
+
+relationship fb4995b3-a8f9-4b5d-6a1c-ed2ffdc3a392
+	fromColumn: 'KS3 Summative Marks'.'Student - Year ID'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 9d84c2f0-dbdc-fbc0-5253-029b2f4ec278
+	fromColumn: 'Catholic Standards Scores'.Id
+	toColumn: 'Catholic Standards Visits'.Id
+
+relationship e3ad01bf-e782-f05d-57c0-9be2dcd6b6f6
+	fromColumn: 'Catholic Standards Visits'.'Date of Review'
+	toColumn: Calendar.Date
+
+relationship 17dd0fac-97a3-43f5-4c72-efa760db927f
+	fromColumn: 'Catholic Standards Visits'.SUID
+	toColumn: 'School Database'.'SU ID'
+
+relationship d03b99fa-31a3-396a-ac21-05fb4fa24a15
+	fromColumn: 'Student Absences'.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 8e48ac27-b247-a495-f9ca-2517faa3c93a
+	fromColumn: 'Student Absences'.'Student - Year ID'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 5b99c15c-b100-149a-d4cb-62748fe8a86f
+	fromColumn: 'AP Placements'.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 73fbded3-4d1a-f7b5-6541-63cae58d1016
+	fromColumn: 'AP Placements'.'Start Date'
+	toColumn: Calendar.Date
+
+relationship 30b00e0c-9a81-51dc-3a0d-3da29535b8f6
+	fromColumn: 'AP Placements'.'STUDENT UNIQUE YEAR ID'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 4145028f-0a4b-a9c3-8b1d-741255215876
+	toCardinality: many
+	fromColumn: 'LA Indicies'.'Indicies Region'
+	toColumn: 'School Database'.'Local Authority'
+
+relationship 26886df8-5405-6195-557b-796d44401c75
+	fromColumn: 'Behaviour Sanctions'.'Unique ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 7ce12e0c-1667-8853-921c-9506233c8c21
+	fromColumn: 'Behaviour Sanctions'.'Globally Unique Student ID'
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 258ea6fd-6347-947c-8fb8-9cbcc42649d3
+	fromColumn: 'Behaviour Sanctions'.'Start Date'
+	toColumn: Calendar.Date
+
+relationship 0c040e3f-99a3-5ab6-c43a-8fb123cd15ab
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Behaviour Sanction Reasons'.'Unique Student - Event ID'
+	toColumn: 'Behaviour Sanctions'.'Unique Student - Event ID'
+
+relationship dda4a68e-94ef-8d9a-8806-23709ab47183
+	fromColumn: Detentions.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship 6770914b-5b4d-0bef-9c85-7445202d4841
+	fromColumn: 'Behaviour Points'.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship fb1f0986-1277-80fa-fb3b-27597d80b758
+	fromColumn: 'Behaviour Points'.'Unique Student ID - Academic Year'
+	toColumn: 'Student Year Groups'.'Unique Student ID - Academic Year'
+
+relationship 2a06dc19-344b-8107-356c-970cb5df5c79
+	fromColumn: Detentions.'Detention Date'
+	toColumn: Calendar.Date
+
+relationship 3a97547a-8e52-9277-5f42-866b7221865b
+	fromColumn: 'Behaviour Points'.'Incident Date'
+	toColumn: Calendar.Date
+
+relationship 7eab42dd-6452-83ab-e1d9-27cc18c6b3d5
+	fromColumn: 'KS2 Tests & TA Results'.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+

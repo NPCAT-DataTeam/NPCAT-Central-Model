@@ -1,0 +1,33 @@
+table 'EYFS Total Points'
+	lineageTag: d98c2ad6-ac9e-4f77-bc84-7737bc5d9fc1
+
+	column 'Globally Unique ID'
+		lineageTag: cb96ddd2-7ee9-4857-983a-3cfa2527b458
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: EYFS ELGs/GLD[Globally Unique ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Value'
+		formatString: 0
+		lineageTag: 1fcf9156-db7d-4489-82dd-befc0a573443
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'EYFS Total Points-4b667f54-c7ce-458b-833f-22c5b688e38b' = calculated
+		mode: import
+		source =
+				
+				SUMMARIZE (
+				            'EYFS ELGs/GLD',
+				            'EYFS ELGs/GLD'[Globally Unique ID],
+				            "Total Value", ( SUM ( 'EYFS ELGs/GLD'[Grade Value] )
+				        )
+				    )
+
+	annotation PBI_Id = fed9b30b07594b2989cd5943179d2ad0
+

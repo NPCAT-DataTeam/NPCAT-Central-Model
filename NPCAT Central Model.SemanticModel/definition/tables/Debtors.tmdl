@@ -1,0 +1,227 @@
+table Debtors
+	lineageTag: 23c32e90-a0a8-4ff2-b0f3-3a23e9ab3257
+
+	column 'Account Allocation ID'
+		dataType: string
+		lineageTag: 58357386-f4df-47be-888a-13030245c7dc
+		summarizeBy: none
+		sourceColumn: Account Allocation ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Type'
+		dataType: string
+		lineageTag: c2edbb37-80cc-42b5-822c-445e8cbd227f
+		summarizeBy: none
+		sourceColumn: Doc Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nominal
+		dataType: string
+		lineageTag: 70973904-31cc-4296-a9e0-497ae9471172
+		summarizeBy: none
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code Prefix'
+		dataType: string
+		lineageTag: e3713eb7-dcf7-4844-90ab-aa5bec2b22e7
+		summarizeBy: none
+		sourceColumn: Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Core Nominal'
+		dataType: string
+		lineageTag: 8adc3d67-6779-44b9-b85a-18d8d58978dd
+		summarizeBy: none
+		sourceColumn: Core Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ledger
+		dataType: string
+		lineageTag: 1bc7f6b0-624a-4300-ab92-85c628749af6
+		summarizeBy: none
+		sourceColumn: Ledger
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 03a06d48-800d-4e55-81ac-889dcd9f91de
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: d4305a4f-df9f-4353-afdb-efcb7121df98
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocation
+		dataType: int64
+		formatString: 0
+		lineageTag: d9e2ae3b-2d41-4623-9cd4-117fd47b1d76
+		summarizeBy: sum
+		sourceColumn: Allocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Original Debt'
+		dataType: double
+		lineageTag: 15f59e2b-126a-4e0c-b731-52fae29e0b71
+		summarizeBy: sum
+		sourceColumn: Original Debt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Debt Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 84c68025-2e97-47ed-b38e-fec7194ab991
+		summarizeBy: none
+		sourceColumn: Debt Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Debt End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c3c97df2-f6ed-4229-946c-1880c999f6bb
+		summarizeBy: none
+		sourceColumn: Debt End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Debt End Year'
+		dataType: string
+		lineageTag: 99e624ec-3e19-4dd9-98a0-bce1a5b58691
+		summarizeBy: none
+		sourceColumn: Debt End Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Debt End Period'
+		dataType: string
+		lineageTag: f7811c58-e241-4646-bc6d-7eea617c6e16
+		summarizeBy: none
+		sourceColumn: Debt End Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: fdee757c-ff92-48cf-8700-c00bde457ea9
+		summarizeBy: sum
+		sourceColumn: Doc Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: d6fac749-d624-4e59-b800-a38ba40c8aea
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Exchequer Load Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 56d46b68-483e-466b-9a65-ebcfb9a660bf
+		summarizeBy: none
+		sourceColumn: Exchequer Load Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Invoice ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: c522f283-f77f-412c-94c9-4c4a4e6a29e7
+		summarizeBy: count
+		sourceColumn: Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 08422827-2e0e-4f93-9b8f-4d703e9016b5
+		summarizeBy: none
+		sourceColumn: Invoice Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Next Payment Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ba56b438-6e47-4751-b1c9-161f4e0893c5
+		summarizeBy: none
+		sourceColumn: Next Payment Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Line Item Type'
+		dataType: string
+		lineageTag: 52416f57-100d-47b4-88f2-c2ae9181a15f
+		summarizeBy: none
+		sourceColumn: Line Item Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Debt Bracket'
+		dataType: string
+		lineageTag: ed328522-068b-46cd-85f6-27a77d58d709
+		summarizeBy: none
+		sourceColumn: Debt Bracket
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Debt Bracket Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c6a46ac-4632-4211-9157-52e4330386e4
+		summarizeBy: sum
+		sourceColumn: Debt Bracket Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Debtors = m
+		mode: import
+		queryGroup: Finance\PSF
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    Debtors_ = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Debtors",version=""]}[Data]
+				in
+				    Debtors_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

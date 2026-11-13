@@ -1,0 +1,519 @@
+table 'KS4 Student Headlines'
+	lineageTag: 33505cf5-edae-4dd8-a61c-56be03ed75fa
+
+	column 'Unique Student ID'
+		dataType: string
+		lineageTag: 87f8620e-798d-4c3c-88b6-d49ffe29f9bc
+		summarizeBy: none
+		sourceColumn: Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 2b1de9c0-347a-4cd8-b79e-0fa3febcef26
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall A8'
+		dataType: double
+		lineageTag: 1b3dc86f-1315-4371-a523-01d6a71357ad
+		summarizeBy: sum
+		sourceColumn: Overall A8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English A8'
+		dataType: double
+		lineageTag: d77880cd-0cbc-4d76-93b0-3bfab9abd6f3
+		summarizeBy: sum
+		sourceColumn: English A8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths A8'
+		dataType: double
+		lineageTag: 2919d921-a0b4-4881-bf39-dcaf1d24ed04
+		summarizeBy: sum
+		sourceColumn: Maths A8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc A8'
+		dataType: double
+		lineageTag: b3401f0d-232d-4a27-9ecd-6b74b16a2325
+		summarizeBy: sum
+		sourceColumn: Ebacc A8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Open A8'
+		dataType: double
+		lineageTag: 0e91d6ac-c4c2-427b-a85d-66e77a32a12f
+		summarizeBy: sum
+		sourceColumn: Open A8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc Entered in English'
+		dataType: int64
+		formatString: 0
+		lineageTag: 470e8a7b-a82a-4d4e-9002-cfd0a803ef61
+		summarizeBy: sum
+		sourceColumn: Ebacc Entered in English
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ebacc Entered in Maths'
+		dataType: int64
+		formatString: 0
+		lineageTag: fd34bdc8-76d3-40b1-aa4a-49a306e4ebce
+		summarizeBy: sum
+		sourceColumn: Ebacc Entered in Maths
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ebacc Entered in Science - Double'
+		dataType: int64
+		formatString: 0
+		lineageTag: d16dd4b0-fc27-486f-8d6f-c619cea7773a
+		summarizeBy: sum
+		sourceColumn: Ebacc Entered in Science - Double
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ebacc Entered in Science - Triple'
+		dataType: double
+		lineageTag: 5e384fb6-098f-46cc-a9da-cbec51c6d18d
+		summarizeBy: sum
+		sourceColumn: Ebacc Entered in Science - Triple
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc Entered in Humanities'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2996a182-5c78-461e-a995-b3b6dd63d324
+		summarizeBy: sum
+		sourceColumn: Ebacc Entered in Humanities
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ebacc Entered in MFL'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f9ab099-f396-4eb5-b4fc-4b35379457ab
+		summarizeBy: sum
+		sourceColumn: Ebacc Entered in MFL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ebacc English Bucket Points'
+		dataType: double
+		lineageTag: e1ee8cdf-7846-4a9e-845d-13e4b9981537
+		summarizeBy: sum
+		sourceColumn: Ebacc English Bucket Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc Maths Bucket Points'
+		dataType: double
+		lineageTag: 08270f43-bc3e-4a46-86c2-6404da574218
+		summarizeBy: sum
+		sourceColumn: Ebacc Maths Bucket Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc Humanities Bucket Points'
+		dataType: double
+		lineageTag: 68d31058-4264-4c0c-b15f-cf4a106c4fe5
+		summarizeBy: sum
+		sourceColumn: Ebacc Humanities Bucket Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc MFL Bucket Points'
+		dataType: double
+		lineageTag: 2a0f56c0-f026-4df3-b827-74b5cf931cad
+		summarizeBy: sum
+		sourceColumn: Ebacc MFL Bucket Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Subjects 4+'
+		dataType: int64
+		formatString: 0
+		lineageTag: c602c433-f5cf-438c-ae68-0174385a9750
+		summarizeBy: sum
+		sourceColumn: Total Subjects 4+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Subjects 5+'
+		dataType: int64
+		formatString: 0
+		lineageTag: ea5b5928-b76d-4ecc-80f2-9fa00f9640e7
+		summarizeBy: sum
+		sourceColumn: Total Subjects 5+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Subjects 7+'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d5aa7bb-b2dd-4832-8112-49f7c9260cd6
+		summarizeBy: sum
+		sourceColumn: Total Subjects 7+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Science 1st Bucket Points'
+		dataType: double
+		lineageTag: 2b1f3e75-acfe-4d61-8fb3-21c7d97950cf
+		summarizeBy: sum
+		sourceColumn: Science 1st Bucket Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Science 2nd Bucket Points'
+		dataType: double
+		lineageTag: 8e71dc1d-84e5-40b8-8b1d-d08a8ff19936
+		summarizeBy: sum
+		sourceColumn: Science 2nd Bucket Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ebacc Slots Filled'
+		dataType: int64
+		formatString: 0
+		lineageTag: 65707048-e23f-4919-a1aa-186010f067dc
+		summarizeBy: sum
+		sourceColumn: Ebacc Slots Filled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entered for Ebacc'
+		dataType: int64
+		formatString: 0
+		lineageTag: a6a0d9e0-ce21-4c6a-9ad9-42562736b042
+		summarizeBy: sum
+		sourceColumn: Entered for Ebacc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Ebacc Points'
+		dataType: double
+		lineageTag: 33168bbc-fc1c-4e3c-82d9-609bc5e1b5ab
+		summarizeBy: sum
+		sourceColumn: Total Ebacc Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Average Ebacc Points'
+		dataType: double
+		lineageTag: ee946934-5f6e-4de7-a0a6-5804c4950cdb
+		summarizeBy: sum
+		sourceColumn: Average Ebacc Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Achieved Ebacc 4+'
+		dataType: string
+		lineageTag: a76f81b1-a117-4bc2-919a-c6c28efc4d14
+		summarizeBy: none
+		sourceColumn: Achieved Ebacc 4+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Achieved Ebacc 5+'
+		dataType: string
+		lineageTag: d09be61e-757e-4ff8-a6c7-56ac1b3cb2c8
+		summarizeBy: none
+		sourceColumn: Achieved Ebacc 5+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall P8'
+		dataType: double
+		lineageTag: 87badba8-0ba9-4a5c-bbf9-9c6171fde8ac
+		summarizeBy: sum
+		sourceColumn: Overall P8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English P8'
+		dataType: double
+		lineageTag: 262b9f25-5b69-48c4-a211-78528d7e2f5f
+		summarizeBy: sum
+		sourceColumn: English P8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths P8'
+		dataType: double
+		lineageTag: 6fde223f-c57d-43fd-9dab-a0fb3e9f9a30
+		summarizeBy: sum
+		sourceColumn: Maths P8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EBacc P8'
+		dataType: double
+		lineageTag: b542c3bd-2c89-48dd-a91e-9df20cea41da
+		summarizeBy: sum
+		sourceColumn: EBacc P8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Open P8'
+		dataType: double
+		lineageTag: 3df5dc81-b429-402f-acde-1411e520a7ee
+		summarizeBy: sum
+		sourceColumn: Open P8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English 4+'
+		dataType: double
+		lineageTag: 2b2810aa-a786-4804-be8b-d4ba8d2dd14b
+		summarizeBy: sum
+		sourceColumn: English 4+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English 5+'
+		dataType: double
+		lineageTag: fdac2203-ac33-401f-a1b2-a79d4a57a94a
+		summarizeBy: sum
+		sourceColumn: English 5+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English 7+'
+		dataType: int64
+		formatString: 0
+		lineageTag: b0b7efe7-b0d4-4bd6-a8e9-e18591b21c69
+		summarizeBy: sum
+		sourceColumn: English 7+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Maths 4+'
+		dataType: double
+		lineageTag: f3aa3d05-d8a7-4794-9d74-b58da8a16715
+		summarizeBy: sum
+		sourceColumn: Maths 4+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths 5+'
+		dataType: double
+		lineageTag: dc3f7c4f-44ee-4c0a-965e-61a24cb5a536
+		summarizeBy: sum
+		sourceColumn: Maths 5+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths 7+'
+		dataType: int64
+		formatString: 0
+		lineageTag: 25ff53f0-3452-4a22-a549-71b933d27b23
+		summarizeBy: sum
+		sourceColumn: Maths 7+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'English & Maths 4+'
+		dataType: double
+		lineageTag: d0bc7be8-810a-4131-8de0-65f522914943
+		summarizeBy: sum
+		sourceColumn: English & Maths 4+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English & Maths 5+'
+		dataType: double
+		lineageTag: 36e50caa-4d0e-4ad6-987e-fc0800f9a3fb
+		summarizeBy: sum
+		sourceColumn: English & Maths 5+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English & Maths 7+'
+		dataType: int64
+		formatString: 0
+		lineageTag: 88faaf89-0f18-4c04-898a-21c61aee5fe4
+		summarizeBy: sum
+		sourceColumn: English & Maths 7+
+
+		annotation SummarizationSetBy = Automatic
+
+	column '4+ Statement'
+		dataType: string
+		lineageTag: 90fa0ba9-67f7-4b41-b41c-b6e180183a4b
+		summarizeBy: none
+		sourceColumn: 4+ Statement
+
+		annotation SummarizationSetBy = Automatic
+
+	column '5 + Statement'
+		dataType: string
+		lineageTag: 0a200014-d985-4608-853f-114fdfba7c43
+		summarizeBy: none
+		sourceColumn: 5 + Statement
+
+		annotation SummarizationSetBy = Automatic
+
+	column '7 + Statement'
+		dataType: string
+		lineageTag: 710cbbea-aad9-4ecb-9f7f-8e25a951a26d
+		summarizeBy: none
+		sourceColumn: 7 + Statement
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: e50fbd9f-3d7d-4d44-acd2-94b299630af2
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 5350a18d-64e6-4f5c-b14d-48286af0398a
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Period ID'
+		dataType: string
+		lineageTag: 9f5b8238-9e2a-4d4d-bc8e-fb0be3c0efca
+		summarizeBy: none
+		sourceColumn: KS4 Period ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP-Grade Type'
+		dataType: string
+		lineageTag: 006bacb2-087e-4550-bc46-a82732b9b91c
+		summarizeBy: none
+		sourceColumn: AP-Grade Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: bd890066-1c59-42b5-9a3c-673281f4b94a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Prior Attainment'
+		dataType: double
+		lineageTag: d0cb4400-01d8-46f1-acf0-18339758bdfc
+		summarizeBy: sum
+		sourceColumn: KS2 Prior Attainment
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Prior Attainment'
+		dataType: string
+		lineageTag: 6a1d5831-5307-4b82-b046-dc9bc10c088b
+		summarizeBy: none
+		sourceColumn: Prior Attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment (Short)' = IF(LEFT([Prior Attainment],1)="N","N/A",LEFT([Prior Attainment],1))
+		lineageTag: 8f494d4e-cd44-4fde-86f7-75864cd0d0dd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tables Checking'
+		dataType: string
+		lineageTag: 17b9a59a-e8af-4aab-9564-4a50b4c3c3ea
+		summarizeBy: none
+		sourceColumn: Tables Checking
+
+		annotation SummarizationSetBy = Automatic
+
+	column Headlines = "Headlines"
+		lineageTag: 5591c0fb-633b-43c6-93bf-549af6865e89
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS4 Student Headlines' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"143ad5e4-dfd6-4a99-8036-980f3f1ede08" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="143ad5e4-dfd6-4a99-8036-980f3f1ede08"]}[Data],
+				    #"Student Headlines_" = #"143ad5e4-dfd6-4a99-8036-980f3f1ede08"{[entity="Student Headlines",version=""]}[Data]
+				in
+				    #"Student Headlines_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

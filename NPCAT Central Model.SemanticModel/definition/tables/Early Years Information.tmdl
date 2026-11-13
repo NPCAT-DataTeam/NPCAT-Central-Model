@@ -1,0 +1,179 @@
+table 'Early Years Information'
+	lineageTag: ba8def31-ae6b-4871-949e-5d4efd9d067f
+
+	column UPN
+		dataType: string
+		lineageTag: c0620437-a451-41ab-80ed-215132ad111c
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 9cfd20c8-1c8d-486c-be2d-9863ba4282f8
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NC Year(s) for today'
+		dataType: string
+		lineageTag: be173d72-ae84-4054-8589-242b45ed8631
+		summarizeBy: none
+		sourceColumn: NC Year(s) for today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of Birth'
+		dataType: string
+		lineageTag: ab7f207b-82c6-4c7b-8925-665441f8fb75
+		summarizeBy: none
+		sourceColumn: Date of Birth
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entry Date (First)'
+		dataType: string
+		lineageTag: 40613122-9f62-4f5c-b122-9fbf22ebf340
+		summarizeBy: none
+		sourceColumn: Entry Date (First)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		lineageTag: 4d8a2ea9-733b-4bee-b210-41555ad08d99
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EAL at any time today?'
+		dataType: string
+		lineageTag: 00417cdd-011b-40b4-aa4c-d28655aa8b8f
+		summarizeBy: none
+		sourceColumn: EAL at any time today?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN status for today'
+		dataType: string
+		lineageTag: 57810c19-c742-4a0f-884f-360abaf796d1
+		summarizeBy: none
+		sourceColumn: SEN status for today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Looked After (In Care) Status'
+		dataType: string
+		lineageTag: a65572a5-73a2-44f7-95fc-609663845537
+		summarizeBy: none
+		sourceColumn: Looked After (In Care) Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pupil Premium Eligible at any time today?'
+		dataType: string
+		lineageTag: 39e3ecf4-9326-4b5d-8555-caf6da47d2f8
+		summarizeBy: none
+		sourceColumn: Pupil Premium Eligible at any time today?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance Patterns today'
+		dataType: string
+		lineageTag: 72613575-e42c-4fff-940f-e5ea65a1d4f8
+		summarizeBy: none
+		sourceColumn: Attendance Patterns today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EYPP Recipient at any time today?'
+		dataType: string
+		lineageTag: 0dff0470-05d0-47c7-afe1-542199cf57e7
+		summarizeBy: none
+		sourceColumn: EYPP Recipient at any time today?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours At Setting'
+		dataType: string
+		lineageTag: eeb45afe-6a27-4c57-bd31-49d23db6e4f3
+		summarizeBy: none
+		sourceColumn: Hours At Setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Funded Hours'
+		dataType: string
+		lineageTag: 73b55850-174e-4e32-8234-72cea8387a3d
+		summarizeBy: none
+		sourceColumn: Funded Hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extended Hours'
+		dataType: string
+		lineageTag: d151b961-535a-48a1-b967-d1e531b2781e
+		summarizeBy: none
+		sourceColumn: Extended Hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: 22fe0298-9ff6-4758-805a-e146f099dfc5
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour Banding'
+		dataType: string
+		lineageTag: 93f26065-2b81-4b21-a2a1-00ad7b7ded7d
+		summarizeBy: none
+		sourceColumn: Hour Banding
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: ffa45fd9-493d-45ff-96b3-a0e57c974eef
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 1c0dc734-7f4d-4e4b-b77c-8087667f724e
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 45a30abc-3e92-4d53-b784-03ec1b16203d
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Early Years Information' = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    #"Early Years Information1" = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="Early Years Information"]}[Data]
+				in
+				    #"Early Years Information1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

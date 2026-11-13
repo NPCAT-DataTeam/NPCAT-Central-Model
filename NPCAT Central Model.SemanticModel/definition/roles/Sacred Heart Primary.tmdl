@@ -1,0 +1,7 @@
+role 'Sacred Heart Primary'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT08"
+
+	annotation PBI_Id = 223a401543e44dc5a1db01a55f54c265
+

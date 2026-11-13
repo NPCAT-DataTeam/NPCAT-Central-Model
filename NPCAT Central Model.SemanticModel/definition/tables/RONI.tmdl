@@ -1,0 +1,255 @@
+table RONI
+	lineageTag: bc14d9df-205a-46a2-8107-c8d39674b1a8
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: 8f199e37-c874-47f7-876e-9143ec606649
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: 02c2cf1b-d071-4b80-984f-dd3377c497bb
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 3d7ca192-595a-4b15-845f-23e4c81dfa2d
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exclusion Score'
+		dataType: double
+		formatString: 0
+		lineageTag: bf8cc501-526d-46fc-865c-78a76a0c9b09
+		summarizeBy: sum
+		sourceColumn: Exclusion Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employment Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: a42ddb8e-de10-439a-a4f0-331398bf8113
+		summarizeBy: sum
+		sourceColumn: Employment Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Crime Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: ef263dd2-a1c4-4036-aaea-3c9f074483be
+		summarizeBy: sum
+		sourceColumn: Crime Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IDACI Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: b081267c-56aa-449e-8817-a9eac02c7d0c
+		summarizeBy: sum
+		sourceColumn: IDACI Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Deprivation Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 795751d4-fe70-4126-8f55-e5d5bf6f42cd
+		summarizeBy: sum
+		sourceColumn: Deprivation Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 PA Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c12f94e-3a26-4546-96ea-76b3d0174a94
+		summarizeBy: sum
+		sourceColumn: KS2 PA Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NCY Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: ef52946c-1e95-4e28-b501-ad8591afc430
+		summarizeBy: sum
+		sourceColumn: NCY Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EAL Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: aea239de-4d30-4e6d-8cef-8b06dab7c031
+		summarizeBy: sum
+		sourceColumn: EAL Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 47ccfee6-d531-4b73-9069-62bf9de0772f
+		summarizeBy: sum
+		sourceColumn: SEN Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PP Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: d642db64-c045-488c-ab52-45f1bfa54735
+		summarizeBy: sum
+		sourceColumn: PP Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LAC Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c6604a6-90c3-4ed1-bef6-5867c6ad2780
+		summarizeBy: sum
+		sourceColumn: LAC Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CP Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: a912a56f-2a44-4984-a3d5-27176e12bdf6
+		summarizeBy: sum
+		sourceColumn: CP Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name: DOB'
+		dataType: string
+		lineageTag: 4aaf84c5-50b9-4bd3-9fbd-353f886adc7f
+		summarizeBy: none
+		sourceColumn: Full Name: DOB
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Previous Academic Year'
+		dataType: string
+		lineageTag: 423db1e7-16be-4bd0-a4c6-58b992c7f568
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Previous Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'This Years Attendance Score' = ```
+			
+			 VAR _Attendance = RELATED('Student Year Groups'[Attendance YTD])
+			 Return
+			SWITCH(TRUE(),
+			_Attendance>=0.95,0,
+			_Attendance>=0.90,1,
+			_Attendance>=0.85,2,
+			_Attendance>=0.80,4,
+			_Attendance>=0.75,6,
+			_Attendance>=0.70,8,
+			_Attendance<0.70,10
+			)
+			```
+		formatString: 0
+		lineageTag: 87194938-e76a-4bce-9e34-aeab5fd62389
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Previous Years Attendance Score' = ```
+			
+			 VAR _Attendance = 
+			     LOOKUPVALUE('Student Year Groups'[Attendance YTD],'Student Year Groups'[Unique Student ID - Academic Year],[Unique Student ID - Previous Academic Year])
+			 Return
+			SWITCH(TRUE(),
+			ISBLANK(_Attendance),0,
+			_Attendance>=0.95,0,
+			_Attendance>=0.90,1,
+			_Attendance>=0.85,2,
+			_Attendance>=0.80,4,
+			_Attendance>=0.75,6,
+			_Attendance>=0.70,8,
+			_Attendance<0.70,10
+			)
+			```
+		formatString: 0
+		lineageTag: 6d86c34e-ca2e-4237-9424-955ead19cdea
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RONI Score' = ```
+			[KS2 PA Score]+ [NCY Score]+ [EAL Score]+ [SEN Score]+ [PP Score]+ [LAC Score]+ [CP Score]+ [This Years Attendance Score]+ [Previous Years Attendance Score]+ [Exclusion Score]+ [Deprivation Score] 
+			```
+		lineageTag: 09f295cb-5818-4ada-bcfc-470e3ddc6e3c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Risk of NEET' =
+			
+			SWITCH( TRUE(),
+			[RONI Score]<=5,"Very Low",
+			[RONI Score]<=15,"Low",
+			[RONI Score]<=25,"Medium",
+			[RONI Score]<=35,"High",
+			[RONI Score]<=45,"Very High",
+			[RONI Score]>45,"Severe"
+			)
+		lineageTag: bb1dfb50-4251-4c47-82a2-6a3dc4aa33fa
+		summarizeBy: none
+		sortByColumn: 'Risk of NEET Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk of NEET Sort' =
+			
+			SWITCH( TRUE(),
+			[RONI Score]<=5,1,
+			[RONI Score]<=15,2,
+			[RONI Score]<=25,3,
+			[RONI Score]<=35,4,
+			[RONI Score]<=45,5,
+			[RONI Score]>45,6
+			)
+		formatString: 0
+		lineageTag: d4923e0c-a44d-4d4b-8fc6-ba232d992c7a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition RONI-265f1708-b30c-4b08-a709-dcba756072f3 = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"c6facf6b-9add-4774-ac2b-cdd7278e8158" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="c6facf6b-9add-4774-ac2b-cdd7278e8158"]}[Data],
+				    RONI1 = #"c6facf6b-9add-4774-ac2b-cdd7278e8158"{[entity="RONI"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(RONI1,{"Globally Unique Student ID", "Full Name: DOB", "School Year", "Unique Student ID - Academic Year", "Unique Student ID - Previous Academic Year", "Exclusion Score", "Employment Score", "Crime Score", "IDACI Score", "Deprivation Score", "KS2 PA Score", "NCY Score", "EAL Score", "SEN Score", "PP Score", "LAC Score", "CP Score"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Other Columns",null,0,Replacer.ReplaceValue,{"Exclusion Score"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

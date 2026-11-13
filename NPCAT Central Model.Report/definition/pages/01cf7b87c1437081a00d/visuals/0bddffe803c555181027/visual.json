@@ -1,0 +1,1167 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0bddffe803c555181027",
+  "position": {
+    "x": 199.13477537437603,
+    "y": 85.191347753743756,
+    "z": 0,
+    "height": 594.20965058236277,
+    "width": 904.09317803660565
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "School Year"
+                }
+              },
+              "queryRef": "Calendar.School Year",
+              "nativeQueryRef": "School Year",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dynamic student Calc group"
+                    }
+                  },
+                  "Property": "Demographic Name"
+                }
+              },
+              "queryRef": "Dynamic student Calc group.Demographic Name",
+              "nativeQueryRef": "Demographic Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "GLD %"
+                }
+              },
+              "queryRef": "Measures Folder.GLD %",
+              "nativeQueryRef": "GLD",
+              "displayName": "GLD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "COM & LIT Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.COM & LIT Exp %",
+              "nativeQueryRef": "COM & LIT Exp %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "EYFS AVG No of ELG's at EXP"
+                }
+              },
+              "queryRef": "Measures Folder.EYFS AVG No of ELG's at EXP",
+              "nativeQueryRef": "EYFS AVG No of ELG's at EXP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Avg Points"
+                }
+              },
+              "queryRef": "Measures Folder.Avg Points",
+              "nativeQueryRef": "Avg Points"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Y1 Phonics WA %"
+                }
+              },
+              "queryRef": "Measures Folder.Y1 Phonics WA %",
+              "nativeQueryRef": "Y1 Phonics WA %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Phonics Avg. Y1 Mark"
+                }
+              },
+              "queryRef": "Measures Folder.Phonics Avg. Y1 Mark",
+              "nativeQueryRef": "Phonics Avg. Y1 Mark"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Y2 Phonics Resits WA %"
+                }
+              },
+              "queryRef": "Measures Folder.Y2 Phonics Resits WA %",
+              "nativeQueryRef": "Y2 Phonics Resits WA %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Phonics Avg. Y2 Resit Mark"
+                }
+              },
+              "queryRef": "Measures Folder.Phonics Avg. Y2 Resit Mark",
+              "nativeQueryRef": "Phonics Avg. Y2 Resit Mark"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 EXS+% - CRWM TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 EXS+% - CRWM TA",
+              "nativeQueryRef": "KS1 EXS+% - CRWM TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 EXS+% - Reading TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 EXS+% - Reading TA",
+              "nativeQueryRef": "KS1 EXS+% - Reading TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 EXS+% - Writing TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 EXS+% - Writing TA",
+              "nativeQueryRef": "KS1 EXS+% - Writing TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 EXS+% - Maths TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 EXS+% - Maths TA",
+              "nativeQueryRef": "KS1 EXS+% - Maths TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 EXS+% - Science TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 EXS+% - Science TA",
+              "nativeQueryRef": "KS1 EXS+% - Science TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 GDS% - CRWM TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 GDS% - CRWM TA",
+              "nativeQueryRef": "KS1 GDS% - CRWM TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 GDS% - Reading TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 GDS% - Reading TA",
+              "nativeQueryRef": "KS1 GDS% - Reading TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 GDS% - Writing TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 GDS% - Writing TA",
+              "nativeQueryRef": "KS1 GDS% - Writing TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS1 GDS% - Maths TA"
+                }
+              },
+              "queryRef": "Measures Folder.KS1 GDS% - Maths TA",
+              "nativeQueryRef": "KS1 GDS% - Maths TA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "MTC % Ach Full Marks"
+                }
+              },
+              "queryRef": "Measures Folder.MTC % Ach Full Marks",
+              "nativeQueryRef": "MTC % Ach Full Marks"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "MTC # Ach Full Marks"
+                }
+              },
+              "queryRef": "Measures Folder.MTC # Ach Full Marks",
+              "nativeQueryRef": "MTC # Ach Full Marks"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Avg. MTC Mark"
+                }
+              },
+              "queryRef": "Measures Folder.Avg. MTC Mark",
+              "nativeQueryRef": "Avg. MTC Mark"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 AS+/EXS+% - CRWM"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 AS+/EXS+% - CRWM",
+              "nativeQueryRef": "KS2 AS+/EXS+% - CRWM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 AS+% - Reading"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 AS+% - Reading",
+              "nativeQueryRef": "KS2 AS+% - Reading"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 EXS+% - Writing"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 EXS+% - Writing",
+              "nativeQueryRef": "KS2 EXS+% - Writing"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 AS+% - Maths"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 AS+% - Maths",
+              "nativeQueryRef": "KS2 AS+% - Maths"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 AS+% - GPS"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 AS+% - GPS",
+              "nativeQueryRef": "KS2 AS+% - GPS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 EXS+% - Science"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 EXS+% - Science",
+              "nativeQueryRef": "KS2 EXS+% - Science"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 HS% - Reading"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 HS% - Reading",
+              "nativeQueryRef": "KS2 HS% - Reading"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 GDS% - Writing"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 GDS% - Writing",
+              "nativeQueryRef": "KS2 GDS% - Writing"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 HS% - Maths"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 HS% - Maths",
+              "nativeQueryRef": "KS2 HS% - Maths"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 HS% - GPS"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 HS% - GPS",
+              "nativeQueryRef": "KS2 HS% - GPS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 Avg SS - Reading"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 Avg SS - Reading",
+              "nativeQueryRef": "KS2 Avg SS - Reading"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 Avg SS - Maths"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 Avg SS - Maths",
+              "nativeQueryRef": "KS2 Avg SS - Maths"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "KS2 Avg SS - GPS"
+                }
+              },
+              "queryRef": "Measures Folder.KS2 Avg SS - GPS",
+              "nativeQueryRef": "KS2 Avg SS - GPS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Reading Avg Progress Score"
+                }
+              },
+              "queryRef": "Measures Folder.Reading Avg Progress Score",
+              "nativeQueryRef": "Reading Avg Progress Score"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Writing Avg Progress Score"
+                }
+              },
+              "queryRef": "Measures Folder.Writing Avg Progress Score",
+              "nativeQueryRef": "Writing Avg Progress Score"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Maths Avg Progress Score"
+                }
+              },
+              "queryRef": "Measures Folder.Maths Avg Progress Score",
+              "nativeQueryRef": "Maths Avg Progress Score"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PRIME Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.PRIME Exp %",
+              "nativeQueryRef": "PRIME",
+              "displayName": "PRIME"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "COM Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.COM Exp %",
+              "nativeQueryRef": "COM",
+              "displayName": "COM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PSE Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.PSE Exp %",
+              "nativeQueryRef": "PSE",
+              "displayName": "PSE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PHY Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.PHY Exp %",
+              "nativeQueryRef": "PHY",
+              "displayName": "PHY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "SPECIFIC Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.SPECIFIC Exp %",
+              "nativeQueryRef": "SPECIFIC",
+              "displayName": "SPECIFIC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "LIT Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.LIT Exp %",
+              "nativeQueryRef": "LIT",
+              "displayName": "LIT"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "MAT Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.MAT Exp %",
+              "nativeQueryRef": "MAT",
+              "displayName": "MAT"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "UTW Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.UTW Exp %",
+              "nativeQueryRef": "UTW",
+              "displayName": "UTW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "EXP Exp %"
+                }
+              },
+              "queryRef": "Measures Folder.EXP Exp %",
+              "nativeQueryRef": "EXP",
+              "displayName": "EXP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "COM-LAU-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.COM-LAU-Expected %",
+              "nativeQueryRef": "LAU",
+              "displayName": "LAU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "COM-S-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.COM-S-Expected %",
+              "nativeQueryRef": "S",
+              "displayName": "S"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PSE-SR-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.PSE-SR-Expected %",
+              "nativeQueryRef": "SR",
+              "displayName": "SR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PSE-MS-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.PSE-MS-Expected %",
+              "nativeQueryRef": "MS",
+              "displayName": "MS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PSE-BR-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.PSE-BR-Expected %",
+              "nativeQueryRef": "BR",
+              "displayName": "BR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PHY-GMS-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.PHY-GMS-Expected %",
+              "nativeQueryRef": "GMS",
+              "displayName": "GMS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "PHY-FMS-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.PHY-FMS-Expected %",
+              "nativeQueryRef": "FMS",
+              "displayName": "FMS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "LIT-C-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.LIT-C-Expected %",
+              "nativeQueryRef": "C",
+              "displayName": "C"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "LIT-WR-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.LIT-WR-Expected %",
+              "nativeQueryRef": "WR",
+              "displayName": "WR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "LIT-W-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.LIT-W-Expected %",
+              "nativeQueryRef": "W",
+              "displayName": "W"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "MAT-N-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.MAT-N-Expected %",
+              "nativeQueryRef": "N",
+              "displayName": "N"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "MAT-NP-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.MAT-NP-Expected %",
+              "nativeQueryRef": "NP",
+              "displayName": "NP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "UTW-PP-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.UTW-PP-Expected %",
+              "nativeQueryRef": "PP",
+              "displayName": "PP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "UTW-PCC-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.UTW-PCC-Expected %",
+              "nativeQueryRef": "PCC",
+              "displayName": "PCC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "UTW-TNW-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.UTW-TNW-Expected %",
+              "nativeQueryRef": "TNW",
+              "displayName": "TNW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "EXP-CM-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.EXP-CM-Expected %",
+              "nativeQueryRef": "CM",
+              "displayName": "CM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "EXP-BIE-Expected %"
+                }
+              },
+              "queryRef": "Measures Folder.EXP-BIE-Expected %",
+              "nativeQueryRef": "BIE",
+              "displayName": "BIE"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "zP Primary EYFS Subjects"
+                    }
+                  },
+                  "Property": "Primary EYFS Subjects Fields"
+                }
+              },
+              "index": 36,
+              "length": 26
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Calendar.School Year"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Dynamic student Calc group.Demographic Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cb285e45260a004bb3ae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dynamic student Calc group"
+              }
+            },
+            "Property": "Demographic Name"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dynamic student Calc group",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Demographic Name"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'All Students'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Male'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Female'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'FSM'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Not FSM'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Male FSM'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Female FSM'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Disadvantaged'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Not Disadvantaged'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Any SEND'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'SEN Support'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'EHCP'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Not SEND'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'EAL'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Not EAL'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Autumn Born'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Spring Born'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Summer Born'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,396 @@
+table 'Absence Insurance Claims'
+	lineageTag: 334758b1-f274-4ef1-9712-b9b949f54d7a
+
+	column 'Every School ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: e949a5b8-544d-4c9f-9fd2-757dcb3fde52
+		summarizeBy: count
+		sourceColumn: Every School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Every ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: ad33770f-2673-4d20-b2c4-33ac88f4e990
+		summarizeBy: count
+		sourceColumn: Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: cf336ec1-3128-4c9e-8e12-1bdfd1957c05
+		summarizeBy: count
+		sourceColumn: Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NI Number'
+		dataType: string
+		lineageTag: 21ef89dd-e686-4090-8591-42394698d597
+		summarizeBy: none
+		sourceColumn: NI Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post ID / Contract Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: a939cca3-1f97-43a0-98b7-c671f20fc1e2
+		summarizeBy: sum
+		sourceColumn: Post ID / Contract Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence Start Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: c56df1dd-0f7b-4d22-ba82-b788e010498c
+		summarizeBy: none
+		sourceColumn: Absence Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Absence Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2d584665-a4f6-42e0-b333-79f99b2252f6
+		summarizeBy: none
+		sourceColumn: Absence Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Absence End Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 8b8d95e3-438e-459e-8b17-691a01e66915
+		summarizeBy: none
+		sourceColumn: Absence End Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'End Date of Absence'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ac54cb80-19d3-4bf1-884a-9a7402b03f8d
+		summarizeBy: none
+		sourceColumn: End Date of Absence
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Absence Type'
+		dataType: string
+		lineageTag: c75752e6-5f6e-4bde-ae52-2226fd2af64f
+		summarizeBy: none
+		sourceColumn: Absence Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Return to work completed Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 782e1be3-eeda-4f3e-bfbb-209d786677d9
+		summarizeBy: none
+		sourceColumn: Return to work completed Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Self Cert Completed Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5153145f-5320-4372-ba76-28fc217f3ff5
+		summarizeBy: none
+		sourceColumn: Self Cert Completed Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Absence DOE'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fede910f-3f19-47ae-a3c8-c8de62fd4e31
+		summarizeBy: none
+		sourceColumn: Absence DOE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Employee Post Key'
+		dataType: string
+		lineageTag: 0edc37fc-a516-4fcf-b50f-daa0a616c8a7
+		summarizeBy: none
+		sourceColumn: Employee Post Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Key'
+		dataType: string
+		lineageTag: 477350a0-8fa6-4344-bedd-c5179fa3d38f
+		summarizeBy: none
+		sourceColumn: Employee Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Absence Key'
+		dataType: string
+		lineageTag: a6d3c7de-c141-4ef1-8ebf-065d8b2cc9a1
+		summarizeBy: none
+		sourceColumn: Employee Absence Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5c57dacc-2120-444e-abf9-bed6d48599f4
+		summarizeBy: none
+		sourceColumn: Absence End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Absence Status'
+		dataType: string
+		lineageTag: abafde94-5a91-4074-9486-d54d992a9353
+		summarizeBy: none
+		sourceColumn: Absence Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Absences'
+		dataType: string
+		lineageTag: e80d24f3-2e47-458f-bca7-fd6cd2ca1782
+		summarizeBy: none
+		sourceColumn: Unique Absences
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days taken to complete RTW'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d38f621-b4a4-4bda-8e53-16eb4c9af26a
+		summarizeBy: sum
+		sourceColumn: Days taken to complete RTW
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Taken to complete Self Cert'
+		dataType: int64
+		formatString: 0
+		lineageTag: 05f88e48-1145-4fb7-acbc-2ad47500bb00
+		summarizeBy: sum
+		sourceColumn: Days Taken to complete Self Cert
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Check'
+		dataType: string
+		lineageTag: 36d3f08e-0e2a-4045-9e11-c95771c36590
+		summarizeBy: none
+		sourceColumn: Complete Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence Instance'
+		dataType: int64
+		formatString: 0
+		lineageTag: b779c3f6-d6a7-4160-bb5c-93d9d2076555
+		summarizeBy: sum
+		sourceColumn: Absence Instance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LTS Flag'
+		dataType: string
+		lineageTag: e70981d8-305b-443c-821e-22a42d195920
+		summarizeBy: none
+		sourceColumn: LTS Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post Type'
+		dataType: string
+		lineageTag: 727a9851-e105-4eff-9f2b-12bdc4268aee
+		summarizeBy: none
+		sourceColumn: Post Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Title'
+		dataType: string
+		lineageTag: 6fc7b71b-dff4-46ed-8496-fbf2e225ba25
+		summarizeBy: none
+		sourceColumn: Job Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence Reason'
+		dataType: string
+		lineageTag: 87ba6adb-cd94-4d59-a320-d9c0a68cf3b5
+		summarizeBy: none
+		sourceColumn: Absence Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Ratio'
+		dataType: double
+		lineageTag: b4680cee-c8e3-464a-a77b-9afc3dbe929c
+		summarizeBy: sum
+		sourceColumn: FTE Ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Absence Insurance Quality Check'
+		dataType: string
+		lineageTag: 4f731627-8caa-4db2-882a-7fe8e68e84e3
+		summarizeBy: none
+		sourceColumn: Absence Insurance Quality Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Absence Type Covered by Insurance'
+		dataType: string
+		lineageTag: 2f587c2b-20c0-4ee0-bdf2-ec54aedf54f9
+		summarizeBy: none
+		sourceColumn: Absence Type Covered by Insurance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Excess Period'
+		dataType: int64
+		formatString: 0
+		lineageTag: fbfa4477-027c-4db7-9411-b6df7e7d1cb1
+		summarizeBy: sum
+		sourceColumn: Excess Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Claim Days Cap'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c555542-ff93-4756-ab9b-3b489d6bd0c7
+		summarizeBy: sum
+		sourceColumn: Claim Days Cap
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Days Less Excess Period'
+		dataType: string
+		lineageTag: e538acab-21a2-4657-b8c9-a82ba8f72948
+		summarizeBy: none
+		sourceColumn: Working Days Less Excess Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Claimable Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ddd5254-7332-45c2-be5f-6afe2b4e3d0c
+		summarizeBy: sum
+		sourceColumn: Claimable Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Claim Cost Per Day'
+		dataType: double
+		lineageTag: 1c366c31-b600-4b3e-b7d4-bc92e3e221d9
+		summarizeBy: sum
+		sourceColumn: Claim Cost Per Day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Claim Cost'
+		dataType: double
+		lineageTag: a7362dfb-942e-4cf7-bd0e-0cb2e53a746f
+		summarizeBy: sum
+		sourceColumn: Total Claim Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'LTS Date'
+		dataType: string
+		lineageTag: 05cceb47-e787-440a-a7a1-4e3e41a13da0
+		summarizeBy: none
+		sourceColumn: LTS Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paid Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 25f507fd-095d-46b8-9632-5de5eff59df8
+		summarizeBy: none
+		sourceColumn: Paid Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Network Days Lost'
+		dataType: int64
+		formatString: 0
+		lineageTag: c11eae81-4ba5-4b31-ac35-337dce57caa1
+		summarizeBy: sum
+		sourceColumn: Network Days Lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days-Hours
+		dataType: string
+		lineageTag: 9f4fe252-a8ac-4160-bb9f-456a9e4a1a0e
+		summarizeBy: none
+		sourceColumn: Days-Hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Hours'
+		dataType: double
+		lineageTag: 541f49cc-9c7d-42d8-b349-19e6d083e752
+		summarizeBy: sum
+		sourceColumn: Contract Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Absence Insurance Claims' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"76242a9c-59f7-46e5-bad7-95ca4ef982af" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="76242a9c-59f7-46e5-bad7-95ca4ef982af"]}[Data],
+				    #"Absence Insurance Claims (FTE Network Days Test)_" = #"76242a9c-59f7-46e5-bad7-95ca4ef982af"{[entity="Absence Insurance Claims (FTE Network Days Test)",version=""]}[Data]
+				in
+				    #"Absence Insurance Claims (FTE Network Days Test)_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

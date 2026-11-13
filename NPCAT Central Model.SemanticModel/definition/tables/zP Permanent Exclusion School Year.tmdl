@@ -1,0 +1,78 @@
+table 'zP Permanent Exclusion School Year'
+	lineageTag: e7a8c5ec-ca0b-443f-aa29-d6c7580176d8
+
+	column 'zP Permanent Exclusion School Year'
+		lineageTag: 355fff32-7c4b-4083-962d-4b15d9c90fc1
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Permanent Exclusion School Year Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Permanent Exclusion School Year Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Permanent Exclusion School Year Fields'
+		isHidden
+		lineageTag: 5a2a8572-a113-43ea-b598-52fce514411c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Permanent Exclusion School Year Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Permanent Exclusion School Year Order'
+		isHidden
+		formatString: 0
+		lineageTag: fab9d662-1a6b-4d1c-9091-dd7efba02b57
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Permanent Excluded Type' =
+			
+			
+			SWITCH( TRUE(),
+			CONTAINSSTRING (
+			        [zP Permanent Exclusion School Year Fields],
+			        "Percentage"
+			    ), "%",
+			    NOT(CONTAINSSTRING (
+			        [zP Permanent Exclusion School Year Fields],
+			        "Percentage")
+			    ), "No."
+			)
+		lineageTag: 5339fea7-e54c-4e0a-bf32-2fdc951e2d24
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Permanent Exclusion School Year-0407ba6b-a8d1-4ce6-a880-afef94bf7c42' = calculated
+		mode: import
+		source =
+				
+				VAR CurrentYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = 0)
+				VAR LastYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -1)
+				VAR TwoYearAgo =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -2)
+				
+				RETURN
+				{
+				    (CurrentYear, NAMEOF('Measures Folder'[Permanent Exclusions YTD]), 2),
+				    (LastYear, NAMEOF('Measures Folder'[Permanent Exclusions -1 Year]), 1),
+				    (TwoYearAgo, NAMEOF('Measures Folder'[Permanent Exclusions -2 Year]), 0),
+				    ("SPLY", NAMEOF('Measures Folder'[Permanent Exclusions YTD SPLY]), 3),
+				    (CurrentYear, NAMEOF('Measures Folder'[Permanent Percentage Exclusions YTD]), 6),
+				    (LastYear, NAMEOF('Measures Folder'[Permanent Percentage Exclusions -1 Year]), 5),
+				    (TwoYearAgo, NAMEOF('Measures Folder'[Permanent Percentage Exclusions -2 Year]), 4),
+				    ("SPLY", NAMEOF('Measures Folder'[Permanent Percentage Exclusions YTD SPLY]), 7)
+				}
+
+	annotation PBI_Id = 3d5ea15725924edea09744de80303342
+

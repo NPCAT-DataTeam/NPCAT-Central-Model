@@ -1,0 +1,83 @@
+table 'zP Absentee Birthday'
+	lineageTag: 379a1081-0226-4def-bd05-706ba8f3356e
+
+	column 'zP Absentee Birthday'
+		lineageTag: e52d53fc-af5b-42cf-976d-e6e5c00a8ec3
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Absentee Birthday Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Absentee Birthday Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Absentee Birthday Fields'
+		isHidden
+		lineageTag: 9ef4e3df-a50d-4464-99ad-d8f4ae5d05eb
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Absentee Birthday Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Absentee Birthday Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2b6a3561-e501-4840-b0f4-99aa6b6512df
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birthday Absentee Category' = ```
+			
+			SWITCH( 
+			    TRUE(),
+			    CONTAINSSTRING([zP Absentee Birthday],"%"),"%",
+			    CONTAINSSTRING([zP Absentee Birthday],"Sessions"),"Sessions",
+			    CONTAINSSTRING([zP Absentee Birthday],"Students"),"Students"
+			)
+			```
+		lineageTag: 8cf68077-bf83-40b3-8b97-a56d553dac9e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birthday Absentee Time Series' = ```
+			
+			SWITCH( 
+			    TRUE(),
+			    CONTAINSSTRING([zP Absentee Birthday],"CY"),"CY",
+			    CONTAINSSTRING([zP Absentee Birthday],"PY"),"PY",
+			    CONTAINSSTRING([zP Absentee Birthday],"YoY"),"YoY"
+			)
+			```
+		lineageTag: 4b86dd84-547b-4ee0-a951-ff7062b91681
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Absentee Birthday' = calculated
+		mode: import
+		source =
+				{
+				    ("Sessions Absent Arround BDay CY", NAMEOF('Measures Folder'[Sessions Absent Arround BDay CY]), 0),
+				    ("Sessions Absent Arround BDay PY", NAMEOF('Measures Folder'[Sessions Absent Arround BDay PY]), 1),
+				    ("Sessions Absent Arround BDay YoY", NAMEOF('Measures Folder'[Sessions Absent Arround BDay YoY]), 2),
+				    ("Students Absent Over BDay % CY", NAMEOF('Measures Folder'[Students Absent Over BDay % CY]), 3),
+				    ("Students Absent Over BDay % PY", NAMEOF('Measures Folder'[Students Absent Over BDay % PY]), 4),
+				    ("Students Absent Over BDay % YoY", NAMEOF('Measures Folder'[Students Absent Over BDay % YoY]), 5),
+				    ("Students Absent Over BDay CY", NAMEOF('Measures Folder'[Students Absent Over BDay CY]), 6),
+				    ("Students Absent Over BDay PY", NAMEOF('Measures Folder'[Students Absent Over BDay PY]), 7),
+				    ("Students Absent Over BDay YoY", NAMEOF('Measures Folder'[Students Absent Over BDay YoY]), 8)
+				}
+
+	annotation PBI_Id = 1db59221ef104047964597d81c439a93
+

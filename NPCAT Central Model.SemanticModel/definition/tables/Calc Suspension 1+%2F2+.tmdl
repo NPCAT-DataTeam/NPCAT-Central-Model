@@ -1,0 +1,32 @@
+table 'Calc Suspension 1+/2+'
+	lineageTag: ae3baa3d-ef29-40f0-9a23-b5c25ec32382
+
+	calculationGroup
+		precedence: 13
+
+		calculationItem '1+ Suspension' =
+				CALCULATE (
+				    SELECTEDMEASURE (), 'Behaviour Sanctions'[Suspensions YTD] > 0
+				)
+
+		calculationItem '2+ Suspension' = CALCULATE ( SELECTEDMEASURE (), 'Behaviour Sanctions'[Suspensions YTD] > 1)
+
+	column Name
+		dataType: string
+		lineageTag: 5e29eb51-0f62-47ef-8be2-25529643d668
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		lineageTag: 84c03b62-32de-4e10-b5c4-e0b9adadf2f2
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation TE3_TableRenamedFrom = Calculation Group: Exclusion 1+/2+
+

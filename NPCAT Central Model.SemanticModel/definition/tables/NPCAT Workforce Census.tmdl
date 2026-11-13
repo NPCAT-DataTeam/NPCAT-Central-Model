@@ -1,0 +1,209 @@
+table 'NPCAT Workforce Census'
+	lineageTag: 2e51ea83-db38-4b5f-907d-b6ce52c180f1
+
+	column 'School URN'
+		dataType: string
+		lineageTag: 06e26044-e95a-4512-a9a3-5cf8ceb8f24b
+		summarizeBy: none
+		sourceColumn: School URN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Workforce'
+		dataType: double
+		lineageTag: f03adc6b-a75a-45c3-8e3f-028b126df3df
+		summarizeBy: none
+		sourceColumn: FTE Workforce
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE All Teachers'
+		dataType: double
+		lineageTag: 49fbbe78-213e-4437-a168-e05217200bbf
+		summarizeBy: none
+		sourceColumn: FTE All Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE Leadership Teachers'
+		dataType: double
+		lineageTag: babfd651-b706-49cb-8178-a8a7fd9f0851
+		summarizeBy: none
+		sourceColumn: FTE Leadership Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE Teaching Assistants'
+		dataType: double
+		lineageTag: 6f0fb8e3-0505-4009-a672-2dd7e5a22aa2
+		summarizeBy: none
+		sourceColumn: FTE Teaching Assistants
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Census Date'
+		dataType: string
+		lineageTag: 90456d38-a9ff-4eff-a5a7-3f1f1db63e19
+		summarizeBy: none
+		sourceColumn: Census Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		isHidden
+		lineageTag: e41fe246-3298-4d26-b5cc-4bc6bee16239
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Classroom Teachers'
+		dataType: string
+		lineageTag: dc89521e-6019-406f-aef2-27b4c53ce353
+		summarizeBy: none
+		sourceColumn: FTE Classroom Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Head Teachers'
+		dataType: string
+		lineageTag: 19ed3430-44eb-4156-bfc0-4d3f58ea0e2c
+		summarizeBy: none
+		sourceColumn: FTE Head Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Deputy Head Teachers'
+		dataType: string
+		lineageTag: 3f7520d6-7a75-42b9-b72d-0f1f042b0bf8
+		summarizeBy: none
+		sourceColumn: FTE Deputy Head Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Assistant Head Teachers'
+		dataType: string
+		lineageTag: f44bcac5-75ae-4632-878c-bb1f36315dcd
+		summarizeBy: none
+		sourceColumn: FTE Assistant Head Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Other School Support Staff'
+		dataType: string
+		lineageTag: 77d2e93e-adfc-4da1-a098-09b97d0ccf57
+		summarizeBy: none
+		sourceColumn: FTE Other School Support Staff
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Administrative Staff'
+		dataType: string
+		lineageTag: a9b78db6-26f2-46ac-856d-c870b024c161
+		summarizeBy: none
+		sourceColumn: FTE Administrative Staff
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Workforce'
+		dataType: string
+		lineageTag: ec2172f2-17f7-4ac1-b14a-c115bd01fc57
+		summarizeBy: none
+		sourceColumn: HC Workforce
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC All Teachers'
+		dataType: string
+		lineageTag: 624d4cc3-f77a-4b19-a620-10553b1a0966
+		summarizeBy: none
+		sourceColumn: HC All Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Classroom Teachers'
+		dataType: string
+		lineageTag: 860f9a1f-cd31-4cbd-8d0f-aff04c8b880f
+		summarizeBy: none
+		sourceColumn: HC Classroom Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Leadership Teachers'
+		dataType: string
+		lineageTag: 152bd6b1-1e2a-429e-b66e-c69b30bc16c8
+		summarizeBy: none
+		sourceColumn: HC Leadership Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Head Teachers'
+		dataType: string
+		lineageTag: 07e2a06a-914c-48f2-a9db-3c40f55d2244
+		summarizeBy: none
+		sourceColumn: HC Head Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Deputy Head Teachers'
+		dataType: string
+		lineageTag: dfca2ea6-8e3b-4213-88b9-e8c379968e27
+		summarizeBy: none
+		sourceColumn: HC Deputy Head Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Assistant Head Teachers'
+		dataType: string
+		lineageTag: 91c3fceb-015f-4a9f-8a62-bb1f1f7aa1b8
+		summarizeBy: none
+		sourceColumn: HC Assistant Head Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Teaching Assistants'
+		dataType: string
+		lineageTag: b58a2274-3c68-414c-bb11-bca7ef26a522
+		summarizeBy: none
+		sourceColumn: HC Teaching Assistants
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Other School Support Staff'
+		dataType: string
+		lineageTag: 7a80ac57-f27f-425b-b617-b0ce98ae6bb5
+		summarizeBy: none
+		sourceColumn: HC Other School Support Staff
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HC Administrative Staff'
+		dataType: string
+		lineageTag: 42da26ab-7307-437d-becf-34b7550ecee7
+		summarizeBy: none
+		sourceColumn: HC Administrative Staff
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'NPCAT Workforce Census-6f7ef611-0aba-4211-ac16-425ae9f92f83' = m
+		mode: import
+		queryGroup: Finance
+		source =
+				let
+				    Source = #"Workforce Census",
+				    #"Merged Queries" = Table.NestedJoin(Source, {"School URN"}, #"School Database", {"URN/UID"}, "School Database", JoinKind.Inner),
+				    #"Expanded School Database" = Table.ExpandTableColumn(#"Merged Queries", "School Database", {"SU ID"}, {"SU ID"})
+				in
+				    #"Expanded School Database"
+
+	annotation PBI_ResultType = Table
+

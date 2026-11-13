@@ -1,0 +1,222 @@
+table 'SEN Audit Visits'
+	lineageTag: 93fc3a86-e55b-4541-8966-befd805a3000
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: c65fef93-9027-4cbd-a1d0-75c7c7687961
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: fdeae47f-67de-4cf0-8ec8-db5404bb9f82
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date of QA'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 898e48a2-e2d7-4547-92e9-4a5c53cfd55b
+		summarizeBy: none
+		sourceColumn: Date of QA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Completed by'
+		dataType: string
+		lineageTag: f89a2447-df46-432e-baa4-3fc6337327f1
+		summarizeBy: none
+		sourceColumn: Completed by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Report Shared with at school'
+		dataType: string
+		lineageTag: 5d11d2b3-19f6-4f98-8aa6-273977161c9c
+		summarizeBy: none
+		sourceColumn: Report Shared with at school
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Actions required-Policies/ Statutory Compliance'
+		dataType: string
+		lineageTag: e1fe01cd-4d66-4fb0-8f95-56a4f09ca458
+		summarizeBy: none
+		sourceColumn: School Actions required-Policies/ Statutory Compliance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Actions required - Involvement of Parents, Carers and Pupils'
+		dataType: string
+		lineageTag: 40dab12b-4726-4942-a7b2-6eb393abc2b7
+		summarizeBy: none
+		sourceColumn: School Actions required - Involvement of Parents, Carers and Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Actions required - Leadership and Management'
+		dataType: string
+		lineageTag: 0fdd5cf1-1366-4ac8-be71-f42ae0ef21fc
+		summarizeBy: none
+		sourceColumn: School Actions required - Leadership and Management
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Actions required - Teaching and Learning'
+		dataType: string
+		lineageTag: 2c64ce3c-1c07-44f9-927c-10dbb66cc550
+		summarizeBy: none
+		sourceColumn: School Actions required - Teaching and Learning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of pupils with EHCP'
+		dataType: int64
+		formatString: 0
+		lineageTag: f24ed738-0287-4f0d-b9f0-0d17fdff0748
+		summarizeBy: sum
+		sourceColumn: Number of pupils with EHCP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentage of pupils with EHCP'
+		dataType: double
+		lineageTag: bc4773f4-1af9-4550-a587-136a747e2897
+		summarizeBy: sum
+		sourceColumn: Percentage of pupils with EHCP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Number of pupils with SEN Support'
+		dataType: int64
+		formatString: 0
+		lineageTag: 445368cb-1fa1-4198-8138-3e734b473dcd
+		summarizeBy: sum
+		sourceColumn: Number of pupils with SEN Support
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentage of pupils with SEN Support'
+		dataType: double
+		lineageTag: 0995bb65-023c-4993-9066-95836d61ef03
+		summarizeBy: sum
+		sourceColumn: Percentage of pupils with SEN Support
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Notes - Policies/ Statutory Compliance'
+		dataType: string
+		lineageTag: 507731bf-3403-4423-a3a1-de573df2e11e
+		summarizeBy: none
+		sourceColumn: Notes - Policies/ Statutory Compliance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Notes - Involvement of Parents, Carers and Pupils'
+		dataType: string
+		lineageTag: af2fb0d7-d557-4b2b-9eae-18887d13e5e6
+		summarizeBy: none
+		sourceColumn: Notes - Involvement of Parents, Carers and Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Notes - Leadership and Management'
+		dataType: string
+		lineageTag: 4672c69c-f41d-4aca-9e03-697b61494406
+		summarizeBy: none
+		sourceColumn: Notes - Leadership and Management
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Notes - Teaching and Learning'
+		dataType: string
+		lineageTag: 0be2bbce-04cf-4f02-85a0-702d58294471
+		summarizeBy: none
+		sourceColumn: Notes - Teaching and Learning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dbf43c6-aa98-42aa-8c81-deaa557db96e
+		summarizeBy: sum
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: d4efce32-dc6b-4598-a87e-d804bb5e5198
+		summarizeBy: sum
+		sourceColumn: QA Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: addcd22f-e5e0-46cb-b1c7-a207547cd27c
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Compliance Tier' =
+			
+			SWITCH(
+			    TRUE(),
+			        [SEN Compliance % (Most Recent QA)] = 1,1,
+			        [SEN Compliance % (Most Recent QA)] > 0.95,2,
+			        [SEN Compliance % (Most Recent QA)] >= 0.9,3,
+			        [SEN Compliance % (Most Recent QA)] < 0.9,4
+			    )
+		formatString: 0
+		lineageTag: 0f8f3087-0894-4823-8695-b2bfb5defead
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Compliance Tier Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			        [SEN Compliance % (Most Recent QA)] = 1,1,
+			        [SEN Compliance % (Most Recent QA)] > 0.95,2,
+			        [SEN Compliance % (Most Recent QA)] >= 0.9,3,
+			        [SEN Compliance % (Most Recent QA)] < 0.9,4
+			    )
+		formatString: 0
+		lineageTag: 03a9f129-59de-4be8-a67f-805f598fd0f7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SEN Audit Visits' = m
+		mode: import
+		queryGroup: 'Microsoft/Google Forms'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"SEN Audit Visits (staging)_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="SEN Audit Visits (staging)",version=""]}[Data]
+				in
+				    #"SEN Audit Visits (staging)_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

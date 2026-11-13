@@ -1,0 +1,52 @@
+table 'zP Assessment Indicators (South)'
+	lineageTag: bb1059f6-ca0e-4da5-8860-8815c79d14af
+
+	column 'zP. Assessment Indicators (South)'
+		lineageTag: 15194b48-cfe0-457c-a232-f698151c4400
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP. Assessment Indicators (South) Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP. Assessment Indicators (South) Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP. Assessment Indicators (South) Fields'
+		isHidden
+		lineageTag: b27a07a1-33d3-42a5-8a18-c2e91ee7cfd3
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP. Assessment Indicators (South) Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP. Assessment Indicators (South) Order'
+		isHidden
+		formatString: 0
+		lineageTag: e504be5b-c613-4069-bcc0-24a03806c1f0
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Assessment Indicators (South)-24052168-782f-4154-bceb-d2e895fa9104' = calculated
+		mode: import
+		source =
+				{
+				    ("BLW %", NAMEOF('Measures Folder'[2. Below %]), 0),
+				    ("WTS %", NAMEOF('Measures Folder'[2. Working Towards %]), 1),
+				    ("AT %", NAMEOF('Measures Folder'[2. At %]), 2),
+				    ("AB %", NAMEOF('Measures Folder'[2. Above %]), 3),
+				    ("WTS+ %", NAMEOF('Measures Folder'[2. Working Towards or Above %]), 4),
+				    ("AT+ %", NAMEOF('Measures Folder'[2. At or Above %]), 5)
+				}
+
+	annotation PBI_Id = 806777d0032f4b47a8a86cdb5cf43efb
+

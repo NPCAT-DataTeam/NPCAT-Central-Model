@@ -1,0 +1,57 @@
+table 'Secondary Standards QA Measures'
+	lineageTag: 64e198ce-77d2-4137-8734-e719fac6043f
+
+	column 'Secondary Standards QA Measures'
+		lineageTag: eb807b35-2633-44f5-8714-41e0577563b6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Secondary Standards QA Measures Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Secondary Standards QA Measures Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Secondary Standards QA Measures Fields'
+		isHidden
+		lineageTag: 33cc4ef8-ac7c-4642-bbc5-b5abac3fc571
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Secondary Standards QA Measures Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Secondary Standards QA Measures Order'
+		isHidden
+		formatString: 0
+		lineageTag: 641ec684-a2cc-4b76-a024-0b90a45e08e4
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Secondary Standards QA Measures' = calculated
+		mode: import
+		source =
+				{
+				    ("N/A Standard", NAMEOF('Measures Folder'[N/A Standard]), 0),
+				    ("Not Met Standard", NAMEOF('Measures Folder'[Not Met Standard]), 1),
+				    ("Partially Met Standard", NAMEOF('Measures Folder'[Partially Met Standard]), 2),
+				    ("Met Standard", NAMEOF('Measures Folder'[Met Standard]), 3),
+				    ("Not Met Standard %", NAMEOF('Measures Folder'[Not Met Standard %]), 4),
+				    ("Partially Met Standard %", NAMEOF('Measures Folder'[Partially Met Standard %]), 5),
+				    ("Met Standard %", NAMEOF('Measures Folder'[Met Standard %]), 6),
+				    ("Overall Standard %", NAMEOF('Measures Folder'[Overall Standard %]), 7),
+				    ("Observation %", NAMEOF('Measures Folder'[Observation %]), 8),
+				    ("Teachers Observed", NAMEOF('Measures Folder'[Teachers Observed]), 9),
+				    ("Total Standards Observations", NAMEOF('Measures Folder'[Total Standards Observations]), 10)
+				}
+
+	annotation PBI_Id = 6ce63e04351048099c8dc37c8a1b0843
+

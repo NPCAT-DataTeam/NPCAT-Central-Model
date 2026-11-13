@@ -1,0 +1,84 @@
+table 'Primary National Measures'
+	lineageTag: 4b877fe1-9e06-4c61-96ef-be7ff91b0525
+
+	column 'Variable Name'
+		dataType: string
+		lineageTag: 3f9a69d0-ab82-41d3-a893-c809d448340e
+		summarizeBy: none
+		sourceColumn: Variable Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variable Description'
+		dataType: string
+		lineageTag: b4fb0eb2-1544-42aa-9783-02e3a7622009
+		summarizeBy: none
+		sourceColumn: Variable Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 86ee670a-ebe3-401b-92c6-1d426622c4eb
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage'
+		dataType: string
+		lineageTag: 46d01d08-1e4d-4390-b7b8-aeaf97efc0e8
+		summarizeBy: none
+		sourceColumn: Key Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: dc1410ca-1144-4287-9cef-ed9ab5def94e
+		summarizeBy: none
+		sourceColumn: Key Stage Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage & Measure'
+		dataType: string
+		lineageTag: a178d1cd-457e-4ea1-b60e-2ba73eb4f870
+		summarizeBy: none
+		sourceColumn: Key Stage & Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Central Model Audit Check'
+		dataType: string
+		lineageTag: 1cda6f63-d6ac-4a57-bc56-8d4149811843
+		summarizeBy: none
+		sourceColumn: Central Model Audit Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Central Model Measure Name'
+		dataType: string
+		lineageTag: 0a24dba4-2e3c-4768-94be-3b27ea8de100
+		summarizeBy: none
+		sourceColumn: Central Model Measure Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary National Measures' = m
+		mode: import
+		queryGroup: 'Primary\Primary Nationals'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"367f4448-a928-4f2b-9233-266612d07dab" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="367f4448-a928-4f2b-9233-266612d07dab"]}[Data],
+				    #"Primary National Measures_" = #"367f4448-a928-4f2b-9233-266612d07dab"{[entity="Primary National Measures",version=""]}[Data]
+				in
+				    #"Primary National Measures_"
+
+	annotation PBI_ResultType = Table
+

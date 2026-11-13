@@ -1,0 +1,65 @@
+table 'zP KS4 Subject Measure'
+	lineageTag: ca879f41-f4fa-4f01-8b86-08d11f922c88
+
+	column 'zP KS4 Subject Measure'
+		lineageTag: 6f3e8856-b186-4c90-9e29-d547f7b8b51d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS4 Subject Measure Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS4 Subject Measure Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Subject Measure Fields'
+		isHidden
+		lineageTag: 60738ab6-054c-4ce7-bbbc-d2120d4a368b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS4 Subject Measure Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Subject Measure Order'
+		isHidden
+		formatString: 0
+		lineageTag: cb12c2bd-bf35-466a-84e9-d8c34e895023
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS4 Subject Measure-52bda319-efc7-40e2-a438-2e5c36b7cb9b' = calculated
+		mode: import
+		source =
+				{
+				    ("Avg Points", NAMEOF('Measures Folder'[Subject Grade]),0),
+				    ("No KS2", NAMEOF('Measures Folder'[Count N/A KS2 Prior Attainment Short]),1),
+				    ("L KS2", NAMEOF('Measures Folder'[Count L KS2 Prior Attainment Short]),2),
+				    ("M KS2", NAMEOF('Measures Folder'[Count M KS2 Prior Attainment Short]),3),
+				    ("H KS2", NAMEOF('Measures Folder'[Count H KS2 Prior Attainment Short]),4),
+				    ("Avg KS2", NAMEOF('Measures Folder'[Average KS2 (Subject Level)]),5),
+				    ("Total Grades", NAMEOF('Measures Folder'[Number of Grades]),6),
+				    ("P8 / SPI", NAMEOF('Measures Folder'[Subject Progress 8 (SPI)]),7),
+				    ("% 9+", NAMEOF('Measures Folder'[Subject Grade 9+]), 8),
+				    ("% 8+", NAMEOF('Measures Folder'[Subject Grade 8+]), 9),
+				    ("% 7+", NAMEOF('Measures Folder'[Subject Grade 7+]), 10),
+				    ("% 6+", NAMEOF('Measures Folder'[Subject Grade 6+]), 11),
+				    ("% 5+", NAMEOF('Measures Folder'[Subject Grade 5+]), 12),
+				    ("% 4+", NAMEOF('Measures Folder'[Subject Grade 4+]), 13),
+				    ("% 3+", NAMEOF('Measures Folder'[Subject Grade 3+]), 14),
+				    ("% 2+", NAMEOF('Measures Folder'[Subject Grade 2+]), 15),
+				    ("% 1+", NAMEOF('Measures Folder'[Subject Grade 1+]), 16),
+				    ("Slots Filled", NAMEOF('Measures Folder'[Total Slots Filled]), 17),
+				    ("% in Spare", NAMEOF('Measures Folder'[% Slots in Spare Bucket]), 18)
+				}
+
+	annotation PBI_Id = 2d2ab387de00440792dead67bb7c33b1
+

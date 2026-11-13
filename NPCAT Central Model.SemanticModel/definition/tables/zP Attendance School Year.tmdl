@@ -1,0 +1,56 @@
+table 'zP Attendance School Year'
+	lineageTag: 7ce6e0f0-d885-477d-bff4-c1f55f0a5b3d
+
+	column 'Z Attendance School Year'
+		lineageTag: bb92bfb0-18c2-4e29-b4bc-5ab6623cbd04
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Z Attendance School Year Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Z Attendance School Year Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Z Attendance School Year Fields'
+		isHidden
+		lineageTag: 1d6e7b00-bffa-4cfc-b4e5-7374bb6aab20
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Z Attendance School Year Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Z Attendance School Year Order'
+		isHidden
+		formatString: 0
+		lineageTag: 6d937e57-7ddf-4e9d-ab0d-4fe77a5cdc03
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Attendance School Year-cf742ae4-b4cf-42f6-9826-b88bf68972a2' = calculated
+		mode: import
+		source =
+				
+				VAR CurrentYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = 0)
+				VAR LastYear =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -1)
+				VAR TwoYearAgo =CALCULATE(Max('Calendar'[School Year]),'Calendar'[Current School Year Offset] = -2)
+				
+				RETURN
+				{
+				    (TwoYearAgo, NAMEOF('Measures Folder'[Attendance Year End (-2 Years)]), 0),
+				    (LastYear, NAMEOF('Measures Folder'[Attendance Year End (-1 Years)]), 1),
+				    (CurrentYear, NAMEOF('Measures Folder'[Attendance Percentage YTD]), 2),
+				    ("SPLY", NAMEOF('Measures Folder'[Attendance Percentage YTD SPLY]), 3)
+				}
+
+	annotation PBI_Id = 3a97d86bdc7246a3a4c899e7d8a9a481
+

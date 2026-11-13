@@ -1,0 +1,7 @@
+role 'St Gabriel''s'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT18"
+
+	annotation PBI_Id = 51c64ec385644860be621f6ca01421c9
+

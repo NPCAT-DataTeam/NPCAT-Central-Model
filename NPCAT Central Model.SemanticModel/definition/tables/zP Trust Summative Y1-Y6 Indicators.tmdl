@@ -1,0 +1,53 @@
+table 'zP Trust Summative Y1-Y6 Indicators'
+	lineageTag: e1d01341-7e73-4761-abdb-1cea158d53fc
+
+	column 'zP Trust Summative Y1-Y6 Indicators'
+		lineageTag: fb662906-43cf-4404-adde-c4bd9dfe8340
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Trust Summative Y1-Y6 Indicators Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Trust Summative Y1-Y6 Indicators Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Trust Summative Y1-Y6 Indicators Fields'
+		isHidden
+		lineageTag: 6eb452b7-7818-44b8-bd81-1d39af182825
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Trust Summative Y1-Y6 Indicators Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Trust Summative Y1-Y6 Indicators Order'
+		isHidden
+		formatString: 0
+		lineageTag: adcfe3b5-4863-4959-94cc-7e52f02f2817
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Trust Summative Y1-Y6 Indicators-b35c4d71-a86b-453a-ae16-81690750db31' = calculated
+		mode: import
+		source =
+				{
+				    ("BLW %", NAMEOF([Below % (Period ARE Target)]), 0),
+				    ("OT %", NAMEOF([On Track % (Period ARE Target)]), 1),
+				    ("AT %", NAMEOF([At % (Period ARE Target)]), 2),
+				    ("AB %", NAMEOF([Above % (Period ARE Target)]), 3),
+				    ("OT+ %", NAMEOF([On Track or Above % (Period ARE Target)]), 4),
+				    ("AT+ %", NAMEOF([At or Above % (Period ARE Target)]), 5),
+				    ("Avg. Prog", NAMEOF([Avg Baseline Variation Period Offset Measure]), 6)
+				}
+
+	annotation PBI_Id = a49d79e340fb407da848a44d79fe37e3
+

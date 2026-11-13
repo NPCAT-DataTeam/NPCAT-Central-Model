@@ -1,0 +1,7 @@
+role 'St Thomas More'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT16"
+
+	annotation PBI_Id = 36f5fc26eae24f3899f9dfec69580d1a
+

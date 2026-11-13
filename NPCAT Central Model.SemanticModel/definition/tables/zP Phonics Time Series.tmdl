@@ -1,0 +1,59 @@
+table 'zP Phonics Time Series'
+	lineageTag: ddbd5ad2-99ef-4aa8-b408-935fd5c89a96
+
+	column 'zP Phonics Time Series'
+		lineageTag: a3324b42-8aa4-4a56-9968-18b8ea6fa940
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Phonics Time Series Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Phonics Time Series Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Phonics Time Series Fields'
+		isHidden
+		lineageTag: 300c3a8a-61b0-4546-8583-ec2bb02b2ff2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Phonics Time Series Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Phonics Time Series Order'
+		isHidden
+		formatString: 0
+		lineageTag: 431e9c2f-5a46-4c97-82ed-6842007a34e8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phonics Year Group' =
+			Switch(TRUE(),
+			CONTAINSSTRING('zP Phonics Time Series'[zP Phonics Time Series Fields],"Y1"),"Y1",
+			CONTAINSSTRING('zP Phonics Time Series'[zP Phonics Time Series Fields],"Y2"),"Y2")
+		lineageTag: 3b9897a3-db79-4e41-8ee5-43e55d7f10fc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Phonics Time Series-5cffb6a6-968d-4e10-a5e0-46f3329efd9b' = calculated
+		mode: import
+		source =
+				{
+				    ("WA %", NAMEOF('Measures Folder'[Y1 Phonics WA %]), 0),
+				    ("Avg Mark", NAMEOF('Measures Folder'[Phonics Avg. Y1 Mark]), 1),
+				    ("WA %", NAMEOF('Measures Folder'[Y2 Phonics Resits WA %]), 2),
+				    ("Avg Mark", NAMEOF('Measures Folder'[Phonics Avg. Y2 Resit Mark]), 3)
+				}
+
+	annotation PBI_Id = 2add693a984b4f83a135169ff5e0c781
+

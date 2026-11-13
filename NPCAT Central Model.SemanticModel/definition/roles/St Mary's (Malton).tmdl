@@ -1,0 +1,7 @@
+role 'St Mary''s (Malton)'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT34"
+
+	annotation PBI_Id = 7b24312c4e5d4a0d92dd1054cd402213
+

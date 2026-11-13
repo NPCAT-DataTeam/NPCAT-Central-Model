@@ -1,0 +1,189 @@
+table 'Governance KPI Tracker'
+	lineageTag: 50517cc0-0bfc-4c78-b874-0e559e927506
+
+	column 'Email address'
+		dataType: string
+		lineageTag: e2406081-07b9-42db-913f-ba4aaf1ac074
+		summarizeBy: none
+		sourceColumn: Email address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School / Governing Body'
+		dataType: string
+		lineageTag: 42729938-9302-4e18-9211-0cd1b2142dcd
+		summarizeBy: none
+		sourceColumn: School / Governing Body
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meeting Type'
+		dataType: string
+		lineageTag: 5d0ce7b0-4cf7-4940-930d-b4756ace8f35
+		summarizeBy: none
+		sourceColumn: Meeting Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Papers Received'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e9d5dd0d-1d7c-4b11-8144-6c8262921919
+		summarizeBy: none
+		sourceColumn: Date Papers Received
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Papers Sent'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: edfb89a5-c879-4be0-95e6-2857b4b67401
+		summarizeBy: none
+		sourceColumn: Date Papers Sent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date of Meeting'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: da492c77-bc9c-4b8b-a81f-3bef02f1c59d
+		summarizeBy: none
+		sourceColumn: Date of Meeting
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Working Days for Minutes Creation'
+		dataType: int64
+		formatString: 0
+		lineageTag: 72fb0aac-0ec0-45c8-9d2f-16cfc9849368
+		summarizeBy: none
+		sourceColumn: Working Days for Minutes Creation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent Vacancies'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d85b1b5-cd85-4b93-984e-5d5e7cdc9972
+		summarizeBy: none
+		sourceColumn: Parent Vacancies
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Foundation Vacancies'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6da5e151-0dd5-419f-b3df-ae8a37497bee
+		summarizeBy: none
+		sourceColumn: Foundation Vacancies
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Staff Governor Vacancies'
+		dataType: int64
+		formatString: 0
+		lineageTag: dd620788-8465-48da-b601-2649ffb44ffb
+		summarizeBy: none
+		sourceColumn: Staff Governor Vacancies
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Vacancies'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d23db77-6618-4f1f-8bb3-dcee61c88eef
+		summarizeBy: none
+		sourceColumn: Total Vacancies
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Most Recent Govenor Meeting' =
+			
+			var __School = 'Governance KPI Tracker'[School / Governing Body]
+			var __MostRecentDate = CALCULATE(MAX('Governance KPI Tracker'[Date of Meeting]),ALL('Governance KPI Tracker'),'Governance KPI Tracker'[School / Governing Body] = __School)
+			return
+			IF('Governance KPI Tracker'[Date of Meeting] = __MostRecentDate,"Yes","No")
+		lineageTag: d5d9e089-aa9c-4345-a6a0-38da9539d928
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Notice of Papers Recieved'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9260ddd6-40ae-406c-b596-e367b9c442a0
+		summarizeBy: none
+		sourceColumn: Days Notice of Papers Recieved
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Notice of Papers Sent'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dc9a996-a248-4340-b6c6-c00b70d1f6be
+		summarizeBy: none
+		sourceColumn: Days Notice of Papers Sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: e16dae5d-4efe-4cde-b1b7-43310440a898
+		summarizeBy: none
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Subgroup ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ff51ead-3c37-4f08-9a28-dcb5a70b7a9c
+		summarizeBy: none
+		sourceColumn: Current Subgroup ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup ID Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: 115432d7-b1a5-4e76-aaa4-17b1eb1ab39c
+		summarizeBy: none
+		sourceColumn: Subgroup ID Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Late' =
+			
+			CALCULATE (
+			        7 - [Average Number of days for Papers Received],
+			        'Governance KPI Tracker'[Is Most Recent Govenor Meeting] = "Yes"
+			    )
+		lineageTag: 77faac1d-db33-4d8e-ad2d-8b6a54c2b3e0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Governance KPI Tracker-f8a07948-9ec8-40c4-b099-e3ea526c23eb' = m
+		mode: import
+		queryGroup: 'Microsoft/Google Forms'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Governance KPI Tracker_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Governance KPI Tracker",version=""]}[Data]
+				in
+				    #"Governance KPI Tracker_"
+
+	annotation PBI_ResultType = Table
+

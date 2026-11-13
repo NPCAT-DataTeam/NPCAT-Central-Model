@@ -1,0 +1,751 @@
+table 'Student Database (Full)'
+	lineageTag: 8f752b3d-3274-4b47-bc3a-10a5c5f5d4a3
+
+	column UPN
+		dataType: string
+		lineageTag: 29476c7e-4e68-48a2-89ed-29c7a4e7758f
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forename
+		dataType: string
+		lineageTag: 64587736-1130-4d75-9dca-c2a63c26207b
+		summarizeBy: none
+		sourceColumn: Forename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Legal Surname'
+		dataType: string
+		lineageTag: e242f6f4-9bbe-4249-9a32-1f5975782a93
+		summarizeBy: none
+		sourceColumn: Legal Surname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: c3abebfb-8f2b-4e4d-9dbf-cd6c5c9b8719
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: d-mmm-yy
+		lineageTag: cfed47aa-8e73-4136-b8c0-507ee5a75841
+		summarizeBy: none
+		sourceColumn: DOB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Gender
+		dataType: string
+		lineageTag: b2d933bf-ab9a-4d02-9dc9-54ff749978e3
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 06215f06-d6fb-44ba-b6ef-519fe5d63852
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Leaving date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2c603cde-fa32-4071-a73c-1ce6eefa01ac
+		summarizeBy: none
+		sourceColumn: Leaving date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Postcode
+		dataType: string
+		lineageTag: cc1e8eaf-61ad-4b39-bc09-0b95bded123c
+		summarizeBy: none
+		sourceColumn: Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Term of Birth' = ```
+			
+			VAR Month = MONTH('Student Database (Full)'[DOB])
+			RETURN
+			SWITCH(Month, 1, "Spring", 2, "Spring", 3, "Spring", 4, "Spring"  
+			               , 5, "Summer", 6, "Summer", 7, "Summer", 8, "Summer"  
+			               , 9, "Autumn", 10, "Autumn", 11, "Autumn", 12, "Autumn")  
+			```
+		lineageTag: 1374da22-b03d-4b4d-aeca-ad916d9d98c6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name: DOB'
+		dataType: string
+		lineageTag: 78e61048-00c7-438b-b7d2-bf53699c1ed0
+		summarizeBy: none
+		sourceColumn: Full Name: DOB
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 6d0ffeb1-a084-4907-8eaf-2bc1fe036fdd
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'On roll'
+		dataType: string
+		lineageTag: bc806c2d-b5ce-4b86-b86c-490178bea771
+		summarizeBy: none
+		sourceColumn: On roll
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 4b153f59-c0fa-4899-ab28-9277cc71d50a
+		summarizeBy: none
+		sourceColumn: Year
+		sortByColumn: 'Year Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'English as additional language'
+		dataType: string
+		lineageTag: 90cb6126-f28d-4928-91c8-4bd68f6bbd1c
+		summarizeBy: none
+		sourceColumn: English as additional language
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Home Language'
+		dataType: string
+		lineageTag: eb3faaf4-7a7d-467e-871b-2c5535b13955
+		summarizeBy: none
+		sourceColumn: Home Language
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ethnicity
+		dataType: string
+		lineageTag: f8b8dda4-0919-4159-bd0f-db4be938f5f6
+		summarizeBy: none
+		sourceColumn: Ethnicity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Religion
+		dataType: string
+		lineageTag: d81d8bb4-943b-42ad-ac65-cc252231b9dc
+		summarizeBy: none
+		sourceColumn: Religion
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Status'
+		dataType: string
+		lineageTag: 823b1f4f-cbe7-4d66-b196-c386f0e2afab
+		summarizeBy: none
+		sourceColumn: SEN Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Eligible for free meals'
+		dataType: string
+		lineageTag: e99724d8-5879-4962-898b-b13b71e605db
+		summarizeBy: none
+		sourceColumn: Eligible for free meals
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FSM Ever 6'
+		dataType: string
+		lineageTag: 9f101fc2-846f-4939-a61a-355fcec0f04d
+		summarizeBy: none
+		sourceColumn: FSM Ever 6
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pupil Premium Indicator'
+		dataType: string
+		lineageTag: a673f704-c606-4915-9361-ddd8ef313bf9
+		summarizeBy: none
+		sourceColumn: Pupil Premium Indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'In LEA Care'
+		dataType: string
+		lineageTag: bee5e138-0ad0-491b-8ff0-e57378edf3eb
+		summarizeBy: none
+		sourceColumn: In LEA Care
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Child'
+		dataType: string
+		lineageTag: f3796b11-f309-45e0-b59e-456bd54a1345
+		summarizeBy: none
+		sourceColumn: Service Child
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage'
+		dataType: string
+		lineageTag: 15ab717d-d4a7-457f-80a3-7ac68ba2b9ea
+		summarizeBy: none
+		sourceColumn: Key Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Address (Line 1)'
+		dataType: string
+		lineageTag: c61cd7ed-7644-4d22-a862-c10a40680c85
+		summarizeBy: none
+		sourceColumn: Postal Address (Line 1)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disadvantaged
+		dataType: string
+		lineageTag: 0d2c549b-6d92-4bb5-957f-ef77c27f14ce
+		summarizeBy: none
+		sourceColumn: Disadvantaged
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: 762af3b3-81e0-41a6-a55d-f29858319d19
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Status(Short)'
+		dataType: string
+		lineageTag: 82fcd77e-19ad-4341-9b9c-543003d366e1
+		summarizeBy: none
+		sourceColumn: SEN Status(Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pupil Premium Indicator(Short)'
+		dataType: string
+		lineageTag: 1fa52de5-b156-4ccc-adc3-5fd2966b0ddf
+		summarizeBy: none
+		sourceColumn: Pupil Premium Indicator(Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Student-TOB
+		dataType: string
+		lineageTag: 94f49f14-eaf0-4b23-82ca-39859f0f56b1
+		summarizeBy: none
+		sourceColumn: Student-TOB
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile KS1' =
+			
+			IF (
+			    OR (
+			        [Year Group at DOA] = "Year 2",
+			        AND ( [Year Group at DOA] = "Year 1", MONTH ( [DOA] ) <> 9 )
+			    ),
+			    "KS1 Mobile",
+			    "Not KS1 Mobile"
+			)
+		lineageTag: 15fcd34e-7709-4f26-92e3-b4da5058d668
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile Lower KS2' =
+			
+			IF (
+			    OR (
+			        [Year Group at DOA] = "Year 4",
+			        AND ( [Year Group at DOA] = "Year 3", MONTH ( [DOA] ) <> 9 )
+			    ),
+			    "Lower KS2 Mobile",
+			    "Not Lower KS2 Mobile"
+			)
+		lineageTag: 038499e6-9a9b-4906-8f2b-d77ab70bd04a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile Upper KS2' =
+			
+			IF (
+			    OR (
+			        [Year Group at DOA] = "Year 6",
+			        AND ( [Year Group at DOA] = "Year 5", MONTH ( [DOA] ) <> 9 )
+			    ),
+			    "Upper KS2 Mobile",
+			    "Not Upper KS2 Mobile"
+			)
+		lineageTag: 8ba73d08-3c31-4205-8f7e-6451586df807
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile Student' =
+			
+			IF (
+			    OR (
+			        [Year Group at DOA] IN {"Early Year 1","Early Year 2", "Nursery 1","Nursery 2","Year 12", "Year 13"},
+			        AND ( [Year Group at DOA] IN { "Reception", "Year 7"}, MONTH ( [DOA] ) = 9 )
+			    ),
+			    "Non Mobile",
+			    "Mobile"
+			)
+		lineageTag: d2947c29-465a-4e1c-9d4b-be00d380caee
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile KS3' =
+			
+			IF (
+			    OR (
+			        [Year Group at DOA] IN {"Year 8", "Year 9"},
+			        AND ( [Year Group at DOA] = "Year 7", MONTH ( [DOA] ) <> 9 )
+			    ),
+			    "KS3 Mobile",
+			    "Not KS3 Mobile"
+			)
+		lineageTag: e61c4881-b2cb-40d6-b9bd-64c4f4662d67
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile KS4' =
+			
+			IF (
+			    OR (
+			        [Year Group at DOA] = "Year 11",
+			        AND ( [Year Group at DOA] = "Year 10", MONTH ( [DOA] ) <> 9 )
+			    ),
+			    "KS4 Mobile",
+			    "Not KS4 Mobile"
+			)
+		lineageTag: 17e0b612-daf2-4469-a9cd-dc43624d14c3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment'
+		dataType: string
+		lineageTag: be301f56-d289-4848-901a-fa4500adf60e
+		summarizeBy: none
+		sourceColumn: Prior Attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment (Short)'
+		dataType: string
+		lineageTag: d22859cb-ec0f-478a-acae-b6ac0659c798
+		summarizeBy: none
+		sourceColumn: Prior Attainment (Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Prior Attainment'
+		dataType: string
+		lineageTag: a4005c1d-eaf6-46e3-9dc2-4fd01090a69b
+		summarizeBy: none
+		sourceColumn: KS2 Prior Attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student ID'
+		dataType: double
+		lineageTag: 035bcd02-6de4-41ec-81b7-1c02df854e91
+		summarizeBy: count
+		sourceColumn: Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'School ID'
+		dataType: string
+		lineageTag: 537ed80b-85be-44c0-9b1c-07c6eb38c0c3
+		summarizeBy: none
+		sourceColumn: School ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Native Language Codes'
+		dataType: string
+		lineageTag: 5ce16fe0-5e5a-46c0-93ae-d580d610d123
+		summarizeBy: none
+		sourceColumn: Native Language Codes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Child Protection'
+		dataType: string
+		lineageTag: 005045cf-4d26-4afa-9c19-214a100ef122
+		summarizeBy: none
+		sourceColumn: Child Protection
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Medical Condition'
+		dataType: string
+		lineageTag: fb46c402-1624-4ac3-82c3-47fd7dc49e7e
+		summarizeBy: none
+		sourceColumn: Medical Condition
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'In Year Admission'
+		dataType: string
+		lineageTag: ddf6ea2c-d85c-45d5-b8c7-3ea8fecc5993
+		summarizeBy: none
+		sourceColumn: In Year Admission
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Out Of Age Group Cohort'
+		dataType: string
+		lineageTag: e9c2baaf-025f-443a-84a7-795cb2950b7e
+		summarizeBy: none
+		sourceColumn: Out Of Age Group Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Talented
+		dataType: string
+		lineageTag: 5f7862be-5d65-42e2-858b-3ca3fd7cae57
+		summarizeBy: none
+		sourceColumn: Talented
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Compulsory School Age'
+		dataType: string
+		lineageTag: 75dee3ee-7f09-4349-ae89-1766dfa240cc
+		summarizeBy: none
+		sourceColumn: Compulsory School Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ever 6 Service Child'
+		dataType: string
+		lineageTag: f6f81e90-6e01-4cf4-9c11-ea0d2c7da417
+		summarizeBy: none
+		sourceColumn: Ever 6 Service Child
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile Y10-Y11'
+		dataType: string
+		lineageTag: 0e6d024b-1149-49d7-a755-4550c7351736
+		summarizeBy: none
+		sourceColumn: Mobile Y10-Y11
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mobile Y5-Y6'
+		dataType: string
+		lineageTag: f33d534a-60d2-42d4-a61e-4f3052044efc
+		summarizeBy: none
+		sourceColumn: Mobile Y5-Y6
+
+		annotation SummarizationSetBy = Automatic
+
+	column Traveller
+		dataType: string
+		lineageTag: b4673715-bc22-4946-aa8f-f54f5c83874e
+		summarizeBy: none
+		sourceColumn: Traveller
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		lineageTag: 0452137c-a683-4fec-9633-86f4041b895a
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Reg
+		dataType: string
+		lineageTag: 42a4d72b-bfb8-472a-b246-9101ad5daa06
+		summarizeBy: none
+		sourceColumn: Reg
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ethnicity Code'
+		dataType: string
+		lineageTag: 95c9eca8-fa1e-45d0-b5a1-a5bc172d8b43
+		summarizeBy: none
+		sourceColumn: Ethnicity Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ethnicity Name'
+		dataType: string
+		lineageTag: 804e8d2b-f00f-4407-bd6c-02aca347c61a
+		summarizeBy: none
+		sourceColumn: Ethnicity Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UPN-SU ID'
+		dataType: string
+		lineageTag: 2f9e5bcb-6a6c-4532-ac0b-8c5aa565f54a
+		summarizeBy: none
+		sourceColumn: UPN-SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Status Code'
+		dataType: string
+		lineageTag: d4af191a-26e4-4292-970e-ed059129431c
+		summarizeBy: none
+		sourceColumn: SEN Status Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postcode Sector'
+		dataType: string
+		lineageTag: ae1f06f0-61c0-479b-809d-413e95146157
+		summarizeBy: none
+		sourceColumn: Postcode Sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postcode Area'
+		dataType: string
+		lineageTag: dbd396bb-26f7-4888-a041-6a058cf4936c
+		summarizeBy: none
+		sourceColumn: Postcode Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Faith =
+			
+			IF ( 'Student Database (Full)'[Religion] IN { "Refused", "No Religion", ""}, "Not Faith" , "Faith"
+			)
+		lineageTag: 500c14a6-0481-49be-b361-2ad858cfa2d1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: d649909a-2a3c-447b-b334-36af84a085d1
+		summarizeBy: sum
+		sourceColumn: Year Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder URN'
+		dataType: string
+		lineageTag: d9bf07c2-8892-45aa-a561-b1e9a4487893
+		summarizeBy: none
+		sourceColumn: Feeder URN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Preferred First Name'
+		dataType: string
+		lineageTag: 9911ab50-47af-4f48-8397-f8e65de9f657
+		summarizeBy: none
+		sourceColumn: Preferred First Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Preferred Last Name'
+		dataType: string
+		lineageTag: 1830921f-30d6-4764-a575-a51c5c14c5eb
+		summarizeBy: none
+		sourceColumn: Preferred Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chosen Gender'
+		dataType: string
+		lineageTag: 6709c8eb-915e-4374-bb0f-5dbea6dc70ee
+		summarizeBy: none
+		sourceColumn: Chosen Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: 06caaa61-0755-4577-b358-9588763e435b
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nationalities
+		dataType: string
+		lineageTag: b3f60727-3b25-4394-8ecd-00b36a056dfa
+		summarizeBy: none
+		sourceColumn: Nationalities
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gifted
+		dataType: string
+		lineageTag: 681db01b-2966-4b18-8a25-f5f98272f8be
+		summarizeBy: none
+		sourceColumn: Gifted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gifted Talented'
+		dataType: string
+		lineageTag: c2612ab9-3a80-4d3e-9719-f1f9eecb2fd2
+		summarizeBy: none
+		sourceColumn: Gifted Talented
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Early Years Pupil Premium Recipient'
+		dataType: string
+		lineageTag: 18ba2054-a8b1-41a7-9221-6cfcce7c7362
+		summarizeBy: none
+		sourceColumn: Early Years Pupil Premium Recipient
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pupil Premium Eligible'
+		dataType: string
+		lineageTag: 079eb795-40f3-4f1d-ba8f-054090e59c96
+		summarizeBy: none
+		sourceColumn: Pupil Premium Eligible
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group at DOA'
+		dataType: string
+		lineageTag: 49737343-9967-47fd-a87b-1523ccee0622
+		summarizeBy: none
+		sourceColumn: Year Group at DOA
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_LEVEL_NAME
+		dataType: string
+		lineageTag: d68894f9-73fa-4a45-a394-3eb9d1667d02
+		summarizeBy: none
+		sourceColumn: ACADEMIC_LEVEL_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNIQUE_STUDENT_YEAR
+		dataType: string
+		lineageTag: 60eb541c-4495-4239-9d5a-90e3aac36a90
+		summarizeBy: none
+		sourceColumn: UNIQUE_STUDENT_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'House Name'
+		dataType: string
+		lineageTag: 08a22639-9637-4ddb-bb33-4e222ca6949e
+		summarizeBy: none
+		sourceColumn: House Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Validation' =
+			
+			VAR _StudentInitials = IF(CONTAINSSTRING([Email Address],"-"),LEFT([Forename],1) & "." & SUBSTITUTE(SUBSTITUTE([Legal Surname],"'","")," ","-"),LEFT([Forename],1) & "." & SUBSTITUTE(SUBSTITUTE(SUBSTITUTE([Legal Surname],"-",""),"'","")," ",""))
+			RETURN
+			SWITCH(TRUE(),
+			CONTAINSSTRING([Email Address],"npcat.org.uk"), IF(CONTAINSSTRING([Email Address],_StudentInitials),"Correct Email","Check this Email"),
+			OR(ISBLANK([Email Address]),[Email Address] =""),"No Email Address",
+			NOT(CONTAINSSTRING([Email Address],"npcat.org.uk")),"Invalid Email")
+		lineageTag: 223a1358-1299-4d92-a2bb-60e85c86577c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Status Name'
+		dataType: string
+		lineageTag: 40f2c843-0251-4cd3-b848-aa25493257cf
+		summarizeBy: none
+		sourceColumn: SEN Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Prior Attainment (Int)'
+		dataType: double
+		lineageTag: 97bb75d9-e1d1-40b3-844e-2144bdd302f4
+		summarizeBy: sum
+		sourceColumn: KS2 Prior Attainment (Int)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Months in school' =
+			
+			[Months in School]
+		formatString: 0
+		lineageTag: 07c2101e-bef5-47c2-8205-9f002253b933
+		summarizeBy: none
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	partition 'Student Database (Full)-1e381c5c-d0be-40de-9b98-9e3a7e94d0e3' = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"Arbor Student Database" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Arbor Student Database"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"Arbor Student Database", each ([UPN] <> ""))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_QueryRelationships = {"columnCount":41,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Student Database (Full)/Student Database1.{SU ID,0}","Section1/Student Database (Full)/Student Database1.{UPN,1}","Section1/Student Database (Full)/Student Database1.{UPN-SUID,2}","Section1/Student Database (Full)/Student Database1.{Forename,3}","Section1/Student Database (Full)/Student Database1.{Legal Surname,4}","Section1/Student Database (Full)/Student Database1.{Gender,5}","Section1/Student Database (Full)/Student Database1.{Full Name,6}","Section1/Student Database (Full)/Changed Type.{DOB,7}","Section1/Student Database (Full)/Changed Type.{DOA,8}","Section1/Student Database (Full)/Student Database1.{Attendance mode,9}","Section1/Student Database (Full)/Changed Type.{Leaving date,10}","Section1/Student Database (Full)/Student Database1.{On roll,11}","Section1/Student Database (Full)/Student Database1.{Reg,12}","Section1/Student Database (Full)/Student Database1.{Year,13}","Section1/Student Database (Full)/Student Database1.{Year Group for Age,14}","Section1/Student Database (Full)/Student Database1.{AddressLine,15}","Section1/Student Database (Full)/Student Database1.{Year Group at DOL,16}","Section1/Student Database (Full)/Student Database1.{Key Stage Group,17}","Section1/Student Database (Full)/Student Database1.{HouseNumber,18}","Section1/Student Database (Full)/Student Database1.{Street,19}","Section1/Student Database (Full)/Student Database1.{District,20}","Section1/Student Database (Full)/Student Database1.{Town,21}","Section1/Student Database (Full)/Student Database1.{Postcode,22}","Section1/Student Database (Full)/Student Database1.{English as additional language,23}","Section1/Student Database (Full)/Student Database1.{Home Language,24}","Section1/Student Database (Full)/Student Database1.{Ethnicity,25}","Section1/Student Database (Full)/Student Database1.{Religion,26}","Section1/Student Database (Full)/Student Database1.{SEN Status,27}","Section1/Student Database (Full)/Student Database1.{SEN Status Code,28}","Section1/Student Database (Full)/Student Database1.{Gifted,29}","Section1/Student Database (Full)/Student Database1.{Eligible for free meals,30}","Section1/Student Database (Full)/Student Database1.{FSM Ever 1,31}","Section1/Student Database (Full)/Student Database1.{FSM Ever 6,32}","Section1/Student Database (Full)/Student Database1.{Pupil Premium Indicator,33}","Section1/Student Database (Full)/Student Database1.{In LEA Care,34}","Section1/Student Database (Full)/Student Database1.{Ever in care,35}","Section1/Student Database (Full)/Student Database1.{Destination,36}","Section1/Student Database (Full)/Student Database1.{Reason for leaving,37}","Section1/Student Database (Full)/Student Database1.{Grounds for Removal,38}","Section1/Student Database (Full)/Student Database1.{Quick note,39}","Section1/Student Database (Full)/Student Database1.{Full Name: DOB,40}"],"ColumnCount":41,"KeyColumnNames":[],"ColumnIdentities":["Section1/Student Database (Full)/Student Database1.{SU ID,0}","Section1/Student Database (Full)/Student Database1.{UPN,1}","Section1/Student Database (Full)/Student Database1.{UPN-SUID,2}","Section1/Student Database (Full)/Student Database1.{Forename,3}","Section1/Student Database (Full)/Student Database1.{Legal Surname,4}","Section1/Student Database (Full)/Student Database1.{Gender,5}","Section1/Student Database (Full)/Student Database1.{Full Name,6}","Section1/Student Database (Full)/Changed Type.{DOB,7}","Section1/Student Database (Full)/Changed Type.{DOA,8}","Section1/Student Database (Full)/Student Database1.{Attendance mode,9}","Section1/Student Database (Full)/Changed Type.{Leaving date,10}","Section1/Student Database (Full)/Student Database1.{On roll,11}","Section1/Student Database (Full)/Student Database1.{Reg,12}","Section1/Student Database (Full)/Student Database1.{Year,13}","Section1/Student Database (Full)/Student Database1.{Year Group for Age,14}","Section1/Student Database (Full)/Student Database1.{AddressLine,15}","Section1/Student Database (Full)/Student Database1.{Year Group at DOL,16}","Section1/Student Database (Full)/Student Database1.{Key Stage Group,17}","Section1/Student Database (Full)/Student Database1.{HouseNumber,18}","Section1/Student Database (Full)/Student Database1.{Street,19}","Section1/Student Database (Full)/Student Database1.{District,20}","Section1/Student Database (Full)/Student Database1.{Town,21}","Section1/Student Database (Full)/Student Database1.{Postcode,22}","Section1/Student Database (Full)/Student Database1.{English as additional language,23}","Section1/Student Database (Full)/Student Database1.{Home Language,24}","Section1/Student Database (Full)/Student Database1.{Ethnicity,25}","Section1/Student Database (Full)/Student Database1.{Religion,26}","Section1/Student Database (Full)/Student Database1.{SEN Status,27}","Section1/Student Database (Full)/Student Database1.{SEN Status Code,28}","Section1/Student Database (Full)/Student Database1.{Gifted,29}","Section1/Student Database (Full)/Student Database1.{Eligible for free meals,30}","Section1/Student Database (Full)/Student Database1.{FSM Ever 1,31}","Section1/Student Database (Full)/Student Database1.{FSM Ever 6,32}","Section1/Student Database (Full)/Student Database1.{Pupil Premium Indicator,33}","Section1/Student Database (Full)/Student Database1.{In LEA Care,34}","Section1/Student Database (Full)/Student Database1.{Ever in care,35}","Section1/Student Database (Full)/Student Database1.{Destination,36}","Section1/Student Database (Full)/Student Database1.{Reason for leaving,37}","Section1/Student Database (Full)/Student Database1.{Grounds for Removal,38}","Section1/Student Database (Full)/Student Database1.{Quick note,39}","Section1/Student Database (Full)/Student Database1.{Full Name: DOB,40}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

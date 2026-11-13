@@ -1,0 +1,307 @@
+table 'Boxphish Staff Rating'
+	lineageTag: 903e360a-73ef-443f-8815-d1455fa05e3a
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: 2daa1d8b-b87b-4b8f-a2cb-225d4ba0a0a0
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: 5f64febc-3828-4963-8509-da41263782ee
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulations failed YTD' = Calculate([Simulations Failed (Email)], 'Calendar'[Current School Year Offset] = 0)+0
+		formatString: 0
+		lineageTag: 6a888fee-e189-4dbd-b141-87eedf3e74e4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulations failed Last 2 Years' = CALCULATE([Simulations Failed (Email)],'Calendar'[Current School Year Offset] IN {0,-1,-2})+0
+		formatString: 0
+		lineageTag: 11673255-4db3-4364-b1ad-9d0a18513a25
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulations Failed SPLY' = ```
+			
+			VAR StartPrevSY =
+			    CALCULATE(
+			        MIN ( 'Calendar'[Date] ),
+			        'Calendar'[Current School Year Offset] = -1
+			    )
+			VAR CurrentEndDate =
+			    CALCULATE(
+			        MAX ( 'Calendar'[Date] ),
+			        'Calendar'[FutureDate] = "Past"          -- remove if FutureDate is TRUE/FALSE
+			    )
+			VAR EndSPLY =
+			    EDATE ( CurrentEndDate, -12 )               -- same day last year (scalar)
+			VAR Final = 
+			    CALCULATE(
+			    [Simulations Failed (Email)],
+			    'Boxphish Phishing Simulations'[Date Email Clicked] >= StartPrevSY,
+			    'Boxphish Phishing Simulations'[Date Email Clicked] <= EndSPLY
+			    )
+			RETURN
+			Final + 0
+			```
+		formatString: 0
+		lineageTag: 52bd9691-f1d9-42a6-9ba7-a2969a0b5272
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulations Failed YTD - SPLY' = 'Boxphish Staff Rating'[Simulations failed YTD] - 'Boxphish Staff Rating'[Simulations Failed SPLY]
+		formatString: 0
+		lineageTag: 269decf1-5ca8-47bd-bf5a-43600c74589a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses Failed/Incomplete over 2 Years' = CALCULATE([Number of Courses Failed]+[Number of Courses Incomplete]) + 0
+		formatString: 0
+		lineageTag: 298f2103-67a5-48d9-856f-6f8ba5602936
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses Incomplete over 2 Years' = [Number of Courses Incomplete] + 0
+		formatString: 0
+		lineageTag: 3e7cce0b-ccdd-499b-a760-8fe8622a5c02
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses failed over 2 Years' = [Number of Courses Failed] + 0
+		formatString: 0
+		lineageTag: 9b98a9e6-bb4f-4511-ba85-101a33311065
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulations Bracket' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Simulations failed Last 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, "0",
+			    n = 1, "1",
+			    n = 2, "2",
+			    n = 3, "3",
+			    n = 4, "4",
+			    n >= 5 && n <= 7, "5-7",
+			    n >= 8 && n <= 10, "8-10",
+			    n >= 11 && n <= 13, "11-13",
+			    n >= 14, "14+"
+			)
+			
+			```
+		lineageTag: 8dc5b71e-16a3-46c0-b95d-c42386eecdcd
+		summarizeBy: none
+		sortByColumn: 'Simulations Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Course Incomplete Bracket' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Courses Incomplete over 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, "0",
+			    n = 1, "1",
+			    n = 2, "2",
+			    n = 3, "3",
+			    n = 4, "4",
+			    n >= 5 && n <= 7, "5-7",
+			    n >= 8 && n <= 10, "8-10",
+			    n >= 11 && n <= 13, "11-13",
+			    n >= 14, "14+"
+			)
+			
+			```
+		lineageTag: 172f9cf3-59e4-4a78-a8ac-b835a65a21ea
+		summarizeBy: none
+		sortByColumn: 'Course Incomplete Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses Failed Bracket' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Courses failed over 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, "0",
+			    n = 1, "1",
+			    n = 2, "2",
+			    n = 3, "3",
+			    n = 4, "4",
+			    n >= 5 && n <= 7, "5-7",
+			    n >= 8 && n <= 10, "8-10",
+			    n >= 11 && n <= 13, "11-13",
+			    n >= 14, "14+"
+			)
+			
+			```
+		lineageTag: 25a107b0-f3e3-4cb7-a168-7d0733459881
+		summarizeBy: none
+		sortByColumn: 'Courses Failed Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses Failed/Incomplete Bracket' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Courses Failed/Incomplete over 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, "0",
+			    n = 1, "1",
+			    n = 2, "2",
+			    n = 3, "3",
+			    n = 4, "4",
+			    n >= 5 && n <= 7, "5-7",
+			    n >= 8 && n <= 10, "8-10",
+			    n >= 11 && n <= 13, "11-13",
+			    n >= 14, "14+"
+			)
+			
+			```
+		lineageTag: c5586fae-9d67-442a-b52d-fe48e9fecb06
+		summarizeBy: none
+		sortByColumn: 'Courses Failed/Incomplete Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulations Sort' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Simulations failed Last 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, 0,
+			    n = 1, 1,
+			    n = 2, 2,
+			    n = 3, 3,
+			    n = 4, 4,
+			    n >= 5 && n <= 7, 5,
+			    n >= 8 && n <= 10, 6,
+			    n >= 11 && n <= 13, 7,
+			    n >= 14, 8
+			)
+			
+			```
+		formatString: 0
+		lineageTag: feca7665-b4a0-4d31-a7e2-f5fa22221706
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Course Incomplete Sort' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Courses Incomplete over 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, 0,
+			    n = 1, 1,
+			    n = 2, 2,
+			    n = 3, 3,
+			    n = 4, 4,
+			    n >= 5 && n <= 7, 5,
+			    n >= 8 && n <= 10, 6,
+			    n >= 11 && n <= 13, 7,
+			    n >= 14, 8
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 28cbbe05-32f5-4e75-96e4-9e5b640b55c3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses Failed Sort' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Courses failed over 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, 0,
+			    n = 1, 1,
+			    n = 2, 2,
+			    n = 3, 3,
+			    n = 4, 4,
+			    n >= 5 && n <= 7, 5,
+			    n >= 8 && n <= 10, 6,
+			    n >= 11 && n <= 13, 7,
+			    n >= 14, 8
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 14484d42-9ea4-4fb8-9e87-ecf042e39cf2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Courses Failed/Incomplete Sort' = ```
+			
+			VAR n = COALESCE ( 'Boxphish Staff Rating'[Courses Failed/Incomplete over 2 Years], 0 )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    n = 0, 0,
+			    n = 1, 1,
+			    n = 2, 2,
+			    n = 3, 3,
+			    n = 4, 4,
+			    n >= 5 && n <= 7, 5,
+			    n >= 8 && n <= 10, 6,
+			    n >= 11 && n <= 13, 7,
+			    n >= 14, 8
+			)
+			
+			```
+		formatString: 0
+		lineageTag: dcf7b74a-6c8a-47b6-80c1-aed501330d09
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Boxphish Staff Rating' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a2f752de-6e4f-43cf-9a56-64fe1de995d4" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a2f752de-6e4f-43cf-9a56-64fe1de995d4"]}[Data],
+				    #"Boxphish staff Ratings_" = #"a2f752de-6e4f-43cf-9a56-64fe1de995d4"{[entity="Boxphish staff Ratings",version=""]}[Data]
+				in
+				    #"Boxphish staff Ratings_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

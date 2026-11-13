@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5958f25f68aeb0a19702",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 631.55934833204026,
+    "width": 666.31497284716829
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "School Database"
+                    }
+                  },
+                  "Property": "School Short Name"
+                }
+              },
+              "queryRef": "School Database.School Short Name",
+              "nativeQueryRef": "School Short Name",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Student Database (Full)"
+                    }
+                  },
+                  "Property": "Full Name"
+                }
+              },
+              "queryRef": "Student Database (Full).Full Name",
+              "nativeQueryRef": "Full Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspensions After 15 Days"
+                }
+              },
+              "queryRef": "Measures Folder.Suspensions After 15 Days",
+              "nativeQueryRef": "Suspensions After 15 Days"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Days After 15 Days"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Days After 15 Days",
+              "nativeQueryRef": "Suspension Days After 15 Days"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Suspension Students After 15 Days"
+                }
+              },
+              "queryRef": "Measures Folder.Suspension Students After 15 Days",
+              "nativeQueryRef": "Suspension Students After 15 Days"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures Folder"
+                  }
+                },
+                "Property": "Suspensions After 15 Days"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "School Database.School Short Name"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Student Database (Full).Full Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  }
+}

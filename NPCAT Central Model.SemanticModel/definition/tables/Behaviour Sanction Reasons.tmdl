@@ -1,0 +1,42 @@
+table 'Behaviour Sanction Reasons'
+	lineageTag: bc06b346-261f-4c13-b737-2f5c87ef3cfb
+
+	column 'Reasons List'
+		dataType: string
+		lineageTag: 572b9130-34f4-4f66-b40e-6dc809cd28d7
+		summarizeBy: none
+		sourceColumn: Reasons List
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Table'
+		dataType: string
+		lineageTag: b7c7e12d-a844-48d6-b15a-229b9e5ac2ba
+		summarizeBy: none
+		sourceColumn: Source Table
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student - Event ID'
+		dataType: string
+		lineageTag: 1f3528cd-1ec8-4bf8-b489-8549c1533122
+		summarizeBy: none
+		sourceColumn: Unique Student - Event ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Behaviour Sanction Reasons' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"cac18991-39e9-44fc-a199-7ead3fd3e517" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cac18991-39e9-44fc-a199-7ead3fd3e517"]}[Data],
+				    #"Behaviour Sanction Reasons_" = #"cac18991-39e9-44fc-a199-7ead3fd3e517"{[entity="Behaviour Sanction Reasons",version=""]}[Data]
+				in
+				    #"Behaviour Sanction Reasons_"
+
+	annotation PBI_ResultType = Table
+

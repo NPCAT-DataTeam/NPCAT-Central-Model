@@ -1,0 +1,1366 @@
+table 'Financial Benchmark Data'
+	lineageTag: 51afa5f6-144a-4430-ae78-6193ab5a8acf
+
+	column LA
+		dataType: string
+		lineageTag: 05e658bb-87c3-4a2b-aa90-a70109cf9f6e
+		summarizeBy: none
+		sourceColumn: LA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estab
+		dataType: string
+		lineageTag: eecacf32-38d7-4545-ae0e-979b6e0f2257
+		summarizeBy: none
+		sourceColumn: Estab
+
+		annotation SummarizationSetBy = Automatic
+
+	column URN
+		dataType: string
+		lineageTag: 1096ba24-3763-4145-8294-389fabb875c2
+		summarizeBy: none
+		sourceColumn: URN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academy UPIN'
+		dataType: string
+		lineageTag: b12a326d-596e-445a-9dda-a063e9f8ded7
+		summarizeBy: none
+		sourceColumn: Academy UPIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Name'
+		dataType: string
+		lineageTag: 5ee498e2-dbf8-4cd8-9c4e-25cafee3d9d3
+		summarizeBy: none
+		sourceColumn: School Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period covered by return'
+		dataType: int64
+		formatString: 0
+		lineageTag: ef9278d4-b5bf-4f4e-9531-e03a5dff467b
+		summarizeBy: sum
+		sourceColumn: Period covered by return
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MAT SAT or Central Services'
+		dataType: string
+		lineageTag: 7ecea06f-ea48-4027-877e-c3c2b6754cb8
+		summarizeBy: none
+		sourceColumn: MAT SAT or Central Services
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lead UPIN'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9820b6bf-5ef9-4bba-842e-1d158d7cb49c
+		summarizeBy: sum
+		sourceColumn: Lead UPIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column UID
+		dataType: int64
+		formatString: 0
+		lineageTag: 41221377-f127-4fee-b521-0b7fc8742e47
+		summarizeBy: count
+		sourceColumn: UID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0535e7ba-1937-4d00-9fce-8c08f3bc246c
+		summarizeBy: sum
+		sourceColumn: Company Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trust or Company Name'
+		dataType: string
+		lineageTag: 43434cd5-61a6-4fed-94c2-d7e05ca0f26a
+		summarizeBy: none
+		sourceColumn: Trust or Company Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date opened'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a0d80f2-074b-4d7b-a211-456b5be4ecda
+		summarizeBy: none
+		sourceColumn: Date opened
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date closed'
+		dataType: string
+		lineageTag: f6a364da-a0a4-48f1-a2bd-845418b43fe0
+		summarizeBy: none
+		sourceColumn: Date closed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date left if in period'
+		dataType: string
+		lineageTag: 8bbf7f3d-6fb7-4204-a8e2-e9d8e334e54e
+		summarizeBy: none
+		sourceColumn: Date left if in period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date joined if in period'
+		dataType: string
+		lineageTag: f8befc0c-c3d4-45c3-88b9-96359b06d236
+		summarizeBy: none
+		sourceColumn: Date joined if in period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'No Pupils'
+		dataType: int64
+		lineageTag: ac8c7726-5ffd-426f-8cb0-f340cf1c5c2c
+		summarizeBy: sum
+		sourceColumn: No Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'No Teachers'
+		dataType: double
+		lineageTag: 416e014c-96bc-4224-a62e-e59db0135331
+		summarizeBy: sum
+		sourceColumn: No Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Gender
+		dataType: string
+		lineageTag: a1e8647f-8940-4bb7-9bd8-af0c57e40584
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Phase'
+		dataType: string
+		lineageTag: 32abd193-f7e9-4ffe-acd2-3fca0dc72dac
+		summarizeBy: none
+		sourceColumn: Overall Phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phase
+		dataType: string
+		lineageTag: d3ee971e-83d9-4da8-b0d4-02f708e20322
+		summarizeBy: none
+		sourceColumn: Phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 821ae3d3-c086-46dd-8345-47771cc8ed0c
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Urban /Rural'
+		dataType: string
+		lineageTag: 5e533741-ed06-4ce0-9d15-0bc0171177ec
+		summarizeBy: none
+		sourceColumn: Urban /Rural
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 32fd4728-7b94-48a7-82c1-22ddc1bfde08
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'London Borough'
+		dataType: string
+		lineageTag: 53a6c246-825b-4c11-a497-990ed86c6089
+		summarizeBy: none
+		sourceColumn: London Borough
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'London Weighting'
+		dataType: string
+		lineageTag: 62995232-cc7a-4da3-be18-ca457766fba0
+		summarizeBy: none
+		sourceColumn: London Weighting
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% of pupils eligible for FSM'
+		dataType: double
+		lineageTag: 7bfc9959-442f-4350-941b-0be017e2a399
+		summarizeBy: sum
+		sourceColumn: % of pupils eligible for FSM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '% of pupils with EAL'
+		dataType: double
+		lineageTag: f2813d8a-a1c9-48cf-9e83-2efd56e6e110
+		summarizeBy: sum
+		sourceColumn: % of pupils with EAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '% of pupils who are Boarders'
+		dataType: double
+		lineageTag: d48496e3-7520-4945-9f55-5085e273347e
+		summarizeBy: sum
+		sourceColumn: % of pupils who are Boarders
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Admissions policy'
+		dataType: string
+		lineageTag: 65663279-f312-4d5e-b4dd-52ffe5ddd6d8
+		summarizeBy: none
+		sourceColumn: Admissions policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column PFI
+		dataType: string
+		lineageTag: afd380a6-c0b7-429b-a404-842e146b17d2
+		summarizeBy: none
+		sourceColumn: PFI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Has a 6th form'
+		dataType: string
+		lineageTag: 79360ce1-88e0-47f7-bfe6-fcba12a84d9b
+		summarizeBy: none
+		sourceColumn: Has a 6th form
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'No of pupils in 6th form'
+		dataType: string
+		lineageTag: eed67ea7-b7ad-447e-b503-1cff6432125d
+		summarizeBy: none
+		sourceColumn: No of pupils in 6th form
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lowest age of pupils'
+		dataType: int64
+		formatString: 0
+		lineageTag: 60e2cc09-1043-4a0c-93c3-887bc9b07660
+		summarizeBy: sum
+		sourceColumn: Lowest age of pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Highest age of pupils'
+		dataType: int64
+		formatString: 0
+		lineageTag: 98429508-2a04-497b-987f-58ab7828c7d0
+		summarizeBy: sum
+		sourceColumn: Highest age of pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pre-16 DFE/EFA Revenue grants'
+		dataType: double
+		lineageTag: dd8e4179-d8fe-4078-a998-916189b8a8aa
+		summarizeBy: sum
+		sourceColumn: Pre-16 DFE/EFA Revenue grants
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SEN
+		dataType: double
+		lineageTag: f21294c5-f41d-4fa4-ad8b-26c4a2f3a688
+		summarizeBy: sum
+		sourceColumn: SEN
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other DfE/EFA Revenue Grants'
+		dataType: double
+		lineageTag: 06dba955-468e-453d-bb06-02c1175e8048
+		summarizeBy: sum
+		sourceColumn: Other DfE/EFA Revenue Grants
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other income (LA & other Government grants)'
+		dataType: double
+		lineageTag: d642e419-de0d-4422-8fc5-5ce86020d836
+		summarizeBy: sum
+		sourceColumn: Other income (LA & other Government grants)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Government source (non-grant)'
+		dataType: double
+		lineageTag: f1bd6fd8-f9d1-4471-b4c2-034d6f1bad27
+		summarizeBy: sum
+		sourceColumn: Government source (non-grant)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Academies
+		dataType: double
+		lineageTag: 565d3df0-6cc1-4d43-b249-2a0c06d45c43
+		summarizeBy: sum
+		sourceColumn: Academies
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Non- Government'
+		dataType: double
+		lineageTag: 2d11c59c-b053-4652-80f3-8fa31f7ce4be
+		summarizeBy: sum
+		sourceColumn: Non- Government
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Income from facilities and services'
+		dataType: double
+		lineageTag: 5a58ec98-4fc6-449b-8b18-9b0f9f373317
+		summarizeBy: sum
+		sourceColumn: Income from facilities and services
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Income from catering'
+		dataType: double
+		lineageTag: 00590331-529d-41ea-96a8-515630b846ac
+		summarizeBy: sum
+		sourceColumn: Income from catering
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Receipts from supply teacher insurance claims'
+		dataType: double
+		lineageTag: 8bd8a987-b298-44b6-b82d-398b719ba528
+		summarizeBy: sum
+		sourceColumn: Receipts from supply teacher insurance claims
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Donations and/or voluntary funds'
+		dataType: double
+		lineageTag: 10626113-7cca-48a9-80a1-c1f79f563292
+		summarizeBy: sum
+		sourceColumn: Donations and/or voluntary funds
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other self-generated income'
+		dataType: double
+		lineageTag: ec7bd702-399a-4374-807e-6bc9fbd11dbf
+		summarizeBy: sum
+		sourceColumn: Other self-generated income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Investment income'
+		dataType: double
+		lineageTag: c80c2f66-bfa6-4d0d-a2ff-2ec7316efd67
+		summarizeBy: sum
+		sourceColumn: Investment income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Teaching staff'
+		dataType: double
+		lineageTag: 1ac853c0-3c38-4d7e-994b-4b354eefd8dc
+		summarizeBy: sum
+		sourceColumn: Teaching staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Supply teaching staff'
+		dataType: double
+		lineageTag: 9b168850-2be7-42c1-bd12-fb5f8c81452e
+		summarizeBy: sum
+		sourceColumn: Supply teaching staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Education support staff'
+		dataType: double
+		lineageTag: 07bbf5ee-b495-482a-902d-0f28a066abb2
+		summarizeBy: sum
+		sourceColumn: Education support staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Administrative and clerical staff'
+		dataType: double
+		lineageTag: f802bc1a-1ca6-4f8d-9966-e05006355839
+		summarizeBy: sum
+		sourceColumn: Administrative and clerical staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Premises staff'
+		dataType: double
+		lineageTag: f3ef050b-472c-486f-ac4b-9af9b1c18256
+		summarizeBy: sum
+		sourceColumn: Premises staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Catering staff'
+		dataType: double
+		lineageTag: 3730ddc6-0465-4439-b4ad-d4624c9d41a8
+		summarizeBy: sum
+		sourceColumn: Catering staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other staff'
+		dataType: double
+		lineageTag: be77448c-f62d-4d1a-b7a7-f46f24413c9f
+		summarizeBy: sum
+		sourceColumn: Other staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Indirect employee expenses'
+		dataType: double
+		lineageTag: 8b218234-8bc5-4076-a1d0-fcca83f18d5b
+		summarizeBy: sum
+		sourceColumn: Indirect employee expenses
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Staff development and training'
+		dataType: double
+		lineageTag: 5fa38f95-da24-432f-870b-37a622c444e5
+		summarizeBy: sum
+		sourceColumn: Staff development and training
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Staff-related insurance'
+		dataType: double
+		lineageTag: 50c76a4b-1c6d-43ff-a0f3-5a757f2526f9
+		summarizeBy: sum
+		sourceColumn: Staff-related insurance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Supply teacher insurance'
+		dataType: double
+		lineageTag: c15d4b82-9b80-4b3c-9012-f6815de345c2
+		summarizeBy: sum
+		sourceColumn: Supply teacher insurance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Building and Grounds maintenance and improvement'
+		dataType: double
+		lineageTag: 3e948eb7-8069-486e-a475-7ff555114b0e
+		summarizeBy: sum
+		sourceColumn: Building and Grounds maintenance and improvement
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cleaning and caretaking'
+		dataType: double
+		lineageTag: 0401bf83-ca9c-4424-9ac3-57eb19708532
+		summarizeBy: sum
+		sourceColumn: Cleaning and caretaking
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Water and sewerage'
+		dataType: double
+		lineageTag: 2e618cac-181a-4969-b9df-c1f721418411
+		summarizeBy: sum
+		sourceColumn: Water and sewerage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Energy
+		dataType: double
+		lineageTag: f55cbf5b-0c6e-4028-8b9b-8621acba9b29
+		summarizeBy: sum
+		sourceColumn: Energy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Rent and Rates'
+		dataType: double
+		lineageTag: c384c0dc-82f2-447d-af9e-24beaec31bc2
+		summarizeBy: sum
+		sourceColumn: Rent and Rates
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other occupation costs'
+		dataType: double
+		lineageTag: 8855ea03-6614-4386-a9b7-870c8ef8c491
+		summarizeBy: sum
+		sourceColumn: Other occupation costs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Special facilities'
+		dataType: double
+		lineageTag: 387da7dd-e3c6-40c5-a225-b25acfe37b31
+		summarizeBy: sum
+		sourceColumn: Special facilities
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Learning resources (not ICT equipment)'
+		dataType: double
+		lineageTag: e9644c53-800c-4386-89e7-4f3bef92c814
+		summarizeBy: sum
+		sourceColumn: Learning resources (not ICT equipment)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'ICT learning resources'
+		dataType: double
+		lineageTag: 0e6afdbf-6567-4e46-afcc-a1222f9284a5
+		summarizeBy: sum
+		sourceColumn: ICT learning resources
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Examination fees'
+		dataType: double
+		lineageTag: 9e5f788c-4990-482c-b939-9eb42472e122
+		summarizeBy: sum
+		sourceColumn: Examination fees
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Educational Consultancy'
+		dataType: double
+		lineageTag: 5da9dcf5-0e72-43e1-9044-28c9c4475a4d
+		summarizeBy: sum
+		sourceColumn: Educational Consultancy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Administrative supplies - non educational'
+		dataType: double
+		lineageTag: 00877202-af2c-43ea-99af-966b8e012043
+		summarizeBy: sum
+		sourceColumn: Administrative supplies - non educational
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Agency supply teaching staff'
+		dataType: double
+		lineageTag: 2c9181ac-b3ff-45bc-903e-d69de5a7350d
+		summarizeBy: sum
+		sourceColumn: Agency supply teaching staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Catering supplies'
+		dataType: double
+		lineageTag: 3997417f-dcd4-431d-ba50-09814a386220
+		summarizeBy: sum
+		sourceColumn: Catering supplies
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other insurance premiums'
+		dataType: double
+		lineageTag: 6c2b6731-90a4-4866-9436-90100a15869f
+		summarizeBy: sum
+		sourceColumn: Other insurance premiums
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Legal & Professional'
+		dataType: double
+		lineageTag: b0c65d07-50ce-48af-901f-890b24a9b79f
+		summarizeBy: sum
+		sourceColumn: Legal & Professional
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Auditor costs'
+		dataType: double
+		lineageTag: e79d86cf-d9e8-44c1-8357-96f5b9c1e838
+		summarizeBy: sum
+		sourceColumn: Auditor costs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Interest charges for Loan and Bank'
+		dataType: double
+		lineageTag: 113ab66d-d157-42dd-b705-b432fa01eb17
+		summarizeBy: sum
+		sourceColumn: Interest charges for Loan and Bank
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Direct revenue financing (Revenue contributions to capital)'
+		dataType: double
+		lineageTag: bd030f09-a965-44d7-b62c-fda0c6fb1ba6
+		summarizeBy: sum
+		sourceColumn: Direct revenue financing (Revenue contributions to capital)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PFI Charges'
+		dataType: double
+		lineageTag: 23807d1d-600e-40a0-ab5e-118d6c891358
+		summarizeBy: sum
+		sourceColumn: PFI Charges
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Revenue Reserve'
+		dataType: double
+		lineageTag: d9f1939b-0661-4078-a3e8-b4acd010c24c
+		summarizeBy: sum
+		sourceColumn: Revenue Reserve
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Distributed Revenue Reserve.on pp basis'
+		dataType: double
+		lineageTag: 26ed7466-daa7-4ab4-aa01-9bf11e113bab
+		summarizeBy: sum
+		sourceColumn: Distributed Revenue Reserve.on pp basis
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'In Year Balance'
+		dataType: double
+		lineageTag: a4c76867-8b8d-4567-ab44-6ea909d01b43
+		summarizeBy: sum
+		sourceColumn: In Year Balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Grant Funding'
+		dataType: double
+		lineageTag: 284fd839-7d82-4b28-81ec-ba84fa56b8cd
+		summarizeBy: sum
+		sourceColumn: Grant Funding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Direct Grant'
+		dataType: double
+		lineageTag: 91222dc4-858e-4298-b586-c94b8da8e16c
+		summarizeBy: sum
+		sourceColumn: Direct Grant
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Community Grants'
+		dataType: double
+		lineageTag: 7539ac1d-6c13-4f79-b882-4eebeb6800aa
+		summarizeBy: sum
+		sourceColumn: Community Grants
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Targeted Grants'
+		dataType: double
+		lineageTag: 2c4a190f-7b09-417d-b974-abd1222bdf7c
+		summarizeBy: sum
+		sourceColumn: Targeted Grants
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Self Generated Funding'
+		dataType: double
+		lineageTag: d3b53854-de55-4af8-acf5-5460e91edeaf
+		summarizeBy: sum
+		sourceColumn: Self Generated Funding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Income'
+		dataType: double
+		lineageTag: 268b4611-657f-41ca-ba73-6e95ebb03eb5
+		summarizeBy: sum
+		sourceColumn: Total Income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Supply Staff'
+		dataType: double
+		lineageTag: cea70477-8a10-4278-b1fd-b3e3313e772b
+		summarizeBy: sum
+		sourceColumn: Supply Staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other Staff Costs'
+		dataType: double
+		lineageTag: d740dba6-7b89-42a0-8acf-da47eddbd614
+		summarizeBy: sum
+		sourceColumn: Other Staff Costs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Staff Total'
+		dataType: double
+		lineageTag: 3ddf7447-1283-4d57-b2a1-73c9f59b9c27
+		summarizeBy: sum
+		sourceColumn: Staff Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maintenance & Improvement'
+		dataType: double
+		lineageTag: b9f39edd-d1ef-4aee-827a-7c23234a5b00
+		summarizeBy: sum
+		sourceColumn: Maintenance & Improvement
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Premises
+		dataType: double
+		lineageTag: aff29e4b-328d-46e1-aadb-e66e6444c295
+		summarizeBy: sum
+		sourceColumn: Premises
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Catering Exp'
+		dataType: double
+		lineageTag: ca838250-81a1-4fa1-8bc6-29db3e93219e
+		summarizeBy: sum
+		sourceColumn: Catering Exp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Occupation
+		dataType: double
+		lineageTag: 3c7f48a7-00b7-4493-866e-bd9d50ad1f52
+		summarizeBy: sum
+		sourceColumn: Occupation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Supplies and Services'
+		dataType: double
+		lineageTag: 0976f5c3-13ef-4138-adb8-e5c76d4c3378
+		summarizeBy: sum
+		sourceColumn: Supplies and Services
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Educational Supplies'
+		dataType: double
+		lineageTag: e541113b-269b-4fc8-a59d-bff30af1c248
+		summarizeBy: sum
+		sourceColumn: Educational Supplies
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Brought in Professional Sevices'
+		dataType: double
+		lineageTag: 2bf75c30-8916-4bfb-977f-895134af480c
+		summarizeBy: sum
+		sourceColumn: Brought in Professional Sevices
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Expenditure'
+		dataType: decimal
+		lineageTag: 1c7fd90c-3585-4562-a2cd-8a5677884109
+		summarizeBy: sum
+		sourceColumn: Total Expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Academy Exp + per pupil share of Trust Exp'
+		dataType: decimal
+		lineageTag: 1bd01cfc-1254-4df5-83a6-ab279da53961
+		summarizeBy: sum
+		sourceColumn: Total Academy Exp + per pupil share of Trust Exp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'School Size'
+		dataType: string
+		lineageTag: 76d5629f-e7f7-4979-8c75-2651a554ec85
+		summarizeBy: none
+		sourceColumn: School Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FSM Banding'
+		dataType: string
+		lineageTag: 3dbb20ce-2d89-41d2-a273-2dc42bf71768
+		summarizeBy: none
+		sourceColumn: FSM Banding
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SEN Banding'
+		dataType: string
+		lineageTag: c0a7d1cf-a06d-4484-918f-022a0c8ab3eb
+		summarizeBy: none
+		sourceColumn: SEN Banding
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Type'
+		dataType: string
+		lineageTag: 3ff04493-5925-4550-af65-48e97a96f21a
+		summarizeBy: none
+		sourceColumn: School Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Benchmark Group'
+		dataType: string
+		lineageTag: 25059234-7a08-47c6-95cd-b89696a6daf0
+		summarizeBy: none
+		sourceColumn: Benchmark Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Benchmark Group (Full)'
+		dataType: string
+		lineageTag: fb47d826-7005-4e79-985e-155ea249ba09
+		summarizeBy: none
+		sourceColumn: Benchmark Group (Full)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Workforce'
+		dataType: double
+		lineageTag: 17d4fa60-9ae3-4936-b014-f171ca829a9b
+		summarizeBy: sum
+		sourceColumn: FTE Workforce
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE All Teachers'
+		dataType: double
+		lineageTag: 14b97386-7ad7-42fe-a38d-351c7cae2c96
+		summarizeBy: sum
+		sourceColumn: FTE All Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE Leadership Teachers'
+		dataType: double
+		lineageTag: 22e0d021-63d6-4996-8f51-33230301f433
+		summarizeBy: sum
+		sourceColumn: FTE Leadership Teachers
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FTE Teaching Assistants'
+		dataType: double
+		lineageTag: 58ba9b83-4762-4e1d-a8e7-c5623497cb87
+		summarizeBy: sum
+		sourceColumn: FTE Teaching Assistants
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on teaching staff as a percentage of total expenditure'
+		dataType: double
+		lineageTag: 2f79b859-bd64-4219-bdb1-f33d377e673f
+		summarizeBy: sum
+		sourceColumn: Spend on teaching staff as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on supply staff as a percentage of total expenditure'
+		dataType: double
+		lineageTag: 8317d836-379b-4522-ba32-499bd4317da5
+		summarizeBy: sum
+		sourceColumn: Spend on supply staff as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on education support staff as a percentage of total expenditure'
+		dataType: double
+		lineageTag: dc8e8182-7ed3-436c-a955-d375751b9d01
+		summarizeBy: sum
+		sourceColumn: Spend on education support staff as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on administrative and clerical staff as a percentage of total expenditure'
+		dataType: double
+		lineageTag: e300dd04-9a4e-4ba1-9f11-302bce8055f6
+		summarizeBy: sum
+		sourceColumn: Spend on administrative and clerical staff as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on other staff costs as a percentage of total expenditure'
+		dataType: double
+		lineageTag: 495a80bb-7409-484e-b6bb-0afc58ab62d0
+		summarizeBy: sum
+		sourceColumn: Spend on other staff costs as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on all staff costs as a percentage of total expenditure'
+		dataType: double
+		lineageTag: 09ab87e3-482d-45c6-a9fc-0d824f30e525
+		summarizeBy: sum
+		sourceColumn: Spend on all staff costs as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on premises (including staff) costs as a percentage of total expenditure'
+		dataType: double
+		lineageTag: eb74b5c3-4d04-4a2b-ae17-c8d607524469
+		summarizeBy: sum
+		sourceColumn: Spend on premises (including staff) costs as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on teaching resources as a percentage of total expenditure'
+		dataType: double
+		lineageTag: bb9b13a4-9dd8-44b7-af37-b97a08d2ed61
+		summarizeBy: sum
+		sourceColumn: Spend on teaching resources as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Spend on energy as a percentage of total expenditure'
+		dataType: double
+		lineageTag: 4f563296-1661-4a95-b1e8-dae990f32b88
+		summarizeBy: sum
+		sourceColumn: Spend on energy as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Other spending as a percentage of total expenditure'
+		dataType: double
+		lineageTag: 85c293fe-bd49-4b96-a13a-277f37fc2eab
+		summarizeBy: sum
+		sourceColumn: Other spending as a percentage of total expenditure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'In-year balance as a percentage of total income'
+		dataType: double
+		lineageTag: 6cff6302-e151-4348-8fb5-63e5c24ccac3
+		summarizeBy: sum
+		sourceColumn: In-year balance as a percentage of total income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Revenue reserve as a percentage of total income'
+		dataType: double
+		lineageTag: 678b76ff-c206-4629-94aa-0336242a8985
+		summarizeBy: sum
+		sourceColumn: Revenue reserve as a percentage of total income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Average teacher cost'
+		dataType: decimal
+		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
+		lineageTag: 8a5dc154-9d81-47ab-bff0-739c1241eced
+		summarizeBy: sum
+		sourceColumn: Average teacher cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column 'Senior leaders as a percentage of workforce'
+		dataType: double
+		lineageTag: 0bc537a6-aef4-40d7-a603-eae0ce2c270c
+		summarizeBy: sum
+		sourceColumn: Senior leaders as a percentage of workforce
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Pupil to adult ratio'
+		dataType: string
+		lineageTag: 95e822e1-2669-492e-acc1-19ef262d5843
+		summarizeBy: none
+		sourceColumn: Pupil to adult ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pupil to TA ratio'
+		dataType: string
+		lineageTag: 9ee07898-343c-4594-80ad-4a5cacd962f6
+		summarizeBy: none
+		sourceColumn: Pupil to TA ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Income per Pupil'
+		dataType: decimal
+		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
+		lineageTag: 97a21a4d-854a-422d-aac0-c0372ceba83b
+		summarizeBy: sum
+		sourceColumn: Total Income per Pupil
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column 'Full Time Pupils'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f715ebb-ba15-4d4f-bac2-a158aa84d3ba
+		summarizeBy: sum
+		sourceColumn: Full Time Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Part Time Pupils'
+		dataType: int64
+		formatString: 0
+		lineageTag: a6ecc66f-bdce-4134-afa3-6b6ff88a7cb0
+		summarizeBy: sum
+		sourceColumn: Part Time Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Headcount of Pupils'
+		dataType: int64
+		formatString: 0
+		lineageTag: 59a8e43b-e053-44f6-bb2c-58ba3e568a98
+		summarizeBy: sum
+		sourceColumn: Headcount of Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FTE Pupils'
+		dataType: double
+		lineageTag: 597e58c4-1656-4aba-952d-92ab9789acb5
+		summarizeBy: sum
+		sourceColumn: FTE Pupils
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LAEstab
+		dataType: string
+		lineageTag: 521418ae-3dea-4e26-9fd5-f42fa7d5cee7
+		summarizeBy: none
+		sourceColumn: LAEstab
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% of pupils with EHCP'
+		dataType: double
+		lineageTag: 891132f4-6ae0-4bad-aa16-6cbd25c784bf
+		summarizeBy: sum
+		sourceColumn: % of pupils with EHCP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '% of pupils with SEN support'
+		dataType: double
+		lineageTag: aef9a54c-918d-4f45-886f-7d741fd4bfaf
+		summarizeBy: sum
+		sourceColumn: % of pupils with SEN support
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Coronavirus Government Funding'
+		dataType: double
+		lineageTag: 4a104c9f-5480-407f-9d29-ea7952f4e93b
+		summarizeBy: sum
+		sourceColumn: Coronavirus Government Funding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '% of pupils with Any SEN'
+		dataType: double
+		lineageTag: 5b081718-b14a-4dda-9547-cdff8485ce4a
+		summarizeBy: sum
+		sourceColumn: % of pupils with Any SEN
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Financial Benchmark Data-00b2a112-3520-41b4-ac93-da31f3f46964' = m
+		mode: import
+		queryGroup: Finance
+		source = ```
+				let
+				    Source = #"Financial Benchmark Data (Staging)",
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"URN", type text}, {"Academy UPIN", type text}, {"Estab", type text}, {"LA", type text}, {"LAEstab", type text}, {"Total Expenditure", Currency.Type}, {"Total Academy Exp + per pupil share of Trust Exp", Currency.Type}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"URN"}),
+				    #"Divided Column" = Table.TransformColumns(#"Removed Duplicates", {{"% of pupils eligible for FSM", each _ / 100, Percentage.Type}, {"% of pupils with EHCP", each _ / 100, Percentage.Type}, {"% of pupils with SEN support", each _ / 100, Percentage.Type}, {"% of pupils with EAL", each _ / 100, Percentage.Type},{"% of pupils who are Boarders", each _ / 100, type number}}),
+				    #"Inserted Addition" = Table.AddColumn(#"Divided Column", "% of pupils with Any SEN", each [#"% of pupils with EHCP"] + [#"% of pupils with SEN support"], Percentage.Type),
+				    #"Added School Size" = Table.AddColumn(#"Inserted Addition", "School Size", each if [Overall Phase] = "Primary" and [No Pupils] < 100 then "Very Small" else if [Overall Phase] = "Primary" and [No Pupils] < 175 then "Small" else if [Overall Phase] = "Primary" and [No Pupils] < 375 then "Medium" else if [Overall Phase] = "Primary" and [No Pupils] >= 375 then "Large" else if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" and [No Pupils] < 770 then "Small" else if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" and [No Pupils] < 1300 then "Medium" else if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" and [No Pupils] >= 1300 then "Large" else if [Overall Phase] = "Secondary" and [No Pupils] < 485 then "Small" else if [Overall Phase] = "Secondary" and [No Pupils] < 935 then "Medium" else if [Overall Phase] = "Secondary" and [No Pupils] >= 935 then "Large" else null),
+				    #"Added FSM Banding" = Table.AddColumn(#"Added School Size", "FSM Banding", each if [Overall Phase] = "Primary" and [#"% of pupils eligible for FSM"] < 0.05 then "Low" else if [Overall Phase] = "Primary" and [#"% of pupils eligible for FSM"] < 0.18 then "Medium" else if [Overall Phase] = "Primary" and [#"% of pupils eligible for FSM"] >= 0.18 then "High" else if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" and [#"% of pupils eligible for FSM"] < 0.06 then "Low" else if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" and [#"% of pupils eligible for FSM"] < 0.165 then "Medium" else if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" and [#"% of pupils eligible for FSM"] >= 0.165 then "High" else if [Overall Phase] = "Secondary" and [#"% of pupils eligible for FSM"] < 0.08 then "Low" else if [Overall Phase] = "Secondary" and [#"% of pupils eligible for FSM"] < 0.215 then "Medium" else if [Overall Phase] = "Secondary" and [#"% of pupils eligible for FSM"] >= 0.215 then "High" else null),
+				    #"Added SEN Banding" = Table.AddColumn(
+				    #"Added FSM Banding", 
+				    "SEN Banding", 
+				    each 
+				      if [Overall Phase] = "Primary" and [#"% of pupils with Any SEN"] < 0.10 then
+				        "Low"
+				      else if [Overall Phase] = "Primary" and [#"% of pupils with Any SEN"] < 0.16 then
+				        "Medium"
+				      else if [Overall Phase] = "Primary" and [#"% of pupils with Any SEN"] >= 0.16 then
+				        "High"
+				      else if [Overall Phase]
+				        = "Secondary" and [Has a 6th form]
+				        = "Has a sixth form" and [#"% of pupils with Any SEN"]
+				        < 0.10
+				      then
+				        "Low"
+				      else if [Overall Phase]
+				        = "Secondary" and [Has a 6th form]
+				        = "Has a sixth form" and [#"% of pupils with Any SEN"]
+				        < 0.15
+				      then
+				        "Medium"
+				      else if [Overall Phase]
+				        = "Secondary" and [Has a 6th form]
+				        = "Has a sixth form" and [#"% of pupils with Any SEN"]
+				        >= 0.15
+				      then
+				        "High"
+				      else if [Overall Phase] = "Secondary" and [#"% of pupils with Any SEN"] < 0.13 then
+				        "Low"
+				      else if [Overall Phase] = "Secondary" and [#"% of pupils with Any SEN"] < 0.17 then
+				        "Medium"
+				      else if [Overall Phase] = "Secondary" and [#"% of pupils with Any SEN"] >= 0.17 then
+				        "High"
+				      else
+				        null
+				  ),
+				    #"Added School Type" = Table.AddColumn(#"Added SEN Banding", "School Type", each if [Overall Phase] = "Secondary" and [Has a 6th form] = "Has a sixth form" then "Secondary With 6th Form" else if [Overall Phase] = "Secondary" then "Secondary Without 6th Form" else if [Overall Phase] = "Primary" then "Primary" else null),
+				    #"Added Benchmark Group" = Table.AddColumn(#"Added School Type", "Benchmark Group", each [School Type]&"-"&[School Size]&"-"&[FSM Banding]&"-"&[SEN Banding]),
+				    #"Inserted Benchmark Group (Full)" = Table.AddColumn(#"Added Benchmark Group", "Benchmark Group (Full)", each Text.Combine({[School Size], " ", [School Type], " with ", [FSM Banding], " FSM and ", [SEN Banding], " SEN"}), type text),
+				    #"Filtered Nil Returns" = Table.SelectRows(#"Inserted Benchmark Group (Full)", each ([Total Expenditure] <> null)),
+				    #"Merged Workforce Census" = Table.NestedJoin(#"Filtered Nil Returns", {"URN"}, #"Workforce Census", {"School URN"}, "Workforce Census", JoinKind.LeftOuter),
+				    #"Expanded Workforce Census" = Table.ExpandTableColumn(#"Merged Workforce Census", "Workforce Census", {"FTE Workforce", "FTE All Teachers", "FTE Leadership Teachers", "FTE Teaching Assistants"}, {"FTE Workforce", "FTE All Teachers", "FTE Leadership Teachers", "FTE Teaching Assistants"}),
+				    #"Added Spend on teaching staff as a percentage of total expenditure" = Table.AddColumn(#"Expanded Workforce Census", "Spend on teaching staff as a percentage of total expenditure", each ([Teaching staff] / [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on supply staff as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on teaching staff as a percentage of total expenditure", "Spend on supply staff as a percentage of total expenditure", each (([Supply Staff] + [Supply teacher insurance] + [Agency supply teaching staff])/ [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on education support staff as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on supply staff as a percentage of total expenditure", "Spend on education support staff as a percentage of total expenditure", each ([Education support staff] / [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on administrative and clerical staff as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on education support staff as a percentage of total expenditure", "Spend on administrative and clerical staff as a percentage of total expenditure", each ([Administrative and clerical staff] / [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on other staff costs as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on administrative and clerical staff as a percentage of total expenditure", "Spend on other staff costs as a percentage of total expenditure", each (([Other Staff Costs] + [Indirect employee expenses] + [Staff development and training] + [#"Staff-related insurance"]) / [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on all staff as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on other staff costs as a percentage of total expenditure", "Spend on all staff costs as a percentage of total expenditure", each ([Staff Total]/ [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on premises (including staff) costs as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on all staff as a percentage of total expenditure", "Spend on premises (including staff) costs as a percentage of total expenditure", each (([Premises staff] + [#"Maintenance & Improvement"] + [Cleaning and caretaking] + [Building and Grounds maintenance and improvement] + [PFI Charges]) / [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on teaching resources as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on premises (including staff) costs as a percentage of total expenditure", "Spend on teaching resources as a percentage of total expenditure", each (([#"Learning resources (not ICT equipment)"] + [ICT learning resources] + [Examination fees]) / [Total Expenditure]), Percentage.Type),
+				    #"Added Spend on energy as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on teaching resources as a percentage of total expenditure", "Spend on energy as a percentage of total expenditure", each if [Energy] < 0 then 0 else [Energy] / [Total Expenditure], Percentage.Type),
+				    #"Added Other spending as a percentage of total expenditure" = Table.AddColumn(#"Added Spend on energy as a percentage of total expenditure", "Other spending as a percentage of total expenditure", each (([Catering staff] + [Water and sewerage] + [Rent and Rates] + [Other occupation costs] + [Special facilities] + [Educational Consultancy] + [Catering supplies] + [Auditor costs] + [Other insurance premiums] + [#"Administrative supplies - non educational"] + [#"Direct revenue financing (Revenue contributions to capital)"] + [Supplies and Services] + [Interest charges for Loan and Bank]) / [Total Expenditure]), Percentage.Type),
+				    #"Added In-year balance as a percentage of total income" = Table.AddColumn(#"Added Other spending as a percentage of total expenditure", "In-year balance as a percentage of total income", each (([Total Income] - [Total Expenditure]) / [Total Income]), Percentage.Type),
+				    #"Added Revenue reserve as a percentage of total income" = Table.AddColumn(#"Added In-year balance as a percentage of total income", "Revenue reserve as a percentage of total income", each ([Revenue Reserve] / [Total Income]), Percentage.Type),
+				    #"Added Average teacher cost" = Table.AddColumn(#"Added Revenue reserve as a percentage of total income", "Average teacher cost", each ([Teaching staff] / [No Teachers]), Currency.Type),
+				    #"Added Senior leaders as a percentage of workforce" = Table.AddColumn(#"Added Average teacher cost", "Senior leaders as a percentage of workforce", each ([FTE Leadership Teachers] / [FTE Workforce]), Percentage.Type),
+				    #"Added Pupil to adult ratio" = Table.AddColumn(#"Added Senior leaders as a percentage of workforce", "Pupil to adult ratio", each ([No Pupils] / [FTE Workforce])),
+				    #"Added Pupil to TA Ratio" = Table.AddColumn(#"Added Pupil to adult ratio", "Pupil to TA ratio", each ([No Pupils] / [FTE Teaching Assistants])),
+				    #"Added Total Income per Pupil" = Table.AddColumn(#"Added Pupil to TA Ratio", "Total Income per Pupil", each ([Total Income] / [No Pupils]), Currency.Type),
+				    #"Filtered Workforce Census Data" = Table.SelectRows(#"Added Total Income per Pupil", each [FTE Workforce] <> null),
+				    #"Merged Student Census" = Table.NestedJoin(#"Filtered Workforce Census Data", {"URN"}, #"Student Census", {"URN"}, "Student Census", JoinKind.LeftOuter),
+				    #"Expanded Student Census" = Table.ExpandTableColumn(#"Merged Student Census", "Student Census", {"Full Time Pupils", "Part Time Pupils", "Headcount of Pupils", "FTE Pupils"}, {"Full Time Pupils", "Part Time Pupils", "Headcount of Pupils", "FTE Pupils"})
+				in
+				    #"Expanded Student Census"
+				```
+
+	annotation PBI_ResultType = Table
+

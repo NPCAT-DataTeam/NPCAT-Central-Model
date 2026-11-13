@@ -1,0 +1,79 @@
+table 'zP LTS'
+	lineageTag: 8bad11b9-9ec8-4c66-87c7-c79c6eee32b9
+
+	column 'zP LTS Sickness'
+		lineageTag: 0b495f5a-d323-427b-a65d-79d78f4ccf0a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP LTS Sickness Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP LTS Sickness Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP LTS Sickness Fields'
+		isHidden
+		lineageTag: 0cb4ff2d-9af0-4ace-bc68-9d6f2c6c6db1
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP LTS Sickness Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP LTS Sickness Order'
+		isHidden
+		formatString: 0
+		lineageTag: 87478081-e73a-4c31-a5b4-11bfc5e60f6c
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LTS Time Series' = ```
+			
+			SWITCH( 
+			    TRUE(), 
+			    'zP LTS'[zP LTS Sickness] = "LTS (3 Months Ago)","3 Months",
+			    'zP LTS'[zP LTS Sickness]  = "LTS (6 Months Ago)","6 Months",
+			    'zP LTS'[zP LTS Sickness] = "LTS (12 Months Ago)","12 Months"
+			    )
+			```
+		lineageTag: 7e735761-ae26-467d-9f4a-5e77e226189c
+		summarizeBy: none
+		sortByColumn: 'LTS Time Series (Sort)'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LTS Time Series (Sort)' = ```
+			
+			SWITCH( 
+			    TRUE(), 
+			    'zP LTS'[zP LTS Sickness] = "LTS (3 Months Ago)",0,
+			    'zP LTS'[zP LTS Sickness]  = "LTS (6 Months Ago)",1,
+			    'zP LTS'[zP LTS Sickness] = "LTS (12 Months Ago)",2
+			    )
+			```
+		formatString: 0
+		lineageTag: 28994cbe-284f-4ecb-86e6-7077119d775e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition 'zP LTS' = calculated
+		mode: import
+		source =
+				{
+				    ("LTS (3 Months Ago)", NAMEOF('Measures Folder'[LTS (3 Months Ago)]), 0),
+				    ("LTS (6 Months Ago)", NAMEOF('Measures Folder'[LTS (6 Months Ago)]), 1),
+				    ("LTS (12 Months Ago)", NAMEOF('Measures Folder'[LTS (12 Months Ago)]), 2)
+				}
+
+	annotation PBI_Id = b99dbe2835cc4c4b9b0bd10d39400692
+

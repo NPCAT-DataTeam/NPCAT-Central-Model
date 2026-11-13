@@ -1,0 +1,174 @@
+table 'Safeguarding Visit Scores'
+	lineageTag: 784542f7-df1c-4fbf-8036-3ff0f642c05a
+
+	column ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c56877f9-5278-4681-86cf-6811a7529a0a
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: df2ade3f-33ec-4e05-91f4-f67547d65047
+		summarizeBy: sum
+		sourceColumn: Subgroup Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subgroup ID Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: b040dfaa-de21-431b-8972-f68b3178fcc5
+		summarizeBy: sum
+		sourceColumn: Subgroup ID Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Met/Not Met'
+		dataType: string
+		lineageTag: ded5d080-b62d-4958-b40a-aa546e86d20c
+		summarizeBy: none
+		sourceColumn: Met/Not Met
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 99f3ef54-7722-47a6-aabf-1315025926a4
+		summarizeBy: sum
+		sourceColumn: Question Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarding Action'
+		dataType: string
+		lineageTag: 3648fb67-b1fe-4867-83f7-4631f0076d08
+		summarizeBy: none
+		sourceColumn: Safeguarding Action
+		sortByColumn: 'Question Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safeguarding Category'
+		dataType: string
+		lineageTag: 38ee6d6a-323b-41e3-a852-24d7f8f8bcff
+		summarizeBy: none
+		sourceColumn: Safeguarding Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: d6c78be4-e284-454c-8654-8f9d440253f9
+		summarizeBy: sum
+		sourceColumn: Category Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 12cc36a4-f59c-4760-952a-b76a8269f57b
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Priority Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b78c73e-b200-409d-b22d-77c49cdcc493
+		summarizeBy: sum
+		sourceColumn: Priority Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Number and Category'
+		dataType: string
+		lineageTag: bec37a4d-719a-4c1c-811d-f6a234860dde
+		summarizeBy: none
+		sourceColumn: Question Number and Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Category ID'
+		dataType: string
+		lineageTag: 67bd71b3-05e6-41a3-b77f-51c0cc56ba15
+		summarizeBy: none
+		sourceColumn: Unique Category ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Statutory Category Status'
+		dataType: string
+		lineageTag: 3feda964-e04e-481d-b2ac-4c6cfcbd3d6e
+		summarizeBy: none
+		sourceColumn: Statutory Category Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trust Category Status'
+		dataType: string
+		lineageTag: 3660e06f-f007-4261-839e-dbf9a8205afe
+		summarizeBy: none
+		sourceColumn: Trust Category Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Category Status'
+		dataType: string
+		lineageTag: e2f6a602-5b2b-41e7-a861-8615d3ebb9ad
+		summarizeBy: none
+		sourceColumn: Overall Category Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUID
+		dataType: string
+		lineageTag: 8178ee96-4483-4f62-b372-5ebc38a385bd
+		summarizeBy: none
+		sourceColumn: SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Merged ID'
+		dataType: string
+		lineageTag: 2ace18b4-3504-4b1b-b4b4-1588a6d3f4a6
+		summarizeBy: none
+		sourceColumn: Merged ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supervision/Audit
+		dataType: string
+		lineageTag: a42307e0-8c1d-48df-8334-c1a1b4317a05
+		summarizeBy: none
+		sourceColumn: Supervision/Audit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Safeguarding Visit Scores-6039af8e-d252-4615-8e29-b391de377210' = m
+		mode: import
+		queryGroup: Safeguarding
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c"]}[Data],
+				    #"Safeguarding Visit Scores_" = #"5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c"{[entity="Safeguarding Visit Scores",version=""]}[Data]
+				in
+				    #"Safeguarding Visit Scores_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

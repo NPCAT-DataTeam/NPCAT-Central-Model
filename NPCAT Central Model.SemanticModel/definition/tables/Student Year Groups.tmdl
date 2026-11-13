@@ -1,0 +1,314 @@
+table 'Student Year Groups'
+	lineageTag: d0938ca3-70fb-4eb8-a767-9c364c0f2a3b
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: a44375de-699d-4d49-9b4b-d16c4d0e1aa1
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: b46169e8-55f5-4666-86ee-69c535ed4619
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: d3672141-905a-479e-b529-83419c1b6429
+		summarizeBy: sum
+		sourceColumn: Year Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 80b0e890-ce4e-4f0b-94ec-4b00a0e5914f
+		summarizeBy: none
+		sourceColumn: Year Group
+		sortByColumn: 'Year Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_LEVEL_NAME
+		dataType: string
+		lineageTag: 3bc35001-2848-4ae5-9bd0-270c7df7602a
+		summarizeBy: none
+		sourceColumn: ACADEMIC_LEVEL_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 55431524-7945-4b72-ac7f-e5108ac325d2
+		summarizeBy: none
+		sourceColumn: End date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IS_CURRENT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3faa3f36-ac1e-4f2c-bd81-e8e70d1ce177
+		summarizeBy: none
+		sourceColumn: IS_CURRENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 74168cdc-5e08-4d3b-a85d-2232f1e1bb7c
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: 299d7f25-4227-460d-87b5-3724ab10df05
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage'
+		dataType: string
+		lineageTag: caa0c2b3-694d-491e-bc84-b45e45630d54
+		summarizeBy: none
+		sourceColumn: Key Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 424f51ff-1ec0-4f87-b88d-7e20b276c4c7
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance YTD' = ```
+			
+			    Calculate(
+			        Divide(
+			            SUM(Attendance[Attendance]),
+			            SUM(Attendance[Sessions])),
+			        Attendance[Redaction Check]<>1,
+			        Attendance[On Roll] <> "Unenrolled",
+			        Attendance[Compulsory Age] = 1)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7623e129-d86f-486d-8d46-846840d6dcc2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance Rank' = ```
+			
+			SWITCH(TRUE(), 
+			    ISBLANK([Attendance YTD]), "N/A",
+			    [Attendance YTD] >= 0.97, "97%-100%",
+			    [Attendance YTD] >= 0.94, "94%-97%",
+			    [Attendance YTD] >= 0.90, "90%-94%",
+			    [Attendance YTD] >= 0.75, "75%-90%",
+			    [Attendance YTD] >= 0.50, "50%-75%",
+			    [Attendance YTD] >= 0.25, "25%-50%",
+			    [Attendance YTD] < 0.25,  "0%-25%"
+			)
+			```
+		lineageTag: 5eee02d8-8486-41b7-b56e-81abe4d39112
+		summarizeBy: none
+		sortByColumn: 'Attendance Rank Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance Rank Sort' =
+			
+			VAR AttendanceYTD = [Attendance YTD]
+			RETURN
+			SWITCH(TRUE(),
+			        ISBLANK(AttendanceYTD), 8,
+			        AttendanceYTD >= 0.97, 1,
+			        AttendanceYTD >= 0.94, 2,
+			        AttendanceYTD >= 0.90, 3,
+			        AttendanceYTD >= 0.75, 4,
+			        AttendanceYTD >= 0.5, 5,
+			        AttendanceYTD >= 0.25, 6,
+			        AttendanceYTD < 0.25, 7
+			        )
+		formatString: 0
+		lineageTag: 7866f4cd-83ce-483e-951e-695ff7030cf0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'In Year Leaver Flag' = IF ( MONTH([End date]) = 8 , "Not In Year Leaver", "In Year Leaver")
+		lineageTag: a9942840-4c9d-4710-90b5-d2653375b959
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fixed Term Exclusions (0,1+,2+)' = ```
+			
+			VAR Incidents = CALCULATE(
+			        COUNTROWS( 'Excluded Students')
+			        )
+			VAR IncidentsNoBlank = IF(ISBLANK(Incidents),0,Incidents)
+			RETURN
+			    // SWITCH(TRUE(),
+			    //     IncidentsNoBlank=0,"0",
+			    //     IncidentsNoBlank>=2,"2+",
+			    //     IncidentsNoBlank>=1,"1+"
+			    // )
+			    IncidentsNoBlank
+			
+			
+			
+			```
+		formatString: 0
+		lineageTag: 881274ea-15e1-42c4-8894-176a8a41a63c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IDACI Decile' =
+			FORMAT(IF(ISBLANK(
+			LOOKUPVALUE(
+			    'Student Indicies'[Decile],
+			    'Student Indicies'[Globally Unique Student - Year], 'Student Year Groups'[Unique Student ID - Academic Year],
+			    'Student Indicies'[Category],"IDACI",
+			    'Student Indicies'[RELEASE_YEAR],2025
+			)),"Undefined",
+			 LOOKUPVALUE(
+			    'Student Indicies'[Decile],
+			    'Student Indicies'[Globally Unique Student - Year], 'Student Year Groups'[Unique Student ID - Academic Year],
+			    'Student Indicies'[Category],"IDACI",
+			    'Student Indicies'[RELEASE_YEAR],2025
+			)),"0")
+		lineageTag: e2343923-07a3-467b-b2ba-87a54bb444b9
+		summarizeBy: none
+		sortByColumn: 'IDACI Decile Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment'
+		dataType: string
+		lineageTag: df597ed7-6d6a-4ba6-a389-0b4090e873d0
+		summarizeBy: none
+		sourceColumn: Prior Attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment (Short)'
+		dataType: string
+		lineageTag: 263b6497-b392-4a09-9846-a0250443ff21
+		summarizeBy: none
+		sourceColumn: Prior Attainment (Short)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IDACI Decile Sort' =
+			
+			LOOKUPVALUE(
+			    'Student Indicies'[Decile Sort],
+			    'Student Indicies'[Globally Unique Student - Year], 'Student Year Groups'[Unique Student ID - Academic Year],
+			    'Student Indicies'[Category],"IDACI",
+			    'Student Indicies'[RELEASE_YEAR],2025
+			)
+		formatString: 0
+		lineageTag: 945a66a7-576c-490a-8df0-e58ee677aab4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'In Year Joiner' = ```
+			IF ( MONTH([Start Date]) = 9 , "Not In Year Joiner", "In Year Joiner") 
+			```
+		lineageTag: 0b60fe51-e7fc-468d-a6fc-e9d9e7a7068e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birthday Mark Check' =
+			
+			VAR  Birthday = LOOKUPVALUE('Student Database (Full)'[DOB],'Student Database (Full)'[Globally Unique Student ID],[Globally Unique Student ID])
+			VAR  Birthday_Year = [Academic Year]+ (IF(MONTH(Birthday)>8,0,1))
+			VAR  Academic_BDay = DATE(Birthday_Year,MONTH(Birthday),DAY(Birthday))
+			VAR  Attendance_Mark = CALCULATE( COUNTROWS('Student Absences'),
+			                                'Student Absences'[Start Date]<=Academic_BDay &&
+			                                'Student Absences'[End Date]>=Academic_BDay,
+			                                'Student Absences'[Sessions Missed] <= 20
+			                                )
+			VAR Student = [Unique Student ID - Academic Year]
+			VAR Sessions = CALCULATE(
+			                    MAX('Student Absences'[Sessions Missed]),
+			                    'Student Absences'[Student - Year ID]=Student,
+			                    'Student Absences'[Start Date]<=Academic_BDay &&
+			                    'Student Absences'[End Date]>=Academic_BDay)
+			RETURN
+			        SWITCH(TRUE(),
+			            Attendance_Mark = 0, "Present",
+			            Sessions >= 20, "Unrelated Absence",
+			            [End date]<Academic_BDay, "Unenrolled",
+			            Attendance_Mark >= 1, "Absent over Birthday"
+			            )
+		lineageTag: dd47a2cd-7913-4583-8883-5692e3417b91
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suspensions YTD' = ```
+			
+			VAR Incidents = CALCULATE(
+			        COUNTROWS( 'Behaviour Sanctions'),
+			        'Behaviour Sanctions'[Source Table] = "Suspension"
+			        )
+			VAR IncidentsNoBlank = IF(ISBLANK(Incidents),0,Incidents)
+			RETURN
+			    
+			    IncidentsNoBlank
+			
+			
+			
+			```
+		formatString: 0
+		lineageTag: aad43ba9-7821-4046-8724-a1e5f174e41f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Student Year Groups-e8464de4-0128-45df-8482-7bcc160a87d2' = m
+		mode: import
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"Student Year Groups1" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Student Year Groups"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(#"Student Year Groups1",{{"Student-Date", "Unique Student ID - Academic Year"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"Globally Unique Student ID"}, #"Student Database (Full)", {"Globally Unique Student ID"}, "Student Database (Full)", JoinKind.Inner),
+				    #"Expanded Student Database (Full)" = Table.ExpandTableColumn(#"Merged Queries", "Student Database (Full)", {"Prior Attainment", "Prior Attainment (Short)"}, {"Prior Attainment", "Prior Attainment (Short)"})
+				in
+				    #"Expanded Student Database (Full)"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

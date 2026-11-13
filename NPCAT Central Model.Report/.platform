@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "NPCAT Central Model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3db2fa29-11d9-4fd9-8044-3500e54e1cbb"
+  }
+}

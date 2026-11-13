@@ -1,0 +1,198 @@
+table 'Behaviour Sanctions'
+	lineageTag: 354fcffd-e5bc-4b15-b894-56c3f2902cfc
+
+	column 'Event ID'
+		dataType: string
+		lineageTag: 19997f5d-0dbc-4c62-b4e4-39fb51edcf15
+		summarizeBy: none
+		sourceColumn: Event ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: f689cb2d-19ed-486d-93ea-ba692b56d178
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Application ID'
+		dataType: string
+		lineageTag: c611b802-11c2-42ed-b3cd-2f3ec5267199
+		summarizeBy: none
+		sourceColumn: Application ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b16aab25-57a4-4849-8df6-5dea91b5d5e1
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Decision Date'
+		dataType: string
+		lineageTag: 727a691b-3cad-489d-994a-161f6ae5eeb7
+		summarizeBy: none
+		sourceColumn: Decision Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: bf5fdcae-6f66-4ea3-bffd-97ed8915bead
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reasons List Text'
+		dataType: string
+		lineageTag: e0fdbf6a-602c-4f87-9567-bbe895293870
+		summarizeBy: none
+		sourceColumn: Reasons List Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Table'
+		dataType: string
+		lineageTag: ca679770-eb9b-4872-9f07-cf643eaa9b00
+		summarizeBy: none
+		sourceColumn: Source Table
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student - Event ID'
+		dataType: string
+		lineageTag: b04fb5d6-df63-4be5-824a-8ade72926968
+		summarizeBy: none
+		sourceColumn: Unique Student - Event ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 364ae51e-669e-4170-a663-da686e454801
+		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days Suspended'
+		dataType: double
+		lineageTag: 5a28c517-ddd8-43c6-8fe6-2f838c134814
+		summarizeBy: sum
+		sourceColumn: Days Suspended
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sessions Suspended'
+		dataType: double
+		lineageTag: 12a001ee-27e3-4a2c-be0a-1438100fe8b2
+		summarizeBy: sum
+		sourceColumn: Sessions Suspended
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 11ab7178-0039-4665-9077-e5669f440ad7
+		summarizeBy: sum
+		sourceColumn: Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reasons Type'
+		dataType: string
+		lineageTag: d1d6ee44-496a-432d-9e3a-dd33c9b92568
+		summarizeBy: none
+		sourceColumn: Reasons Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Present
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e3025b4-0f64-41b3-8a13-eb959fb40c25
+		summarizeBy: sum
+		sourceColumn: Present
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: 4ad14e6f-bf15-40fe-8f72-b60f67851967
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: c38cb3a7-18b1-4a36-8467-1c0b12ac33ed
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique ID - Academic Year'
+		dataType: string
+		lineageTag: 367802e6-bb09-49cb-bdb9-723f66bc6c16
+		summarizeBy: none
+		sourceColumn: Unique ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suspensions YTD' = ```
+			
+			CALCULATE(
+			    COUNTROWS('Behaviour Sanctions'), 
+			    ALLEXCEPT('Behaviour Sanctions', 'Behaviour Sanctions'[Unique ID - Academic Year]),
+			    'Behaviour Sanctions'[Source Table]="Suspension"
+			)
+			```
+		formatString: 0
+		lineageTag: 9bab1a0c-35d4-43d2-9360-56e174e40299
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 86cca738-9dfb-47f3-8499-ef2de6d66204
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Behaviour Sanctions' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"cac18991-39e9-44fc-a199-7ead3fd3e517" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cac18991-39e9-44fc-a199-7ead3fd3e517"]}[Data],
+				    #"Behaviour Sanctions_" = #"cac18991-39e9-44fc-a199-7ead3fd3e517"{[entity="Behaviour Sanctions",version=""]}[Data]
+				in
+				    #"Behaviour Sanctions_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

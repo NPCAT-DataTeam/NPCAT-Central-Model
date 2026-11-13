@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "968e22d6e41b94e7fc91",
+  "position": {
+    "x": 104.42622950819673,
+    "y": 79.245901639344268,
+    "z": 2000,
+    "height": 931.672131147541,
+    "width": 1724.8524590163936,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Matrix Overview",
+    "groupMode": "ScaleMode"
+  }
+}

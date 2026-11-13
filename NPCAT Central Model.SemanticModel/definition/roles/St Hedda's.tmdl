@@ -1,0 +1,7 @@
+role 'St Hedda''s'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT28"
+
+	annotation PBI_Id = 6fa65d51c2a64e528bbbd37766c99f66
+

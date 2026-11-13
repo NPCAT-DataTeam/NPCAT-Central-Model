@@ -1,0 +1,333 @@
+table 'KS2 Tests & TA Results'
+	lineageTag: 3436faa3-8b20-4a5f-a7ce-1e27f29e9724
+
+	column UPN
+		dataType: string
+		lineageTag: 004a4dfe-d120-4bb9-bc83-7f3ae29032c0
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: eebc3d74-c7c3-47cc-99d5-0d015d90d2b5
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ff3b04e8-ddf1-4920-87c9-64eabcc03b68
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Leaving date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 685607b1-77ef-4065-8d49-49c569994235
+		summarizeBy: none
+		sourceColumn: Leaving date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: string
+		lineageTag: df90dfeb-d399-4e10-ab72-433caf352651
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Test Discounted Flag'
+		dataType: string
+		lineageTag: 296e72b9-802c-4f8c-a8ea-9861a0bedf7e
+		summarizeBy: none
+		sourceColumn: Test Discounted Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TA Discounted Flag'
+		dataType: string
+		lineageTag: 5bd7c337-6ba2-41b8-8264-13ee75fc2b0b
+		summarizeBy: none
+		sourceColumn: TA Discounted Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_NAME
+		dataType: string
+		lineageTag: f7329fa2-8cfd-4744-8dcd-a6ee2548ba93
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_CODE
+		dataType: string
+		lineageTag: 2d42756b-342a-41a8-b766-26f50367b992
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_DATE
+		dataType: string
+		lineageTag: f4f74baf-4b56-4445-9d89-58ad53bb6cfa
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_CODE
+		dataType: string
+		lineageTag: e4d37a5c-6f89-4919-b00a-39d86506172c
+		summarizeBy: none
+		sourceColumn: SUBJECT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_NAME
+		dataType: string
+		lineageTag: f87117b6-253e-4a0f-be9a-bc13b0c003fc
+		summarizeBy: none
+		sourceColumn: SUBJECT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mark
+		dataType: int64
+		formatString: 0
+		lineageTag: d4074a48-41e8-44a5-bf61-844fa290da3d
+		summarizeBy: sum
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grade
+		dataType: string
+		lineageTag: 9d49f10a-c567-4981-a978-c51f31767376
+		summarizeBy: none
+		sourceColumn: Grade
+		sortByColumn: 'Grade Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: d468eab2-b73c-4299-a6f4-57f9791a14d0
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Special Consideration Flag'
+		dataType: int64
+		formatString: 0
+		lineageTag: aa16ec0e-c8ce-4a8d-97b8-8000ef45f51f
+		summarizeBy: sum
+		sourceColumn: Special Consideration Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: c76b3865-aa3e-4f8a-a36e-0b715d606990
+		summarizeBy: none
+		sourceColumn: Subject
+		sortByColumn: 'Subject Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7241a184-2455-41fd-9c5c-f13083375995
+		summarizeBy: sum
+		sourceColumn: Subject Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 86e423cc-5e29-4836-ad05-13b2ef23b770
+		summarizeBy: sum
+		sourceColumn: Grade Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Type'
+		dataType: string
+		lineageTag: d79a0b24-84b4-465b-976f-2c842c979ed1
+		summarizeBy: none
+		sourceColumn: Assessment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Old Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: 502e6407-347c-43e9-8576-e98b0f122392
+		summarizeBy: sum
+		sourceColumn: Old Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Old Grade'
+		dataType: string
+		lineageTag: e1eb44c0-77cb-4adc-bd42-18d9ad06fcdf
+		summarizeBy: none
+		sourceColumn: Old Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: 87d670a6-66a5-49a9-b50b-5bce6215cf14
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique ID & Year'
+		dataType: string
+		lineageTag: ddf4f22f-de06-4ab7-b40f-76076c7cef9a
+		summarizeBy: none
+		sourceColumn: Globally Unique ID & Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Results Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9099b5e-318b-4fdb-afa7-db3eb54d76b6
+		summarizeBy: none
+		sourceColumn: Results Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Special Consideration ID'
+		dataType: string
+		lineageTag: 755637fd-61f8-4026-b65d-53bb58e63ec3
+		summarizeBy: none
+		sourceColumn: Special Consideration ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: f7b7a65f-21ae-4786-8fb8-b5a9da368219
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Max Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dcef787-d5b0-48c0-8721-e184d2e78010
+		summarizeBy: sum
+		sourceColumn: Max Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pass Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d673462-2ff8-4b7c-b2e5-9acd6da63a94
+		summarizeBy: sum
+		sourceColumn: Pass Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Greater Depth Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: 64388b4d-c55e-4823-bf37-3a74e9c580d2
+		summarizeBy: sum
+		sourceColumn: Greater Depth Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variance to Pass Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: c93fa147-0d3a-4ab2-89eb-f6c09ecb0d75
+		summarizeBy: sum
+		sourceColumn: Variance to Pass Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variance to Greater Depth Mark'
+		dataType: int64
+		formatString: 0
+		lineageTag: 53493e4f-3f26-4e4a-9ba3-a40e72f3ce2f
+		summarizeBy: sum
+		sourceColumn: Variance to Greater Depth Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paper Category'
+		dataType: string
+		lineageTag: 6411faab-90bb-41fe-87c0-5285b3da1eca
+		summarizeBy: none
+		sourceColumn: Paper Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: e148aed2-d666-4af1-81da-33cd638a3d4d
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year' = VALUE("20" & LEFT([Academic Year],2))
+		dataType: int64
+		lineageTag: e8595d5b-d6d0-4b69-b7c4-9231d64377c4
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paper Analysis Type'
+		dataType: string
+		lineageTag: 2611938e-52c9-4acb-a1a5-15590fcf9e82
+		summarizeBy: none
+		sourceColumn: Paper Analysis Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS2 Tests & TA Results-b834e2c3-c402-4560-b7ac-0d32410a5dc0' = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary\KS2'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    #"KS2 Tests & TA Results1" = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="KS2 Tests & TA Results"]}[Data]
+				in
+				    #"KS2 Tests & TA Results1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

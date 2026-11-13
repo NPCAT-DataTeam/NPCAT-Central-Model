@@ -1,0 +1,149 @@
+table Enrichment
+	lineageTag: 7ed8be7b-7bbf-450c-bfa8-854bf5f8f6ef
+
+	column ENRICHMENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 9289d287-97d9-4e74-b0f7-f8dea8e21f10
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENRICHMENT_ID
+		dataType: double
+		lineageTag: 93cd69a3-c86f-4de5-9ef6-4ed026b6572f
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column APPLICATION_ID
+		dataType: string
+		lineageTag: 11965d7a-82bc-4e22-a29d-fb86a185bd1c
+		summarizeBy: none
+		sourceColumn: APPLICATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENRICHMENT_NAME
+		dataType: string
+		lineageTag: a8524e92-49bf-4b1a-ac4b-830bb773740a
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENRICHMENT_DESCRIPTION
+		dataType: string
+		lineageTag: 8bbec274-bd37-4823-9e41-b8a9c4b2583e
+		summarizeBy: none
+		sourceColumn: ENRICHMENT_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATION_NAME
+		dataType: string
+		lineageTag: 03f1653e-f898-46bb-ab51-3c6cbbf76e2e
+		summarizeBy: none
+		sourceColumn: LOCATION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_YEAR_UNIQUE_ID
+		dataType: string
+		lineageTag: e3d21c74-6964-40e7-be4f-017f8121f5a6
+		summarizeBy: none
+		sourceColumn: ACADEMIC_YEAR_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACADEMIC_YEAR_ID
+		dataType: double
+		lineageTag: 72ae3438-8f74-41b7-a1de-fe95575ef50f
+		summarizeBy: none
+		sourceColumn: ACADEMIC_YEAR_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACADEMIC_YEAR_NAME
+		dataType: string
+		lineageTag: 12321021-ea52-40eb-8624-06a1fb712dde
+		summarizeBy: none
+		sourceColumn: ACADEMIC_YEAR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: 90753dd6-2961-42fd-9c87-bf32d60f2b08
+		summarizeBy: none
+		sourceColumn: COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ID
+		dataType: double
+		lineageTag: 70545f91-e2a6-4007-98cd-12fa58a8a89e
+		summarizeBy: none
+		sourceColumn: COURSE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column START_DATETIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 688da5aa-cd37-49ed-9f38-37dc67a0804e
+		summarizeBy: none
+		sourceColumn: START_DATETIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column END_DATETIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 94cbc7bc-ae0b-4df0-9dd8-7e00518e5db5
+		summarizeBy: none
+		sourceColumn: END_DATETIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAX_PARTICIPANTS
+		dataType: double
+		lineageTag: 038fcaf3-de3f-4977-88d6-6d3fad7314a1
+		summarizeBy: none
+		sourceColumn: MAX_PARTICIPANTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'ENRICHMENT TYPE'
+		dataType: string
+		lineageTag: 75c68329-6a5d-47d0-8210-2ef871ba774f
+		summarizeBy: none
+		sourceColumn: ENRICHMENT TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Enrichment = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"dec0f7d7-e49f-433b-bf49-0f0a5e57e018" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="dec0f7d7-e49f-433b-bf49-0f0a5e57e018"]}[Data],
+				    Enrichment_ = #"dec0f7d7-e49f-433b-bf49-0f0a5e57e018"{[entity="Enrichment",version=""]}[Data]
+				in
+				    Enrichment_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

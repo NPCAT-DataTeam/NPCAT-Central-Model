@@ -1,0 +1,100 @@
+table 'Health&Safety Actions Dates'
+	lineageTag: 00b06493-0da3-4bb1-bb9d-9d73a31abba2
+
+	column 'Action Ref Number'
+		dataType: string
+		lineageTag: 7fde52c4-eb92-43c2-9e8e-90fe230c1bdc
+		summarizeBy: none
+		sourceColumn: Action Ref Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 39f43a38-25f7-4098-b98f-3b20916037d0
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Last Complete Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1b9a60da-4abd-4842-88b3-7d1905c47492
+		summarizeBy: none
+		sourceColumn: Last Complete Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Status Date(list)'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ae0e469a-31a7-4338-91c4-9b5002e7952d
+		summarizeBy: none
+		sourceColumn: Status Date(list)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days Until/Past Due'
+		dataType: int64
+		formatString: 0
+		lineageTag: 715d7f0e-ce4b-4f73-852d-5a23f31fe333
+		summarizeBy: none
+		sourceColumn: Days Until/Past Due
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Action Status(Colour)'
+		dataType: string
+		lineageTag: 4bddee55-b6a5-44f0-8e27-79d57d523934
+		summarizeBy: none
+		sourceColumn: Action Status(Colour)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Check'
+		dataType: string
+		lineageTag: 42bae851-140c-403f-b676-39d587c52103
+		summarizeBy: none
+		sourceColumn: Complete Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Late Check'
+		dataType: string
+		lineageTag: 07daa114-7d0a-4795-8681-50fd62050dcb
+		summarizeBy: none
+		sourceColumn: Late Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 334f4fce-7a74-4f7b-81f8-051b8b43d5c0
+		summarizeBy: none
+		sourceColumn: Weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Health&Safety Actions Dates-4a7e2666-e720-4f93-b297-801d8cad5fc1' = m
+		mode: import
+		queryGroup: Estates\Health&Safety
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"31b34b71-604a-4363-954d-c65e70acd86b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="31b34b71-604a-4363-954d-c65e70acd86b"]}[Data],
+				    #"Health&Safety Actions Dates1" = #"31b34b71-604a-4363-954d-c65e70acd86b"{[entity="Health&Safety Actions Dates"]}[Data]
+				in
+				    #"Health&Safety Actions Dates1"
+
+	annotation PBI_ResultType = Table
+

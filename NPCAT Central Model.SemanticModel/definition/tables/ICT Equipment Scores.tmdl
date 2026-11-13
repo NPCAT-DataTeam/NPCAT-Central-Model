@@ -1,0 +1,152 @@
+table 'ICT Equipment Scores'
+	lineageTag: f8a648f2-f7f2-466d-bc5a-953bbb7a507c
+
+	column Location
+		dataType: string
+		lineageTag: b8e94357-16d6-4dab-8f83-5442f60d5788
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: fc1c265d-2c15-46c3-94a4-2682f07e3611
+		summarizeBy: none
+		sourceColumn: Category
+		sortByColumn: 'Category Sort Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NPCAT Fit For Purpose Rating (FFP Rating)'
+		dataType: int64
+		formatString: 0
+		lineageTag: cef835da-4203-4bfb-8386-89fb344815db
+		summarizeBy: sum
+		sourceColumn: NPCAT Fit For Purpose Rating (FFP Rating)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weighting
+		dataType: int64
+		formatString: 0
+		lineageTag: e1e60ec8-adc8-41cd-8672-c1dbb8052108
+		summarizeBy: sum
+		sourceColumn: Weighting
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weighted Score'
+		dataType: double
+		lineageTag: ab578c11-aee7-4d2c-a907-abdef93e2364
+		summarizeBy: sum
+		sourceColumn: Weighted Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Rating Name'
+		dataType: string
+		lineageTag: 6254e05b-4276-4fb2-ae93-190dcfda4136
+		summarizeBy: none
+		sourceColumn: Rating Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rating Description'
+		dataType: string
+		lineageTag: 75a322e3-301e-4b9a-8932-2a7519f294a8
+		summarizeBy: none
+		sourceColumn: Rating Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Equipment Grouping'
+		dataType: string
+		lineageTag: 4e3d1ae0-f9a6-4129-9f37-2f8eed61da1d
+		summarizeBy: none
+		sourceColumn: Equipment Grouping
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 72f1b66d-fd70-41e8-b24b-3098694201c2
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Sort Order'
+		dataType: double
+		lineageTag: 1284e388-8df6-4e20-a9c7-73b8442d2d6a
+		summarizeBy: sum
+		sourceColumn: Category Sort Order
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 85ad7bcd-b3da-46b3-ba72-f9bf88da10bd
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Status'
+		dataType: string
+		lineageTag: 67de1947-5dd9-48c9-ae6d-68dfb0304c4b
+		summarizeBy: none
+		sourceColumn: Item Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Snapshot Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c414bb2a-c468-44b1-851b-b95df5d0a078
+		summarizeBy: none
+		sourceColumn: Snapshot Date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Is Applicable'
+		dataType: string
+		lineageTag: 5427d79f-7ce8-455a-ad85-3b1824b67d1b
+		summarizeBy: none
+		sourceColumn: Is Applicable
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ICT Equipment Scores' = m
+		mode: import
+		queryGroup: ICT
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Schools Equipment Replacement Planning_" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Schools Equipment Replacement Planning",version=""]}[Data],
+				    #"Added SUID" = Table.AddColumn(#"Schools Equipment Replacement Planning_", "SU ID", each if [Location] = "All Saints Primary Thirsk" then "NPCAT27" else if [Location] = "All Saints York" then "NPCAT39" else if [Location] = "Central Trust" then "NPCAT01" else if [Location] = "Christ The King" then "NPCAT25" else if [Location] = "Corpus Christi" then "NPCAT07" else if [Location] = "OLQM Primary" then "NPCAT35" else if [Location] = "Sacred Heart Mbro Primary" then "NPCAT08" else if [Location] = "Sacred Heart Northallerton" then "NPCAT29" else if [Location] = "Sacred Heart Secondary" then "NPCAT02" else if [Location] = "St Aelreds Primary" then "NPCAT36" else if [Location] = "St Alphonsus Primary" then "NPCAT09" else if [Location] = "St Augustines Primary" then "NPCAT10" else if [Location] = "St Bedes Primary" then "NPCAT03" else if [Location] = "St Benedicts Ampleforth" then "NPCAT30" else if [Location] = "St Benedicts Primary Redcar" then "NPCAT04" else if [Location] = "St Bernadettes Primary" then "NPCAT11" else if [Location] = "St Clares Primary" then "NPCAT12" else if [Location] = "St Edwards Primary" then "NPCAT13" else if [Location] = "St Francis Xavier" then "NPCAT31" else if [Location] = "St Gabriels Primary" then "NPCAT18" else if [Location] = "St Georges Primary" then "NPCAT37" else if [Location] = "St Gerards Primary" then "NPCAT14" else if [Location] = "St Heddas Primary" then "NPCAT28" else if [Location] = "St Josephs Loftus Primary" then "NPCAT05" else if [Location] = "St Josephs Mbro Primary" then "NPCAT15" else if [Location] = "St Josephs Pickering Primary" then "NPCAT32" else if [Location] = "St Margaret Clitherows Primary" then "NPCAT19" else if [Location] = "St Marys Grangetown Primary" then "NPCAT20" else if [Location] = "St Marys Malton Primary" then "NPCAT34" else if [Location] = "St Marys Richmond Primary" then "NPCAT33" else if [Location] = "St Patricks Catholic College" then "NPCAT23" else if [Location] = "St Patricks Primary" then "NPCAT24" else if [Location] = "St Paulinus Primary" then "NPCAT06" else if [Location] = "St Peters Catholic College" then "NPCAT21" else if [Location] = "St PiusX Primary" then "NPCAT22" else if [Location] = "St Therese of Lisieux" then "NPCAT26" else if [Location] = "St Thomas More" then "NPCAT16" else if [Location] = "St Wilfrids Primary" then "NPCAT38" else if [Location] = "Trinity Catholic College" then "NPCAT17" else null, type text),
+				    #"Replaced Value" = Table.ReplaceValue(#"Added SUID","Network Switch / Infrastructure","Network Infrastructure",Replacer.ReplaceText,{"Category"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Staff Admin/Office PC's","Staff Office PCs",Replacer.ReplaceText,{"Category"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","PC's","PCs",Replacer.ReplaceText,{"Category"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value2",{{"NPCAT Fit For Purpose Rating (FFP Rating)", Int64.Type}}),
+				    #"Added Item Status" = Table.AddColumn(#"Changed Type", "Item Status", each if [#"NPCAT Fit For Purpose Rating (FFP Rating)"] < 5 then "Replace" else if [#"NPCAT Fit For Purpose Rating (FFP Rating)"] < 7 then "Needs Attention" else if [#"NPCAT Fit For Purpose Rating (FFP Rating)"] <= 8 then "Good" else if [#"NPCAT Fit For Purpose Rating (FFP Rating)"] >= 9 then "Excellent" else null)
+				in
+				    #"Added Item Status"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

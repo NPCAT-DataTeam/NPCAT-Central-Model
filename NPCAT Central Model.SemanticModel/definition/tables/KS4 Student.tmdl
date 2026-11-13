@@ -1,0 +1,49 @@
+table 'KS4 Student'
+	lineageTag: 9a6dbcc6-a9ba-46f5-a207-fa8e249379ae
+
+	column 'Unique Student ID'
+		dataType: string
+		lineageTag: 09efc2a2-43f2-41d6-8252-c358114f8667
+		summarizeBy: none
+		sourceColumn: Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: 2f294120-8d28-4612-a6f9-43d27d26811d
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tables Checking'
+		dataType: string
+		lineageTag: c01dc293-7cfa-4a61-87a3-d0cc02fff658
+		summarizeBy: none
+		sourceColumn: Tables Checking
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: b0911c9a-f1f8-4027-88e0-807e87d58a5f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS4 Student' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = #"KS4 Student Headlines",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Unique Student ID", "School Year", "KS2 Prior Attainment", "Prior Attainment", "Unique Student ID - Academic Year", "Year Group", "Tables Checking"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Duplicates",{"School Year", "KS2 Prior Attainment", "Prior Attainment", "Year Group"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

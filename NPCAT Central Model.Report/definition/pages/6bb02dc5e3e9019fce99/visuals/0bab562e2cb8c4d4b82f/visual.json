@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0bab562e2cb8c4d4b82f",
+  "position": {
+    "x": 464.92401215805472,
+    "y": 84.620060790273556,
+    "z": 0,
+    "height": 99.209726443769,
+    "width": 264.55927051671733
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SEN Needs"
+                    }
+                  },
+                  "Property": "Globally Unique Student ID"
+                }
+              },
+              "queryRef": "SEN Needs.Globally Unique Student ID",
+              "nativeQueryRef": "Globally Unique Student ID"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "SEN Other Needs"
+                }
+              },
+              "queryRef": "Measures Folder.SEN Needs List",
+              "nativeQueryRef": "SEN Other Needs"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "SEN Needs"
+                  }
+                },
+                "Property": "Globally Unique Student ID"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6c01c8b9df99dbcb72fe",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "SEN Needs"
+              }
+            },
+            "Property": "Globally Unique Student ID"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "s",
+              "Entity": "SEN Needs",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "s"
+                          }
+                        },
+                        "Property": "Globally Unique Student ID"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'uk_mdb_111703-1-718'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "e5c53e4b511a48f4418d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "SEN Other Needs"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

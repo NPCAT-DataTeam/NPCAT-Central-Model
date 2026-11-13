@@ -1,0 +1,103 @@
+table 'Secondary Headteacher Standards Update'
+	lineageTag: f2bb7c18-32e5-45ee-847c-eb08c70ffa26
+
+	column Timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 86a8483e-6e83-4a85-8a30-9cbf81fb73ee
+		summarizeBy: none
+		sourceColumn: Timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email address'
+		dataType: string
+		lineageTag: 9d1596d7-2329-4fc4-950f-6d63e1d0d9e0
+		summarizeBy: none
+		sourceColumn: Email address
+
+		annotation SummarizationSetBy = Automatic
+
+	column School
+		dataType: string
+		lineageTag: 296293bc-4c68-4bcc-9c8f-e4b484cc0743
+		summarizeBy: none
+		sourceColumn: School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Please select any weekday from the reported week.'
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: f8b5e441-bf3b-4222-bb99-2893b0502669
+		summarizeBy: none
+		sourceColumn: Please select any weekday from the reported week.
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Attribute
+		dataType: string
+		lineageTag: 9de37357-a7ba-4603-8966-bed12d4149ad
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Question Type'
+		dataType: string
+		lineageTag: 0cf5c08b-05d9-444e-b6fe-864f891819e0
+		summarizeBy: none
+		sourceColumn: Question Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SU ID'
+		dataType: string
+		isHidden
+		lineageTag: 3bf54a6b-a484-4394-a392-7f97505a1c6d
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comment
+		dataType: string
+		lineageTag: eb6fbfe7-35d4-4c26-9622-b955bf0ec453
+		summarizeBy: none
+		sourceColumn: Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 7fa69159-d1a2-4dc3-9be6-aab780988c9f
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue Yes/No'
+		dataType: string
+		lineageTag: 7f639baf-4fbf-4aac-a49e-e86732c05e5c
+		summarizeBy: none
+		sourceColumn: Issue Yes/No
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Secondary Headteacher Standards Update-92d01331-9401-47fa-95c6-40ec820350c8' = m
+		mode: import
+		queryGroup: 'Microsoft/Google Forms'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"d609c885-19e9-4981-9b98-60d68eda5c57" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="d609c885-19e9-4981-9b98-60d68eda5c57"]}[Data],
+				    #"Secondary Headteacher Standards Update1" = #"d609c885-19e9-4981-9b98-60d68eda5c57"{[entity="Secondary Headteacher Standards Update"]}[Data]
+				in
+				    #"Secondary Headteacher Standards Update1"
+
+	annotation PBI_ResultType = Table
+

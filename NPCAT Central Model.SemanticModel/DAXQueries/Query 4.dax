@@ -1,0 +1,4 @@
+EVALUATE
+    SUMMARIZECOLUMNS(
+        "KS4 Students", 'Measures Folder'[KS4 Students]
+    )

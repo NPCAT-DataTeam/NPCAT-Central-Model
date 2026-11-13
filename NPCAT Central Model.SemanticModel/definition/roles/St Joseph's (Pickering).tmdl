@@ -1,0 +1,7 @@
+role 'St Joseph''s (Pickering)'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT32"
+
+	annotation PBI_Id = 409b3f59f6cb4e70963177e9f27142a5
+

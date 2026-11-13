@@ -1,0 +1,430 @@
+table 'KS1-KS2 Progress'
+	lineageTag: 633d1e5b-31b4-46c3-b1b1-08902799a8dd
+
+	column UPN
+		dataType: string
+		lineageTag: 565ae97e-f674-4151-a286-6333144d28ce
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column SURNAME
+		dataType: string
+		lineageTag: 31dc1cd8-a7ee-459a-9ac2-0e126c5e98e0
+		summarizeBy: none
+		sourceColumn: SURNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORENAMES
+		dataType: string
+		lineageTag: c702c23e-4858-4994-a7eb-90bcb2a35383
+		summarizeBy: none
+		sourceColumn: FORENAMES
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12fb6a73-8246-40bb-97f6-ae25509f7300
+		summarizeBy: none
+		sourceColumn: DOB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column GENDER
+		dataType: string
+		lineageTag: b0f8cd07-8066-41a6-b97b-f89636509130
+		summarizeBy: none
+		sourceColumn: GENDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column READ_OUTCOME
+		dataType: string
+		lineageTag: 4ea85527-122f-46da-bdb1-9ecbe1f2e7ac
+		summarizeBy: none
+		sourceColumn: READ_OUTCOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column WRIT_OUTCOME
+		dataType: string
+		lineageTag: 8cbede11-beec-4c68-81c8-84cb815045be
+		summarizeBy: none
+		sourceColumn: WRIT_OUTCOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MATH_OUTCOME
+		dataType: string
+		lineageTag: 7edf703a-e485-46de-86ac-d90d096552eb
+		summarizeBy: none
+		sourceColumn: MATH_OUTCOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SCI_OUTCOME
+		dataType: string
+		lineageTag: 16e33d43-87df-4ecc-b8e1-bc920e496047
+		summarizeBy: none
+		sourceColumn: SCI_OUTCOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: fcb168d0-e76d-49f0-b942-1eda286f6a0f
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year & Reading PA Grade'
+		dataType: string
+		lineageTag: 63396eb5-12f2-42ee-a1f6-525747eba166
+		summarizeBy: none
+		sourceColumn: Year & Reading PA Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year & Writing PA Grade'
+		dataType: string
+		lineageTag: 90cfd9b1-4dcf-4033-be55-3a4d8a33adab
+		summarizeBy: none
+		sourceColumn: Year & Writing PA Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reading PTS'
+		dataType: int64
+		lineageTag: 6ecbffe6-4295-42dc-8e99-c421ffa21597
+		summarizeBy: sum
+		sourceColumn: Reading PTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Writing PTS'
+		dataType: int64
+		lineageTag: 677f6d05-a27c-4eba-a2ba-3a276de022b3
+		summarizeBy: sum
+		sourceColumn: Writing PTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths PTS'
+		dataType: double
+		lineageTag: bb1fc178-7384-4956-82bc-4bfdd61b8c73
+		summarizeBy: sum
+		sourceColumn: Maths PTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'English Component'
+		dataType: double
+		lineageTag: 5d3e523d-94c4-4ccf-adb9-07dbdcc8c45a
+		summarizeBy: sum
+		sourceColumn: English Component
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'KS1 APS'
+		dataType: double
+		lineageTag: f39f40e3-9793-472c-a5ec-70d9d279e574
+		summarizeBy: sum
+		sourceColumn: KS1 APS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Year & APS Lookup'
+		dataType: string
+		lineageTag: ef73dda4-8178-41ea-84c2-288a3bb4ba4c
+		summarizeBy: none
+		sourceColumn: Year & APS Lookup
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriorAttainmentGroup(PAG)
+		dataType: int64
+		formatString: 0
+		lineageTag: 4433dae6-ac2c-491b-90d1-2e0213b6baea
+		summarizeBy: sum
+		sourceColumn: PriorAttainmentGroup(PAG)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Est KS2 Reading Scaled Score'
+		dataType: double
+		lineageTag: 6ea5e8e5-1829-4c8b-a971-483cdca82ade
+		summarizeBy: sum
+		sourceColumn: Est KS2 Reading Scaled Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Est KS2 Writing Scaled Score'
+		dataType: double
+		lineageTag: a2f3857d-d646-4d3e-befc-b2544493cea9
+		summarizeBy: sum
+		sourceColumn: Est KS2 Writing Scaled Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Est KS2 Maths Scaled Score'
+		dataType: double
+		lineageTag: 72e57d69-7865-480d-b855-f76e15875c15
+		summarizeBy: sum
+		sourceColumn: Est KS2 Maths Scaled Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: b8e4010a-2b59-4b02-85ad-9e5f6e80031a
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 58224082-268d-4bc2-97d0-d81fc6eadc9c
+		summarizeBy: sum
+		sourceColumn: KS2 Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: a8e80bbd-b684-4c1d-96e1-7cc05a255d6f
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Test Progress Criteria'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 893981a1-5b13-4dfc-8a54-a6701cb8a275
+		summarizeBy: none
+		sourceColumn: KS2 Test Progress Criteria
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Writing Scaled Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 627397b4-12ea-476f-ab2a-2fa2cb7df4c2
+		summarizeBy: sum
+		sourceColumn: Writing Scaled Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Maths Scaled Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: cc17babc-b936-45b5-b58d-8b194c0f631d
+		summarizeBy: sum
+		sourceColumn: Maths Scaled Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reading Scaled score'
+		dataType: int64
+		formatString: 0
+		lineageTag: ffae1a3e-74f4-4ea4-8dde-a16452b1e6ef
+		summarizeBy: sum
+		sourceColumn: Reading Scaled score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID & KS2 Year'
+		dataType: string
+		lineageTag: 08eb673a-0726-4d7f-9edf-4ee4f8ba3220
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID & KS2 Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reading Pupils Progress Score'
+		dataType: double
+		lineageTag: ee510e01-067e-4057-8cc1-187a8965eeca
+		summarizeBy: sum
+		sourceColumn: Reading Pupils Progress Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Writing Pupils Progress Score'
+		dataType: double
+		lineageTag: 65513635-ae44-4bcc-a296-bee750df1cac
+		summarizeBy: sum
+		sourceColumn: Writing Pupils Progress Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths Pupils Progress Score'
+		dataType: double
+		lineageTag: c2ec56c6-e1f3-40a7-a2b2-33675789dd3d
+		summarizeBy: sum
+		sourceColumn: Maths Pupils Progress Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Reading Progress Threshold'
+		dataType: double
+		lineageTag: cb7f5593-f73f-42ba-87fb-1062ca60540c
+		summarizeBy: sum
+		sourceColumn: Reading Progress Threshold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Writing Progress Threshold'
+		dataType: double
+		lineageTag: 49310459-2270-4798-a2a5-21199806f810
+		summarizeBy: sum
+		sourceColumn: Writing Progress Threshold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Mathematics Progress Threshold'
+		dataType: double
+		lineageTag: 4f3c91fe-bd1b-4eed-a4c3-cd21d436a456
+		summarizeBy: sum
+		sourceColumn: Mathematics Progress Threshold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Reading Pupils School Progress Score'
+		dataType: double
+		lineageTag: 082d8fb3-17ba-4c0c-a288-53c643c74a5a
+		summarizeBy: sum
+		sourceColumn: Reading Pupils School Progress Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Writing Pupils School Progress Score'
+		dataType: double
+		lineageTag: 47c384a8-2a85-4e53-8d43-93a534655cba
+		summarizeBy: sum
+		sourceColumn: Writing Pupils School Progress Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Maths Pupils School Progress Score'
+		dataType: double
+		lineageTag: c6d5cb78-d783-4c16-aa79-946246908a22
+		summarizeBy: sum
+		sourceColumn: Maths Pupils School Progress Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PSREAD
+		dataType: string
+		lineageTag: 8ed4e6ad-568e-4594-8324-d5eea78fdd41
+		summarizeBy: none
+		sourceColumn: PSREAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PSWRITE
+		dataType: string
+		lineageTag: 36594d91-bf93-40f5-b86b-598f30d7ddc9
+		summarizeBy: none
+		sourceColumn: PSWRITE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PSMATHS
+		dataType: string
+		lineageTag: 4216ef68-6b23-4208-aed3-1dea8b089bf0
+		summarizeBy: none
+		sourceColumn: PSMATHS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year & Maths PA Grade (NUM)'
+		dataType: string
+		lineageTag: 96fe76e4-6fa2-4576-9c8d-983b95e44185
+		summarizeBy: none
+		sourceColumn: Year & Maths PA Grade (NUM)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year & Maths PA Grade (USING)'
+		dataType: string
+		lineageTag: 10e02192-e852-4444-b224-579b720c829a
+		summarizeBy: none
+		sourceColumn: Year & Maths PA Grade (USING)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year & Maths PA Grade (SHAPE)'
+		dataType: string
+		lineageTag: efd6f1a4-b1e9-48e8-93f4-727484f91580
+		summarizeBy: none
+		sourceColumn: Year & Maths PA Grade (SHAPE)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS1 PA Group'
+		dataType: string
+		lineageTag: 136a7674-11a4-4df4-807b-ff3d962f658f
+		summarizeBy: none
+		sourceColumn: KS1 PA Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS1-KS2 Progress' = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary\KS2'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    #"KS1-KS2 Progress_" = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="KS1-KS2 Progress",version=""]}[Data]
+				in
+				    #"KS1-KS2 Progress_"
+
+	annotation PBI_ResultType = Table
+

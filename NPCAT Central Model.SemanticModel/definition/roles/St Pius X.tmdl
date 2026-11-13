@@ -1,0 +1,7 @@
+role 'St Pius X'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT22"
+
+	annotation PBI_Id = f12c4121f32d477eaf2b6497e7142967
+

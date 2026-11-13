@@ -1,0 +1,87 @@
+table 'zP Trust/Statutory'
+	lineageTag: e8795b82-bfbe-4dc3-a87b-e947df7f4195
+
+	column 'zP Trust/Statutory'
+		lineageTag: 282c7670-904a-41f3-8441-c59331d35a04
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Trust/Statutory Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Trust/Statutory Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Trust/Statutory Fields'
+		lineageTag: 81361bfc-6c9e-4749-88f1-b5f8e39d6e9d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Trust/Statutory Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Trust/Statutory Order'
+		isHidden
+		formatString: 0
+		lineageTag: cc5e1a24-6a72-4e0f-943a-e7452f900a0e
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trust or Statutory' = SWITCH(CONTAINSSTRING([zP Trust/Statutory Fields],"Statutory"),TRUE(),"Statutory",FALSE(),"Trust Mandated")
+		lineageTag: 8da9ebf8-2efb-4376-bf19-fef89b018679
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Type' =
+			
+			SWITCH (TRUE(),
+			    CONTAINSSTRING (
+			        [zP Trust/Statutory],
+			        "Compliance"
+			    ), "Compliance",
+			    CONTAINSSTRING (
+			        [zP Trust/Statutory],
+			        "Category"),
+			        "School Count",
+			    CONTAINSSTRING (
+			        [zP Trust/Statutory Fields],
+			        "Count"),
+			        "Met/Not Met Count"
+			)
+		lineageTag: a0e74dd8-e825-4543-9a92-5520a56c6288
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Trust/Statutory-27ee6476-835e-4589-850b-a6a1e0886446' = calculated
+		mode: import
+		source =
+				
+				{
+				    ("Trust Compliance", NAMEOF('Measures Folder'[Safeguarding Trust Compliance %]), 0),
+				    ("Statutory Compliance", NAMEOF('Measures Folder'[Safeguarding Statutory Compliance %]), 1),
+				    ("Statutory Category Met", NAMEOF('Measures Folder'[Statutory Category Met]), 2),
+				    ("Statutory Category Not Met ", NAMEOF('Measures Folder'[Statutory Category Not Met]), 3),
+				    ("Trust Category Met", NAMEOF('Measures Folder'[Trust Category Met]), 4),
+				    ("Trust Category Not Met ", NAMEOF('Measures Folder'[Trust Category Not Met]), 5),
+				    ("Met", NAMEOF('Measures Folder'[Statutory Count Met]), 6),
+				    ("Not Met ", NAMEOF('Measures Folder'[Statutory Count Not Met]), 11),
+				    ("Trust Met", NAMEOF('Measures Folder'[Trust Count Met]), 8),
+				    ("Trust Not Met ", NAMEOF('Measures Folder'[Trust Count Not Met]), 10),
+				    ("Trust Partially Met", NAMEOF('Measures Folder'[Trust Count Partially Met]), 9),
+				    ("Partially Met ", NAMEOF('Measures Folder'[Statutory Count Partially Met]), 7)
+				}
+
+	annotation PBI_Id = 8557d491db914982b7fef1adf0c43b8e
+

@@ -1,0 +1,31 @@
+table 'zP Colour Scenario'
+	lineageTag: 60128788-f555-41e4-afe5-b27de48e89a5
+
+	/// 
+	/// SELECTEDVALUE ( 'zP Colour Scenario'[zP Colour Scenario] )
+	measure 'zP Colour Scenario Value' =
+			
+			SELECTEDVALUE ( 'zP Colour Scenario'[zP Colour Scenario] )
+		lineageTag: 68cef9e2-6d4f-40db-a362-8daa22baa9f9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'zP Colour Scenario'
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 069fb453-2b87-412e-8751-15343700d479
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'zP Colour Scenario-b53e1b9b-b1b4-479e-8a37-89880d562ba0' = calculated
+		mode: import
+		source = GENERATESERIES(0, 1.01, 0.01)
+
+	annotation PBI_Id = 216dafe4efd6488b804d2cd4c46c17ad
+

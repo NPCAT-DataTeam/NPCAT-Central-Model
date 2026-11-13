@@ -1,0 +1,185 @@
+table 'Student Indicies'
+	lineageTag: 4b7dbead-e24e-4d8d-b988-7cd2e8a20875
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: 60b872ec-7dc8-4435-a458-e30bca03ad1e
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Postcode
+		dataType: string
+		lineageTag: 7de06400-e88f-4d1c-bdaa-faadc797f5f9
+		summarizeBy: none
+		sourceColumn: Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student - Year'
+		dataType: string
+		lineageTag: 32111cbf-b502-4043-868a-0bdc1bd1defd
+		summarizeBy: none
+		sourceColumn: Globally Unique Student - Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: cc57f93a-7556-4731-8ff3-b3cb22999ed7
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rank
+		dataType: string
+		lineageTag: 6523a9c9-f15b-49c9-b569-322e218f2c67
+		summarizeBy: none
+		sourceColumn: Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decile
+		dataType: string
+		lineageTag: da0769a1-e545-4af1-bb46-51d0426274d7
+		summarizeBy: none
+		sourceColumn: Decile
+		sortByColumn: 'Decile Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Funding Band'
+		dataType: string
+		lineageTag: 24e02ce8-e8f4-404f-a6cd-b17d1ef15283
+		summarizeBy: none
+		sourceColumn: Funding Band
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 23b111ec-12e8-4248-9fe0-9839c6463959
+		summarizeBy: none
+		sourceColumn: Category
+		sortByColumn: 'Category Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9749edeb-a7b7-4455-83b0-e31667ccd562
+		summarizeBy: sum
+		sourceColumn: Category Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Decile Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1462d675-f361-4b7b-a9fb-fe6d3624dec1
+		summarizeBy: sum
+		sourceColumn: Decile Sort
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column RELEASE_YEAR
+		dataType: int64
+		lineageTag: 4a615afc-19c6-491c-8922-f8369d358e7f
+		summarizeBy: sum
+		sourceColumn: RELEASE_YEAR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Grouped Rank'
+		dataType: string
+		lineageTag: d28ce64c-d1d3-4f69-8c58-c9f2d69e1073
+		summarizeBy: none
+		sourceColumn: Grouped Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouped Decile Description'
+		dataType: string
+		lineageTag: b5a7c7bb-001e-4d96-9f57-88a5f0b386a9
+		summarizeBy: none
+		sourceColumn: Grouped Decile Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouped Rank Deprived Breakdown'
+		dataType: string
+		lineageTag: df044b58-b64f-4324-966a-ade936691efb
+		summarizeBy: none
+		sourceColumn: Grouped Rank Deprived Breakdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouped Deprived Breakdown Description'
+		dataType: string
+		lineageTag: 0d6a281a-4088-4ce1-9083-d5bcc67e0842
+		summarizeBy: none
+		sourceColumn: Grouped Deprived Breakdown Description
+		sortByColumn: 'Grouped Rank Deprived Breakdown (Sort)'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouped Rank Deprived Breakdown (Sort)'
+		dataType: int64
+		formatString: 0
+		lineageTag: ff1d713c-9ea5-4d49-9590-16766f9efaa4
+		summarizeBy: sum
+		sourceColumn: Grouped Rank Deprived Breakdown (Sort)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LSOA Code'
+		dataType: string
+		lineageTag: 4a65b58e-40fd-4eb4-a6f1-22e9920408e3
+		summarizeBy: none
+		sourceColumn: LSOA Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Authority'
+		dataType: string
+		lineageTag: f9567175-59fd-42ad-8cc5-8f27dd0da103
+		summarizeBy: none
+		sourceColumn: Local Authority
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Student Indicies' = m
+		mode: import
+		queryGroup: 'Student Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"fd347496-f570-46a9-b6a5-54133390026b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="fd347496-f570-46a9-b6a5-54133390026b"]}[Data],
+				    #"Student Indicies_" = #"fd347496-f570-46a9-b6a5-54133390026b"{[entity="Student Indicies",version=""]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(#"Student Indicies_","","Undefined",Replacer.ReplaceValue,{"Funding Band"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","","Undefined",Replacer.ReplaceValue,{"Decile"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Replaced Value1", "Decile Sort", each if [Decile] = "Undefined" then 11 else [Decile])
+				in
+				    #"Added Conditional Column"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,232 @@
+table Attendance
+	lineageTag: bbcd225e-2e0b-4584-8b19-a6116529d79d
+
+	/// 
+	/// COUNTROWS ( Attendance )
+	measure 'Attendance Debug' =
+			
+			COUNTROWS ( Attendance )
+		formatString: 0
+		lineageTag: a00d66eb-b1a0-40a9-92fe-f1da4b8f99ac
+
+		changedProperty = FormatString
+
+	column 'Unique Student ID'
+		dataType: string
+		isHidden
+		lineageTag: 57161e96-5664-4ec5-8847-5ac1849dad24
+		summarizeBy: none
+		sourceColumn: Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Sudent ID - Academic Year'
+		dataType: string
+		isHidden
+		lineageTag: 13bab3d2-cff4-47e6-b57d-dd7e522c8544
+		summarizeBy: none
+		sourceColumn: Unique Sudent ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Type'
+		dataType: string
+		lineageTag: 808ce05d-5554-4f92-b2ec-5b9bee15dcd6
+		summarizeBy: none
+		sourceColumn: Mark Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mark
+		dataType: string
+		lineageTag: 19668fe1-4a81-4f17-9dd2-e52da249533d
+		summarizeBy: none
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Code Meaning'
+		dataType: string
+		lineageTag: b794bd87-7023-4d5b-8293-58b50c554a84
+		summarizeBy: none
+		sourceColumn: Code Meaning
+
+		annotation SummarizationSetBy = Automatic
+
+	column AM/PM
+		dataType: string
+		lineageTag: 309e7479-772a-4e37-87d7-ebd791c4609c
+		summarizeBy: none
+		sourceColumn: AM/PM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e75a0342-5358-4b32-aec8-cc7783284e57
+		summarizeBy: none
+		sourceColumn: Mark Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Sessions
+		dataType: double
+		formatString: 0
+		lineageTag: c5423ee4-fd1c-42ec-9050-344be02d28de
+		summarizeBy: sum
+		sourceColumn: Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attendance
+		dataType: double
+		formatString: 0
+		lineageTag: 8b86c9e0-3794-4d95-a1ba-fd695dce7c83
+		summarizeBy: sum
+		sourceColumn: Attendance
+
+		annotation SummarizationSetBy = Automatic
+
+	column AEA
+		dataType: double
+		formatString: 0
+		lineageTag: 25188633-3d27-4b46-b1bf-f70f0e4849f5
+		summarizeBy: sum
+		sourceColumn: AEA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authorised Absence'
+		dataType: double
+		formatString: 0
+		lineageTag: 57e1dcc5-54a1-4c7d-a094-56f2296437fb
+		summarizeBy: sum
+		sourceColumn: Authorised Absence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unauthorised Absence'
+		dataType: double
+		formatString: 0
+		lineageTag: 5b76dd42-1567-4b3c-a7c5-3232a4d723fa
+		summarizeBy: sum
+		sourceColumn: Unauthorised Absence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Minutes Late'
+		dataType: double
+		formatString: 0
+		lineageTag: 72fbc730-5a17-4719-8809-6bef4bb72512
+		summarizeBy: sum
+		sourceColumn: Minutes Late
+
+		annotation SummarizationSetBy = Automatic
+
+	column RECORD_CHANGED_IN_WAREHOUSE_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9aa6b4ff-16ff-460c-9f80-5caa109dfdb7
+		summarizeBy: none
+		sourceColumn: RECORD_CHANGED_IN_WAREHOUSE_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Compulsory Age'
+		dataType: double
+		formatString: 0
+		lineageTag: 0eee4afb-4a11-4d92-9227-e716e9b17204
+		summarizeBy: sum
+		sourceColumn: Compulsory Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attendance Bracket'
+		dataType: string
+		lineageTag: cbc983b7-cfc0-4e88-a681-e51ddb0923f3
+		summarizeBy: none
+		sourceColumn: Attendance Bracket
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: b5ecc51a-b79b-4ba7-8fb0-886a9998104b
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'On Roll'
+		dataType: string
+		lineageTag: 3f5caff3-c132-4174-b144-7b1c7135878a
+		summarizeBy: none
+		sourceColumn: On Roll
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birthday Check'
+		dataType: string
+		lineageTag: de590157-3a74-40c5-8e8c-9af18e914ed3
+		summarizeBy: none
+		sourceColumn: Birthday Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Redaction check'
+		dataType: int64
+		formatString: 0
+		lineageTag: 078a6da2-82b2-4c3f-b29a-9ee49d279aae
+		summarizeBy: sum
+		sourceColumn: Redaction check
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days
+		dataType: double
+		lineageTag: e514efc7-1112-4865-af97-5e7bafef7753
+		summarizeBy: sum
+		sourceColumn: Days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PEX Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a12b898c-6643-46dd-9251-805ebd41cfcf
+		summarizeBy: none
+		sourceColumn: PEX Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Attendance-8719c94b-ad10-477a-b96b-43425ac58b58 = m
+		mode: import
+		queryGroup: Attendance
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6f7a75ac-0f8e-48dc-8377-ffcced6e305e" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6f7a75ac-0f8e-48dc-8377-ffcced6e305e"]}[Data],
+				    Attendance = #"6f7a75ac-0f8e-48dc-8377-ffcced6e305e"{[entity="Attendance",version=""]}[Data],
+				    #"Added Custom" = Table.AddColumn(Attendance, "Days", each 0.5),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Days", type number}}),
+				    #"Added Mark Type" = Table.AddColumn(#"Changed Type", "Mark Type", each if [Attendance] = 1 then "Present" else if [Authorised Absence] = 1 then "Authorised Absence" else if [Unauthorised Absence] = 1 then "Unauthorised Absence" else if [AEA] = 1 then "AEA" else "Other Code", type text)
+				in
+				    #"Added Mark Type"
+
+	annotation PBI_QueryRelationships = {"columnCount":12,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Attendance/Appended Query.{SUID,0}","Section1/Attendance/Appended Query.{UPN,1}","Section1/Attendance/Appended Query.{UPN-SUID,2}","Section1/Attendance/Appended Query.{Year,3}","Section1/Attendance/Appended Query.{On Roll,4}","Section1/Attendance/Appended Query.{Mark,5}","Section1/Attendance/Appended Query.{Mark Date,6}","Section1/Attendance/Appended Query.{AM/PM,7}","Section1/Attendance/Appended Query.{Comment,8}","Section1/Attendance/Appended Query.{Recorded By,9}","Section1/Attendance/Appended Query.{Sessions,10}","Section1/Attendance/Appended Query.{Authorised Absence,11}"],"ColumnCount":12,"KeyColumnNames":[],"ColumnIdentities":["Section1/Attendance/Appended Query.{SUID,0}","Section1/Attendance/Appended Query.{UPN,1}","Section1/Attendance/Appended Query.{UPN-SUID,2}","Section1/Attendance/Appended Query.{Year,3}","Section1/Attendance/Appended Query.{On Roll,4}","Section1/Attendance/Appended Query.{Mark,5}","Section1/Attendance/Appended Query.{Mark Date,6}","Section1/Attendance/Appended Query.{AM/PM,7}","Section1/Attendance/Appended Query.{Comment,8}","Section1/Attendance/Appended Query.{Recorded By,9}","Section1/Attendance/Appended Query.{Sessions,10}","Section1/Attendance/Appended Query.{Authorised Absence,11}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

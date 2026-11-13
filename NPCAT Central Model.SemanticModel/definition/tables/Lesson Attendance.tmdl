@@ -1,0 +1,199 @@
+table 'Lesson Attendance'
+	lineageTag: bfb59c56-4fe5-422e-bc4c-7803740db831
+
+	column 'Application ID'
+		dataType: string
+		lineageTag: edac25ed-ba68-4a66-b4de-ba276dab1222
+		summarizeBy: none
+		sourceColumn: Application ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student ID'
+		dataType: string
+		lineageTag: 5049f490-6b15-43d0-8210-9c5caf6893a6
+		summarizeBy: none
+		sourceColumn: Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mark
+		dataType: string
+		lineageTag: 538f34c7-349b-4b6a-9aaa-59632de7a9e5
+		summarizeBy: none
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Code Meaning'
+		dataType: string
+		lineageTag: cd7664f2-ad11-4c87-8d96-d772c2f1de76
+		summarizeBy: none
+		sourceColumn: Code Meaning
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_UNIQUE_ID
+		dataType: string
+		lineageTag: c572c7e2-1cd1-412e-94ce-97751ce06ec9
+		summarizeBy: none
+		sourceColumn: COURSE_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LESSON_UNIQUE_ID
+		dataType: string
+		lineageTag: 212c96d7-7f22-4f29-9b0f-e60f7a54067e
+		summarizeBy: none
+		sourceColumn: LESSON_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9a4f9039-24d2-4fd3-86ed-e413d0995e32
+		summarizeBy: none
+		sourceColumn: Mark Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Minutes Late'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bffdd37-04f9-4b7a-9b22-4e2b4198c676
+		summarizeBy: sum
+		sourceColumn: Minutes Late
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attendance
+		dataType: int64
+		formatString: 0
+		lineageTag: 0941e5fb-6719-4d13-9113-d59008e65b3f
+		summarizeBy: sum
+		sourceColumn: Attendance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authorised Absence'
+		dataType: int64
+		formatString: 0
+		lineageTag: 98d1f0af-1ace-4d93-8766-592fe3b1bc55
+		summarizeBy: sum
+		sourceColumn: Authorised Absence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unauthorised Absence'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ce02a35-e262-4aa9-80f4-b822b48e970c
+		summarizeBy: sum
+		sourceColumn: Unauthorised Absence
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d4c6f31-6038-4f84-98ac-41f2b85bcd2f
+		summarizeBy: sum
+		sourceColumn: Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: efd75cd0-5af3-49d1-aa02-ec9289ae7677
+		summarizeBy: none
+		sourceColumn: Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'End Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 1706aecc-f5c1-417f-af46-0e5bc0421a2c
+		summarizeBy: none
+		sourceColumn: End Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: f42eff4f-66e6-474a-ab3c-49ae06856560
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Unique ID - Year'
+		dataType: string
+		lineageTag: 3c121340-4a40-4634-a8a3-ad6e2851759d
+		summarizeBy: none
+		sourceColumn: Student Unique ID - Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Course-Student ID'
+		dataType: string
+		lineageTag: 715b615f-2102-41e0-b4a7-42434d0d87c1
+		summarizeBy: none
+		sourceColumn: Course-Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mark Type'
+		dataType: string
+		lineageTag: afa88a56-de7b-41f6-a41f-278108503f8f
+		summarizeBy: none
+		sourceColumn: Mark Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'On Roll' =
+			
+			VAR MarkDate = 'Lesson Attendance'[Mark Date]
+			VAR StudentID = 'Lesson Attendance'[Student ID]
+			VAR IsOnRoll =
+			    CALCULATE(
+			        COUNTROWS('Student Database (Full)'),
+			        FILTER(
+			            'Student Database (Full)',
+			            'Student Database (Full)'[Globally Unique Student ID] = StudentID &&
+			            MarkDate >= 'Student Database (Full)'[DOA] &&
+			            MarkDate <= 'Student Database (Full)'[Leaving Date]
+			        )
+			    )
+			RETURN
+			    IF(IsOnRoll > 0, "On Roll", "Unenrolled")
+		lineageTag: 18f7bc18-875a-4018-b6a6-2d10edc483c9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Lesson Attendance' = m
+		mode: import
+		queryGroup: Attendance
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"266a4959-748d-4b5a-ab5a-d8014ae5811b" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="266a4959-748d-4b5a-ab5a-d8014ae5811b"]}[Data],
+				    #"Lesson Attendance1" = #"266a4959-748d-4b5a-ab5a-d8014ae5811b"{[entity="Lesson Attendance"]}[Data],
+				    #"Added Mark Type" = Table.AddColumn(#"Lesson Attendance1", "Mark Type", each if [Attendance] = 1 then "Present" else if [Authorised Absence] = 1 then "Authorised Absence" else if [Unauthorised Absence] = 1 then "Unauthorised Absence" else "Other Code", type text)
+				in
+				    #"Added Mark Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

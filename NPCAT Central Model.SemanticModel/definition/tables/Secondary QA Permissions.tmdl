@@ -1,0 +1,36 @@
+table 'Secondary QA Permissions'
+	lineageTag: 6ffacf47-9cec-4902-82a8-b3cc76c1c6b0
+
+	column 'Visible to ID'
+		dataType: string
+		lineageTag: dd2f0658-8592-44f4-b6f1-23dc8e106a03
+		summarizeBy: none
+		sourceColumn: Visible to ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QA Forms ID'
+		dataType: string
+		lineageTag: 1255a023-9937-4d83-b281-909a572f5ab6
+		summarizeBy: none
+		sourceColumn: QA Forms ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Secondary QA Permissions' = m
+		mode: import
+		queryGroup: 'Teacher QA Forms'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"a694e134-a9c9-45a1-87d0-39adc0b09e69" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="a694e134-a9c9-45a1-87d0-39adc0b09e69"]}[Data],
+				    #"Secondary QA Permissions_" = #"a694e134-a9c9-45a1-87d0-39adc0b09e69"{[entity="Secondary QA Permissions",version=""]}[Data]
+				in
+				    #"Secondary QA Permissions_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

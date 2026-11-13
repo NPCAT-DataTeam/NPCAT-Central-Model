@@ -1,0 +1,502 @@
+table 'KS4 Assessments'
+	lineageTag: ba8456ad-4f2a-478b-b603-31f9b4508625
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 2044e56d-074a-451f-bde8-a42ea556db61
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERIOD_NAME
+		dataType: string
+		lineageTag: ddee3fe4-1c08-4fe2-9796-252d9980cf3b
+		summarizeBy: none
+		sourceColumn: PERIOD_NAME
+		sortByColumn: 'Period Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID'
+		dataType: string
+		lineageTag: 0b5b4a2d-0a08-4fb5-8419-113f8007f30e
+		summarizeBy: none
+		sourceColumn: Unique Student ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject-Gradeset
+		dataType: string
+		lineageTag: 112fc723-b17b-4c52-825d-70ba2253c086
+		summarizeBy: none
+		sourceColumn: Subject-Gradeset
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS2 Prior Attainment'
+		dataType: double
+		lineageTag: e23afc5e-9d4b-450c-a086-005d6d62f5d6
+		summarizeBy: sum
+		sourceColumn: KS2 Prior Attainment
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Attainment 8'
+		dataType: double
+		lineageTag: b486491c-e627-46be-aad7-16f084f8076e
+		summarizeBy: sum
+		sourceColumn: Attainment 8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Grade Set'
+		dataType: string
+		lineageTag: 41d51579-4c9f-44b7-912c-050d1f696062
+		summarizeBy: none
+		sourceColumn: Grade Set
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment'
+		dataType: string
+		lineageTag: 8d7f9c23-3524-4cbd-ad6f-d800f08477fe
+		summarizeBy: none
+		sourceColumn: Prior Attainment
+		sortByColumn: 'Prior Attainment Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pts
+		dataType: double
+		lineageTag: bb0ea28c-d593-429c-94ce-f77e49d5f017
+		summarizeBy: sum
+		sourceColumn: Pts
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'P8 Slot'
+		dataType: string
+		lineageTag: 9656399c-c60a-4a4b-91da-5b80416479ad
+		summarizeBy: none
+		sourceColumn: P8 Slot
+		sortByColumn: 'P8 Slot Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grade
+		dataType: string
+		lineageTag: 97e6c1ac-9b6c-48bf-9709-e609d23f9088
+		summarizeBy: none
+		sourceColumn: Grade
+		sortByColumn: 'Grade Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: ba73811f-d6f8-47c2-9f23-4b153b19dd60
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Combined Science 2 Check'
+		dataType: string
+		lineageTag: 369b34fe-62ca-4d8e-88ed-7ac0f48a23c6
+		summarizeBy: none
+		sourceColumn: Combined Science 2 Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject P8'
+		dataType: double
+		lineageTag: 539a3c27-5a57-44d6-a954-9fce15e63755
+		summarizeBy: sum
+		sourceColumn: Subject P8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Grade Sort'
+		dataType: double
+		lineageTag: 7033781a-ae4b-42b7-82da-13836708bf61
+		summarizeBy: none
+		sourceColumn: Grade Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Period Sort'
+		dataType: double
+		lineageTag: b6432163-d5a2-42f9-8957-e934922d4c9d
+		summarizeBy: sum
+		sourceColumn: Period Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'P8 Slot Sort'
+		dataType: int64
+		lineageTag: 16f6d649-115f-42d3-ab2b-9095a86b8336
+		summarizeBy: sum
+		sourceColumn: P8 Slot Sort
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Slots Filled'
+		dataType: double
+		lineageTag: 0d1eb9f3-6e39-48d8-8ef4-f9c969aaafdb
+		summarizeBy: sum
+		sourceColumn: Slots Filled
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Prior Attainment (Short)'
+		dataType: string
+		lineageTag: 35a5708b-28a8-4eac-b7d5-a7986ea84891
+		summarizeBy: none
+		sourceColumn: Prior Attainment (Short)
+		sortByColumn: 'Prior Attainment Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Points'
+		dataType: double
+		lineageTag: 46413d00-113e-4194-9a4b-d7b7e5080936
+		summarizeBy: sum
+		sourceColumn: Target Points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Grade KPI'
+		dataType: string
+		lineageTag: 2d860901-a392-484a-8805-570edfd31db8
+		summarizeBy: none
+		sourceColumn: Grade KPI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'P8 Slot (Bucket)'
+		dataType: string
+		lineageTag: a43b55e0-c457-428f-a100-47d29041704a
+		summarizeBy: none
+		sourceColumn: P8 Slot (Bucket)
+		sortByColumn: 'P8 Slot (Bucket) Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'P8 Slot (Bucket) Sort'
+		dataType: double
+		lineageTag: 03f5be78-3de9-49c4-8bd1-8f886b296904
+		summarizeBy: sum
+		sourceColumn: P8 Slot (Bucket) Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: a162e4e3-b410-4bad-87f0-ef9eefb2283b
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABCD
+		dataType: string
+		lineageTag: 44a14f6b-c965-443d-a5a7-cb394a6e6e02
+		summarizeBy: none
+		sourceColumn: ABCD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'P8 Field Value' = Calculate(AVERAGEX('KS4 Assessments',[Subject P8]),ALLEXCEPT('KS4 Assessments','KS4 Assessments'[Unique Student ID], 'KS4 Assessments'[School Year], 'KS4 Assessments'[PERIOD_NAME], 'KS4 Assessments'[P8 Slot (Bucket)]), 'KS4 Assessments'[P8 Slot (Bucket)] <> "Spare" )
+		formatString: 0.00
+		lineageTag: b04a2350-8848-431a-a402-be84218b53a4
+		summarizeBy: none
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Attendance on Assessment' =
+			
+			VAR _AssessmentDate = 0
+			//assessment date to be put into model
+			Return
+			CALCULATE([Attendance Percentage YTD],'Calendar'[Date] =_AssessmentDate )
+		lineageTag: da4390d1-d2bf-4978-8884-e5efb1111fd3
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'P8 Slot (Single spare)'
+		dataType: string
+		lineageTag: 03d8c294-c064-4b4f-86f3-d0e97aafcb5b
+		summarizeBy: none
+		sourceColumn: P8 Slot (Single spare)
+		sortByColumn: 'P8 Slot (Bucket) Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Effort
+		dataType: string
+		lineageTag: 2737b502-f28e-4462-b8b7-d8191af7fbd9
+		summarizeBy: none
+		sourceColumn: Effort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prior Attainment Sort'
+		dataType: double
+		lineageTag: 08bcaf55-9420-4102-bcc2-0a3a1a224438
+		summarizeBy: sum
+		sourceColumn: Prior Attainment Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Slots
+		dataType: int64
+		formatString: 0
+		lineageTag: 2721333a-18e7-440d-9aad-1faf88c72b28
+		summarizeBy: sum
+		sourceColumn: Slots
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class - Staff Initials' =
+			
+			RELATED('Class Enrolments'[CLASS_NAME])//&" - "&RELATED('Staff (Arbor)'[Staff Initials])
+		lineageTag: e3aaf14b-7a53-43e4-b4dc-3a122188cf1b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School - Staff Initials' =
+			
+			RELATED('School Database'[Nominal Code Prefix])&" - "&[Class - Staff Initials]
+		lineageTag: 5c66f27f-b02b-4213-b728-4d8d96d44608
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP - Grade Type Sort'
+		dataType: string
+		lineageTag: 36197011-afee-43bc-8d70-14d531499108
+		summarizeBy: none
+		sourceColumn: AP - Grade Type Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: 719ae4c5-989d-4f6f-8cbb-6f98336a5ff2
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AP-Grade Type'
+		dataType: string
+		lineageTag: efab3445-7043-4593-8e9d-413adbdeb977
+		summarizeBy: none
+		sourceColumn: AP-Grade Type
+		sortByColumn: 'AP - Grade Type Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade (Short)' =
+			
+			SWITCH (
+			        TRUE(),
+			        'KS4 Assessments'[Grade Sort] = 1, "X",
+			        'KS4 Assessments'[Grade Sort] = 2, "N",
+			        'KS4 Assessments'[Grade Sort] = 3, "Q",
+			        'KS4 Assessments'[Grade Sort] = 4, "U",
+			        'KS4 Assessments'[Grade Sort] = 5, "1",
+			        'KS4 Assessments'[Grade Sort] = 6, "1-1",
+			        'KS4 Assessments'[Grade Sort] = 7, "2",
+			        'KS4 Assessments'[Grade Sort] = 8, "2-1",
+			        'KS4 Assessments'[Grade Sort] = 9, "2-2",
+			        'KS4 Assessments'[Grade Sort] = 10, "3",
+			        'KS4 Assessments'[Grade Sort] = 11, "3-2",
+			        'KS4 Assessments'[Grade Sort] = 12, "3-3",
+			        'KS4 Assessments'[Grade Sort] = 13, "4",
+			        'KS4 Assessments'[Grade Sort] = 14, "4-3",
+			        'KS4 Assessments'[Grade Sort] = 15, "4-4",
+			        'KS4 Assessments'[Grade Sort] = 16, "5",
+			        'KS4 Assessments'[Grade Sort] = 17, "5-4",
+			        'KS4 Assessments'[Grade Sort] = 18, "5-5",
+			        'KS4 Assessments'[Grade Sort] = 19, "6",
+			        'KS4 Assessments'[Grade Sort] = 20, "6-5",
+			        'KS4 Assessments'[Grade Sort] = 21, "6-6",
+			        'KS4 Assessments'[Grade Sort] = 22, "7",
+			        'KS4 Assessments'[Grade Sort] = 23, "7-6",
+			        'KS4 Assessments'[Grade Sort] = 24, "7-7",
+			        'KS4 Assessments'[Grade Sort] = 25, "8",
+			        'KS4 Assessments'[Grade Sort] = 26, "8-7",
+			        'KS4 Assessments'[Grade Sort] = 27, "8-8",
+			        'KS4 Assessments'[Grade Sort] = 28, "9",
+			        'KS4 Assessments'[Grade Sort] = 29, "9-8",
+			        'KS4 Assessments'[Grade Sort] = 30, "9-9",
+			        'KS4 Assessments'[Grade Sort] = 31, "L1 P",
+			        'KS4 Assessments'[Grade Sort] = 32, "L1 M",
+			        'KS4 Assessments'[Grade Sort] = 33, "L1 D",
+			        'KS4 Assessments'[Grade Sort] = 34, "L1 D*",
+			        'KS4 Assessments'[Grade Sort] = 35, "L2 P",
+			        'KS4 Assessments'[Grade Sort] = 36, "L2 M",
+			        'KS4 Assessments'[Grade Sort] = 37, "L2 D",
+			        'KS4 Assessments'[Grade Sort] = 38, "L2 D*",
+			        BLANK()   // Add this line to handle other cases gracefully
+			    )
+		lineageTag: 70927469-fe80-40d9-a4cc-775fb5d6d0e0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Type'
+		dataType: string
+		lineageTag: 700c9381-85ba-4b4c-825c-bf6b75f13aae
+		summarizeBy: none
+		sourceColumn: Grade Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Period Selector ID'
+		dataType: string
+		lineageTag: a2f89e8a-2fb6-4250-b01c-90c0d6815be6
+		summarizeBy: none
+		sourceColumn: KS4 Period Selector ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tables Checking'
+		dataType: string
+		lineageTag: d0b1c2cf-b5d9-47b7-8477-4da53c716b09
+		summarizeBy: none
+		sourceColumn: Tables Checking
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Student' = RELATED('Student Database (Full)'[Full Name])
+		lineageTag: 369a1c69-6f6c-4e2a-ae30-0c4bfc06e85d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS4 Student DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: 47c8a108-508a-44aa-b2e1-e0ebc23b5cf8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class Assessment ID'
+		dataType: string
+		lineageTag: e9b002fd-c90c-4410-bf7c-7a127f72ce28
+		summarizeBy: none
+		sourceColumn: Class Assessment ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Name'
+		dataType: string
+		lineageTag: 338938c0-958d-4cf6-97f4-1d8dceb6e0aa
+		summarizeBy: none
+		sourceColumn: Target Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subject (Target)'
+		dataType: string
+		lineageTag: db1033cb-97b6-4055-9b2c-2335ceddc44b
+		summarizeBy: none
+		sourceColumn: Subject (Target)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade (Target)'
+		dataType: string
+		lineageTag: 2faccdb3-8ccf-4fc3-bc3f-a162c9f254f1
+		summarizeBy: none
+		sourceColumn: Grade (Target)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year : Period_Name : Grade Type'
+		dataType: string
+		lineageTag: 59956e58-ba88-4e29-ab7b-ecbbabced548
+		summarizeBy: none
+		sourceColumn: School Year : Period_Name : Grade Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: deb95419-59f0-4bf1-95be-bf2afb01a1bd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS4 Assessments-1596e0db-25ea-4ca0-9d8a-d7b47174a9de' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"143ad5e4-dfd6-4a99-8036-980f3f1ede08" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="143ad5e4-dfd6-4a99-8036-980f3f1ede08"]}[Data],
+				    #"KS4 Assessments_" = #"143ad5e4-dfd6-4a99-8036-980f3f1ede08"{[entity="KS4 Assessments",version=""]}[Data]
+				in
+				    #"KS4 Assessments_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

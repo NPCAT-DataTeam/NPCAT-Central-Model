@@ -1,0 +1,193 @@
+table 'Primary Statutory Predictions'
+	lineageTag: 525757c2-eefc-4673-bb48-0885ebf85921
+
+	column 'Arbor ID'
+		dataType: string
+		lineageTag: 4df7ede0-c187-4508-bcf4-05be3ae8db7d
+		summarizeBy: none
+		sourceColumn: Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDENT_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d07a6ef6-c414-4d96-9d41-c23b756c396f
+		summarizeBy: count
+		sourceColumn: STUDENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique Student ID'
+		dataType: string
+		lineageTag: a2f5827c-f5ac-4973-aab0-810f06ae80ba
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year Start'
+		dataType: int64
+		formatString: 0
+		lineageTag: 529505eb-3103-43c3-9e81-71cf63b3da73
+		summarizeBy: sum
+		sourceColumn: Academic Year Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_NAME
+		dataType: string
+		lineageTag: 1032b753-7b67-4371-9d17-fb4e1c17a4ec
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_NAME
+		sortByColumn: 'Assessment Name Index'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5eb65138-c478-434d-8778-41a23d00352d
+		summarizeBy: none
+		sourceColumn: Assessment Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Grade Points'
+		dataType: int64
+		formatString: 0
+		lineageTag: a62b0fa3-0825-4a31-94f5-b2621b9dd157
+		summarizeBy: sum
+		sourceColumn: Grade Points
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Name'
+		dataType: string
+		lineageTag: 0ffd06ff-f87e-43b5-83de-d56dea362e28
+		summarizeBy: none
+		sourceColumn: Grade Name
+		sortByColumn: 'Grade Points'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Student ID - Academic Year'
+		dataType: string
+		lineageTag: ec7f9fbb-d77f-4eb6-96a0-5420eebc5caa
+		summarizeBy: none
+		sourceColumn: Unique Student ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name Index'
+		dataType: double
+		lineageTag: dd4f419b-2467-4086-9e3e-0e198d290142
+		summarizeBy: sum
+		sourceColumn: Assessment Name Index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Assessment Key Stage'
+		dataType: string
+		lineageTag: 7af42e1d-ba03-4eb6-9674-90b03dcd6882
+		summarizeBy: none
+		sourceColumn: Assessment Key Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 4b08c632-2bc8-4f98-85ea-4b8c5f4aaa73
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Name (Short Code)'
+		dataType: string
+		lineageTag: 3e2af70a-9556-4dee-a1b3-1c5609bbc4eb
+		summarizeBy: none
+		sourceColumn: Grade Name (Short Code)
+		sortByColumn: 'Grade Points'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Group'
+		dataType: string
+		lineageTag: c1e9cd39-dea8-424f-a207-a9cd0ff00613
+		summarizeBy: none
+		sourceColumn: Year Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment (Short)'
+		dataType: string
+		lineageTag: 5f20c279-bddb-4f3a-bc9f-559db6ecaed0
+		summarizeBy: none
+		sourceColumn: Assessment (Short)
+		sortByColumn: 'Assessment Name (Short) Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Student Full Name' = RELATED('Student Database (Full)'[Full Name])
+		lineageTag: b08ced05-1aaf-4879-93d2-114a10a70147
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_UNIQUE_ID
+		dataType: string
+		lineageTag: 7ff6b3fc-7d98-4efb-bc65-5ff935010cc9
+		summarizeBy: none
+		sourceColumn: SUBJECT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBJECT_ID
+		dataType: double
+		lineageTag: 54b62728-4ebe-44b9-bf15-588bc9c7eb7e
+		summarizeBy: count
+		sourceColumn: SUBJECT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Assessment Name (Short) Sort'
+		dataType: double
+		lineageTag: 7e0b5118-b201-47c1-9295-2f30d858c41f
+		summarizeBy: sum
+		sourceColumn: Assessment Name (Short) Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Primary Statutory Predictions' = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"134964d2-693f-4004-aafe-4288d9f6e02e" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="134964d2-693f-4004-aafe-4288d9f6e02e"]}[Data],
+				    #"Primary Statutory Predictions1" = #"134964d2-693f-4004-aafe-4288d9f6e02e"{[entity="Primary Statutory Predictions"]}[Data]
+				in
+				    #"Primary Statutory Predictions1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

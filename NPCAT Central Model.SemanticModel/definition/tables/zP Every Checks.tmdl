@@ -1,0 +1,87 @@
+table 'zP Every Checks'
+	lineageTag: 268441de-8e99-40c5-9921-4d3dd40b57d9
+
+	column 'zP Every Checks'
+		lineageTag: 8d75c9eb-fe8d-4451-bf81-e767c968845e
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Every Checks Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Every Checks Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Every Checks Fields'
+		isHidden
+		lineageTag: 8b1f9915-b1cf-4e8b-b972-18e312e71039
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Every Checks Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Every Checks Order'
+		isHidden
+		formatString: 0
+		lineageTag: aff51bde-5b3c-42bf-94bf-b851bae07b90
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Every Checks #/%' =
+			
+			SWITCH(
+			    TRUE(),
+			    CONTAINSSTRING('zP Every Checks'[zP Every Checks Fields],"%"),"Percentage",
+			    NOT(CONTAINSSTRING('zP Every Checks'[zP Every Checks Fields],"%")), "Count")
+		lineageTag: b937c461-77d8-4438-bb6d-49ff792865c8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Every Checks' = calculated
+		mode: import
+		source =
+				{
+				    ("All Issues", NAMEOF('Measures Folder'[Employee + Job Roles Total Fail %]), 0),
+				    ("All Issues", NAMEOF('Measures Folder'[Employee + Job Roles Total Fails]), 1),
+				    ("Employee Issues", NAMEOF('Measures Folder'[Employee Table Total Fail %]), 2),
+				    ("Employee Issues", NAMEOF('Measures Folder'[Employee Table Total Fails]), 3),
+				    ("Role Issues", NAMEOF('Measures Folder'[Employee Roles Table Total Fails %]), 4),
+				    ("Role Issues", NAMEOF('Measures Folder'[Employee Roles Table Total Fails]), 5),
+				    ("DOB", NAMEOF('Measures Folder'[DOB Check - Fail %]), 6),
+				    ("DOB", NAMEOF('Measures Folder'[DOB Check - Fails]), 7),
+				    ("Ethnicity", NAMEOF('Measures Folder'[Ethnicity Check - Fail %]), 8),
+				    ("Ethnicity", NAMEOF('Measures Folder'[Ethnicity Check - Fails]), 9),
+				    ("Gender", NAMEOF('Measures Folder'[Gender Check - Fail %]), 10),
+				    ("Gender", NAMEOF('Measures Folder'[Gender Check - Fails]), 11),
+				    //("Line Manager", NAMEOF('Measures Folder'[Line Manager Check - Fail %]), 12),
+				    //("Line Manager", NAMEOF('Measures Folder'[Line Manager Check - Fails]), 13),
+				    ("Next of Kin", NAMEOF('Measures Folder'[Next of Kin Check - Fail %]), 14),
+				    ("Next of Kin", NAMEOF('Measures Folder'[Next of Kin Check - Fails]), 15),
+				    ("NI Number", NAMEOF('Measures Folder'[NI Number Check - Fail %]), 16),
+				    ("NI Number", NAMEOF('Measures Folder'[NI Number Check - Fails]), 17),
+				    ("NPCAT ID", NAMEOF('Measures Folder'[NPCAT ID Check - Fail %]), 18),
+				    ("NPCAT ID", NAMEOF('Measures Folder'[NPCAT ID Check - Fails]), 19),
+				    ("Payroll Number", NAMEOF('Measures Folder'[Payroll Number Check - Fail %]), 20),
+				    ("Payroll Number", NAMEOF('Measures Folder'[Payroll Number Check - Fails]), 21),
+				    ("Religion", NAMEOF('Measures Folder'[Religion Check - Fail %]), 22),
+				    ("Religion", NAMEOF('Measures Folder'[Religion Check - Fails]), 23),
+				    ("Role Identifier", NAMEOF('Measures Folder'[Role Identifier Check - Fail %]), 24),
+				    ("Role Identifier", NAMEOF('Measures Folder'[Role Identifier Check - Fails]), 25),
+				    ("Type of Post", NAMEOF('Measures Folder'[Type of Post Check - Fail %]), 26),
+				    ("Type of Post", NAMEOF('Measures Folder'[Type of Post Check - Fails]), 27),
+				    ("Work Email", NAMEOF('Measures Folder'[Work Email Check - Fail %]), 28),
+				    ("Work Email", NAMEOF('Measures Folder'[Work Email Check - Fails]), 29)
+				}
+
+	annotation PBI_Id = f4457224662f42fab3dd2e5bfce6eead
+

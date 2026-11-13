@@ -1,0 +1,145 @@
+table 'Feeder Schools Lookup'
+	lineageTag: 87322e92-06f7-41e4-9871-3bdd8b28384c
+
+	column NumberOfPupils
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b18e661-3c03-4a7c-be30-d4c7416bb72e
+		summarizeBy: none
+		sourceColumn: NumberOfPupils
+
+		annotation SummarizationSetBy = User
+
+	column Address3
+		dataType: string
+		lineageTag: ce6a5c6a-441b-4969-a052-305ef8920fd6
+		summarizeBy: none
+		sourceColumn: Address3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Town
+		dataType: string
+		lineageTag: c5b3c457-026d-4dcb-935b-700304224d17
+		summarizeBy: none
+		sourceColumn: Town
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'County (name)'
+		dataType: string
+		lineageTag: 2ec89dd5-e6d8-476f-9869-6a66bf2992e0
+		summarizeBy: none
+		sourceColumn: County (name)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Postcode
+		dataType: string
+		lineageTag: bf0b5e0d-10e8-429b-8899-c410c5ee0695
+		summarizeBy: none
+		sourceColumn: Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LSOA (code)'
+		dataType: string
+		lineageTag: ab08ea31-46fc-40db-9297-de97daa7ec71
+		summarizeBy: none
+		sourceColumn: LSOA (code)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder URN'
+		dataType: string
+		lineageTag: dde4c2f1-a9e9-46cc-a443-bb9e5e38550c
+		summarizeBy: none
+		sourceColumn: Feeder URN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder LA'
+		dataType: string
+		lineageTag: 53966d84-5bad-4892-95bf-c811768b00f2
+		summarizeBy: none
+		sourceColumn: Feeder LA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder School Name'
+		dataType: string
+		lineageTag: 28f4aaff-5440-4422-ad80-3e2a05a099ff
+		summarizeBy: none
+		sourceColumn: Feeder School Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder Group'
+		dataType: string
+		lineageTag: cc3f232e-9d35-468e-9f0b-15f273f17f14
+		summarizeBy: none
+		sourceColumn: Feeder Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder Phase'
+		dataType: string
+		lineageTag: cb492407-ff28-4a0a-b521-70d3d9f26bcb
+		summarizeBy: none
+		sourceColumn: Feeder Phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder Diocese'
+		dataType: string
+		lineageTag: c4410e84-e812-447b-b56f-3f0dd9a9d68f
+		summarizeBy: none
+		sourceColumn: Feeder Diocese
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trusts
+		dataType: string
+		lineageTag: aa62717f-06a7-45f8-8295-30dbba14e938
+		summarizeBy: none
+		sourceColumn: Trusts
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feeder Ofsted Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9db5d61f-5f04-4ec7-bdef-38a5d2da8828
+		summarizeBy: none
+		sourceColumn: Feeder Ofsted Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Feeder Ofsted Rating'
+		dataType: string
+		lineageTag: cd93c539-dc3d-4bf5-b803-15b637280df3
+		summarizeBy: none
+		sourceColumn: Feeder Ofsted Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Feeder Schools Lookup' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    #"All Schools Lookup_" = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="All Schools Lookup",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"All Schools Lookup_",{{"Feeder URN", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

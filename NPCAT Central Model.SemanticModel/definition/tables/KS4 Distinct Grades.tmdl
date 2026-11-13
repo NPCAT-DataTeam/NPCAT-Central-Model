@@ -1,0 +1,129 @@
+table 'KS4 Distinct Grades'
+	lineageTag: 37307cfa-ee3f-4e5b-8caa-8b72ab9b9661
+
+	column 'Grade Sort'
+		lineageTag: dc5e4a63-9b5f-428b-a529-99a0526419c9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: KS4 Assessments[Grade Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Grade
+		lineageTag: ea315423-db79-4f8f-9e17-9e8e42519d76
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: KS4 Assessments[Grade]
+		sortByColumn: 'Grade Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Set' =
+			
+			SWITCH(TRUE(),
+			'KS4 Distinct Grades'[Grade Sort] <= 3, "Admin",
+			'KS4 Distinct Grades'[Grade Sort] = 4, "U",
+			'KS4 Distinct Grades'[Grade Sort] IN {5,7,10,13,16,19,22,25,28} , "GCSE",
+			'KS4 Distinct Grades'[Grade Sort] IN {6,8,9,11,12,14,15,17,18,20,21,23,24,26,27,29,30} , "GCSE Double",
+			'KS4 Distinct Grades'[Grade Sort] >= 31, "BTEC/Cam NAT"
+			)
+		lineageTag: 79304cc9-c767-451d-8611-5292df72e69f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Admin Grade Selector' =
+			
+			SWITCH(TRUE(),
+			'KS4 Distinct Grades'[Grade Sort] <= 3, "Show Admin Grades",
+			'KS4 Distinct Grades'[Grade Sort] > 3,"Hide Admin Grades"
+			)
+		lineageTag: 9403cb89-835a-41cb-bc44-4fd2146acf0b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade (Short)' =
+			
+			SWITCH (
+			        TRUE(),
+			        'KS4 Distinct Grades'[Grade Sort] = 1, "X",
+			        'KS4 Distinct Grades'[Grade Sort] = 2, "N",
+			        'KS4 Distinct Grades'[Grade Sort] = 3, "Q",
+			        'KS4 Distinct Grades'[Grade Sort] = 4, "U",
+			        'KS4 Distinct Grades'[Grade Sort] = 5, "1",
+			        'KS4 Distinct Grades'[Grade Sort] = 6, "1-1",
+			        'KS4 Distinct Grades'[Grade Sort] = 7, "2",
+			        'KS4 Distinct Grades'[Grade Sort] = 8, "2-1",
+			        'KS4 Distinct Grades'[Grade Sort] = 9, "2-2",
+			        'KS4 Distinct Grades'[Grade Sort] = 10, "3",
+			        'KS4 Distinct Grades'[Grade Sort] = 11, "3-2",
+			        'KS4 Distinct Grades'[Grade Sort] = 12, "3-3",
+			        'KS4 Distinct Grades'[Grade Sort] = 13, "4",
+			        'KS4 Distinct Grades'[Grade Sort] = 14, "4-3",
+			        'KS4 Distinct Grades'[Grade Sort] = 15, "4-4",
+			        'KS4 Distinct Grades'[Grade Sort] = 16, "5",
+			        'KS4 Distinct Grades'[Grade Sort] = 17, "5-4",
+			        'KS4 Distinct Grades'[Grade Sort] = 18, "5-5",
+			        'KS4 Distinct Grades'[Grade Sort] = 19, "6",
+			        'KS4 Distinct Grades'[Grade Sort] = 20, "6-5",
+			        'KS4 Distinct Grades'[Grade Sort] = 21, "6-6",
+			        'KS4 Distinct Grades'[Grade Sort] = 22, "7",
+			        'KS4 Distinct Grades'[Grade Sort] = 23, "7-6",
+			        'KS4 Distinct Grades'[Grade Sort] = 24, "7-7",
+			        'KS4 Distinct Grades'[Grade Sort] = 25, "8",
+			        'KS4 Distinct Grades'[Grade Sort] = 26, "8-7",
+			        'KS4 Distinct Grades'[Grade Sort] = 27, "8-8",
+			        'KS4 Distinct Grades'[Grade Sort] = 28, "9",
+			        'KS4 Distinct Grades'[Grade Sort] = 29, "9-8",
+			        'KS4 Distinct Grades'[Grade Sort] = 30, "9-9",
+			        'KS4 Distinct Grades'[Grade Sort] = 31, "L1 P",
+			        'KS4 Distinct Grades'[Grade Sort] = 32, "L1 M",
+			        'KS4 Distinct Grades'[Grade Sort] = 33, "L1 D",
+			        'KS4 Distinct Grades'[Grade Sort] = 34, "L1 D*",
+			        'KS4 Distinct Grades'[Grade Sort] = 35, "L2 P",
+			        'KS4 Distinct Grades'[Grade Sort] = 36, "L2 M",
+			        'KS4 Distinct Grades'[Grade Sort] = 37, "L2 D",
+			        'KS4 Distinct Grades'[Grade Sort] = 38, "L2 D*",
+			        BLANK()   // Add this line to handle other cases gracefully
+			    )
+		lineageTag: 2511a889-5cf5-4544-9f7b-c99902690aaa
+		summarizeBy: none
+		sortByColumn: 'Grade Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade (+)' = 'KS4 Distinct Grades'[Grade (Short)] & "+"
+		lineageTag: 0afecdcb-dee9-4d38-9c7e-858423b6da64
+		summarizeBy: none
+		sortByColumn: 'Grade Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade (%)' = "%" & 'KS4 Distinct Grades'[Grade (Short)]
+		lineageTag: 1d74a97e-34f3-46fa-accb-3a7e498ab5b9
+		summarizeBy: none
+		sortByColumn: 'Grade Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade (%+)' = "%" & 'KS4 Distinct Grades'[Grade (Short)] & "+"
+		lineageTag: 4a276608-0144-4a3f-adc0-535f955b9605
+		summarizeBy: none
+		sortByColumn: 'Grade Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS4 Distinct Grades' = calculated
+		mode: import
+		source =
+				CALCULATETABLE(
+				SUMMARIZE (
+				    'KS4 Assessments',
+				    'KS4 Assessments'[Grade Sort],
+				    'KS4 Assessments'[Grade]),'KS4 Assessments'[Grade]<>"")
+
+	annotation PBI_Id = 6695a6b1eca548c28ed12c6c9b57a5c4
+

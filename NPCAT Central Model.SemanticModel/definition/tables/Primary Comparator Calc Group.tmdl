@@ -1,0 +1,179 @@
+table 'Primary Comparator Calc Group'
+	lineageTag: 5055f5b6-c3ce-4d6f-a17e-568970da3f8c
+
+	calculationGroup
+		precedence: 10
+
+		calculationItem 'Selected Period (Background)' = ```
+				CALCULATE ( SELECTEDMEASURE (), REMOVEFILTERS ( 'Primary Period Selector' ) )
+				
+				```
+
+		calculationItem 'Compared Period (Background)' = ```
+				
+				VAR _MaxDate = [Primary Comparator Max Date]
+				
+				RETURN
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    ALLEXCEPT (
+				        'Primary Summative Marks (South)',
+				        'Primary Summative Marks (South)'[Globally Unique Student ID],
+				        'Primary Summative Marks (South)'[Unique Student ID - Academic Year],
+				        'Primary Summative Marks (South)'[Assessment Name],
+				        'School Database'[School Short Name],
+				        'Student Database (Full)'[Globally Unique Student ID],
+				        'Student Database (Full)'[Gender],
+				        'Student Database (Full)'[Religion],
+				        'Student Database (Full)'[English as additional language],
+				        'Student Database (Full)'[Student-TOB],
+				        'Student Database (Full)'[Mobile Student],
+				        'Student Database (Full)'[Mobile KS1],
+				        'Student Database (Full)'[Mobile Lower KS2],
+				        'Student Database (Full)'[Mobile Upper KS2],
+				        'Student Year Groups'[Attendance Rank],
+				        'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)]
+				    ),
+				    REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				    ALLEXCEPT ( 'Calendar', 'Calendar'[FutureDate]),
+				    
+				    USERELATIONSHIP ( 'Primary Summative Marks (South)'[Primary Period Selector ID], 'Primary Period Selector'[Primary Period Selector ID] ),
+				    'Demographics'[Tag Start Date] <= _MaxDate
+				    && 'Demographics'[Tag End Date]   >= _MaxDate,
+				    'Calendar'[Date]=_MaxDate
+				)
+				```
+
+		calculationItem 'Selected Period' =
+				VAR _Final =
+				    CALCULATE ( SELECTEDMEASURE (), REMOVEFILTERS ( 'Primary Period Selector' ) )
+				RETURN
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        BLANK (),
+				        _Final
+				    )
+
+		calculationItem 'Compared Period' = ```
+				VAR _MaxDate = [Primary Comparator Max Date]
+				
+				VAR _Final =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				       ALLEXCEPT (
+				        'Primary Summative Marks (South)',
+				        'Primary Summative Marks (South)'[Globally Unique Student ID],
+				        'Primary Summative Marks (South)'[Unique Student ID - Academic Year],
+				        'Primary Summative Marks (South)'[Assessment Name],
+				        'School Database'[School Short Name],
+				        'Student Database (Full)'[Globally Unique Student ID],
+				        'Student Database (Full)'[Gender],
+				        'Student Database (Full)'[Religion],
+				        'Student Database (Full)'[English as additional language],
+				        'Student Database (Full)'[Student-TOB],
+				        'Student Database (Full)'[Mobile Student],
+				        'Student Database (Full)'[Mobile KS1],
+				        'Student Database (Full)'[Mobile Lower KS2],
+				        'Student Database (Full)'[Mobile Upper KS2],
+				        'Student Year Groups'[Attendance Rank],
+				        'Student Year Groups'[Fixed Term Exclusions (0,1+,2+)]
+				    ),
+				    REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				    ALLEXCEPT ( 'Calendar', 'Calendar'[FutureDate]),
+				    
+				    USERELATIONSHIP ( 'Primary Summative Marks (South)'[Primary Period Selector ID], 'Primary Period Selector'[Primary Period Selector ID] ),
+				    'Demographics'[Tag Start Date] <= _MaxDate
+				    && 'Demographics'[Tag End Date]   >= _MaxDate,
+				    'Calendar'[Date]=_MaxDate
+				)
+				RETURN
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        BLANK (),
+				        _Final
+				    )
+				```
+
+		calculationItem Variance = ```
+				
+				VAR _CurrDate = [Dynamic Max Date]
+				VAR _MaxDate = [Primary Comparator Max Date]
+				VAR _SelectedPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'Primary Comparator Calc Group'[Primary KPI Type] = "Selected Period (Background)",
+				    'Demographics'[Tag Start Date] <= _CurrDate
+				    && 'Demographics'[Tag End Date]   >= _CurrDate
+				    )
+				VAR _ComparatorPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'Primary Comparator Calc Group'[Primary KPI Type] = "Compared Period (Background)",
+				        REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				        'Demographics'[Tag Start Date] <= _MaxDate
+				        && 'Demographics'[Tag End Date]   >= _MaxDate,
+				        'Calendar'[Date]=_MaxDate
+				    )
+				VAR _Difference = _SelectedPeriod - _ComparatorPeriod
+				RETURN
+				    IF (
+				        CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				        _Difference,
+				        _SelectedPeriod - _ComparatorPeriod
+				    )
+				
+				```
+
+		calculationItem 'Primary KPI' =
+				VAR _CurrDate = [Dynamic Max Date]
+				VAR _MaxDate = [Primary Comparator Max Date]
+				VAR _SelectedPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'Primary Comparator Calc Group'[Primary KPI Type] = "Selected Period (Background)",
+				        'Demographics'[Tag Start Date] <= _CurrDate
+				        && 'Demographics'[Tag End Date]   >= _CurrDate
+				    )
+				VAR _ComparatorPeriod =
+				    CALCULATE (
+				        SELECTEDMEASURE (),
+				        'Primary Comparator Calc Group'[Primary KPI Type] = "Compared Period (Background)",
+				        REMOVEFILTERS('Calendar'[Current School Year Offset]),
+				        'Demographics'[Tag Start Date] <= _MaxDate
+				        && 'Demographics'[Tag End Date]   >= _MaxDate,
+				        'Calendar'[Date]<_MaxDate
+				    )
+				VAR _Difference = _SelectedPeriod - _ComparatorPeriod
+				VAR _Operator =
+				    IF ( _Difference > 0, " +", " " )
+				RETURN
+				    IF (
+				        ISBLANK ( _ComparatorPeriod ) && ISBLANK ( _SelectedPeriod ),
+				        BLANK(),
+				        IF (
+				            CONTAINSSTRING ( SELECTEDMEASURENAME (), "Primary Conditional Formatting" ),
+				            _Difference,
+				            FORMAT ( _SelectedPeriod, SELECTEDMEASUREFORMATSTRING () ) & UNICHAR ( 10 ) & "("
+				                & FORMAT ( _ComparatorPeriod, SELECTEDMEASUREFORMATSTRING () ) & ")" & _Operator
+				                & FORMAT ( _Difference, SELECTEDMEASUREFORMATSTRING () )
+				        )
+				    )
+
+	column 'Primary KPI Type'
+		dataType: string
+		lineageTag: 85b34eb5-db5b-464d-a0df-2d87471a6669
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fa93ed2-3567-4a5e-8015-bcbc2e72119a
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

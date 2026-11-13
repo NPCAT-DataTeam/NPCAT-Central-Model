@@ -1,0 +1,361 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Estates\Accidents and Near Misses'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'School Data'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Attendance
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Calendar
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup HR
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'Attendance Monitoring'
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup Finance
+
+	annotation PBI_QueryGroupOrder = 6
+
+queryGroup Estates
+
+	annotation PBI_QueryGroupOrder = 7
+
+queryGroup 'Finance\Staging Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Every System\Compliance'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Every System'
+
+	annotation PBI_QueryGroupOrder = 8
+
+queryGroup ICT
+
+	annotation PBI_QueryGroupOrder = 9
+
+queryGroup Estates\Health&Safety
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Safeguarding
+
+	annotation PBI_QueryGroupOrder = 10
+
+queryGroup 'Microsoft/Google Forms'
+
+	annotation PBI_QueryGroupOrder = 13
+
+queryGroup 'KS Assessments'
+
+	annotation PBI_QueryGroupOrder = 15
+
+queryGroup Estates\Catering
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Primary Summative (South)'
+
+	annotation PBI_QueryGroupOrder = 14
+
+queryGroup Finance\PSF
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Primary\Statutory Primary\Phonics'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Primary\Statutory Primary\EYFS'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Primary\Statutory Primary\KS1'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Primary\Statutory Primary\KS2'
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup 'Primary\Statutory Primary\MTC'
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'Primary\Statutory Primary'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Primary
+
+	annotation PBI_QueryGroupOrder = 11
+
+queryGroup 'Primary\Primary Nationals'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Teacher QA Forms'
+
+	annotation PBI_QueryGroupOrder = 28
+
+queryGroup 'Student Data'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Behaviour
+
+	annotation PBI_QueryGroupOrder = 29
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["School Database","Inspections","School Logos","Student Database (Full)","Early Years Information","Calendar","Attendance","Measures Folder","Excluded Students","Excluded Students (Reasons)","Permanent Exclusions","Behaviour","Attendance Managers Actions","HSLO Logs","Accidents","Student Previous School","Primary Statutory Predictions","Primary Standardised Assessments","Management Accounts","ICT Help Desk","Financial Benchmark Data","Benchmark Group","NPCAT Workforce Census","NPCAT Student Census","Chart of Accounts","Workforce Census","Student Census","Financial Benchmark Data (Staging)","Workforce Census (Staging)","Student Census (Staging)","Compliance Record Activities","Compliance Daily Logs","Student Year Groups","Absences","Employee Job Roles","Performance Objectives","Performance Reviews","Performance Reviews (Questions)","Schools Contract & Variation","Employees","Health&Safety Actions","Health&Safety Actions Dates","Health and Safety Audit Overview","Safeguarding Visit Scores","Safeguarding Visits","Printer Status","Printing and Copying","Phonics","EYFS ELGs/GLD","KS1 Teacher Assessments","KS1-KS2 Progress","KS2 Tests & TA Results","MTC","KS4 Assessments","Secondary Headteacher Standards Update","KS3 Summative Marks","National Headlines","Catering Audit","Catering Audit Compliance","Catering Meals (Primary)","Catering Audit Ratings","Catering Actions","Catering Actions Date List","Governance KPI Tracker","Class Enrolments","Primary Summative Marks (South)","Primary Summative Targets (South)","Catering Audit Students","RONI","Boxphish Courses","Boxphish Phishing Simulations","Demographics","Permanent Exclusions (Reasons)","Feeder Schools Lookup","National Subject Headlines","Safeguarding Headlines Lookup","National School Year","Absence Insurance Claims","Student Indicies","KS4 Period Selector","Lesson Attendance","Courses (No Students)","Credit Card","Creditors","Debtors","Non Order Invoices","Purchasing Details","Suppliers","SEN Needs","Primary Nationals","Primary National Measures","Primary Period Selector","Primary Trust Averages","Enrichment Attendance","Enrichment","Feeder School Locations","Secondary QA Permissions","Secondary Standards QA Forms","Secondary Standards QA Questions","SEN Audit Scores","SEN Audit Visits","Boxphish Staff Rating","KS4 Student Headlines","AP-Grade Type","KS4 Student","ICT Equipment Scores","Lessons","Student Absences","Catholic Standards Scores","Catholic Standards Visits","AP Placements","LA Indicies","Behaviour Sanction Reasons","Behaviour Sanctions","Detentions","Behaviour Points","Physical Interventions"]
+
+annotation __TEdtr = 1
+
+annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["AVOID_BI-DIRECTIONAL_RELATIONSHIPS_AGAINST_HIGH-CARDINALITY_COLUMNS","AVOID_EXCESSIVE_BI-DIRECTIONAL_OR_MANY-TO-MANY_RELATIONSHIPS","AVOID_USING_MANY-TO-MANY_RELATIONSHIPS_ON_TABLES_USED_FOR_DYNAMIC_ROW_LEVEL_SECURITY","DAX_COLUMNS_FULLY_QUALIFIED","DAX_MEASURES_UNQUALIFIED","AVOID_DUPLICATE_MEASURES","USE_THE_TREATAS_FUNCTION_INSTEAD_OF_INTERSECT","USE_THE_DIVIDE_FUNCTION_FOR_DIVISION","EVALUATEANDLOG_SHOULD_NOT_BE_USED_IN_PRODUCTION_MODELS","DATA_COLUMNS_MUST_HAVE_A_SOURCE_COLUMN","EXPRESSION_RELIANT_OBJECTS_MUST_HAVE_AN_EXPRESSION","AVOID_STRUCTURED_DATA_SOURCES_WITH_PROVIDER_PARTITIONS","AVOID_THE_USERELATIONSHIP_FUNCTION_AND_RLS_AGAINST_THE_SAME_TABLE","RELATIONSHIP_COLUMNS_SAME_DATA_TYPE","AVOID_INVALID_NAME_CHARACTERS","AVOID_INVALID_DESCRIPTION_CHARACTERS","SET_ISAVAILABLEINMDX_TO_TRUE_ON_NECESSARY_COLUMNS","FORMAT_FLAG_COLUMNS_AS_YES/NO_VALUE_STRINGS","OBJECTS_SHOULD_NOT_START_OR_END_WITH_A_SPACE","DATECOLUMN_FORMATSTRING","MONTHCOLUMN_FORMATSTRING","PROVIDE_FORMAT_STRING_FOR_MEASURES","NUMERIC_COLUMN_SUMMARIZE_BY","PERCENTAGE_FORMATTING","INTEGER_FORMATTING","RELATIONSHIP_COLUMNS_SHOULD_BE_OF_INTEGER_DATA_TYPE","ADD_DATA_CATEGORY_FOR_COLUMNS","HIDE_FOREIGN_KEYS","MARK_PRIMARY_KEYS","HIDE_FACT_TABLE_COLUMNS","FIRST_LETTER_OF_OBJECTS_MUST_BE_CAPITALIZED","MONTH_(AS_A_STRING)_MUST_BE_SORTED","AVOID_FLOATING_POINT_DATA_TYPES","ISAVAILABLEINMDX_FALSE_NONATTRIBUTE_COLUMNS","REDUCE_USAGE_OF_LONG-LENGTH_COLUMNS_WITH_HIGH_CARDINALITY","SPLIT_DATE_AND_TIME","LARGE_TABLES_SHOULD_BE_PARTITIONED","REDUCE_USAGE_OF_CALCULATED_COLUMNS_THAT_USE_THE_RELATED_FUNCTION","SNOWFLAKE_SCHEMA_ARCHITECTURE","MODEL_SHOULD_HAVE_A_DATE_TABLE","DATE/CALENDAR_TABLES_SHOULD_BE_MARKED_AS_A_DATE_TABLE","REMOVE_AUTO-DATE_TABLE","LIMIT_ROW_LEVEL_SECURITY_(RLS)_LOGIC","MODEL_USING_DIRECT_QUERY_AND_NO_AGGREGATIONS","MINIMIZE_POWER_QUERY_TRANSFORMATIONS","UNPIVOT_PIVOTED_(MONTH)_DATA","MANY-TO-MANY_RELATIONSHIPS_SHOULD_BE_SINGLE-DIRECTION","REDUCE_USAGE_OF_CALCULATED_TABLES","REMOVE_REDUNDANT_COLUMNS_IN_RELATED_TABLES","MEASURES_USING_TIME_INTELLIGENCE_AND_MODEL_IS_USING_DIRECT_QUERY","REDUCE_NUMBER_OF_CALCULATED_COLUMNS","CHECK_IF_BI-DIRECTIONAL_AND_MANY-TO-MANY_RELATIONSHIPS_ARE_VALID","CHECK_IF_DYNAMIC_ROW_LEVEL_SECURITY_(RLS)_IS_NECESSARY","AVOID_USING_THE_IFERROR_FUNCTION","MEASURES_SHOULD_NOT_BE_DIRECT_REFERENCES_OF_OTHER_MEASURES","FILTER_COLUMN_VALUES","FILTER_MEASURE_VALUES_BY_COLUMNS","INACTIVE_RELATIONSHIPS_THAT_ARE_NEVER_ACTIVATED","AVOID_USING_'1-(X/Y)'_SYNTAX","UNNECESSARY_COLUMNS","UNNECESSARY_MEASURES","FIX_REFERENTIAL_INTEGRITY_VIOLATIONS","REMOVE_DATA_SOURCES_NOT_REFERENCED_BY_ANY_PARTITIONS","REMOVE_ROLES_WITH_NO_MEMBERS","ENSURE_TABLES_HAVE_RELATIONSHIPS","OBJECTS_WITH_NO_DESCRIPTION","PERSPECTIVES_WITH_NO_OBJECTS","CALCULATION_GROUPS_WITH_NO_CALCULATION_ITEMS","PARTITION_NAME_SHOULD_MATCH_TABLE_NAME_FOR_SINGLE_PARTITION_TABLES","SPECIAL_CHARS_IN_OBJECT_NAMES","TRIM_OBJECT_NAMES"]}
+
+annotation BestPracticeAnalyzer_ExternalRuleFiles = ["C:\\Users\\doy.n\\Downloads\\BestPracticeRules-master\\BestPracticeRules-master\\BPARules-PowerBI.json"]
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","CalcGroup","WebModelingEdit","TMDLView_Desktop","DevMode"]
+
+annotation __LastRPTime = 134390138134013853
+
+ref table 'School Database'
+ref table 'Student Database (Full)'
+ref table Calendar
+ref table Attendance
+ref table 'Measures Folder'
+ref table 'Excluded Students'
+ref table Behaviour
+ref table 'Attendance Managers Actions'
+ref table 'HSLO Logs'
+ref table Accidents
+ref table 'Student Previous School'
+ref table 'Management Accounts'
+ref table 'ICT Help Desk'
+ref table 'NPCAT Workforce Census'
+ref table 'NPCAT Student Census'
+ref table 'Calculation Group: Exclusion 1+/2+'
+ref table 'Excluded Students (Reasons)'
+ref table 'Compliance Record Activities'
+ref table 'Compliance Daily Logs'
+ref table 'Student Year Groups'
+ref table 'Permanent Exclusions'
+ref table 'Primary Standardised Assessments'
+ref table Absences
+ref table 'Employee Job Roles'
+ref table 'Performance Objectives'
+ref table 'Performance Reviews'
+ref table 'Performance Reviews (Questions)'
+ref table 'Schools Contract & Variation'
+ref table Employees
+ref table 'Health&Safety Actions'
+ref table 'Health&Safety Actions Dates'
+ref table 'Health and Safety Audit Overview'
+ref table 'Financial Benchmark Data'
+ref table 'Safeguarding Visit Scores'
+ref table 'Safeguarding Visits'
+ref table 'Printer Status'
+ref table 'Printing and Copying'
+ref table 'zP Attendance School Year'
+ref table 'zP Persistent Absences'
+ref table 'Trust and School Type'
+ref table 'Dynamic student Calc group'
+ref table 'zP Period Attainment Change'
+ref table 'zP Reception Assessment Indicators'
+ref table 'zP Nursery 2 Assessment Indicators'
+ref table 'zP Exclusion School Year'
+ref table 'School Logos'
+ref table 'zP Trust/Statutory'
+ref table Phonics
+ref table 'EYFS ELGs/GLD'
+ref table 'KS1 Teacher Assessments'
+ref table 'KS2 Tests & TA Results'
+ref table MTC
+ref table 'EYFS Total Points'
+ref table 'KS4 Assessments'
+ref table 'Secondary Headteacher Standards Update'
+ref table 'zP Behaviour Incidents'
+ref table 'KS3 Summative Marks'
+ref table 'zP KS3 Assessment'
+ref table 'zP KS4 Demographics'
+ref table 'zP KS4 Buckets'
+ref table 'Catering Audit'
+ref table 'Catering Audit Compliance'
+ref table 'Catering Audit Ratings'
+ref table 'Catering Actions'
+ref table 'Catering Actions Date List'
+ref table 'Governance KPI Tracker'
+ref table 'zP Trust Summative Y1-Y6 Indicators'
+ref table 'Class Enrolments'
+ref table 'Primary Summative Marks (South)'
+ref table 'Primary Summative Targets (South)'
+ref table 'zP Period Attainment Change (South)'
+ref table 'Calculation Group: HR Absences (Post vs Headcount)'
+ref table 'Catering Audit Students'
+ref table RONI
+ref table 'Boxphish Courses'
+ref table 'Boxphish Phishing Simulations'
+ref table 'zP Assessment Indicators (South)'
+ref table Demographics
+ref table 'zP KS4 Subject Measure'
+ref table GLDTable
+ref table 'zP Sickness'
+ref table 'zP KS1 Time Series'
+ref table 'Permanent Exclusions (Reasons)'
+ref table 'zP EYFS Time Series'
+ref table 'zP Permanent Exclusion School Year'
+ref table 'zP Colour Scenario'
+ref table 'zP Simplex Scenario'
+ref table 'zP MTC Time Series'
+ref table 'zP Phonics Time Series'
+ref table 'zP Total page Scenario'
+ref table 'zP Primary Statutory Indicator Time Series'
+ref table 'zP KS2 Time Series'
+ref table 'Time Series Calc Group'
+ref table 'Early Years Information'
+ref table 'KS1-KS2 Progress'
+ref table 'zP KS4 Grade Distribution'
+ref table 'KS4 Distinct Grades'
+ref table 'Feeder Schools Lookup'
+ref table 'School Year Calc Group'
+ref table 'National Headlines'
+ref table 'National Subject Headlines'
+ref table 'zP Primary Summative Key Marginals (York Hub)'
+ref table 'Safeguarding Headlines Lookup'
+ref table 'National School Year'
+ref table 'Absence Insurance Claims'
+ref table 'zP Contract&Variation'
+ref table 'MTD/YTD Calc Group'
+ref table 'zP LTS'
+ref table 'Student Indicies'
+ref table 'zP Absence Insurance'
+ref table 'zP KS4 Headlines'
+ref table 'KS4 Period Selector'
+ref table 'KS4 Comparator Calc Group'
+ref table 'zP KS4 Comparator'
+ref table 'Lesson Attendance'
+ref table 'Courses (No Students)'
+ref table 'Credit Card'
+ref table Creditors
+ref table Debtors
+ref table 'Non Order Invoices'
+ref table 'Purchasing Details'
+ref table Suppliers
+ref table 'SEN Needs'
+ref table 'Every Calc Count or %'
+ref table 'zP Every Checks'
+ref table 'Chart of Accounts'
+ref table 'Primary Nationals'
+ref table 'Primary National Measures'
+ref table 'Primary Nationals Calc'
+ref table 'zP Primary Nat vs LA'
+ref table 'Primary Period Selector'
+ref table 'Primary Comparator Calc Group'
+ref table 'zP Primary EYFS Subjects'
+ref table 'zP Demographic vs Nat value'
+ref table 'Primary Trust Averages'
+ref table 'Enrichment Attendance'
+ref table Enrichment
+ref table 'Primary Statutory Predictions'
+ref table 'Feeder School Locations'
+ref table 'Secondary Standards QA Forms'
+ref table 'Secondary Standards QA Questions'
+ref table 'Secondary Standards QA Measures'
+ref table 'zP Secondary QA Form Dimension'
+ref table 'SEN Audit Scores'
+ref table 'SEN Audit Visits'
+ref table 'Boxphish Staff Rating'
+ref table Inspections
+ref table 'Data Dictionary'
+ref table 'KS4 Student Headlines'
+ref table 'AP-Grade Type'
+ref table 'zP Headlines + Buckets'
+ref table 'KS4 Student'
+ref table 'ICT Equipment Scores'
+ref table Lessons
+ref table 'Student lvl Context'
+ref table 'Secondary QA Permissions'
+ref table 'Student Absences'
+ref table 'Catholic Standards Scores'
+ref table 'Catholic Standards Visits'
+ref table 'zP Student Houses / Reg'
+ref table 'AP Placements'
+ref table 'Dynamic Time Series'
+ref table 'LA Indicies'
+ref table 'zP Absentee Birthday'
+ref table 'Behaviour Sanction Reasons'
+ref table 'Behaviour Sanctions'
+ref table 'Calc Suspension 1+/2+'
+ref table Detentions
+ref table 'Behaviour Points'
+ref table 'zP Suspensions School Year'
+ref table 'Physical Interventions'
+ref table 'KS4 Time Series Calc Group'
+
+ref role 'St Patrick''s College'
+ref role 'Sacred Heart Secondary'
+ref role 'St Bede''s'
+ref role 'St Benedict''s'
+ref role 'St Joseph''s (Loftus)'
+ref role 'St Paulinus'
+ref role 'Corpus Christi'
+ref role 'Sacred Heart Primary'
+ref role 'St Alphonsus'''
+ref role 'St Augustine''s'
+ref role 'St Bernadette''s'
+ref role 'St Clare''s'
+ref role 'St Edward''s'
+ref role 'St Gerard''s'
+ref role 'St Joseph''s (M''boro)'
+ref role 'St Thomas More'
+ref role 'Trinity College'
+ref role 'St Gabriel''s'
+ref role 'St Margaret''s'
+ref role 'St Mary''s'
+ref role 'St Peter''s'
+ref role 'St Pius X'
+ref role 'St Patrick''s Primary'
+ref role 'Christ the King'
+ref role 'St Therese'
+ref role 'All Saints'
+ref role 'Whole Trust'
+ref role 'Secondary Schools'
+ref role 'Primary Schools'
+ref role 'Sacred Heart (Northallerton)'
+ref role 'St Mary''s (Richmond)'
+ref role 'St Joseph''s (Pickering)'
+ref role 'St Mary''s (Malton)'
+ref role 'St Benedict''s (York)'
+ref role 'St Aelred''s'
+ref role 'St George''s'
+ref role 'St Wilfred''s'
+ref role 'Our Lady Queen of Martyrs'
+ref role 'St Francis Xavier'
+ref role 'All Saints Catholic College'
+ref role 'St Hedda''s'
+
+ref cultureInfo en-US
+

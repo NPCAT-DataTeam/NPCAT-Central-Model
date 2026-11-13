@@ -1,0 +1,42 @@
+table 'zP Demographic vs Nat value'
+	lineageTag: 30d31803-8c19-4e42-aae6-e9e268379cc3
+
+	/// 
+	/// SELECTEDVALUE ( 'zP Demographic vs Nat value'[zP Demographic vs Nat value] )
+	measure 'zP Demographic vs Nat value Value' =
+			
+			SELECTEDVALUE ( 'zP Demographic vs Nat value'[zP Demographic vs Nat value] )
+		formatString: 0
+		lineageTag: 73d743ea-c02f-454d-b4b7-4ff6a91d02ca
+
+	column 'zP Demographic vs Nat value'
+		formatString: 0
+		lineageTag: 029f8cd1-be64-45ac-9659-b17b8ec20d49
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	column 'Demo vs Nat' =
+			
+			SWITCH (
+			    [zP Demographic vs Nat value Value],
+			    1,"Vs Selected Demographic",
+			    0,"Vs All Students"
+			)
+		lineageTag: 18fbc697-62b8-48d1-af02-849c56f3f95f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Demographic vs Nat value' = calculated
+		mode: import
+		source = GENERATESERIES(0, 1, 1)
+
+	annotation PBI_Id = 691f50d203354984aecfcf5d815b88c1
+

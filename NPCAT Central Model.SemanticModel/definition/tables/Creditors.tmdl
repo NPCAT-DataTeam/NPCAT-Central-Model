@@ -1,0 +1,327 @@
+table Creditors
+	lineageTag: 2d50a8c1-e3e3-4176-9179-bf4fc610d75a
+
+	column 'Doc Type'
+		dataType: string
+		lineageTag: c6e9e98f-4405-47ce-ab95-c33edef0cae7
+		summarizeBy: none
+		sourceColumn: Doc Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: a783945c-50ac-4118-96fd-54f457fdf449
+		summarizeBy: sum
+		sourceColumn: Doc Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Year'
+		dataType: string
+		lineageTag: a1d9ec23-a5b7-4409-b025-1be16ef0a0d2
+		summarizeBy: none
+		sourceColumn: Invoice Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Period'
+		dataType: string
+		lineageTag: c2bf49b8-f631-4251-929d-8762bca2c98d
+		summarizeBy: none
+		sourceColumn: Invoice Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Period (Full)'
+		dataType: string
+		lineageTag: 42300a42-9d79-45a8-bd51-b1a5412dc112
+		summarizeBy: none
+		sourceColumn: Invoice Period (Full)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nominal
+		dataType: string
+		lineageTag: 50dad147-7fdd-4991-a960-8bc3399ab7b6
+		summarizeBy: none
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code Prefix'
+		dataType: string
+		lineageTag: 9b84c9ec-d5d5-47fc-9af2-2980a0071788
+		summarizeBy: none
+		sourceColumn: Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Core Nominal'
+		dataType: string
+		lineageTag: 767326a9-2298-4e9e-8698-1d6555721d96
+		summarizeBy: none
+		sourceColumn: Core Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ledger
+		dataType: string
+		lineageTag: 17de3bb2-6b48-483e-ba43-5797549d2c05
+		summarizeBy: none
+		sourceColumn: Ledger
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: 1d34a4de-34db-4861-baf9-5631d718d785
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: dd0db9c1-4e36-48ee-81c6-96d8aa1416f7
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: f32cf0e7-8dd4-4cf5-82f7-1a7183543e9e
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: string
+		lineageTag: c5d5b985-34c4-452d-8bed-e6d02716e044
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pay List'
+		dataType: string
+		lineageTag: 00efc981-40e5-4520-a87f-acf26fa4bd80
+		summarizeBy: none
+		sourceColumn: Pay List
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocation
+		dataType: int64
+		formatString: 0
+		lineageTag: 6027d308-445a-4406-8578-af1cb01a9281
+		summarizeBy: sum
+		sourceColumn: Allocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b06da1a-ce65-43c0-91b9-e2a496f92e5a
+		summarizeBy: count
+		sourceColumn: Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 39336e00-3320-4271-9dd4-b0cc9064bb38
+		summarizeBy: none
+		sourceColumn: Invoice Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Pay Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2a4d79b7-6239-48e4-9473-f28b9fbd24a3
+		summarizeBy: none
+		sourceColumn: Pay Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Payment Year'
+		dataType: string
+		lineageTag: 776809b4-fdb0-4dff-8cd0-6a43044eb977
+		summarizeBy: none
+		sourceColumn: Payment Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Period'
+		dataType: string
+		lineageTag: 9648ce70-d373-4e75-9341-693a90a38e27
+		summarizeBy: none
+		sourceColumn: Payment Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Period (Full)'
+		dataType: string
+		lineageTag: 7c8a41d6-da3a-469f-b966-68da8801dcc2
+		summarizeBy: none
+		sourceColumn: Payment Period (Full)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f4cba580-2250-4b71-a448-a8ed1379cebb
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Entry Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0bc25ef8-a096-4a91-9c57-5f69b7121c5a
+		summarizeBy: none
+		sourceColumn: Entry Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Creditor Line ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c893d9f-f708-4b3a-80cd-2ae8d0ce39d0
+		summarizeBy: count
+		sourceColumn: Creditor Line ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Duration'
+		dataType: int64
+		formatString: 0
+		lineageTag: 46a8ff8c-92ab-47ee-9b26-80e01c0e90b2
+		summarizeBy: sum
+		sourceColumn: Invoice Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days until Due'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b1c4f20-74d7-4b1c-a91f-424d7996a6c1
+		summarizeBy: sum
+		sourceColumn: Days until Due
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date RAG Rating'
+		dataType: string
+		lineageTag: ebf56576-1d84-4184-8b21-ab3fb411819e
+		summarizeBy: none
+		sourceColumn: Due Date RAG Rating
+		sortByColumn: 'Rating Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rating Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cc391be-1ac7-4095-93da-029ae6ef23c7
+		summarizeBy: sum
+		sourceColumn: Rating Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Duration Rating'
+		dataType: string
+		lineageTag: 7d439ec7-3e62-4451-bccb-efd0fbb7c5fb
+		summarizeBy: none
+		sourceColumn: Duration Rating
+		sortByColumn: 'Duration Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Duration Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d5e02cd-eaeb-49cc-985d-52709c6090eb
+		summarizeBy: sum
+		sourceColumn: Duration Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contractual Payment Terms'
+		dataType: int64
+		formatString: 0
+		lineageTag: b4f7b31b-b18b-489d-a82c-fad75c8ce32f
+		summarizeBy: sum
+		sourceColumn: Contractual Payment Terms
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days to Pay'
+		dataType: int64
+		formatString: 0
+		lineageTag: 488e49bd-215f-4f71-9e48-f8d5fa68f4e2
+		summarizeBy: sum
+		sourceColumn: Days to Pay
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Invoice to Entry'
+		dataType: int64
+		formatString: 0
+		lineageTag: ad4eb777-0171-4f66-935d-a59eb229c09c
+		summarizeBy: sum
+		sourceColumn: Days Invoice to Entry
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateDiff =
+			
+			VAR CutOff = [Dynamic Max Date]
+			RETURN
+			 DATEDIFF ( CutOff, Creditors[Due Date], DAY )
+		formatString: 0
+		lineageTag: 8b1dbc65-ed28-48e5-8221-065fdec0c3b5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Creditors = m
+		mode: import
+		queryGroup: Finance\PSF
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    Creditors_ = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Creditors",version=""]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Creditors_,{{"Contractual Payment Terms", Int64.Type}, {"Rating Sort", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,25 @@
+table 'National School Year'
+	lineageTag: 7ff548aa-9ddb-49e5-a6fa-1f3cf75de2c2
+
+	column 'School Year'
+		dataType: string
+		lineageTag: 6e92a35f-f8df-4dfa-8d1a-ce14ff3342bc
+		summarizeBy: none
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'National School Year' = m
+		mode: import
+		queryGroup: 'KS Assessments'
+		source =
+				let
+				    Source = Table.Combine({#"National Subject Headlines", #"National Headlines"}),
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"School Year"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates",{{"School Year", Order.Ascending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_ResultType = Table
+

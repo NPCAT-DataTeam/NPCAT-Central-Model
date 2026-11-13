@@ -1,0 +1,51 @@
+table 'zP KS4 Demographics'
+	lineageTag: 28958cc1-fc10-4222-a572-62fede77b64d
+
+	column 'zP KS4 Demographics'
+		lineageTag: 52df8c22-2ec8-4358-93a8-285f1a51212f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS4 Demographics Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS4 Demographics Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Demographics Fields'
+		isHidden
+		lineageTag: 46c20ba7-40e6-4164-8fa2-3e2810722e9b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS4 Demographics Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS4 Demographics Order'
+		isHidden
+		formatString: 0
+		lineageTag: a0ee8bc8-1595-4a15-bc58-30d745478d74
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS4 Demographics-dbf2fd65-f07c-40d8-9e59-a1f2b60f9e78' = calculated
+		mode: import
+		source =
+				{
+				    ("Gender", NAMEOF('Student Database (Full)'[Gender]), 0),
+				    ("PP", NAMEOF('Student Database (Full)'[Pupil Premium Indicator(Short)]), 1),
+				    ("SEN", NAMEOF('Student Database (Full)'[SEN Status(Short)]), 2),
+				    ("L/M/H", NAMEOF('Student Database (Full)'[Prior Attainment (Short)]), 3),
+				    ("FL/SS", NAMEOF('Student Database (Full)'[KS2 Prior Attainment]), 4)
+				}
+
+	annotation PBI_Id = 5b117a8ce1204fdb9a4c69b4c89e4bfa
+

@@ -1,0 +1,44 @@
+table 'zP Primary Nat vs LA'
+	lineageTag: 3a044dbf-c490-484e-8b85-a92a10acdb82
+
+	/// 
+	/// SELECTEDVALUE ( 'zP Primary Nat vs LA'[zP Primary Nat vs LA] )
+	measure 'zP Primary Nat vs LA Value' =
+			
+			SELECTEDVALUE ( 'zP Primary Nat vs LA'[zP Primary Nat vs LA] )
+		formatString: 0
+		lineageTag: 78d87f1a-4901-4872-bb5f-28ffdbc38c01
+
+	column 'zP Primary Nat vs LA'
+		formatString: 0
+		lineageTag: f2390b71-b57e-4455-a0f1-a338563f9568
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	column 'Nat or LA' =
+			
+			SWITCH (
+			    [zP Primary Nat vs LA],
+			    2,"Trust",
+			    1,"Local Authority",
+			    0,"National"
+			)
+		lineageTag: 93228fc1-1539-4769-b98a-e469986d4792
+		summarizeBy: none
+		sortByColumn: 'zP Primary Nat vs LA'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP Primary Nat vs LA' = calculated
+		mode: import
+		source = GENERATESERIES(0,2, 1)
+
+	annotation PBI_Id = b4e2713749e14291a05639505ef35547
+

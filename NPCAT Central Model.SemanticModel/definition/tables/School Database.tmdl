@@ -1,0 +1,802 @@
+table 'School Database'
+	lineageTag: 205dadfa-55df-4c55-a49b-76067a1245d7
+
+	/// 
+	/// CALCULATE (
+	/// FIRSTDATE ( 'Attendance Managers Actions'[Date Created] ),
+	/// 'Attendance Managers Actions'[SO Code] = "SO2"
+	/// )
+	measure 'SO2 Date' =
+			
+			CALCULATE (
+			    FIRSTDATE ( 'Attendance Managers Actions'[Date Created] ),
+			    'Attendance Managers Actions'[SO Code] = "SO2"
+			)
+		formatString: dd mmmm yyyy
+		lineageTag: 19997fd8-5e74-4d88-bcb6-7b2f0ef777a3
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// 
+	/// CALCULATE ( COUNT ( Attendance[Sessions] ), Attendance[Mark] = "E" )
+	measure 'Sessions Excluded' =
+			
+			CALCULATE ( COUNT ( Attendance[Sessions] ), Attendance[Mark] = "E" )
+		formatString: 0
+		lineageTag: fd79ce2d-fb97-44a7-b8dd-24534a654529
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 11688b56-572f-4474-9c67-3d30350087c4
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RGB Colour'
+		dataType: string
+		lineageTag: 7103d5bc-8bd1-4ede-ac7e-03dfad2ee82a
+		summarizeBy: none
+		sourceColumn: RGB Colour
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academy Conversion'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 89098e8c-e851-4642-9af7-6baab15cdce0
+		summarizeBy: none
+		sourceColumn: Academy Conversion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Website
+		dataType: string
+		lineageTag: 4b921830-c08c-40ae-9724-bd0212520cd7
+		summarizeBy: none
+		sourceColumn: Website
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address Line 1'
+		dataType: string
+		lineageTag: 5b530afa-5c95-412f-8312-e925bb569521
+		summarizeBy: none
+		sourceColumn: Address Line 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address line 2'
+		dataType: string
+		lineageTag: 0dc60010-ea9c-434a-9cdb-cd59a0c02f0c
+		summarizeBy: none
+		sourceColumn: Address line 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 3016b778-ebc6-4beb-b4f7-850bb5905342
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column County
+		dataType: string
+		lineageTag: 136f3d6f-6f4d-4a67-a7d9-6b0ee5967112
+		summarizeBy: none
+		sourceColumn: County
+
+		annotation SummarizationSetBy = Automatic
+
+	column Postcode
+		dataType: string
+		lineageTag: ed9c0843-5651-4762-a2f7-b8b0df906d90
+		summarizeBy: none
+		sourceColumn: Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country ID'
+		dataType: string
+		lineageTag: a89fc763-5501-4776-a37c-f00f52e49bdb
+		summarizeBy: none
+		sourceColumn: Country ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: a4d575ba-f901-4d8a-8ccc-7c512c8509aa
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phone Number'
+		dataType: string
+		lineageTag: e35fc7a7-3f19-48c1-a168-b51232cfe49c
+		summarizeBy: none
+		sourceColumn: Phone Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted Grading Ranking'
+		dataType: int64
+		formatString: 0
+		lineageTag: 574e8b54-2d6e-4d3a-b094-7cf62a188e03
+		summarizeBy: sum
+		sourceColumn: Ofsted Grading Ranking
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code Prefix'
+		dataType: string
+		lineageTag: 4644a40e-c0b2-47e4-8154-4137a036b847
+		summarizeBy: none
+		sourceColumn: Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Short Name'
+		dataType: string
+		lineageTag: ed422998-83e1-4866-bc81-1b58cc14f761
+		summarizeBy: none
+		sourceColumn: School Short Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NPCAT Tier'
+		dataType: string
+		lineageTag: a9c9a676-a527-4a6b-85b7-6ce2fbbb35bb
+		summarizeBy: none
+		sourceColumn: NPCAT Tier
+		sortByColumn: 'NPCAT Tier Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Governing Body ID'
+		dataType: string
+		lineageTag: 95f9a2eb-d86f-4ec2-8f72-abc8e0d4f593
+		summarizeBy: none
+		sourceColumn: Governing Body ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Capacity'
+		dataType: int64
+		formatString: 0
+		lineageTag: 914a2c84-b6a2-41c6-af9a-9c34b18a6457
+		summarizeBy: sum
+		sourceColumn: School Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column URN/UID
+		dataType: string
+		lineageTag: 6b18bd80-4c9a-4107-89ad-b7b792391b17
+		summarizeBy: none
+		sourceColumn: URN/UID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trust
+		dataType: string
+		lineageTag: 53951f3f-29a1-4d7d-8edc-bf6b88cc312d
+		summarizeBy: none
+		sourceColumn: Trust
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Name'
+		dataType: string
+		lineageTag: 82c2a1de-a4a9-4aef-a643-764b1697a31e
+		summarizeBy: none
+		sourceColumn: School Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Type'
+		dataType: string
+		lineageTag: 2db58183-1b1a-4007-84e0-0610c271c2f5
+		summarizeBy: none
+		sourceColumn: School Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lat
+		dataType: double
+		formatString: 0.00
+		lineageTag: 06c45a8e-182f-4d46-8aa5-ce24176133c8
+		dataCategory: Latitude
+		summarizeBy: average
+		sourceColumn: Lat
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column Long
+		dataType: double
+		formatString: 0.00
+		lineageTag: 7566434c-64d3-44f0-bf79-4a2d6ed30b5c
+		dataCategory: Longitude
+		summarizeBy: average
+		sourceColumn: Long
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'School Start Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 32b4436e-01c5-47ed-a2b8-ef881e1356db
+		summarizeBy: none
+		sourceColumn: School Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Every ID'
+		dataType: string
+		lineageTag: 809a3803-84cc-4549-8fbf-b2b19f0aab52
+		summarizeBy: none
+		sourceColumn: Every ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Standards Officer'
+		dataType: string
+		lineageTag: 9f6618a7-6371-4ba2-b6d8-8f6646929330
+		summarizeBy: none
+		sourceColumn: School Standards Officer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S48 Ranking'
+		dataType: int64
+		formatString: 0
+		lineageTag: a32b6143-492e-4a3d-bb2c-c21f8fa674e1
+		summarizeBy: sum
+		sourceColumn: S48 Ranking
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Authority'
+		dataType: string
+		lineageTag: 335876df-bc9a-4022-9629-5ae4b6dd3afd
+		summarizeBy: none
+		sourceColumn: Local Authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Benchmark Group'
+		dataType: string
+		lineageTag: ff390b42-94ad-45a1-911f-59a68037a807
+		summarizeBy: none
+		sourceColumn: Benchmark Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Arbor ID'
+		dataType: string
+		lineageTag: cf4ed4d3-d579-4856-b444-e87c0d2f64b0
+		summarizeBy: none
+		sourceColumn: Arbor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Photo URL'
+		dataType: string
+		lineageTag: 1aaedb41-e392-4c4b-860c-c5622ec6082e
+		summarizeBy: none
+		sourceColumn: Photo URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Logo'
+		dataType: string
+		lineageTag: 6903d51d-b3a7-45f2-b28a-053d81ae882a
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: School Logo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estates Cluster'
+		dataType: string
+		lineageTag: 66d5dbc0-a8b0-4a9d-b3af-288bb631b302
+		summarizeBy: none
+		sourceColumn: Estates Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nursery Capacity'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f7b55a7-dd91-4243-9dfb-dd7fda832967
+		summarizeBy: sum
+		sourceColumn: Nursery Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nursery AM Capacity'
+		dataType: int64
+		formatString: 0
+		lineageTag: da38d1bb-5a21-4abf-bed0-b208ede0de55
+		summarizeBy: sum
+		sourceColumn: Nursery AM Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nursery PM Capacity'
+		dataType: int64
+		formatString: 0
+		lineageTag: 64dc085e-e1c9-4a24-9f8f-badf04176eaf
+		summarizeBy: sum
+		sourceColumn: Nursery PM Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Benchmark Group (Full)'
+		dataType: string
+		lineageTag: 6d532309-8a5d-4b9d-8d07-813ace90d211
+		summarizeBy: none
+		sourceColumn: Benchmark Group (Full)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School PAN'
+		dataType: int64
+		formatString: 0
+		lineageTag: c06dccd3-ebd4-4f0f-8841-0bb186588221
+		summarizeBy: sum
+		sourceColumn: School PAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New School or Legacy'
+		dataType: string
+		lineageTag: b4f62bf2-74d7-4b96-a1bc-11a54cf682f3
+		summarizeBy: none
+		sourceColumn: New School or Legacy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Executive Headteacher'
+		dataType: string
+		lineageTag: cb599da8-ecfd-46bd-8c95-05b01182a8a7
+		summarizeBy: none
+		sourceColumn: Executive Headteacher
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Heads of School'
+		dataType: string
+		lineageTag: c4b2acef-9088-4320-aba0-b2c48ef6ff08
+		summarizeBy: none
+		sourceColumn: Heads of School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NPCAT Tier Sort'
+		dataType: string
+		lineageTag: 8efead7f-1451-4fbb-b220-e6b4ac3b4342
+		summarizeBy: none
+		sourceColumn: NPCAT Tier Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ICT Nominal Code Prefix'
+		dataType: string
+		lineageTag: 94eef96d-5251-4389-bf7c-2aeead1aafc3
+		summarizeBy: none
+		sourceColumn: ICT Nominal Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PSF Document ID Prefix'
+		dataType: string
+		lineageTag: 6ecca747-c951-4623-bf01-3b9fc86ef43a
+		summarizeBy: none
+		sourceColumn: PSF Document ID Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Joined Date'
+		dataType: string
+		lineageTag: 8319c434-14a6-48af-add3-aac870724abf
+		summarizeBy: none
+		sourceColumn: Joined Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Benchmark Group (Full) Short Code'
+		dataType: string
+		lineageTag: 6b998687-384c-4a6b-bdf9-526810ac7c63
+		summarizeBy: none
+		sourceColumn: Benchmark Group (Full) Short Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LA Arbor Code'
+		dataType: string
+		lineageTag: e522ad45-c9f2-417a-8088-3d4d3b5f91a1
+		summarizeBy: none
+		sourceColumn: LA Arbor Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LA (Short Name)'
+		dataType: string
+		lineageTag: 03c5b89e-4dc9-42a5-999f-5710213772cc
+		summarizeBy: none
+		sourceColumn: LA (Short Name)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CSI - Catholic Life' = ```
+			
+			    
+			VAR Lookup =     
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Catholic Life",
+			        Inspections[Inspection Type], "CSI"
+			    )
+			RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: dfefdaf1-bb88-478d-abb2-4e5d98cea3a8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CSI - Collective Worship' = ```
+			
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Collective Worship",
+			        Inspections[Inspection Type], "CSI"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 63604a89-9084-41d7-b9fc-b4313c122396
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CSI - Religious Education' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Religious Education",
+			        Inspections[Inspection Type], "CSI"
+			    )
+			  RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: c6430f82-096c-44c0-a1ee-46f92cf24550
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - Behaviour and Attitudes' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Behaviour and Attitudes",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 0b8d023f-f7e3-4c97-8505-fcae5786f2ba
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - Early years provision' = ```
+			
+			Var Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Early years provision",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			 RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: c0eb315c-09c7-4f52-af33-4521afb3ab44
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - Outcomes for pupils' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Outcomes for pupils",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 0579588a-5b64-4cff-8b61-4a81710946db
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - Leadership and Management' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Leadership and Management",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 5852f16f-bf0a-4de8-a0af-519113366a47
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - The Quality of Education' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "The Quality of Education",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 6ab62650-6c56-42af-9089-f94426b80410
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - Sixth Form Provision' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Sixth Form Provision",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 011c589b-e1c2-40f5-817c-d7091e3a2c63
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted - Personal Development' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Personal Development",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 92a9a50b-eb89-4f6d-ba51-0061f5099d21
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted Grade' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Overall Grade",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: ffd3165b-a5ca-4789-b0d3-c73d1ed6ab99
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Section 48 Grade' = ```
+			
+			VAR Lookup = 
+			
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Section 48 Grade",
+			        Inspections[Inspection Type], "CSI"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: c309e683-627b-49d3-8de4-ccbe9f6d20ed
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CSI Previous Inspection Grade' = ```
+			VAR Lookup = 
+			LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "-1",
+			        Inspections[Inspection Element], "Section 48 Grade",
+			        Inspections[Inspection Type], "CSI"
+			    )
+			RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 61d817de-fa66-494b-9b89-dcb4a720152b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted Previous Inspection Grade' = ```
+			
+			VAR Lookup = 
+			    LOOKUPVALUE(
+			        Inspections[Outcome],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "-1",
+			        Inspections[Inspection Element], "Overall Grade",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			    RETURN
+			
+			IF(ISBLANK(Lookup),"N/A",Lookup)
+			```
+		lineageTag: 10436e7a-59a4-40b9-af76-8c0f89341e4d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Section 48 Date' = ```
+			
+			VAR Lookup =     
+			    LOOKUPVALUE(
+			        Inspections[Inspection Date],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "Section 48 Grade",
+			        Inspections[Inspection Type], "CSI"
+			    )
+			RETURN
+			FORMAT(
+			IF(ISBLANK(Lookup),"N/A",Lookup),"dd mmm yyyy")
+			```
+		lineageTag: bee08dd4-5d72-447d-bc3a-bf143632f5a5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ofsted Date' = ```
+			
+			VAR Lookup =     
+			    LOOKUPVALUE(
+			        Inspections[Inspection Date],
+			        Inspections[Arbor ID], 'School Database'[Arbor ID],
+			        Inspections[Inspection Offset], "0",
+			        Inspections[Inspection Element], "The Quality of Education",
+			        Inspections[Inspection Type], "Ofsted"
+			    )
+			RETURN
+			FORMAT(
+			IF(ISBLANK(Lookup),"N/A",Lookup),"dd mmm yyyy")
+			```
+		lineageTag: f5a912a3-3f0a-4ec7-a4c2-a0d4e5059640
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Previous URN'
+		dataType: string
+		lineageTag: c7fca299-0435-4222-9ca2-bf165ba47723
+		summarizeBy: none
+		sourceColumn: Previous URN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planning Area'
+		dataType: string
+		lineageTag: 18ca29f7-711c-4fd6-bc0c-2bfc0c52f58e
+		summarizeBy: none
+		sourceColumn: Planning Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planning Area Number'
+		dataType: string
+		lineageTag: 0c1cee56-46e2-42b9-80e7-0976a735be38
+		summarizeBy: none
+		sourceColumn: Planning Area Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phonics Scheme'
+		dataType: string
+		lineageTag: 38a7d440-b80b-4b54-9078-780363e8e7c0
+		summarizeBy: none
+		sourceColumn: Phonics Scheme
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'School Database-bdd2988d-4403-4e74-9f9f-fbc126c82b95' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    #"School Database1" = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="School Database"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"School Database1",{ {"Academy Conversion", type date},  {"Ofsted Grading Ranking", Int64.Type}, {"S48 Ranking", Int64.Type}}),
+				    #"Extracted Time" = Table.TransformColumns(#"Changed Type",{{"School Start Time", DateTime.Time, type time}})
+				in
+				    #"Extracted Time"
+
+	annotation PBI_QueryRelationships = {"columnCount":34,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/School Database/School Database1.{Trust,0}","Section1/School Database/School Database1.{SU ID,1}","Section1/School Database/School Database1.{Every ID,2}","Section1/School Database/School Database1.{Nominal Code Prefix,3}","Section1/School Database/School Database1.{Governing Body ID,4}","Section1/School Database/School Database1.{School Name,5}","Section1/School Database/School Database1.{URN/UID,6}","Section1/School Database/School Database1.{School Short Name,7}","Section1/School Database/School Database1.{School Type,8}","Section1/School Database/School Database1.{School Capacity,9}","Section1/School Database/Extracted Time.{School Start Time,10}","Section1/School Database/School Database1.{RGB Colour,11}","Section1/School Database/School Database1.{Ofsted Grade,12}","Section1/School Database/Changed Type.{Ofsted Date,13}","Section1/School Database/School Database1.{NPCAT Tier,14}","Section1/School Database/Changed Type.{NPCAT Tier Date,15}","Section1/School Database/Changed Type.{Academy Conversion,16}","Section1/School Database/School Database1.{Section 48 Grade,17}","Section1/School Database/Changed Type.{Section 48 Date,18}","Section1/School Database/School Database1.{School Standards Officer,19}","Section1/School Database/School Database1.{Address Line 1,20}","Section1/School Database/School Database1.{Address line 2,21}","Section1/School Database/School Database1.{City,22}","Section1/School Database/School Database1.{County,23}","Section1/School Database/School Database1.{Postcode,24}","Section1/School Database/School Database1.{Local Authority,25}","Section1/School Database/School Database1.{Lat,26}","Section1/School Database/School Database1.{Long,27}","Section1/School Database/School Database1.{Country ID,28}","Section1/School Database/School Database1.{Country,29}","Section1/School Database/School Database1.{Phone Number,30}","Section1/School Database/School Database1.{Website,31}","Section1/School Database/Changed Type.{Ofsted Grading Ranking,32}","Section1/School Database/Changed Type.{S48 Ranking,33}"],"ColumnCount":34,"KeyColumnNames":[],"ColumnIdentities":["Section1/School Database/School Database1.{Trust,0}","Section1/School Database/School Database1.{SU ID,1}","Section1/School Database/School Database1.{Every ID,2}","Section1/School Database/School Database1.{Nominal Code Prefix,3}","Section1/School Database/School Database1.{Governing Body ID,4}","Section1/School Database/School Database1.{School Name,5}","Section1/School Database/School Database1.{URN/UID,6}","Section1/School Database/School Database1.{School Short Name,7}","Section1/School Database/School Database1.{School Type,8}","Section1/School Database/School Database1.{School Capacity,9}","Section1/School Database/Extracted Time.{School Start Time,10}","Section1/School Database/School Database1.{RGB Colour,11}","Section1/School Database/School Database1.{Ofsted Grade,12}","Section1/School Database/Changed Type.{Ofsted Date,13}","Section1/School Database/School Database1.{NPCAT Tier,14}","Section1/School Database/Changed Type.{NPCAT Tier Date,15}","Section1/School Database/Changed Type.{Academy Conversion,16}","Section1/School Database/School Database1.{Section 48 Grade,17}","Section1/School Database/Changed Type.{Section 48 Date,18}","Section1/School Database/School Database1.{School Standards Officer,19}","Section1/School Database/School Database1.{Address Line 1,20}","Section1/School Database/School Database1.{Address line 2,21}","Section1/School Database/School Database1.{City,22}","Section1/School Database/School Database1.{County,23}","Section1/School Database/School Database1.{Postcode,24}","Section1/School Database/School Database1.{Local Authority,25}","Section1/School Database/School Database1.{Lat,26}","Section1/School Database/School Database1.{Long,27}","Section1/School Database/School Database1.{Country ID,28}","Section1/School Database/School Database1.{Country,29}","Section1/School Database/School Database1.{Phone Number,30}","Section1/School Database/School Database1.{Website,31}","Section1/School Database/Changed Type.{Ofsted Grading Ranking,32}","Section1/School Database/Changed Type.{S48 Ranking,33}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

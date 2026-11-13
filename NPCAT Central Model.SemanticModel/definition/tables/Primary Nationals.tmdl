@@ -1,0 +1,155 @@
+table 'Primary Nationals'
+	lineageTag: 5f3d323d-4085-491a-aa29-567f4847cd88
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: e411fb79-a11d-4782-bf70-e2c7f503b2c8
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geographic Level'
+		dataType: string
+		lineageTag: 3fe6c823-d7cb-4439-a70c-ab7e0c17a513
+		summarizeBy: none
+		sourceColumn: Geographic Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LA Code'
+		dataType: string
+		lineageTag: fe60f7cb-f81f-4ad7-9a32-722704a1b975
+		summarizeBy: none
+		sourceColumn: LA Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LA Name'
+		dataType: string
+		lineageTag: 9f32baf3-5178-411a-b5e7-46ede3b510b6
+		summarizeBy: none
+		sourceColumn: LA Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: 1fd71533-9e8d-48d5-b786-db76da5a48ac
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage'
+		dataType: string
+		lineageTag: f3ad6f41-186f-4109-9cf2-49c0460e2b31
+		summarizeBy: none
+		sourceColumn: Key Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage & Measure'
+		dataType: string
+		lineageTag: 032e01f2-e475-4451-b755-441f7bd597a4
+		summarizeBy: none
+		sourceColumn: Key Stage & Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column AOL
+		dataType: string
+		lineageTag: 63175ddf-6f11-4705-9f83-6b628e39e8bc
+		summarizeBy: none
+		sourceColumn: AOL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ELG
+		dataType: string
+		lineageTag: ef4476b6-f96a-4185-aa5b-815d73918a25
+		summarizeBy: none
+		sourceColumn: ELG
+
+		annotation SummarizationSetBy = Automatic
+
+	column Demographic
+		dataType: string
+		lineageTag: 30029f48-3a8e-49bf-88a7-9dabb9c08109
+		summarizeBy: none
+		sourceColumn: Demographic
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variable Description'
+		dataType: string
+		lineageTag: 3934b9f0-15b9-404b-a2b3-f0b6c5140e0d
+		summarizeBy: none
+		sourceColumn: Variable Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Average
+		dataType: double
+		lineageTag: da5ce478-c7db-456f-ae73-9c65e603c28a
+		summarizeBy: sum
+		sourceColumn: Average
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Percentage
+		dataType: double
+		lineageTag: fdce2a6a-09df-4b5b-8169-d4fc0ccbc398
+		summarizeBy: sum
+		sourceColumn: Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 03aecf6a-191e-46d2-8505-4103f5eb2b7a
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key Stage Index'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d73c05d-fbd3-4718-a8df-4ba8031097cb
+		summarizeBy: sum
+		sourceColumn: Key Stage Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Demographic Sort Order'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fe52090-7902-45f0-a780-b14562c0b339
+		summarizeBy: sum
+		sourceColumn: Demographic Sort Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary Nationals' = m
+		mode: import
+		queryGroup: 'Primary\Primary Nationals'
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"367f4448-a928-4f2b-9233-266612d07dab" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="367f4448-a928-4f2b-9233-266612d07dab"]}[Data],
+				    #"Primary Assessment Benchmarks (National & LA)_" = #"367f4448-a928-4f2b-9233-266612d07dab"{[entity="Primary Assessment Benchmarks (National & LA)",version=""]}[Data]
+				in
+				    #"Primary Assessment Benchmarks (National & LA)_"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

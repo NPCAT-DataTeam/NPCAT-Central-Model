@@ -1,0 +1,149 @@
+table 'zP Primary Statutory Indicator Time Series'
+	lineageTag: 4cc566cf-eb93-4dc7-999d-6a34e3ee5269
+
+	column 'zP Primary Statutory Indicator Time Series'
+		lineageTag: 2c316f02-3f65-4c1d-a2a3-bd4636742db4
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP Primary Statutory Indicator Time Series Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP Primary Statutory Indicator Time Series Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Primary Statutory Indicator Time Series Fields'
+		isHidden
+		lineageTag: 4ef71a8e-3c62-43e6-bc9e-b030a451091c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP Primary Statutory Indicator Time Series Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP Primary Statutory Indicator Time Series Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0f528a98-fddf-4068-a183-5df5a035d723
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Statutory Type' =
+			Switch(TRUE(),
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"GLD"),"EYFS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"COM & LIT"),"EYFS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"AVG No of ELG's at EXP"),"EYFS",
+			'zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series] = "Avg Points","EYFS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"KS1 EXS"),"KS1 EXS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"KS1 GDS"),"KS1 GDS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"MTC"),"MTC",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Phonics"),"Phonics",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"AS+") || CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"EXS+"),"KS2 AS+/EXS+%",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"HS%") || CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"GDS%"),"KS2 HS/GDS%",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Avg SS"),"KS2 Avg SS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Progress"), "KS2 Avg Progress")
+		lineageTag: b5fa7474-a29a-4525-bb32-7f4d9737b764
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Measure Name' = 'zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series]
+		lineageTag: 2d8890ae-1f88-45a5-9438-7922a554624d
+		summarizeBy: none
+		sortByColumn: 'zP Primary Statutory Indicator Time Series Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Statutory Key Stage' =
+			Switch(TRUE(),
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"GLD"),"EYFS",
+			'zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series] = "Avg Points","EYFS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"COM & LIT"),"EYFS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"AVG No of ELG's at EXP"),"EYFS",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"KS1"),"KS1",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"MTC"),"MTC",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Phonics"),"Phonics",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"AS+") || CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"EXS+"),"KS2",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"HS%") || CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"GDS%"),"KS2",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Avg SS"),"KS2",
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Progress"), "KS2")
+		lineageTag: 1dca0065-cacb-4d0c-8f57-e4a9e4a3404d
+		summarizeBy: none
+		sortByColumn: 'Primary Statutory Key Stage (Order)'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Statutory Key Stage (Order)' =
+			Switch(TRUE(),
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"GLD"),1,
+			'zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series] = "Avg Points",1,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"COM & LIT"),1,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"AVG No of ELG's at EXP"),1,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"KS1"),3,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"MTC"),4,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Phonics"),2,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"AS+") || CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"EXS+"),5,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"HS%") || CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"GDS%"),5,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Avg SS"),5,
+			CONTAINSSTRING('zP Primary Statutory Indicator Time Series'[zP Primary Statutory Indicator Time Series Fields],"Progress"), 5)
+		formatString: 0
+		lineageTag: b77daa39-a980-42d0-aa45-ea93bf75013e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition 'zP Primary Statutory Indicator Time Series-b5fc3f49-bdc5-4556-82bd-f19e4476cb8d' = calculated
+		mode: import
+		source = ```
+				{
+				    ("GLD", NAMEOF('Measures Folder'[GLD %]), 0),
+				    ("COM & LIT", NAMEOF('Measures Folder'[COM & LIT Exp %]), 1),
+				    ("Avg EXP ELG", NAMEOF('Measures Folder'[EYFS AVG No of ELG's at EXP]), 2),
+				    ("Avg Points", NAMEOF('Measures Folder'[Avg Points]), 3),
+				    ("Y1 WA", NAMEOF('Measures Folder'[Y1 Phonics WA %]), 4),
+				    ("Avg Y1 Mark", NAMEOF('Measures Folder'[Phonics Avg. Y1 Mark]), 5),
+				    ("Y2 WA %", NAMEOF('Measures Folder'[Y2 Phonics Resits WA %]), 6),
+				    ("Avg Y2 Mark", NAMEOF('Measures Folder'[Phonics Avg. Y2 Resit Mark]), 7),
+				    ("EXS+ CRWM", NAMEOF('Measures Folder'[KS1 EXS+% - CRWM TA]), 8),
+				    ("EXS+ Reading", NAMEOF('Measures Folder'[KS1 EXS+% - Reading TA]), 9),
+				    ("EXS+ Writing", NAMEOF('Measures Folder'[KS1 EXS+% - Writing TA]), 10),
+				    ("EXS+ Maths", NAMEOF('Measures Folder'[KS1 EXS+% - Maths TA]), 11),
+				    ("EXS+ Science", NAMEOF('Measures Folder'[KS1 EXS+% - Science TA]), 12),
+				    ("GDS CRWM", NAMEOF('Measures Folder'[KS1 GDS% - CRWM TA]), 13),
+				    ("GDS Reading", NAMEOF('Measures Folder'[KS1 GDS% - Reading TA]), 14),
+				    ("GDS Writing", NAMEOF('Measures Folder'[KS1 GDS% - Writing TA]), 15),
+				    ("GDS Maths", NAMEOF('Measures Folder'[KS1 GDS% - Maths TA]), 16),
+				    ("Ach 25", NAMEOF('Measures Folder'[MTC % Ach Full Marks]), 17),
+				    ("No. Ach 25", NAMEOF('Measures Folder'[MTC # Ach Full Marks]), 18),
+				    ("Avg Mark", NAMEOF('Measures Folder'[Avg. MTC Mark]), 19),
+				    ("AS+/EXS+ CRWM", NAMEOF('Measures Folder'[KS2 AS+/EXS+% - CRWM]), 20),
+				    ("AS+ Reading", NAMEOF('Measures Folder'[KS2 AS+% - Reading]), 21),
+				    ("EXS+ Writing", NAMEOF('Measures Folder'[KS2 EXS+% - Writing]), 22),
+				    ("AS+ Maths", NAMEOF('Measures Folder'[KS2 AS+% - Maths]), 23),
+				    ("AS+ GPS", NAMEOF('Measures Folder'[KS2 AS+% - GPS]), 24),
+				    ("EXS+ Science", NAMEOF('Measures Folder'[KS2 EXS+% - Science]), 25),
+				    ("HS/GDS CRWM", NAMEOF('Measures Folder'[KS2 HS/GDS% - CRWM]), 26),
+				    ("HS Reading", NAMEOF('Measures Folder'[KS2 HS% - Reading]), 27),
+				    ("GDS Writing", NAMEOF('Measures Folder'[KS2 GDS% - Writing]), 28),
+				    ("HS Maths", NAMEOF('Measures Folder'[KS2 HS% - Maths]), 29),
+				    ("HS GPS", NAMEOF('Measures Folder'[KS2 HS% - GPS]), 30),
+				    ("Avg SS Reading", NAMEOF('Measures Folder'[KS2 Avg SS - Reading]), 31),
+				    ("Avg SS Maths", NAMEOF('Measures Folder'[KS2 Avg SS - Maths]), 32),
+				    ("Avg SS GPS", NAMEOF('Measures Folder'[KS2 Avg SS - GPS]), 33),
+				    ("Avg Progress Reading", NAMEOF('Measures Folder'[Reading Avg Progress Score]), 34),
+				    ("Avg Progress Writing", NAMEOF('Measures Folder'[Writing Avg Progress Score]), 35),
+				    ("Avg Progress Maths", NAMEOF('Measures Folder'[Maths Avg Progress Score]), 36)
+				}
+				
+				```
+
+	annotation PBI_Id = 4282c89318e543b7b4c2fecff6638409
+

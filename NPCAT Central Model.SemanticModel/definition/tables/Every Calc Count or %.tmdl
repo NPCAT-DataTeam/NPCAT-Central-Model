@@ -1,0 +1,40 @@
+table 'Every Calc Count or %'
+	lineageTag: 1de5480c-8c39-4ad4-8bb0-6e285b79758b
+
+	calculationGroup
+		precedence: 8
+
+		calculationItem 'Fail Count' = SELECTEDMEASURE()
+
+		calculationItem 'Fail %' =
+				
+				
+				VAR TableCheck =
+				SWITCH(
+				    TRUE(),
+				    CONTAINSSTRING(SELECTEDMEASURENAME(), "Line Manager") || CONTAINSSTRING(SELECTEDMEASURENAME(), "Payroll Number") || CONTAINSSTRING(SELECTEDMEASURENAME(), "Role Identifier") || CONTAINSSTRING(SELECTEDMEASURENAME(), "Type of Post"), COUNTROWS('Employee Job Roles'),
+				    TRUE(), COUNTROWS('Employees')
+				)
+				
+				RETURN
+				
+				FORMAT(DIVIDE(SELECTEDMEASURE(), TableCheck),"0.0%")
+
+	column 'Every HR Checks Count and Fail %'
+		dataType: string
+		lineageTag: 69721943-a95b-46fb-bd06-fc8074dcdffe
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f0ce5be-d7ed-4a42-956d-dc5691e898aa
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

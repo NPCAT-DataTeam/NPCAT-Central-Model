@@ -1,0 +1,204 @@
+table 'Management Accounts'
+	lineageTag: 10df33b4-c6bb-40a7-8920-3936ff9c828c
+
+	/// 
+	/// DIVIDE (
+	/// SUM ( 'Management Accounts'[Budget (Full Year)] ),
+	/// SUM ( 'Management Accounts'[Variance (YTD)] )
+	/// ) - 1
+	measure 'Forecast (Full Year) Variance as % of Budget (Full Year)' =
+			
+			DIVIDE (
+			    SUM ( 'Management Accounts'[Budget (Full Year)] ),
+			    SUM ( 'Management Accounts'[Variance (YTD)] )
+			) - 1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7977726d-9857-4417-bf8c-98641000912a
+
+	column Title
+		dataType: string
+		lineageTag: 54c62a91-fac3-413e-8d52-f2f7bddcff20
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Management Grouping'
+		dataType: string
+		lineageTag: d93f781b-d248-4829-9f25-e0f952605a60
+		summarizeBy: none
+		sourceColumn: Management Grouping
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Management Group Title'
+		dataType: string
+		lineageTag: 45e0bc43-1a60-484f-810c-a7c1cb9df0ee
+		summarizeBy: none
+		sourceColumn: Management Group Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expense Department'
+		dataType: string
+		lineageTag: f465e009-5b2a-464a-8f85-3c2b4b2de2a9
+		summarizeBy: none
+		sourceColumn: Expense Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column CoreNominal
+		dataType: string
+		lineageTag: 930d9d73-4cd4-44a1-9d9c-597dad5f3142
+		summarizeBy: none
+		sourceColumn: CoreNominal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Prefix'
+		dataType: string
+		isHidden
+		lineageTag: 2c58d912-6951-46e8-aaa2-219ca94f1645
+		summarizeBy: none
+		sourceColumn: Nominal Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code and Descriptor'
+		dataType: string
+		lineageTag: dcd66c4a-542d-4082-8dc8-8bf01623611a
+		summarizeBy: none
+		sourceColumn: Nominal Code and Descriptor
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nominal Code'
+		dataType: string
+		lineageTag: 02106011-1c9f-4425-abe7-6389cc438e37
+		summarizeBy: none
+		sourceColumn: Nominal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actual (YTD)'
+		dataType: double
+		lineageTag: efbf8c4d-da8d-41df-a868-88600f8eb3bd
+		summarizeBy: none
+		sourceColumn: Actual (YTD)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Commitments (YTD)'
+		dataType: double
+		lineageTag: 75bfddd1-f455-42e3-8cbb-c953e5dfbea2
+		summarizeBy: none
+		sourceColumn: Commitments (YTD)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Budget (YTD)'
+		dataType: double
+		lineageTag: 0d5e0037-5a38-4cd8-8cd1-1eb449ffa026
+		summarizeBy: none
+		sourceColumn: Budget (YTD)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Variance (YTD)'
+		dataType: double
+		lineageTag: 436024e1-a8a3-40f3-8646-3f33f9555f52
+		summarizeBy: none
+		sourceColumn: Variance (YTD)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Budget (Full Year)'
+		dataType: double
+		lineageTag: 84b703dc-bc6c-435b-a18c-b83650045419
+		summarizeBy: none
+		sourceColumn: Budget (Full Year)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Forecast (Full Year)'
+		dataType: double
+		lineageTag: fd8985b6-7077-4108-9afb-1399f7d50db2
+		summarizeBy: none
+		sourceColumn: Forecast (Full Year)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Variance (Full Year)'
+		dataType: double
+		lineageTag: df7a3e35-5268-463b-bf70-faa9b7d73143
+		summarizeBy: none
+		sourceColumn: Variance (Full Year)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Comments
+		dataType: string
+		lineageTag: c925c9ce-e899-475d-a6fe-4b9d695d02b9
+		summarizeBy: none
+		sourceColumn: Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item Type'
+		dataType: string
+		lineageTag: 4a023b9d-39e8-4a58-887c-c951d75040ea
+		summarizeBy: none
+		sourceColumn: Line Item Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d58a4b4c-afba-4f56-8a86-4316e7eed880
+		summarizeBy: none
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Management Account Offset'
+		dataType: int64
+		formatString: 0
+		lineageTag: f08dc7ec-28e5-4409-a614-0dd314bc1b1c
+		summarizeBy: sum
+		sourceColumn: Management Account Offset
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Management Accounts-1137eec1-a23e-41fe-82b5-36c9cbb9fe16' = m
+		mode: import
+		queryGroup: Finance
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"6748cefb-3ff9-4125-9b94-4e623b45af4d" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="6748cefb-3ff9-4125-9b94-4e623b45af4d"]}[Data],
+				    #"Management Accounts" = #"6748cefb-3ff9-4125-9b94-4e623b45af4d"{[entity="Management Accounts"]}[Data]
+				in
+				    #"Management Accounts"
+
+	annotation PBI_QueryRelationships = {"columnCount":15,"keyColumnNames":[],"queryRelationships":[{"keyColumnCount":1,"keyColumn":9,"otherKeyColumnIdentity":"Section1/Chart of Accounts/Changed Type.{Core Nominal,0}","KeyColumnCount":1}],"columnIdentities":["Section1/Management Accounts/Management Accounts_Sheet.{Column1,0}","Section1/Management Accounts/Management Accounts_Sheet.{Column2,1}","Section1/Management Accounts/Changed Type.{Actual (YTD),2}","Section1/Management Accounts/Changed Type.{Commitments (YTD),3}","Section1/Management Accounts/Changed Type.{Budget (YTD),4}","Section1/Management Accounts/Changed Type.{Variance (YTD),5}","Section1/Management Accounts/Changed Type.{Budget (Full Year),6}","Section1/Management Accounts/Changed Type.{Forecast (Full Year),7}","Section1/Management Accounts/Changed Type.{Variance (Full Year),8}","Section1/Management Accounts/Inserted Last Characters.{CoreNominal,9}","Section1/Management Accounts/Inserted First Characters.{Nominal Code Prefix,10}","Section1/Chart of Accounts/Chart of Accounts_Sheet.{Column2,1}","Section1/Chart of Accounts/Chart of Accounts_Sheet.{Column3,2}","Section1/Chart of Accounts/Chart of Accounts_Sheet.{Column4,3}","Section1/Chart of Accounts/Added Expense Department.{Expense Department,4}"],"ColumnCount":15,"KeyColumnNames":[],"ColumnIdentities":["Section1/Management Accounts/Management Accounts_Sheet.{Column1,0}","Section1/Management Accounts/Management Accounts_Sheet.{Column2,1}","Section1/Management Accounts/Changed Type.{Actual (YTD),2}","Section1/Management Accounts/Changed Type.{Commitments (YTD),3}","Section1/Management Accounts/Changed Type.{Budget (YTD),4}","Section1/Management Accounts/Changed Type.{Variance (YTD),5}","Section1/Management Accounts/Changed Type.{Budget (Full Year),6}","Section1/Management Accounts/Changed Type.{Forecast (Full Year),7}","Section1/Management Accounts/Changed Type.{Variance (Full Year),8}","Section1/Management Accounts/Inserted Last Characters.{CoreNominal,9}","Section1/Management Accounts/Inserted First Characters.{Nominal Code Prefix,10}","Section1/Chart of Accounts/Chart of Accounts_Sheet.{Column2,1}","Section1/Chart of Accounts/Chart of Accounts_Sheet.{Column3,2}","Section1/Chart of Accounts/Chart of Accounts_Sheet.{Column4,3}","Section1/Chart of Accounts/Added Expense Department.{Expense Department,4}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":9,"otherKeyColumnIdentity":"Section1/Chart of Accounts/Changed Type.{Core Nominal,0}","KeyColumnCount":1}]}
+
+	annotation PBI_ResultType = Table
+

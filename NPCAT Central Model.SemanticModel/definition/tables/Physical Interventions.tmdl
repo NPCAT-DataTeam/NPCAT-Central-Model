@@ -1,0 +1,122 @@
+table 'Physical Interventions'
+	lineageTag: abba16ee-b96e-4544-b14c-401f15bb3396
+
+	column STUDENT_UNIQUE_ID
+		dataType: string
+		lineageTag: 1f821455-b11d-43f9-a2c8-05c1650f2385
+		summarizeBy: none
+		sourceColumn: STUDENT_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAFF_UNIQUE_ID
+		dataType: string
+		lineageTag: 9ac4ed7b-6129-4598-a0e5-7507579eace2
+		summarizeBy: none
+		sourceColumn: STAFF_UNIQUE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Physical Intervention Narrative'
+		dataType: string
+		lineageTag: 34f68a0f-8b19-4c64-98dd-3f35f7332d08
+		summarizeBy: none
+		sourceColumn: Physical Intervention Narrative
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Technique Category'
+		dataType: string
+		lineageTag: 4df776bc-875f-4c25-9515-875e7fff3d6c
+		summarizeBy: none
+		sourceColumn: Technique Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Technique Type'
+		dataType: string
+		lineageTag: 3112325d-e97b-4291-b777-bcc1b39f38ae
+		summarizeBy: none
+		sourceColumn: Technique Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 552858c0-8432-48b0-a9e7-8ec0c5a6755b
+		summarizeBy: none
+		sourceColumn: Incident Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Behaviour Incident'
+		dataType: string
+		lineageTag: 8e7f129b-2ec2-436d-8452-adcb238343e4
+		summarizeBy: none
+		sourceColumn: Behaviour Incident
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Name'
+		dataType: string
+		lineageTag: df8eb49f-90d3-4221-9fda-2ec11ea94338
+		summarizeBy: none
+		sourceColumn: Location Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: 702fdc03-f29c-4795-908f-a95773f12468
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column Course
+		dataType: string
+		lineageTag: a5a6c480-8df5-411a-af45-d249886e8990
+		summarizeBy: none
+		sourceColumn: Course
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Behaviour Narrative'
+		dataType: string
+		lineageTag: 221d14e6-f4e0-4ce1-97b7-878bbd255bf8
+		summarizeBy: none
+		sourceColumn: Behaviour Narrative
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: d7f4270e-240d-4034-9729-ccb3b278a19f
+		summarizeBy: none
+		sourceColumn: Incident Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition 'Physical Interventions' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"cac18991-39e9-44fc-a199-7ead3fd3e517" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="cac18991-39e9-44fc-a199-7ead3fd3e517"]}[Data],
+				    #"Physical Interventions_" = #"cac18991-39e9-44fc-a199-7ead3fd3e517"{[entity="Physical Interventions",version=""]}[Data]
+				in
+				    #"Physical Interventions_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,190 @@
+table 'KS1 Teacher Assessments'
+	lineageTag: b273a123-c2ec-4882-8b1f-94caa5357b0c
+
+	column 'Globally Unique ID'
+		dataType: string
+		isHidden
+		lineageTag: df523d54-0582-44d4-ab5b-34a28e66b737
+		summarizeBy: none
+		sourceColumn: Globally Unique ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: b4605ea2-f42d-4a25-896b-10bda1794d68
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 276d801a-0aca-43eb-a40f-3203ba442b0a
+		summarizeBy: none
+		sourceColumn: ASSESSMENT_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Assessment Index'
+		dataType: double
+		lineageTag: 766d84ed-92c9-4e29-9c14-4f9b78ae60fc
+		summarizeBy: sum
+		sourceColumn: Assessment Index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b6dcac6c-7050-44ee-a08d-11a4ce524aa9
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 3c4f5be0-3b48-4674-91c5-7d9426875210
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Type'
+		dataType: string
+		lineageTag: 61565b51-7f38-457f-8293-e1802f1e992b
+		summarizeBy: none
+		sourceColumn: School Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grade Sort'
+		dataType: double
+		lineageTag: 70607d2e-7f20-4f42-a0d7-5a97461479ec
+		summarizeBy: sum
+		sourceColumn: Grade Sort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Arrival Flag'
+		dataType: string
+		lineageTag: a18fa172-3a12-47fd-8903-5b50b707e551
+		summarizeBy: none
+		sourceColumn: Arrival Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Name'
+		dataType: string
+		lineageTag: 05c0cc8c-6972-44c8-8256-4cc7e30cafd8
+		summarizeBy: none
+		sourceColumn: School Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name'
+		dataType: string
+		lineageTag: 8caaaf24-ec0a-42b4-9635-2f0e2a8a26d1
+		summarizeBy: none
+		sourceColumn: Assessment Name
+		sortByColumn: 'Assessment Name Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grade
+		dataType: string
+		lineageTag: f7b35db2-d7e9-4fcb-9a0b-59c1b053e5f7
+		summarizeBy: none
+		sourceColumn: Grade
+		sortByColumn: 'Grade Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: ead4cae7-438c-4bf0-9bfd-ac48d2521279
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Academic Year'
+		dataType: string
+		lineageTag: b6e2d924-bce5-4cc4-875c-fa45a3905aa0
+		summarizeBy: none
+		sourceColumn: Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'School Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7eaa5964-1842-4090-9015-0a55c3836df4
+		summarizeBy: sum
+		sourceColumn: School Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Globally Unique ID - Academic Year'
+		dataType: string
+		lineageTag: 85026240-6e4d-42e5-a3f5-d0a23bc34e70
+		summarizeBy: none
+		sourceColumn: Globally Unique ID - Academic Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assessment Name Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c6e3b28-b6c8-404d-b3df-7395901b102e
+		summarizeBy: sum
+		sourceColumn: Assessment Name Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Leaving date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e8ed5d45-8650-4310-92d4-e781b3b7c2d8
+		summarizeBy: none
+		sourceColumn: Leaving date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Student Full Name: DOB' = RELATED('Student Database (Full)'[Full Name: DOB])
+		lineageTag: a6ae0a71-7017-4f45-98dc-eaa0f4d45b72
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'KS1 Teacher Assessments-736cb5c5-f3dc-4215-b562-0bad9d0e1fb2' = m
+		mode: import
+		queryGroup: 'Primary\Statutory Primary\KS1'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"bcd40ecd-642e-45d2-865b-406867178557" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="bcd40ecd-642e-45d2-865b-406867178557"]}[Data],
+				    #"KS1 Teacher Assessments1" = #"bcd40ecd-642e-45d2-865b-406867178557"{[entity="KS1 Teacher Assessments"]}[Data]
+				in
+				    #"KS1 Teacher Assessments1"
+
+	annotation PBI_ResultType = Table
+

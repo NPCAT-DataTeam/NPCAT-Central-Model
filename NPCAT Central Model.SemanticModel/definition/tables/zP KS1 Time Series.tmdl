@@ -1,0 +1,65 @@
+table 'zP KS1 Time Series'
+	lineageTag: 40a1cb62-369e-40da-b93c-5740931bd456
+
+	column 'zP KS1 Time Series'
+		lineageTag: 6bd276e7-9206-40d4-b9e4-e162a7dae1f0
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP KS1 Time Series Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP KS1 Time Series Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS1 Time Series Fields'
+		isHidden
+		lineageTag: 7b447718-7927-490c-81ec-8f553b0ed834
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP KS1 Time Series Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP KS1 Time Series Order'
+		isHidden
+		formatString: 0
+		lineageTag: 87487b05-4e69-487e-b4f9-ec9fb9114f7a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KS1 Indicater Type' =
+			
+			SWITCH(TRUE(),
+			CONTAINSSTRING('zP KS1 Time Series'[zP KS1 Time Series Fields],"EXS"),"EXS",
+			CONTAINSSTRING('zP KS1 Time Series'[zP KS1 Time Series Fields],"GDS"),"GDS")
+		lineageTag: f537b24c-7fa7-4182-947b-6c7e43062518
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP KS1 Time Series-27084ec1-65be-4b6e-9040-e78c8054369c' = calculated
+		mode: import
+		source =
+				{
+				    ("CRWM", NAMEOF('Measures Folder'[KS1 EXS+% - CRWM TA]), 0),
+				    ("Reading", NAMEOF('Measures Folder'[KS1 EXS+% - Reading TA]), 1),
+				    ("Writing", NAMEOF('Measures Folder'[KS1 EXS+% - Writing TA]), 2),
+				    ("Maths", NAMEOF('Measures Folder'[KS1 EXS+% - Maths TA]), 3),
+				    ("Science", NAMEOF('Measures Folder'[KS1 EXS+% - Science TA]), 4),
+				    ("CRWM", NAMEOF('Measures Folder'[KS1 GDS% - CRWM TA]), 5),
+				    ("Maths", NAMEOF('Measures Folder'[KS1 GDS% - Maths TA]), 8),
+				    ("Reading", NAMEOF('Measures Folder'[KS1 GDS% - Reading TA]), 6),
+				    ("Writing", NAMEOF('Measures Folder'[KS1 GDS% - Writing TA]), 7)
+				}
+
+	annotation PBI_Id = 4cd7fa4649364211b55c0c5423a0a5b8
+

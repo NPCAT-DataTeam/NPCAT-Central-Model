@@ -1,0 +1,36 @@
+table 'Excluded Students (Reasons)'
+	lineageTag: caa4f44d-33c9-460b-9f7d-867e0dae44d7
+
+	column 'Globally Unique Student ID - Suspension ID'
+		dataType: string
+		lineageTag: 6577f115-f2d6-4bd7-b165-7395824d6d10
+		summarizeBy: none
+		sourceColumn: Globally Unique Student ID - Suspension ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exclusion Reason'
+		dataType: string
+		lineageTag: 03f57f54-d6b0-4d9a-be16-57760765cb58
+		summarizeBy: none
+		sourceColumn: Exclusion Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Excluded Students (Reasons)-83e45049-c70a-49f6-9505-e28937f6feb9' = m
+		mode: import
+		queryGroup: Behaviour
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"949f5011-2a87-4ae2-8220-19a171813608" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="949f5011-2a87-4ae2-8220-19a171813608"]}[Data],
+				    #"Suspensions (Reasons)" = #"949f5011-2a87-4ae2-8220-19a171813608"{[entity="Suspensions (Reasons)"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(#"Suspensions (Reasons)",{{"Suspension Reason", "Exclusion Reason"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

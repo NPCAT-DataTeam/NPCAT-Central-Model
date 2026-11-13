@@ -1,0 +1,106 @@
+table 'Student Previous School'
+	lineageTag: 87bad517-f071-4585-adff-4fc5a1d8ad24
+
+	column 'SU ID'
+		dataType: string
+		lineageTag: 2f2e810f-8e25-4c39-802e-f7e918632fdb
+		summarizeBy: none
+		sourceColumn: SU ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN
+		dataType: string
+		lineageTag: 296e8eaa-10a3-429d-8994-85c17809c912
+		summarizeBy: none
+		sourceColumn: UPN
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3b7312f5-0062-4b3d-8445-d3b4ffbe0325
+		summarizeBy: none
+		sourceColumn: DOA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DOL
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a301e307-ff58-4889-abf8-8ab869a3c96e
+		summarizeBy: none
+		sourceColumn: DOL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Reason for leaving'
+		dataType: string
+		lineageTag: 04f9fe92-2722-40d3-b86f-8fcb0fae064d
+		summarizeBy: none
+		sourceColumn: Reason for leaving
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPN-SUID
+		dataType: string
+		lineageTag: e00411bd-24c5-4b28-8f41-8ea39d3cac8a
+		summarizeBy: none
+		sourceColumn: UPN-SUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Previous School'
+		dataType: string
+		lineageTag: f1caf768-d96f-4fa7-a836-23a3f93efb31
+		summarizeBy: none
+		sourceColumn: Previous School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination School'
+		dataType: string
+		lineageTag: eeb27811-27d8-4516-b3da-216c100271dc
+		summarizeBy: none
+		sourceColumn: Destination School
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination Postcode'
+		dataType: string
+		lineageTag: 291b8ddb-6c5c-4655-84b5-0aaee81431c5
+		summarizeBy: none
+		sourceColumn: Destination Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Origin Postcode'
+		dataType: string
+		lineageTag: fd21c904-3264-45f8-a1e0-5761387cbaea
+		summarizeBy: none
+		sourceColumn: Origin Postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Student Previous School-fc050f43-dc24-44a9-bb57-76725ee5d4f3' = m
+		mode: import
+		queryGroup: 'School Data'
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Source{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"3326923e-238b-4bda-b0c1-3ffd7b6302be" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="3326923e-238b-4bda-b0c1-3ffd7b6302be"]}[Data],
+				    #"Student Previous School1" = #"3326923e-238b-4bda-b0c1-3ffd7b6302be"{[entity="Student Previous School"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Student Previous School1",{{"DOL", type date}, {"DOA", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_QueryRelationships = {"columnCount":10,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/Student Previous School/Student Previous School1.{SU ID,0}","Section1/Student Previous School/Student Previous School1.{UPN,1}","Section1/Student Previous School/Changed Type.{DOA,2}","Section1/Student Previous School/Changed Type.{DOL,3}","Section1/Student Previous School/Student Previous School1.{Reason for leaving,4}","Section1/Student Previous School/Student Previous School1.{UPN-SUID,5}","Section1/Student Previous School/Student Previous School1.{Previous School,6}","Section1/Student Previous School/Student Previous School1.{Destination School,7}","Section1/Student Previous School/Student Previous School1.{Destination Postcode,8}","Section1/Student Previous School/Student Previous School1.{Origin Postcode,9}"],"ColumnCount":10,"KeyColumnNames":[],"ColumnIdentities":["Section1/Student Previous School/Student Previous School1.{SU ID,0}","Section1/Student Previous School/Student Previous School1.{UPN,1}","Section1/Student Previous School/Changed Type.{DOA,2}","Section1/Student Previous School/Changed Type.{DOL,3}","Section1/Student Previous School/Student Previous School1.{Reason for leaving,4}","Section1/Student Previous School/Student Previous School1.{UPN-SUID,5}","Section1/Student Previous School/Student Previous School1.{Previous School,6}","Section1/Student Previous School/Student Previous School1.{Destination School,7}","Section1/Student Previous School/Student Previous School1.{Destination Postcode,8}","Section1/Student Previous School/Student Previous School1.{Origin Postcode,9}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

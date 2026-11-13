@@ -1,0 +1,59 @@
+table 'Safeguarding Headlines Lookup'
+	lineageTag: 7dd27d77-489b-4e8a-80ea-ef2dd95236ff
+
+	column 'OR Headlines'
+		dataType: string
+		lineageTag: 8f669a99-3197-4ec2-b638-082f14134fd7
+		summarizeBy: none
+		sourceColumn: OR Headlines
+		sortByColumn: 'OR Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OR Number'
+		dataType: string
+		lineageTag: b62d0445-5246-44be-be1c-faa1f8762c71
+		summarizeBy: none
+		sourceColumn: OR Number
+		sortByColumn: 'OR Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OR Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: b07ef042-31d4-47ab-b7a0-181aa357f91b
+		summarizeBy: sum
+		sourceColumn: OR Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Section
+		dataType: string
+		lineageTag: 746419fa-1f36-49d1-9360-898dc0e63068
+		summarizeBy: none
+		sourceColumn: Section
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Safeguarding Headlines Lookup' = m
+		mode: import
+		queryGroup: Safeguarding
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"eaf8df50-01b2-41b2-9aef-d580ee473a36" = Workspaces{[workspaceId="eaf8df50-01b2-41b2-9aef-d580ee473a36"]}[Data],
+				    #"5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c" = #"eaf8df50-01b2-41b2-9aef-d580ee473a36"{[dataflowId="5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c"]}[Data],
+				    #"Safeguarding Headlines Lookup_" = #"5ac42d4b-0ac2-4e83-8f99-40b3ba7d473c"{[entity="Safeguarding Headlines Lookup",version=""]}[Data]
+				in
+				    #"Safeguarding Headlines Lookup_"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

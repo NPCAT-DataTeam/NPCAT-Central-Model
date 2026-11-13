@@ -1,0 +1,60 @@
+table 'zP EYFS Time Series'
+	lineageTag: 60aa9d74-0423-41a4-a89d-f6cb730f20a6
+
+	column 'zP EYFS Time Series'
+		lineageTag: 4f07c0c6-90a3-4a26-9f55-fa7aa5e4f3c7
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'zP EYFS Time Series Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zP EYFS Time Series Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP EYFS Time Series Fields'
+		isHidden
+		lineageTag: 636a3834-c46c-46e5-97b9-997402311f96
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'zP EYFS Time Series Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zP EYFS Time Series Order'
+		isHidden
+		formatString: 0
+		lineageTag: 89d84e44-2704-48c2-8410-9bb737be966a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EYFS Time Series Type' =
+			
+			Switch(TRUE(),
+			CONTAINSSTRING('zP EYFS Time Series'[zP EYFS Time Series Fields],"CY"),"CY",
+			CONTAINSSTRING('zP EYFS Time Series'[zP EYFS Time Series Fields],"PY"),"PY",
+			CONTAINSSTRING('zP EYFS Time Series'[zP EYFS Time Series Fields],"YoY"),"YoY")
+		lineageTag: dd56873c-184c-4bd1-bb05-4d510be287eb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'zP EYFS Time Series-e86cef40-0f82-4a90-adb1-c994ef61c20d' = calculated
+		mode: import
+		source =
+				{
+				    ("CY", NAMEOF('Measures Folder'[EYFS Exp % CY]), 0),
+				    ("PY", NAMEOF('Measures Folder'[EYFS Exp % PY]), 1),
+				    ("YoY", NAMEOF('Measures Folder'[EYFS Exp % YoY]), 2)
+				}
+
+	annotation PBI_Id = 7896a27db08a4765935be4cffa0c265b
+

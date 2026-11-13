@@ -1,0 +1,7 @@
+role 'St Patrick''s Primary'
+	modelPermission: read
+
+	tablePermission 'School Database' = [SU ID] == "NPCAT24"
+
+	annotation PBI_Id = c7e35a669bb44519a378fbb72e82ff3c
+
