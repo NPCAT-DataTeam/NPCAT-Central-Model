@@ -70058,22 +70058,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "absence.students_on_roll_test": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Absences",
-			          "ConceptualProperty": "Students on Roll Test"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "students on roll test": {
-			            "State": "Generated"
-			          }
-			        }
-			      ]
-			    },
 			    "EYFS_ELGs_GLD.assessment_date": {
 			      "Definition": {
 			        "Binding": {
