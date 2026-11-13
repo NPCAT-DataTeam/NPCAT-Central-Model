@@ -91,16 +91,13 @@
         "sort": [
           {
             "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Measures Folder"
-                  }
-                },
-                "Property": "Attendance Percentage YTD"
+              "NativeVisualCalculation": {
+                "Language": "dax",
+                "Expression": "FORMAT( [Attendance Percentage YTD]-[Attendance Percentage YTD SPLY],\"0.00%\")",
+                "Name": "YoY"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
