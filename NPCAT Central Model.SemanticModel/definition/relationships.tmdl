@@ -828,3 +828,11 @@ relationship 7eab42dd-6452-83ab-e1d9-27cc18c6b3d5
 	fromColumn: 'KS2 Tests & TA Results'.STUDENT_UNIQUE_ID
 	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
 
+relationship cefbd191-5e7e-cb0f-0487-dc3199c615e0
+	fromColumn: 'Physical Interventions'.STUDENT_UNIQUE_ID
+	toColumn: 'Student Database (Full)'.'Globally Unique Student ID'
+
+relationship d92c1772-b9c9-0230-1ff4-7f4ef4c9c524
+	fromColumn: 'Physical Interventions'.'Incident Date'
+	toColumn: Calendar.Date
+

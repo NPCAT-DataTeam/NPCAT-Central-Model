@@ -17,14 +17,6 @@ table 'School Database'
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
-	/// 
-	/// CALCULATE ( COUNT ( Attendance[Sessions] ), Attendance[Mark] = "E" )
-	measure 'Sessions Excluded' =
-			
-			CALCULATE ( COUNT ( Attendance[Sessions] ), Attendance[Mark] = "E" )
-		formatString: 0
-		lineageTag: fd79ce2d-fb97-44a7-b8dd-24534a654529
-
 	column 'SU ID'
 		dataType: string
 		lineageTag: 11688b56-572f-4474-9c67-3d30350087c4

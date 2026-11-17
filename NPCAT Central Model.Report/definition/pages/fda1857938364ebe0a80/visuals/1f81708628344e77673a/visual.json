@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "1f81708628344e77673a",
   "position": {
-    "x": 520.734908136483,
-    "y": 106.38670166229221,
+    "x": 717.81155015197567,
+    "y": 363.76899696048633,
     "z": 1,
     "height": 356.11548556430449,
     "width": 562.169728783902
@@ -91,15 +91,19 @@
         "sort": [
           {
             "field": {
-              "NativeVisualCalculation": {
-                "Language": "dax",
-                "Expression": "FORMAT( [Attendance Percentage YTD]-[Attendance Percentage YTD SPLY],\"0.00%\")",
-                "Name": "YoY"
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures Folder"
+                  }
+                },
+                "Property": "Attendance Percentage YTD"
               }
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {

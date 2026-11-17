@@ -1,16 +1,6 @@
 table Attendance
 	lineageTag: bbcd225e-2e0b-4584-8b19-a6116529d79d
 
-	/// 
-	/// COUNTROWS ( Attendance )
-	measure 'Attendance Debug' =
-			
-			COUNTROWS ( Attendance )
-		formatString: 0
-		lineageTag: a00d66eb-b1a0-40a9-92fe-f1da4b8f99ac
-
-		changedProperty = FormatString
-
 	column 'Unique Student ID'
 		dataType: string
 		isHidden

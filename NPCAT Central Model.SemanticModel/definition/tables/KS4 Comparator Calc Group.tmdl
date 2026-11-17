@@ -223,3 +223,6 @@ table 'KS4 Comparator Calc Group'
 
 		annotation SummarizationSetBy = Automatic
 
+	partition 'KS4 Comparator Calc Group' = calculationGroup
+		mode: import
+

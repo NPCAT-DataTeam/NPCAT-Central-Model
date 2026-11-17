@@ -38,3 +38,6 @@ table 'Every Calc Count or %'
 
 		annotation SummarizationSetBy = Automatic
 
+	partition 'Every Calc Count or %' = calculationGroup
+		mode: import
+

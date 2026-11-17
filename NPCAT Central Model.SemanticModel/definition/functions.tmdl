@@ -162,3 +162,751 @@ function SELECTEDPERIODREF = ```
 		```
 	lineageTag: dee870a3-cf86-41fd-a1d4-ba6d8efc8757
 
+function ApplyStudentDemographic = ```
+		
+		(BaseExpression : EXPR) =>
+		    VAR __Demographic =
+		        SELECTEDVALUE ( 'Dynamic student Calc group'[Demographic Name] )
+		    VAR _MaxDate =
+		        MAX ( 'Calendar'[Date] )
+		    RETURN
+		    SWITCH (
+		        __Demographic,
+		        "FSM",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not FSM",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents, StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Male FSM",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+		                KEEPFILTERS(
+		                    FILTER(
+		                        'Student Database (Full)',
+		                        'Student Database (Full)'[Gender] = "Male"
+		                    )
+		                )
+		            ),
+		        "Female FSM",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+		                KEEPFILTERS(
+		                    FILTER(
+		                        'Student Database (Full)',
+		                        'Student Database (Full)'[Gender] = "Female"
+		                    )
+		                )
+		            ),
+		        "FSM Ever 6",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Ever 6 FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not FSM Ever 6",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Ever 6 FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Disadvantaged",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Disadvantaged"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not Disadvantaged",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Disadvantaged"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Male Disadvantaged",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Disadvantaged"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+		                KEEPFILTERS(
+		                    FILTER(
+		                        'Student Database (Full)',
+		                        'Student Database (Full)'[Gender] = "Male"
+		                    )
+		                )
+		            ),
+		        "Female Disadvantaged",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Disadvantaged"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+		                KEEPFILTERS(
+		                    FILTER(
+		                        'Student Database (Full)',
+		                        'Student Database (Full)'[Gender] = "Female"
+		                    )
+		                )
+		            ),
+		        "Dis / SEN",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Disadvantaged Ofsted 2023"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not Dis / Not SEN",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Disadvantaged Ofsted 2023"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "PP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Pupil Premium"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not PP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Pupil Premium"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Male PP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Pupil Premium"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+		                KEEPFILTERS(
+		                    FILTER(
+		                        'Student Database (Full)',
+		                        'Student Database (Full)'[Gender] = "Male"
+		                    )
+		                )
+		            ),
+		        "Female PP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Pupil Premium"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] ),
+		                KEEPFILTERS(
+		                    FILTER(
+		                        'Student Database (Full)',
+		                        'Student Database (Full)'[Gender] = "Female"
+		                    )
+		                )
+		            ),
+		        "Any SEND",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "SEN"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "SEN Support",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "SEN Support"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "EHCP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "EHCP"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not SEND",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "SEN"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "CP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Child Protection"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not CP",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Child Protection"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Service Child",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Service Child"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not Service Child",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Service Child"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Traveller",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Taveller"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not Traveller",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Traveller"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Compulsory Age",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Compulsory School Age"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not Compulsory Age",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "Compulsory School Age"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "In Care",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "In Care"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Not In Care",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "In Care"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                EXCEPT( CurrentStudents,StudentsWithTag )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "SEN + FSM",
+		            VAR StudentsWithTag =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] IN { "SEN", "FSM" }
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR FinalIDs =
+		                INTERSECT( StudentsWithTag, CurrentStudents )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "SEN + Not FSM",
+		            VAR StudentsWithTag1 =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "SEN"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR StudentsWithTag2 =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR SENstudentIDs =
+		                INTERSECT( StudentsWithTag1, CurrentStudents )
+		            VAR FinalIDs =
+		                EXCEPT( SENstudentIDs, StudentsWithTag2 )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        "Hidden Dis",
+		            VAR StudentsWithTag1 =
+		                CALCULATETABLE(
+		                    VALUES('Student Indicies'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Student Indicies',
+		                        'Student Indicies'[Decile] IN {"3","2","1"} &&
+		                        'Student Indicies'[RELEASE_YEAR] = 2025 &&
+		                        'Student Indicies'[Category] = "IDACI"
+		                    )
+		                )
+		            VAR StudentsWithTag2 =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "FSM"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR StudentsWithTag3 =
+		                CALCULATETABLE(
+		                    VALUES('Student Database (Full)'[Globally Unique Student ID]),
+		                    FILTER(
+		                        'Demographics',
+		                        'Demographics'[Tag] = "SEN"
+		                        && 'Demographics'[Tag Start Date] <= _MaxDate
+		                        && 'Demographics'[Tag End Date]   >= _MaxDate
+		                    )
+		                )
+		            VAR CurrentStudents =
+		                VALUES('Student Database (Full)'[Globally Unique Student ID])
+		            VAR IDACIStudentIDs =
+		                INTERSECT(  CurrentStudents, StudentsWithTag1 )
+		            VAR studentIDs =
+		                EXCEPT(  IDACIStudentIDs, StudentsWithTag2 )
+		            VAR FinalIDs =
+		                EXCEPT( studentIDs, StudentsWithTag3 )
+		            RETURN
+		            CALCULATE(
+		                BaseExpression,
+		                TREATAS( FinalIDs, 'Student Database (Full)'[Globally Unique Student ID] )
+		            ),
+		        BaseExpression
+		    )
+		
+		```
+	lineageTag: 833bc0fc-5945-446e-a616-ddd5993fba42
+

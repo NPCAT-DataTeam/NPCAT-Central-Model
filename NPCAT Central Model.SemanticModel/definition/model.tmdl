@@ -138,9 +138,7 @@ annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["AVOID_BI-DIRECTIONAL_
 
 annotation BestPracticeAnalyzer_ExternalRuleFiles = ["C:\\Users\\doy.n\\Downloads\\BestPracticeRules-master\\BestPracticeRules-master\\BPARules-PowerBI.json"]
 
-annotation PBI_ProTooling = ["DaxQueryView_Desktop","CalcGroup","WebModelingEdit","TMDLView_Desktop","DevMode"]
-
-annotation __LastRPTime = 134390138134013853
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","CalcGroup","WebModelingEdit","TMDLView_Desktop"]
 
 ref table 'School Database'
 ref table 'Student Database (Full)'

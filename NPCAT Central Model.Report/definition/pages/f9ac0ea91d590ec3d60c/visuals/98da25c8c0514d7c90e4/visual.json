@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "98da25c8c0514d7c90e4",
+  "position": {
+    "x": 184.88888888888889,
+    "y": 420.74074074074076,
+    "z": 1,
+    "height": 299.85185185185185,
+    "width": 469.33333333333331
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Internal Exclusions"
+                }
+              },
+              "queryRef": "Measures Folder.Internal Exclusions",
+              "nativeQueryRef": "Seclusions",
+              "displayName": "Seclusions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Students Internal Exclusions"
+                }
+              },
+              "queryRef": "Measures Folder.Students Internal Exclusions",
+              "nativeQueryRef": "Students Internal Exclusions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Internal Exclusions Attendance"
+                }
+              },
+              "queryRef": "Measures Folder.Internal Exclusions Attendance",
+              "nativeQueryRef": "Internal Exclusions Attendance"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures Folder"
+                  }
+                },
+                "Property": "Internal Exclusions"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "804b9ec39d56a7b0d08b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Internal Exclusions"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "306dfda69922d99097d8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Students Internal Exclusions"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "54e4e16ccd9ec7b51958",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Folder"
+              }
+            },
+            "Property": "Internal Exclusions Attendance"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -45,8 +45,8 @@
                 }
               },
               "queryRef": "Measures Folder.Internal Exclusions YTD",
-              "nativeQueryRef": "26/27",
-              "displayName": "26/27"
+              "nativeQueryRef": "CY",
+              "displayName": "CY"
             },
             {
               "field": {
@@ -62,6 +62,36 @@
               "queryRef": "Measures Folder.Internal Exclusions SPLY",
               "nativeQueryRef": "SPLY",
               "displayName": "SPLY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Internal Exclusions -1 Year"
+                }
+              },
+              "queryRef": "Measures Folder.Internal Exclusions -1 Year",
+              "nativeQueryRef": "-1 Year",
+              "displayName": "-1 Year"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures Folder"
+                    }
+                  },
+                  "Property": "Internal Exclusions -2 Year"
+                }
+              },
+              "queryRef": "Measures Folder.Internal Exclusions -2 Year",
+              "nativeQueryRef": "-2 Years",
+              "displayName": "-2 Years"
             }
           ],
           "fieldParameters": [
@@ -77,7 +107,7 @@
                 }
               },
               "index": 0,
-              "length": 2
+              "length": 4
             }
           ]
         }

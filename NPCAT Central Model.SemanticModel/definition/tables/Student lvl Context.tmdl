@@ -49,3 +49,6 @@ table 'Student lvl Context'
 
 		annotation SummarizationSetBy = Automatic
 
+	partition 'Student lvl Context' = calculationGroup
+		mode: import
+
